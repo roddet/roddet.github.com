@@ -88,7 +88,7 @@ File > New > Maven Project > Sélectionner l'archetype "gatling-highcharts-maven
   <tr>
     <td width="30%"><img src="{{root_url}}/images/gatling/structure_mvn.png"/></td><td>&nbsp;&nbsp;</td>
     <td width="70%">On retrouve un projet Maven classique avec un pom.xml, les sources scala dans src/main/scala, les fichiers de configuration dans src/main/resources.<br/><br/>Engine.scala est la classe principale qui lance la mitrailleuse.<br/><br/>IDEPathHelper.scala contient les différents chemins d'accès aux ressources comme les classes compilées, les simulations, les fichiers de données, etc...<br/><br/>Recorder.scala est un utilitaire qui permet d'enregistrer un scénario avec par exemple votre navigateur et de générer les scripts correspondants.<br/><br/>FooSimulation.scala une simulation qui ne fait rien. Il peut être compléter pour créer son premier scénario.<br/><br/>
-gatling.conf donne la possibilité de paramétrer gatling</td>
+gatling.conf donne la possibilité de paramétrer gatling.</td>
 </table>
 
 ## Générer une simulation avec le "Recorder"
