@@ -8,12 +8,12 @@ categories: devoxxfr2013 gatling
 
 Vous pouvez retrouvez la description de la session [sur le site de devoxx](http://www.devoxx.com/display/FR13/Gatling+Crash+Course).
 
-{% img center /images/devoxx_gatling/slide.jpg %}
+{% img center http://blog.roddet.com/images/devoxx_gatling/slide.jpg %}
 
 ## Les animateurs
 
 
-{% img center /images/devoxx_gatling/stephane_pierre.jpg %}
+{% img center http://blog.roddet.com/images/devoxx_gatling/stephane_pierre.jpg %}
 
 * Pierre Dal-pra (à gauche) [@pierre_dalpra](https://twitter.com/pierre_dalpra) / [Bio](http://www.devoxx.com/display/FR13/Pierre+Dal-pra)
 * Stéphane Landelle (à droite) [@slandelle](https://twitter.com/slandelle) / [Bio](http://www.devoxx.com/display/FR13/Stephane+Landelle)
@@ -93,7 +93,7 @@ Vous pouvez consulter les éléments du DSL dans le [Gatling's Cheat Sheet](http
 ## Le lab
 La session a consister à effectuer un test de charge sur une des applications exemple contenu dans l'archive PlayFramework 2.1.0 : computer-database.
 
-{% img center /images/devoxx_gatling/play2app.jpg %}
+{% img center http://blog.roddet.com/images/devoxx_gatling/play2app.jpg %}
 
 ### Etape 1 : Démarrer l'application à tester
 
@@ -114,7 +114,7 @@ A ce stade pour certains participants, play demandait à télécharger des packa
 ### Etape 2 : Enregistrement d'un scénario grâce au "recorder"
 Pour éviter de partir de 0 lors de l'écriture d'un script, Gatling vient avec un recorder (enregistreur de scénario). Il est accessible via le lancement de l'exécutable "GATLING_HOME/bin/recorder.sh" (remplacer .sh par .bat pour Windows).
 
-{% img center /images/devoxx_gatling/recorder.jpg %}
+{% img center http://blog.roddet.com/images/devoxx_gatling/recorder.jpg %}
 
 Nous avons configuré le recorder pour écarter les ressources statiques (.css, .js, .ico) pour ne tester que la partie dynamique de l'application.
 
@@ -276,7 +276,7 @@ Faire le choix 2.
 
 Le rapport est généré dans le répertoire "GATLING_HOME/results".
 
-{% img center /images/devoxx_gatling/report.jpg %}
+{% img center http://blog.roddet.com/images/devoxx_gatling/report.jpg %}
 
 
 Exemple de rapport généré par Gatling : [ici](http://gatling-tool.org/sample/index.html)
