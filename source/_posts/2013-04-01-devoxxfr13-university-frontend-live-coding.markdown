@@ -3,7 +3,7 @@ layout: post
 title: "Devoxx France 2013 # University # Frontend Live Coding"
 date: 2013-04-04 13:35
 comments: true
-categories: devoxxfr2013 yeoman grunt sass compass requirejs handlebars backbonejs
+categories: devoxxfr2013 yeoman grunt sass requirejs handlebars backbonejs
 ---
 
 Vous pouvez retrouvez la description de la session [sur le site de Devoxx France](http://www.devoxx.com/display/FR13/Frontend+Live+Coding+++Tour+d%27horizon+de+l%27outillage+et+des+technos+web+d%27aujourd%27hui).
@@ -94,11 +94,10 @@ Et on obtient le résultat suivant en répondant "Y" à toutes les questions :
 Un squelette de projet est ainsi généré.
 
 ### Récupérer toutes les packages (dépendances)
-Lancer la commande : 
 ```
 npm install && bower install
 ```
-En lançant cette commande, on obtient le téléchargement d'une partie d'internet.
+On obtient le téléchargement d'une partie d'internet.
 
 ```
 .....
@@ -188,20 +187,18 @@ Ce fichier comporte les dépendances du projet. Attention Bower se charge de ré
 }
 ```
 
-C'est un peu dommage de n'avoir pas fusionné le fichier package.json et component.json (même structure, contenu similaire). Surtout qu'il est possible de configurer bower pour qu'il utilise un autre fichier que "component.json" donc éventuellement "package.json". Nous allons peut-être l'avoir dans une futur version de Yeoman ou bien nous pouvons le faire nous même :)
+C'est un peu dommage de n'avoir pas fusionné le fichier package.json et component.json (même structure, contenu similaire). Surtout qu'il est possible de configurer bower pour qu'il utilise un autre fichier que "component.json" donc éventuellement "package.json". Nous allons peut-être l'avoir dans une futur version de Yeoman ou bien il y a une raison pour cette distinction :)
 
 
 Le nommage des numéros de version obéit à des règles du [semantic versionning](http://semver.org/).
 On peut remarquer l'utilisation du caractère "~" dans certains numéros de version. 
 La version ~0.4.0 permet de récupérer la version 0.4.0 d'une librairie ou la version mineure la plus à jour (0.4.1 par exemple).
 
-Pour maitriser la stabilité d'une application, je pense que ce n'est pas une bonne chose d'utiliser le "~".
-
 Ce qu'il faut également savoir avec NPM et Bower est qu'ils génèrent un dépôt par projet par défaut, contrairement par exemple à Maven.
 
 ## Saas
 {% img left http://blog.roddet.com/images/devoxxfr13/frontend/sass.jpg %}
-CSS permet d'appliquer des mises en forme à un document HTML. Malgré l'importance de ce language, CSS a d'énormes lacunes évidentes : impossible d'utiliser des variables, impossible d'effectuer des calculs, etc...
+CSS permet d'appliquer des mises en forme à un document HTML. Malgré l'importance de ce language, CSS a d'énormes lacunes évidentes : impossible d'utiliser des variables, impossible d'effectuer des traitements, etc...
 
 [Sass](http://sass-lang.com/) est une extension de CSS3 ayant l'objectif de combler les lacunes de CSS.
 La syntaxe CSS est entièrement compatible avec Sass.
@@ -401,7 +398,7 @@ Il permet de créer un binding unidirectionnel ou bi-directionnel entre un modè
 
 ## Quelques anglicismes de l'animateur
 Nous le savons, nous sommes envahis de mots anglais dans notre métier. Nous passons notre temps à lire des ressources en anglais et cela s'est particulièrement senti auprès de l'animateur.
-Voici un top 5 des expressions qui m'ont marquées (soit par leurs fréquences, soit par leurs originalités) :
+Voici un top 5 des expressions qui m'ont marqué (soit pour leurs fréquences, soit pour leurs originalités) :)
 
 1. "out of the box" 
 2. "baby step"
