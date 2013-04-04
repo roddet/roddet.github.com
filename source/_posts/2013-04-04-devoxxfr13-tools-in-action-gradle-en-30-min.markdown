@@ -36,6 +36,7 @@ Test Maven
 ```
 mvn install
 ```
+
 ```
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
@@ -91,6 +92,7 @@ dependencies {
 ``` 
 
 ### Etape 3 : lancement du build
+
 ```
 gradle clean build
 ```  
@@ -100,10 +102,13 @@ Gradle offre une bonne gestion de la compilation incrémental.
 
 
 ### Etape 4 : Voir la liste des tâches disponibles
+
 ```
 gradle tasks
 ```
+
 Voici le résultat
+
 ```
 :tasks
 
@@ -149,20 +154,26 @@ To see all tasks and more detail, run with --all.
 
 ### Etape 5 : Packaging WAR
 Modifier le fichier "build.gradle" en remplaçant "apply plugin :'java'" par : 
+
 ```
 apply plugin : 'war'
 ```
+
 Ce changement suffit à générer un WAR lors d'un "gradle build".
 
 ### Etape 6 : Intégrer Jetty
 Modifier le fichier "build.gradle" 
+
 ```
 apply plugin:'jetty'
 ```
+
 Lancer le serveur Jetty
+
 ```
 gradle jettyRunWar
 ```
+
 L'application est accessible via l'URL : http://localhost:8080/dddsample-1.1.0/
 
 {% img center http://blog.roddet.com/images/devoxxfr13/gradle/dddsample.png 500 %}
@@ -170,6 +181,7 @@ L'application est accessible via l'URL : http://localhost:8080/dddsample-1.1.0/
 
 ### Etape 7 : Configurer sonar
 Ajouter
+
 ``` groovy
 ...
 apply plugin:'sonar-runner'
@@ -197,10 +209,13 @@ task wrapper(type:Wrapper){
 	gradleVersion="1.5-rc1"
 }
 ```
+
 Générer le wrapper
+
 ```
 gradle wrapper
 ```
+
 Cette commande génère les exécutables (gradle,gradlew,gradlew.bat) pour s'interfacer avec jenkins. L'exécutable généré permet de dérouler un build sans explicitement installer Gradle sur une machine.
 
 ### Etape 8 : Intégrer à Jenkins
@@ -213,9 +228,11 @@ Deux façons de le mettre en oeuvre :
 * soit avec l'utilisation du wrapper et là aucun besoin d'installer Gradle
 
 Le build est paramétré avec :
+
 ``` 
 clean build sonarRunner
-``` 
+```
+
 Malheureusement à cette étape...FAILED...impossible de charger une classe de Gradle. Le présentateur avait fait une mise à jour le matin même, surprise surprise... Mais nous avons compris le principe et l'effet démo est là :)
 
 ### Etape 9 : Créer une tâche
@@ -232,14 +249,17 @@ task hello(type:Exec){
     args "Avez-vous des questions ?"
 }
 ```
+
 Grâce à l'attribut "dependsOn", on peut gérer l'ordonnancement des tâches. Ici "wrapper" va être exécuté avant "hello".
 
 Lancer la nouvelle tâche :
+
 ```
 gradle hello
 ```
 
 On obtient :
+
 ```
 :wrapper UP-TO-DATE
 :hello
@@ -252,16 +272,16 @@ Total time: 5.781 secs
 
 ## Questions/réponses
 
-### Quel niveau d'intégration avec les IDE ?
+**Quel niveau d'intégration avec les IDE ?**
 
 * [Spring Tools Suite](http://www.springsource.org/sts) Ok
 * [Netbeans](https://netbeans.org/) Ok dans les version récentes
 * [IntelliJ IDEA](http://www.jetbrains.com/idea/) offre la meilleur intégration
 
-### Y a t-il un équivalent du plugin "release" de Maven ?
+**Y a t-il un équivalent du plugin "release" de Maven ?**
 Non, pas d'équivalent de release plugin.
 
-### Peut-on gérer des sous-modules ?
+**Peut-on gérer des sous-modules ?**
 Oui
 
 ## Le code complet sur Github
