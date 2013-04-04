@@ -93,7 +93,7 @@ Et on obtient le résultat suivant en répondant "Y" à toutes les questions :
 
 Un squelette de projet est ainsi généré.
 
-### Récupérer toutes les packages (dépendances)
+### Récupérer tous les packages (dépendances)
 ```
 npm install && bower install
 ```
@@ -294,7 +294,7 @@ Plus de détails [ici](http://requirejs.org/docs/api.html).
 
 ## Handlebars
 {% img left http://blog.roddet.com/images/devoxxfr13/frontend/handlebars_logo.jpg %}
-Handlebars est un moteur de templating côté client. 
+[Handlebars](http://handlebarsjs.com/) est un moteur de templating côté client. 
 
 Il permet de créer des fichiers HTML réutilisable.
 
