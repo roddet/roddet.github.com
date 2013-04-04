@@ -272,16 +272,16 @@ Total time: 5.781 secs
 
 ## Questions/réponses
 
-**Quel niveau d'intégration avec les IDE ?**
+### Quel niveau d'intégration avec les IDE ?
 
 * [Spring Tools Suite](http://www.springsource.org/sts) Ok
 * [Netbeans](https://netbeans.org/) Ok dans les version récentes
 * [IntelliJ IDEA](http://www.jetbrains.com/idea/) offre la meilleur intégration
 
-**Y a t-il un équivalent du plugin "release" de Maven ?**
+### Y a t-il un équivalent du plugin "release" de Maven ?
 Non, pas d'équivalent de release plugin.
 
-**Peut-on gérer des sous-modules ?**
+### Peut-on gérer des sous-modules ?
 Oui
 
 ## Le code complet sur Github
