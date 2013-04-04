@@ -16,7 +16,7 @@ Je souhaitais à travers cette session découvrir Gradle et surtout voir jusqu'�
 Sébastien Cogneau [@SCogneau](https://twitter.com/SCogneau) ([Bio](http://www.devoxx.com/display/FR13/Sebastien+Cogneau)) contribue le week end au projet Gradle et a fait migrer la plupart des projets d'un DSI à Gradle.
 
 ## Gradle en quelques mots
-{% img left /images/devoxxfr13/gradle/gradle_logo.gif %}
+{% img left http://blog.roddet.com/images/devoxxfr13/gradle/gradle_logo.gif %}
 
 * Un DSL en groovy
 * Extensible
@@ -165,7 +165,7 @@ gradle jettyRunWar
 ```
 L'application est accessible via l'URL : http://localhost:8080/dddsample-1.1.0/
 
-{% img center /images/devoxxfr13/gradle/dddsample.png 500 %}
+{% img center http://blog.roddet.com/images/devoxxfr13/gradle/dddsample.png 500 %}
 
 
 ### Etape 7 : Configurer sonar
