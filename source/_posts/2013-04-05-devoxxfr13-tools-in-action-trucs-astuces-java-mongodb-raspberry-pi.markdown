@@ -3,13 +3,13 @@ layout: post
 title: "Devoxx France 2013 # Tools in Action # Trucs et astuces avec Java et MongoDB sur Raspberry Pi"
 date: 2013-04-05 13:54
 comments: true
-categories: raspberrypi java mongodb
+categories: devoxxfr2013 raspberrypi java mongodb
 ---
 
 Vous pouvez retrouvez la description de la session [sur le site de devoxx](http://www.devoxx.com/display/FR13/Trucs+et+astuces+avec+Java+et+MongoDB+sur+Raspberry+PI).
 
 ## Pourquoi j'ai choisi cette session ?
-Une occasion de découvrir le Raspberry Pi.
+Une occasion de découvrir l'univers Raspberry Pi.
 
 
 ## L'animateur
