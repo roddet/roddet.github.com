@@ -16,7 +16,7 @@ Une occasion de découvrir l'univers Raspberry Pi.
 
 **Guillaume Scheibel** [@g_scheibel](https://twitter.com/g_scheibel) [www.gsheibel.net](http://www.gscheibel.net)
 
-{% img center /images/devoxxfr13/raspberrymongo/speaker.jpg %}
+{% img center http://blog.roddet.com/images/devoxxfr13/raspberrymongo/speaker.jpg %}
 
 
 
