@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Devoxx France 2013 # Tools In Action - Live coding avec Yeoman & AngularJS"
+title: "Devoxx France 2013 # Tools In Action # Live coding avec Yeoman & AngularJS"
 date: 2013-04-05 23:09
 comments: true
 categories: devoxxfr2013 yeoman angularjs
