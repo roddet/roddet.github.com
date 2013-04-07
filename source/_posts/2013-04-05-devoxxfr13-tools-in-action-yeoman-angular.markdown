@@ -99,7 +99,7 @@ npm install && bower install
 grunt server
 ```
 
-{% img center /images/devoxxfr13/yeomanangular/webapp_1.png %}
+{% img center http://blog.roddet.com/images/devoxxfr13/yeomanangular/webapp_1.png %}
 
 
 ### Etape 6 : Modifier app/scripts/app.js
