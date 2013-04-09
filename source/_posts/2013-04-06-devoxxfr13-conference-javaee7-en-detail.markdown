@@ -282,5 +282,7 @@ Les spécifications seront validées à la fin du mois d'Avril. La première ver
 JCache n'est pas dans le périmètre de Java EE 7.
 
 ## Bilan
-Session interressante qui présente en 1h les grandes nouveautés attendues pour Java EE 7. Il ne reste plus qu'à approfondir chaque sujet et tester :) 
+Session interressante qui présente en 1h les grandes nouveautés attendues pour Java EE 7. Après quelques recherches sur SlideShare, Parleys etc.. je n'ai pas retrouvé les slides de la présentation. Je l'ajouterai à ce billet lorsqu'il sera disponible.
+
+Maintenant il ne reste plus qu'à approfondir chaque sujet et tester :) 
 
