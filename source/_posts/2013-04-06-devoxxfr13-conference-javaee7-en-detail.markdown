@@ -3,7 +3,7 @@ layout: post
 title: "Devoxx France 2013 # Conférence # Java EE 7 plus en détail"
 date: 2013-04-06 14:14
 comments: true
-categories: devoxxfr2013 java websocket json batch
+categories: devoxxfr2013 java javaee7 websocket json batch
 ---
 
 Vous pouvez retrouvez la description de la session [sur le site de Devoxx France](http://www.devoxx.com/display/FR13/Java+EE+7+en+detail).
