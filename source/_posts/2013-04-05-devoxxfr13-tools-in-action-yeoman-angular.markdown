@@ -162,7 +162,8 @@ angular.module('clientApp')
 
 ### Etape 8 : app/views/main.html
 
-``` javascript
+{% codeblock %}
+{% raw %} 
 <div class="hero-unit">
   <h1>{{hello}}</h1>
 </div>
@@ -190,7 +191,8 @@ angular.module('clientApp')
         <button class="btn" ng-click="save()">Save</button>
     </div>
 </div>
-```
+```{% endraw %} 
+{% endcodeblock %}
 
 ## L'application développée
 
