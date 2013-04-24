@@ -134,7 +134,7 @@ L'attribut ```ng-app``` permet de d'indiquer l'emplacement de l'application Angu
 
 Ce que nous saisissons est automatiquement copié à la suite de "Hello".
 
-Cet exemple simple permet de mettre en évidence la philosophie d'AngularJS. La manipulation du DOM que nous faisons habituellement en javascript est dans cet exemple effectuer de façon déclarative.
+Cet exemple simple permet de mettre en évidence la philosophie d'AngularJS. La manipulation du DOM que nous faisons habituellement en javascript est dans cet exemple effectuée de façon déclarative.
 
 ## Maintenant un peu de cinéma !
 Après avoir écrit nos premières lignes d'AngularJS, nous passons au développement d'une application permettant de visualiser une liste de films, le détail de chaque film et des informations sur les acteurs principaux.
@@ -142,7 +142,7 @@ Après avoir écrit nos premières lignes d'AngularJS, nous passons au développ
 Ce développement va être fait en plusieurs étapes :
 
 * [Step-0 : Utilisation d'un template](#step-0)
-* [Step-1 : Externalisation du controlleur + Appel AJAX](#step-1)
+* [Step-1 : Externalisation du contrôleur + Appel AJAX](#step-1)
 * [Step-2 : Filtre et Tri](#step-2)
 * [Step-3 : Navigation entre différentes vues](#step-3)
 * [Step-4 : Service AngularJS](#step-4)
@@ -226,7 +226,7 @@ Les noeuds ```<h1>``` et ```<ul>``` sont supprimés.
 L'attribut ```ng-view``` déclare l'emplacement de la vue AngularJS. Nativement, il ne peut y avoir qu'un seul attribut ```ng-view``` par application AngularJS.
 
 ### Créer un fragment HTML représentant la liste des films
-Créer un fichier ```app/partials/movies.html``` représentant le template des informations supprimées précedemment.
+Créer un fichier ```app/partials/movies.html``` représentant le template des informations supprimées précédemment.
 
 {% codeblock app/partials/movies.html %}
 {% raw %} 
@@ -275,7 +275,7 @@ http://localhost:8000/app/index.html#/movies
 {% img center http://blog.roddet.com/images/stereolux/html5/angular-7.png %}
 
 <a name="step-1"></a>
-## Step-1 : Externalisation du controlleur + Appel AJAX
+## Step-1 : Externalisation du contrôleur + Appel AJAX
 L'objectif de cette étape est de mettre à jour la vue non plus via un tableau javascript "en dur" mais avec un appel serveur asynchrone. Nous allons profiter pour externaliser les contrôleurs de l'application.
 
 ### Inclusion du nouveau fichier à créer
@@ -756,7 +756,7 @@ angular.module('moviesApp.directives', [])
     };
 });
 ```
-Un nouveau module dont le nom est ```moviesApp.directives``` est créé. Il définit que la directive :
+Un nouveau module dont le nom est ```moviesApp.directives``` est créé. Il ne définit que la directive :
 
 * porte le nom ```mvActor```
 * est de type ```Element``` (restrict : E). Une directive peut être de type :
@@ -818,7 +818,7 @@ var app = angular.module('moviesApp', ['moviesApp.directives']);
 
 {% img center http://blog.roddet.com/images/stereolux/html5/angular-14.png %}
 
-Voilà Samuel L. Jackson, un acteur au dessus des autres, bien mis en valeur :)
+Voilà Samuel L. Jackson, un acteur au-dessus des autres, bien mis en valeur :)
 
 <a name="complet"></a>
 ## Le code complet
