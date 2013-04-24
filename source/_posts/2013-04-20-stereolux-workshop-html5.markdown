@@ -767,7 +767,7 @@ Un nouveau module dont le nom est ```moviesApp.directives``` est créé. Il ne d
 * va remplacer l'élément du DOM sur lequel il est appliqué (```replace:true```)
 * est paramétrable via une propriété ```name```
 * va se baser sur le template défini pour l'attribut ```template``` pour générer l'affichage
-* va exécuter la fonction définie pour la propriété ```link``` en phase de "compilation" de la directive. C'est via cette propriété que l'on peut injecter du dynamisme à une directive.
+* va exécuter la fonction définie pour la propriété ```link``` après la phase de "compilation" de la directive et avant de créer l'affichage de la vue. C'est via cette propriété que l'on peut injecter du dynamisme à une directive.
 
 Cette directive applique un traitement particulier à "Samuel L. Jackson" :
 
