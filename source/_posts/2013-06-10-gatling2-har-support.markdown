@@ -103,7 +103,7 @@ val headers_4 = Map(
 		...
 		"If-None-Match" -> """38394ec8941af055543888383adadc2f""")
 ```
-Ce bug est déjà corrigé dans la version en cours de développement.
+
 
 ## Mon avis
 La possibilité d'importer des fichiers HAR est une fonctionnalité intéressante et je compte désormais la privilégier dans mon utilisation du recorder.
