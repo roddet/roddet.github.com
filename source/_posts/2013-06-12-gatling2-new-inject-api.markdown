@@ -3,7 +3,7 @@ layout: post
 title: "Gatling 2 : La nouvelle API d'injection"
 date: 2013-06-12 20:56
 comments: true
-categories: gatling gatling2
+categories: gatling
 ---
 
 Lorsque nous écrivons une simulation Gatling, nous avons généralement 2 parties :

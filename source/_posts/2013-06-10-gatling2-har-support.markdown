@@ -3,7 +3,7 @@ layout: post
 title: "Gatling 2 : Support du format HAR"
 date: 2013-06-10 22:05
 comments: true
-categories: gatling2 gatling har
+categories: gatling har
 ---
 Gatling 2 introduit le support du format HAR ! Super...:\ 
 
