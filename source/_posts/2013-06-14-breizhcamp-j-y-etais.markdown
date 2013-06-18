@@ -63,7 +63,7 @@ Les conférences permettent aussi d'afficher les technologies "à la mode". On p
 
 [NAO](http://www.aldebaran-robotics.com/en/) nous a également permis de nous ouvrir l'esprit en pensant à autre chose qu'à des applications web. Oui c'est vrai nous faisons toujours la même chose même si nous varions la déco avec AngularJS (oui moi aussi j'en parle :)), du NodeJS, du Java ou du Scala. [NAO](http://www.aldebaran-robotics.com/en/) nous projete dans le futur et comme dit Franck Calzada "Avec NAO, à nous d'imaginer les usages !".
 
-Rendez-vous l'année prochaine, au BreizhCamp 2014, à ne surtout pas manquer !
+Bravo aux organisateurs pour ce bel événement et rendez-vous l'année prochaine, au BreizhCamp 2014 !
 
 
 
