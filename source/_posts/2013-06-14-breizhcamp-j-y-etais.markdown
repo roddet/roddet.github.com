@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "BreizhCamp 2013 # J'y étais"
-date: 2013-06-14 20:56
+date: 2013-06-14 20:00
 comments: true
 categories: breizhcamp13
 ---
