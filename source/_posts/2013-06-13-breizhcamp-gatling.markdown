@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "BreizhCamp 2013 # Tools In Action # Gatling"
-date: 2013-06-13 20:56
+title: "BreizhCamp 2013 # Gatling"
+date: 2013-06-13 18:00
 comments: true
 categories: breizhcamp13 gatling
 ---

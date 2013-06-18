@@ -11,7 +11,7 @@ footer: false
 		<span>09 au 15 septembre, Brazzaville - Congo</span>
 	</article>
 	<article>
-		<h1>BreizhCamp 2013 (prochainement)</h1>
+		<h1><a href="/blog/categories/breizhcamp13/">BreizhCamp 2013</a></h1>
 		<span>13 au 14 juin, Rennes - France</span>
 	</article>
 	<article>
