@@ -28,7 +28,7 @@ Nous avons pu découvrir l'origine du logo du BreizhCamp (voir image ci-dessous)
 {% img center /images/breizhcamp13/parcours/logo-breizh.jpg %}
 
 ## Le a.k.a BreizhCamp Style
-Nous avons tous dansé (au moins en esprit) la version revisité du Gangnam Style.
+Nous avons tous dansé (au moins en esprit) la version revisitée du Gangnam Style.
 
 {% img center /images/breizhcamp13/parcours/breizhcamp-style.jpg %}
 
@@ -61,7 +61,7 @@ Ce n'est pas une spécificité du BreizhCamp, Devoxx France 2013 m'a aussi donn�
 
 Les conférences permettent aussi d'afficher les technologies "à la mode". On peut sans conteste dire que la technologie qui a été omniprésente au BreizhCamp est [AngularJS](http://angularjs.org/). Dans la plupart des présentations d'une technologie Web, une référence à [AngularJS](http://angularjs.org/) était citée. On pouvait même croire que ce mot était utilisé pour apporter du crédit à certains propos (oui j'exagère un peu :)). C'est tout de même surprenant d'avoir un produit qui fait autant l'unanimité et semble ne pas avoir de concurrents... J'aime la concurrence, je pense que c'est ce qui fait progresser des produits et j'espère avoir des concurrents qui vont se démarquer rapidement... On entend de loin [Emberjs](http://emberjs.com/) mais on l'entend encore de trop loin...
 
-[NAO](http://www.aldebaran-robotics.com/en/) nous a également permis de nous ouvrir l'esprit en pensant à autre chose qu'à des applications web. Oui c'est vrai nous faisons toujours la même chose même si nous varions la déco avec AngularJS (oui moi aussi j'en parle :)), du NodeJS, du Java ou du Scala. [NAO](http://www.aldebaran-robotics.com/en/) nous projete dans le futur et comme dit Franck Calzada "Avec NAO, à nous d'imaginer les usages !".
+[NAO](http://www.aldebaran-robotics.com/en/) nous a également permis de nous ouvrir l'esprit en pensant à autre chose qu'à des applications web. Oui c'est vrai nous faisons toujours la même chose même si nous varions la déco avec AngularJS (oui moi aussi j'en parle :)), du NodeJS, du Java ou du Scala. [NAO](http://www.aldebaran-robotics.com/en/) nous projette dans le futur et comme dit Franck Calzada "Avec NAO, à nous d'imaginer les usages !".
 
 Bravo aux organisateurs pour ce bel événement et rendez-vous l'année prochaine, au BreizhCamp 2014 !
 
