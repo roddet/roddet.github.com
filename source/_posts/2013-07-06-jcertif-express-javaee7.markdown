@@ -14,7 +14,8 @@ Oracle choisit, encore une fois, JCertif pour communiquer avec l'Afrique. Dans 4
 
 * [6 juillet : Côte d'ivoire](https://plus.google.com/u/0/events/c51lkb8jikfu1t6bpea6939903k)
 * 11 juillet : Congo-Kinshasa
-* [12 juillet : Cameroun](https://plus.google.com/u/0/events/cjtqn9jt9m73sl4891qmtkp3m6o)
-* 18 juillet : Congo-Brazzaville
+* [16 juillet : Cameroun - Yaoundé](https://plus.google.com/u/0/events/cjtqn9jt9m73sl4891qmtkp3m6o)
+* [14 juillet : Cameroun - Douala](https://plus.google.com/events/cijb923vkpms1ae6rko3fvd5s9s)
+* [18 juillet : Congo-Brazzaville](https://www.facebook.com/media/set/?set=a.480869275338752.1073741825.309434862482195&type=3)
 
 {% img center /images/jcertif_express/jcertif_express.jpg %}
