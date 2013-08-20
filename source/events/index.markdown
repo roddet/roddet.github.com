@@ -11,6 +11,10 @@ footer: false
 		<span>24 au 25 octobre, Paris - France</span>
 	</article>
 	<article>
+		<h1>JUG Summer Camp 2013 (prochainement)</h1>
+		<span>20 septembre, La Rochelle - France</span>
+	</article>
+	<article>
 		<h1>JCertif 2013 (prochainement)</h1>
 		<span>09 au 15 septembre, Brazzaville - Congo</span>
 	</article>
