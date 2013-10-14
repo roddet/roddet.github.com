@@ -60,18 +60,18 @@ Ces discussions ont été aussi l'opportunité de faire de la pédagogie sur le 
 
 11+ tracks simultanées données pendant 3 jours par des guerriers de la formation de masse :
 
-* [Honoré Nzambu]() - Introduction à Java
-* [Douglas M'Biandou]() - les 5 atouts clés de Java
-* [Christian Manthe]() - l'initiation à la création graphique avec Photoshop
-* [Gabriel Kwaye]() - Google App Engine et HTML5
-* [Davy Silou]() - Mise en oeuvre d'un réseau informatique en entreprise
-* [Audran Youlou Zhazha]() - Spring Batch
-* [Nelson Cishugi]() - Web Design
-* [Jaouher Kasraoui]() - SQL Server 2012
-* [Sebastien Rocher]() - Assemblez un réseau à partir de ZERO
-* [Firas Gabsi]() - Cursus Java EE sur RaspberryPi
-* [Dodo Ngoyi]() - Introduction à Photoshop
-* [Dieudonné Kayembe]() - Introduction à Android
+* [Honoré Nzambu](http://www.linkedin.com/in/honorenzambu/en) - Introduction à Java
+* [Douglas M'Biandou](http://fr.viadeo.com/fr/profile/douglas.mbiandou) - les 5 atouts clés de Java
+* [Christian Manthe](http://www.linkedin.com/pub/christian-manthe/67/b95/b0) - l'initiation à la création graphique avec Photoshop
+* [Gabriel Kant KWAYE](http://kwaye-g.blogspot.ca) - Google App Engine et HTML5
+* [Davy Silou](http://www.linkedin.com/pub/davy-silou/56/405/303) - Mise en oeuvre d'un réseau informatique en entreprise
+* [Audran Youlou Zhazha](http://www.linkedin.com/pub/audran-youlou-zhazha/18/2b8/44a) - Spring Batch
+* [Nelson Cishugi](https://twitter.com/Nelson_Cishugi) - Web Design
+* [Jaouher Kasraoui](http://fr.viadeo.com/fr/profile/jaouher.kasraoui) - SQL Server 2012
+* Sebastien Rocher (R&B Tech) - Assemblez un réseau à partir de ZERO
+* [Firas Gabsi](http://www.linkedin.com/pub/firas-gabsi/58/343/530) - Cursus Java EE sur RaspberryPi
+* [Dodo Ngoyi](http://www.linkedin.com/pub/dodo-ngoyi/72/bb3/107) - Introduction à Photoshop
+* Dieudonné Kayembe - Introduction à Android
 * Etc...
 
 Nous n'avions pas accès à toutes les salles de la Bibliothèque Nationale, nous avons dû palier au manque de salle par ceci :
