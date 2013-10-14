@@ -108,7 +108,7 @@ J'ai commencé par présenter les slides suivants :
 Nous avons passé une bonne partie de la matinée à discuter "Web moderne pour l'Afrique".
 
 ### Chrome Developer Tools In Action
-Je développe depuis quelques années les outils pour développeur de Chrome. Au point même que je n'arrive plus à utiliser mon ancien ami "Firebug". C'était l'occasion ici de présenter différents trucs & astuces et les différents usages possible en dehors d'une activité de développement habituelle.
+Je développe depuis quelques années avec les outils pour développeur de Chrome. Au point même qu'aujourd'hui j'ai du mal à utiliser mon ancien ami "Firebug". C'était l'occasion ici de présenter différents trucs & astuces et les différents usages possibles en dehors d'une activité de développement habituelle.
 
 ### Workshop AngularJS made in Nantes by [Antoine Richard](https://twitter.com/richard_antoine)
 J'avais, il y a quelques mois, assisté à une brillante prestation d'Antoine lors d'un Workshop AngularJS. Le retour de ce workshop [ici](http://blog.roddet.com/2013/04/stereolux-workshop-html5/). J'ai réutilisé le même support pour présenter AngularJS. Et oui Antoine, tes travaux ont parcouru plus de 6000 km !
