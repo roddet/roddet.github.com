@@ -259,7 +259,89 @@ gatling {
 
 ### Etape 7 : Le script complet
 
-{% gist 5284394 ComputersDatabase.scala %}
+``` scala ComputersDatabase.scala
+package devoxx.labs
+import com.excilys.ebi.gatling.core.Predef._
+import com.excilys.ebi.gatling.http.Predef._
+import com.excilys.ebi.gatling.jdbc.Predef._
+import com.excilys.ebi.gatling.http.Headers.Names._
+import akka.util.duration._
+import bootstrap._
+import assertions._
+
+object Search {
+  
+  val feeder = csv("search.csv").circular
+  
+  val search = exec(http("Home")
+    .get("/"))
+    .pause(1)
+    .feed(feeder)
+    .exec(http("Search")
+      .get("/computers")
+      .queryParam("""f""", """${searchCriterion}""")
+      .check(regex("""<a href="([^"]+)">${searchComputerName}</a>""").saveAs("url")))
+    .pause(1)
+    .exec(http("Select")
+      .get("${url}").check(status.is(200)))
+    .pause(1)
+}
+
+object Browse {
+  
+  def gotoPage(page: String) = exec(http("Page " + page)
+    .get("/computers")
+    .queryParam("""p""", page))
+    .pause(1)
+    
+  val browse = repeat(5, "i") {
+    gotoPage("${i}")
+  }
+ 
+}
+
+object Edit {
+
+  val head = Map(
+    "Cache-Control" -> """max-age=0""",
+    "Content-Type" -> """application/x-www-form-urlencoded""",
+    "Origin" -> """http://localhost:9000""")
+    
+  val random = new java.util.Random
+
+    // Je reessai 2 fois en cas d'erreur
+  val edit = tryMax(2){
+    exec(http("New Computer") .get("/computers/new"))
+    .pause(11)
+    .exec(http("Post New Computer")
+      .post("/computers")
+      .headers(head)
+      .param("""name""", """JCertif Mac"""+ random.nextInt(2))
+      .param("""introduced""", """2013-03-26""")
+      .param("""discontinued""", """""")
+      .param("""company""", """13"""));
+  }.exitHereIfFailed // l'utilisateur quitte le workflow du scenario
+  
+   
+}
+
+class ComputersDatabase extends Simulation {
+
+  val httpConf = httpConfig
+    .baseURL("http://localhost:9000")
+    .acceptHeader("text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
+    .acceptCharsetHeader("ISO-8859-1,utf-8;q=0.7,*;q=0.3")
+    .acceptEncodingHeader("gzip,deflate,sdch")
+    .acceptLanguageHeader("en-US,en;q=0.8")
+    .warmUp("http://localhost:9000")
+    .userAgentHeader("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31")
+
+  val admins = scenario("Admins").exec(Search.search, Browse.browse, Edit.edit)
+  val users = scenario("Users").exec(Search.search, Browse.browse)
+
+  setUp(users.users(1000).ramp(20).protocolConfig(httpConf), admins.users(10).ramp(20).protocolConfig(httpConf))
+}
+```
 
 ### Etape 8 : Lancement du script
 Il faut lancer l'exécutable "GATLING_HOME/bin/gatling.sh" (ou .bat) puis choisir le scénario à exécuter.
