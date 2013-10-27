@@ -77,7 +77,7 @@ La peur d'une erreur inattendue de notre système pousse certains développeur �
 * _Supervisor_ => Votre système doit vous notifier lorsqu'il y a des erreurs.
 * _Bulkheading_ => Cloisonner votre système.
 * _Compartmentalization_ => Compartimenter votre système pour éviter des effets en cascade sur tout votre système lorsqu'un composant est en erreur.
-* _Graceful degradation_ => prévoir des modes de fonctionnement "dégradés" en cas de plantage.
+* _Graceful degradation_ => prévoir des modes de fonctionnement alternatifs en cas de plantage.
 
 ## Faites des microservices !
 
