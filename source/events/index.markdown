@@ -7,7 +7,7 @@ footer: false
 <div id="blog-archives">
 	<h2>2013</h2>
 	<article>
-		<h1><a href="/blog/categories/scalaio2013/">Scala I0</a></h1>
+		<h1><a href="/blog/categories/scalaio2013/">Scala I0 2013</a></h1>
 		<span>24 au 25 octobre, Paris - France</span>
 	</article>
 	<article>
