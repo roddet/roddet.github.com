@@ -3,7 +3,7 @@ layout: post
 title: "Scala IO 2013 => De Maven à SBT"
 date: 2013-10-28 09:30
 comments: true
-categories: scalaio2013 maven sbt
+categories: scalaio2013 scala maven sbt
 ---
 
 ## Présentateur
