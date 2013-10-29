@@ -59,6 +59,10 @@ J'ai lancé les 2 builds (Maven et SBT). Le build SBT est Ok, j'ai eu une erreur
 
 {% img center /images/scalaio2013/stephane-manciot-maven-sbt-2.png %}
 
+_Mise à jour du 29/10/2013_
+
+_Le build Maven fonctionne bien si l'on effectue "mvn clean" suivi de "mvn install"_
+
 Quoi qu'il en soit, c'est une très bonne initiative surtout que ce build traite des problématiques de génération de code, de compilation de code groovy, etc...
 
 
