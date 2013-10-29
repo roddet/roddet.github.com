@@ -8,7 +8,7 @@ categories: scalaio2013 scala maven sbt
 
 ## Présentateur
 {% img left /images/scalaio2013/speaker-stephane-manciot.jpg %}
-Stephane Manciot, Architecte chez ebiznext.
+Stéphane Manciot, Architecte chez ebiznext.
 
 * Twitter : [@smanciot](https://twitter.com/smanciot)
 * LinkedIn : [http://www.linkedin.com/in/smanciot](http://www.linkedin.com/in/smanciot)
@@ -22,7 +22,7 @@ Stephane Manciot, Architecte chez ebiznext.
 
 
 ## Le Talk
-Stéphane nous a définit ce qui serait pour lui un outil de build idéal, c'est à dire un outil qui _facilite la vie des développeurs_. Ce talk fait suite à une migration de Maven à SBT d'un projet entièrement écrit en Java. Oui pas de code Scala dans le projet !
+Stéphane nous a défini ce qui serait pour lui un outil de build idéal, c'est à dire un outil qui _facilite la vie des développeurs_. Ce talk fait suite à une migration de Maven à SBT d'un projet entièrement écrit en Java. Oui pas de code Scala dans le projet !
 
 Deux idées principales dans ce _talk_ :
 
