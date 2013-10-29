@@ -55,7 +55,7 @@ On pourra néanmoins regretter le manque d'objectivité lors de la comparaison M
 
 Un dépôt Git est disponible pour illustrer ce talk [maven2sbt](https://github.com/ebiznext/maven2sbt). 
 
-J'ai lancé les 2 builds (Maven et SBT). Le build SBT est Ok, j'ai eu une erreur avec build Maven (Maven 3.1.1 et commande _mvn clean install_)
+J'ai lancé les 2 builds (Maven et SBT). Le build SBT est Ok, j'ai eu une erreur avec build Maven (Maven 3.1.1 et commande _mvn clean install_).
 
 {% img center /images/scalaio2013/stephane-manciot-maven-sbt-2.png %}
 
