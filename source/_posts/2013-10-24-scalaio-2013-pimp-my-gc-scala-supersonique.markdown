@@ -9,7 +9,7 @@ categories: scalaio2013
 
 ## Présentateur
 {% img left /images/scalaio2013/speaker-pierre-laporte.png %}
-Pierre Laporte, consultant/formateur Java/Scala chez Xebia France.
+Pierre Laporte, consultant Java/Scala chez Xebia France.
 
 * Twitter : [@pingtimeout](https://twitter.com/pingtimeout)
 * Blog : [http://www.pingtimeout.fr](http://www.pingtimeout.fr)
@@ -67,7 +67,7 @@ _Le GC a mis 6 ms pour nettoyer 38GB de mémoire_
 * 50 GB de mémoire
 * Un paramétrage de la _Young Generation_ à 10 MB
 
-Nous avons là un paramétrage défavorable du GC qui va faire passer nos objets très rapidement dans la _Old Generation_ faute de place dans la _Young Generation_.
+Nous avons là un paramétrage défavorable du _GC_ qui va faire passer nos objets très rapidement dans la _Old Generation_ faute de place dans la _Young Generation_.
 
 _Le GC mettra 322 ms pour nettoyer 52GB de mémoire_
 
@@ -99,6 +99,6 @@ Pierre nous propose d'observer les règles suivantes pour son tuning :
 ## Ce que j'en ai pensé
 Nous avons eu droit à une présentation de qualité, bien rythmée. Pierre a fait preuve de pédagogie pour expliquer de façon claire le fonctionnement des différents algorithmes du _Garbage Collector_ de la JVM.
 
-Je me suis souvent inconsciemment inquiété des nombreux objets à durée de vie courte (de l'ordre de la méthode) que nous créons à travers nos programmes. Cette présentation me donne un nouveau regard sur ces objets.
+Je me suis souvent inconsciemment inquiété des nombreux objets à durée de vie courte (de l'ordre de la méthode) que nous créons à travers nos programmes. Cette présentation me donne un nouveau regard sur ces objets :)
 
 Présentation à revoir en vidéo pour ceux qui souhaitent avoir des éléments de compréhension du fonctionnement de la JVM d'Oracle.
