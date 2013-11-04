@@ -1,0 +1,70 @@
+---
+layout: post
+title: "Scala IO 2013 => PHPz for the rest of us"
+date: 2013-11-04 09:30
+comments: true
+categories: scalaio2013
+---
+
+## Présentateur
+{% img left /images/scalaio2013/speaker-clement-delafargue.jpeg %}
+Clément Delafarge, Consultant chez Penazen Consulting.
+
+* Twitter : [@clementd](https://twitter.com/clementd)
+* LinkedIn : [http://www.linkedin.com/in/cdelafargue](http://www.linkedin.com/in/cdelafargue)
+* Blog : [http://blog.clement.delafargue.name](http://blog.clement.delafargue.name/)
+* Github : [divarnel](https://github.com/divarvel)
+
+<br><br><br><br><br>
+## Comment faire des délicieux bouritos en Php ?
+
+{% img left /images/scalaio2013/phpz-1.jpg 300 %}
+
+[Scala IO](http://scala.io/), c'était aussi des sessions courtes qui n'étaient pas dans le planning. Elles étaient appelées "Lightning talk" et avait lieu durant la pause de midi.
+
+Dans le lot de ces présentations, il y avait ce talk sur _Phpz_. Un talk suréaliste qui a apporté une belle ambiance à l'événement.
+
+Juste avant de démarrer le talk, Clément nous préviens que cette présentation n'est pas du tout sérieuse et qu'il va nous montrer comment faire de délicieux bouritos en Php.
+
+Le ton du talk était lancé ! Nous aurons droit à 3 étapes :
+
+* Les avantages de la programmation fonctionnelle
+* Les caractéristiques de Php
+* Phpz pour faire des délicieux bouritos
+
+## Les avantages de la programmation fonctionnelle
+
+* La pureté
+* Pas d'effet de bord
+* _Equational Reasoning_
+
+
+## Les caractéristiques de Php
+
+* Du code en prod via FTP
+* Pas de système de type
+* Déploiement facile et robuste
+* Bon écosystème
+
+
+## Phpz pour faire des délicieux bouritos
+Inspiré de [Scalaz](https://github.com/scalaz/scalaz), Phpz _apporte_ la puissance de la programmation fonctionnelle à Php.
+
+Selon Clément, la version actuelle pourrait rendre votre application jusqu'à 40 fois moins performante mais il ne perd pas espoir que cet aspect s'améliore dans les prochaines versions. Il attend vos _pull request_ avec impatience.
+
+Il y a [Geoffroy Couprie](https://twitter.com/gcouprie) qui a poussé l'amusement un peu plus loin en créant [POD](http://geal.github.io/pod/) un langage basé sur Phpz. 
+
+
+## Les slides de la présentation
+<iframe src="http://www.slideshare.net/slideshow/embed_code/27780581?rel=0" width="597" height="486" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
+
+## Ce que j'en ai pensé
+J'ai trouvé cette présentation très drôle, j'ai rigolé pendant toute la présentation. Si vous vous demandez pourquoi, c'est que vous n'avez pas parcouru les slides :)
+
+Au regard du titre de la présentation, je pensais que nous avions à faire à quelqu'un qui aime Php (ils sont de plus en plus rares à l'avouer dans mon entourage) mais en fait tout au long de la présentation nous nous sommes rapidement rendu compte que c'était bien évidemment ironique. On sent bien que Clément est un _fan_ de la programmation fonctionnelle et qu'il n'apprécie pas beaucoup Php.
+
+Difficile à dire qui a l'esprit le plus tordu, Clément avec Phpz ou Geoffroy qui l'utilise pour en faire un langage... je vous laisse juger :)
+
+Voici un conseil de Clément que j'ai retrouvé sur son [blog](http://blog.clement.delafargue.name/posts/2013-04-01-delicious-burritos-in-php-with-phpz.html) qui résume bien l'ambiance de ce talk :
+
+{% img center /images/scalaio2013/phpz-drupal.jpg %}
