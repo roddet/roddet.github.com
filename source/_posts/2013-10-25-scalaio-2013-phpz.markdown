@@ -48,7 +48,7 @@ Le ton du talk était lancé ! Nous aurons droit à 3 étapes :
 
 
 ## Phpz pour faire des délicieux bouritos
-Inspiré de [Scalaz](https://github.com/scalaz/scalaz), Phpz _apporte_ la puissance de la programmation fonctionnelle à Php.
+Inspiré de [Scalaz](https://github.com/scalaz/scalaz), Phpz _apporte_ la puissance de la programmation fonctionnelle à Php. Clément nous a partagé les difficultés qu'il a rencontrées pour mettre en place des _typeclass_ en Php.
 
 Selon Clément, la version actuelle pourrait rendre votre application jusqu'à 40 fois moins performante mais il ne perd pas espoir que cet aspect s'améliore dans les prochaines versions. Il attend vos _pull request_ avec impatience.
 
