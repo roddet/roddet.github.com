@@ -8,7 +8,7 @@ categories: scalaio2013
 
 ## Présentateur
 {% img left /images/scalaio2013/speaker-clement-delafargue.jpeg %}
-Clément Delafarge, Consultant chez Penazen Consulting.
+Clément Delafargue, Consultant chez Penazen Consulting.
 
 * Twitter : [@clementd](https://twitter.com/clementd)
 * LinkedIn : [http://www.linkedin.com/in/cdelafargue](http://www.linkedin.com/in/cdelafargue)
