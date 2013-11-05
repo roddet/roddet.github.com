@@ -37,7 +37,7 @@ Hayssam et son équipe ont proposé alors de s'orienter vers l'utilisation d'un 
 * Compilable du développeur
 
 ## Des macros Slick
-Les macros Scala utilisés sont basées sur [Slick](http://slick.typesafe.com/), un framework de persistance. Hayssam va nous présenter un exemple de _modélisation_ avec une macro Slick et comment se traduisent les définitions des :
+Les macros Scala utilisées sont basées sur [Slick](http://slick.typesafe.com/), un framework de persistance. Hayssam va nous présenter un exemple de _modélisation_ avec une macro Slick et comment se traduisent les définitions des :
 
 * Entités => _case classes_
 * Relations 0..1 => _Option_
@@ -50,7 +50,7 @@ Les macros Scala utilisés sont basées sur [Slick](http://slick.typesafe.com/),
 Les macros [Slick](http://slick.typesafe.com/) vont permettre de générer des diagrammes UML via l'exécution d'une ligne de code.
 
 ## La magie faite à la compilation, pas d'injection au runtime
-Les macros [Slick](http://slick.typesafe.com/) vont impacter le code à la compilation, le bytecode généré contient déjà toutes les transformations. Cela permet de profiter de toute la puissance du compilateur et de profiter du typage fort de Scala.
+Les macros [Slick](http://slick.typesafe.com/) vont impacter le code à la compilation, le bytecode généré contient déjà toutes les transformations. Cela permet de profiter de toute la puissance du compilateur et donc du typage fort de Scala.
 
 Pas de magie au runtime => à l'exécution, seul le code compilé est exécuté.
 
