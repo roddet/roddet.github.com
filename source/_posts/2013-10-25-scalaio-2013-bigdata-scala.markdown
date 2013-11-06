@@ -72,7 +72,7 @@ Il dispose d'une API en Scala, Java et Python donnant la possibilité d'enchaine
 ## Ce que j'en ai pensé
 Ce talk m'a permis de découvrir l'univers du Big Data. Scala y semble bien implanter :
 
-* Existance de multiples API pour manipuler les systèmes les plus utilisés
+* Existence de multiples API pour manipuler les systèmes les plus utilisés
 * Des projets comme [Spark](http://spark.incubator.apache.org/) ou [SummingBird](https://github.com/twitter/summingbird) sont écrits en scala.
 
-La programmation fonctionnelle (_FP_) semble trouver avec le Big Data un créneau d'utilisation particulièrement adapté. En effet, effectuer des analyses de données consiste souvent à appliquer un enchainement de transformations à ces données. Et la _FP_, de part sa nature, est l'outil idéal pour représenter un enchaînement de fonctions :)
+La programmation fonctionnelle (_FP_) semble trouver avec le Big Data un créneau d'utilisation particulièrement adapté. En effet, effectuer des analyses de données consiste souvent à appliquer un enchainement de transformations à ces données. Et la _FP_, de part sa nature, est l'outil idéal pour représenter un enchainement de fonctions :)
