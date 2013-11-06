@@ -114,8 +114,6 @@ Ses slides ont du contenu intéressant, je n'ai pas pu trouver des traces de leu
 
 Cette session a été filmée, nous aurons probablement la possibilité de la revoir en ligne dans les prochaines semaines.
 
+[_Edit 06/11/2013 Ci-dessous la vidéo du Webinar du 30 octobre_]
 
-
-
-
-
+<iframe width="640" height="360" src="//www.youtube.com/embed/_XMRYkuaob4?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
