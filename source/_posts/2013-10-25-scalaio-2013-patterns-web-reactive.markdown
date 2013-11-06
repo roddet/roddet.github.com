@@ -29,7 +29,7 @@ Antoine Detante, Ingénieur chez InTech Luxembourg.
 ## Le Talk !
 Antoine et Fabrice sont arrivés 2nd au concours [Typesafe’s Developer Contest](http://typesafe.com/blog/developer-contest-winners-announced) qui a eu lieu en début d'année.
 
-Ils ont concurru avec une application _Car Race Dashboard_ construite avec [Play! Framework](http://www.playframework.com/) qui offre en temps réel la visualisation d'un _dashboard_ de course de voitures.
+Ils ont concouru avec une application _Car Race Dashboard_ construite avec [Play! Framework](http://www.playframework.com/) qui offre en temps réel la visualisation d'un _dashboard_ de course de voitures.
 
 Ce talk a été l'occasion pour eux de présenter leur travail.
 
