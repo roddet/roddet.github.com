@@ -70,7 +70,7 @@ Il dispose d'une API en Scala, Java et Python donnant la possibilité d'enchaine
 <script async class="speakerdeck-embed" data-id="02c383b01f9901312c660a36078c81b4" data-ratio="1.33333333333333" src="//speakerdeck.com/assets/embed.js"></script>
 
 ## Ce que j'en ai pensé
-Ce talk m'a permis de découvrir l'univers du Big Data. Scala y semble bien implanter :
+Ce talk m'a permis de découvrir l'univers du Big Data. Scala y semble bien implanté :
 
 * Existence de multiples API pour manipuler les systèmes les plus utilisés
 * Des projets comme [Spark](http://spark.incubator.apache.org/) ou [SummingBird](https://github.com/twitter/summingbird) sont écrits en scala.
