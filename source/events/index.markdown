@@ -7,6 +7,14 @@ footer: false
 <div id="blog-archives">
 	<h2>2013</h2>
 	<article>
+		<h1>Workshop HTML5 #2 par GDGNantes et Stereolux (à venir)</h1>
+		<span>26 au 27 novembre, Nantes - France</span>
+	</article>
+	<article>
+		<h1><a href="/blog/categories/jugnantesnov/">JUG Nantes : Du SQL Au NoSQL en Moins D'une Heure</a></h1>
+		<span>09 novembre, Nantes - France</span>
+	</article>
+	<article>
 		<h1><a href="/blog/categories/scalaio2013/">Scala I0 2013</a></h1>
 		<span>24 au 25 octobre, Paris - France</span>
 	</article>
@@ -19,7 +27,7 @@ footer: false
 		<span>13 au 14 juin, Rennes - France</span>
 	</article>
 	<article>
-		<h1><a href="/2013/04/stereolux-workshop-html5/">Workshop HTML5 par GDGNantes et Stereolux</a></h1>
+		<h1><a href="/2013/04/stereolux-workshop-html5/">Workshop HTML5 #1 par GDGNantes et Stereolux</a></h1>
 		<span>16 avril, Nantes - France</span>
 	</article>
 	<article>
