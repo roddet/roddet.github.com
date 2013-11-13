@@ -3,7 +3,7 @@ layout: post
 title: "JCertif 2012, une aventure humaine"
 date: 2012-10-20 22:53
 comments: true
-categories: jcertif2012
+categories: jcertif2012 jcertif
 ---
 Ca y est cela fait déjà 1 mois que l'événement JCertif 2012 a eu lieu. Il s'agissait de la 3ème édition.
 

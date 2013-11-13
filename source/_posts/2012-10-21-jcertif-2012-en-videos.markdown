@@ -3,7 +3,7 @@ layout: post
 title: "JCertif 2012 en vidéos"
 date: 2012-10-10 22:50
 comments: true
-categories: jcertif2012
+categories: jcertif2012 jcertif
 ---
 
 <iframe width="640" height="360" src="http://www.youtube.com/embed/mPs8kctX6BQ?feature=player_embedded" frameborder="0" allowfullscreen></iframe>

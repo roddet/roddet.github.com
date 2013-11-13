@@ -3,7 +3,7 @@ layout: post
 title: "JCertif 2012 - Mes sessions"
 date: 2012-11-22 22:54
 comments: true
-categories: jcertif2012
+categories: jcertif2012 jcertif
 ---
 Voici les slides des différentes sessions que j'ai animées durant JCertif 2012 :
 
