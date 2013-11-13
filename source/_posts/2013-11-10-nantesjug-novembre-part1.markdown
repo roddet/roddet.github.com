@@ -33,13 +33,13 @@ Par quoi reconnaît-on un code de bonne qualité ? => Par sa maintenabilité. Et
 ## Les méthodes privées => cacher la misère ?
 Vous l'avez surement déjà remarqué, les méthodes privées d'une classe ont tendance à se multiplier avec le passage d'un collègue qui vous dit avec fierté que le code n'était pas lisible et qu'il a fait du _refactoring_. Il avait trouvé une méthode publique trop _grosse_, vous savez ce genre de méthode qui ne se termine pas avec 2 _scrolls_ de votre souris. Il a alors  extrait (merci les IDE) des parties de code de la méthode en plusieurs méthodes privées. 
 
-La lisibilité de la méthode s'est peut-être améliorer mais a t-on vraiment progressé sur la maintenabilité après une telle opération ?
+La lisibilité de la méthode s'est peut-être améliorée mais a t-on vraiment progressé sur la maintenabilité après une telle opération ?
 
 La réponse est Non. En effet, cette opération conduit généralement à 2 catégories de méthodes privées :
 
 * 1 méthode qui n'interagit avec aucun champ de la classe. Que fait-elle alors dans cette classe ? Elle pourrait être _static_ votre code fonctionnerait toujours. Il convient donc de l'extraire dans une nouvelle classe.
 
-* 1 méthode privée qui modifie la valeur d'un champ de la classe. Cela conduit souvent à perdre le contrôle de ce  champ. En effet, lorsque vous lirez votre méthode publique à refactorer, vous verrez l'appel à cette méthode et vous ne vous rendrez pas forcément compte qu'il modifie un champ et que la suite de votre algorithme dépend fortement de l'exécution de cette nouvelle méthode. Comme dit Hugo, un _parfum de variable globale_... La bonne option est donc d'extraire ce champ et cette méthode dans une nouvelle classe.
+* 1 méthode privée qui modifie la valeur d'un champ de la classe. Cela conduit souvent à perdre le contrôle rationnel de ce  champ. En effet, lorsque vous lirez votre méthode publique à _refactorer_, vous verrez l'appel à cette nouvelle méthode. Vous ne vous rendrez pas forcément compte qu'il modifie un champ et que la suite de votre algorithme dépend fortement de l'exécution de cette nouvelle méthode. Comme dit Hugo, un _parfum de variable globale_... La bonne option est donc d'extraire ce champ et cette méthode dans une nouvelle classe.
 
 Etes-vous prêt à arrêter de cacher la misère en vous "privant" des méthodes privées ?
 
@@ -48,14 +48,14 @@ Ceux qui travaillent au quotidien avec une grande volumétrie de code, l'admettr
 
 * Comment tester une classe fille sans effet de bord de la classe mère ?
 * Comment tester unitairement une classe abstraite sans ses classes concrètes ?
-* Utiliser des champs _protected_ d'une classe mère dans une classe fille, une encapsulation brisée ?
+* Utiliser des champs _protected_ d'une classe mère dans une classe fille, une encapsulation à plusieurs vitesses ?
 
 L'héritage de classe est malheureusement souvent utilisé, à tort, pour factoriser du code. Il est alors facile de se retrouver par exemple avec : 
 
 * Une méthode dont l'exécution conduit à naviguer à travers plusieurs niveaux de la hiérarchie des classes
 * Une méthode vide (avec un commentaire _// ne rien faire_) dans certaines classes pour un traitement à ne pas effectuer dans des cas particuliers
 
-Hugo va préconiser l'utilisation des interfaces et de la composition pour traiter nos besoins courants. Il va l'illustrer en proposant un _refactoring_ possible de la classe abstraite _AbstractCollection<T>_ du JDK avec une interface et la composition (illustration présente dans ses slides).
+Hugo va préconiser l'utilisation des interfaces et de la composition pour traiter nos besoins courants. Il va l'illustrer en proposant un _refactoring_ possible de la classe abstraite _AbstractCollection_ du JDK avec une interface et la composition (illustration présente dans ses slides).
 
 Etes-vous prêt à ne plus utiliser l'héritage de classe ?
 
@@ -63,8 +63,11 @@ Etes-vous prêt à ne plus utiliser l'héritage de classe ?
 
 <iframe src="http://www.slideshare.net/slideshow/embed_code/27900604" width="700" height="569" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
 
+Vous l'aurez compris, Hugo encourage une _restriction_ de l'utilisation du langage Java pour améliorer la qualité de du code. Il argumente que cela permettra aux débutants de commettre moins d'erreurs de _design_ et aux expérimentés d'agir avec un meilleur discernement.
 
 ## La suite ! La suite ! La suite !
 
-Après ce quickie, [Tugdual Grall](https://twitter.com/tgrall) et [David Pilato](https://twitter.com/dadoonet) ont pris le relais pour le talk _Elastifiez votre application : du SQL au NoSQL en moins d'une heure_. A suivre dans la 2nd partie de cet article dans les prochains jours...
+Après ce quickie, [Tugdual Grall](https://twitter.com/tgrall) et [David Pilato](https://twitter.com/dadoonet) ont pris le relais pour le talk _Elastifiez votre application : du SQL au NoSQL en moins d'une heure_. A travers un exemple de code, ils vont nous montrer comment passer du SQL au NoSQL avec [CouchBase](http://www.couchbase.com/) et [Elasticsearch](http://www.elasticsearch.org/).
+
+A suivre dans la 2ème partie de cet article dans les prochains jours...
 
