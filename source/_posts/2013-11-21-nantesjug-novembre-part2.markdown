@@ -7,7 +7,7 @@ categories: jugnantes jugnantesnov
 ---
 Vous pouvez retrouvez la première partie de cet article [ici](http://blog.roddet.com/2013/11/nantesjug-novembre-part1/).
 
-[Tugdual Grall](tugdual_grall) et [David Pilato](david_pilato) ont offert une preview d'une session qu'ils allaient donner quelques jours plutard à [Devoxx](http://www.devoxx.be/dv13-david-pilato.html?presId=3281). Ils vont montrer, sur la base d'une application exemple, une migration du SQL au monde du NoSQL.
+[Tugdual Grall](https://twitter.com/tgrall) et [David Pilato](https://twitter.com/dadoonet) ont offert une preview d'une session qu'ils allaient donner quelques jours plutard à [Devoxx Belgique](http://www.devoxx.be/dv13-david-pilato.html?presId=3281). Ils vont montrer, sur la base d'une application exemple, une migration du SQL au monde du NoSQL.
 
 {% img center /images/nantesjug/nov13/nantesjug-nov13-david-pilato-tugdual-grall.jpg %}
 
@@ -20,11 +20,11 @@ La scalabilité horizontale s'impose de plus en plus comme _LA_ solution pour re
 
 Peut-on effectuer la scalabilité horizontale avec une base de données relationnelle ?
 
-La réponse est oui. Ca s'appelle mettre en place un _cluster de base de données_. Tug et David vont demander aux participants combien avaient déjà configuré un _cluster_ de base de données ? Je n'ai vu qu'une seule main levée de là où j'étais assis. Cette opération requiert des compétences assez pointues pour obtenir un système fonctionnel.
+La réponse est oui. Ca s'appelle mettre en place un _cluster de base de données_. Tug et David vont demander aux participants combien avaient déjà configuré un _cluster_ de base de données relationnelles ? Je n'ai vu qu'une seule main levée de là où j'étais assis. Cette opération requiert des compétences assez pointues pour obtenir un système fonctionnel.
 
 Et le NoSQL dans tout ça ?
 
-Tug et David vont promettre que cette opération qui nécessitait la présence d'un administrateur de bases de données très expérimenté va être accessible aux développeurs. Cette promesse est accompagnée d'une démonstration :
+Tug et David vont promettre que cette opération qui nécessitait la présence d'un administrateur de bases de données très expérimenté va être accessible aux développeurs. Cette promesse sera accompagnée d'une démonstration :
 
 * du passage d'un modèle dit _legacy_ à un modèle moderne _REST_
 * du passage d'un modèle SQL à un modèle NoSQL
@@ -70,7 +70,7 @@ Pour exécuter l'application :
 
 * Si vous êtes sous linux ou Mac, lancer le script `run.sh`
 
-* Si vous êtes sous Windows, lancer les commandes du script `run.sh` :
+* Si vous êtes sous Windows, lancer les commandes :
 
 ``` sh
 mvn clean install
@@ -79,7 +79,7 @@ mvn jetty:run
 ```
 
 Si l'application ne parvient pas à récupérer le plugin Maven pour Jetty.
-S'il n'existe pas, créer un fichier settings.xml dans le répertoire `~/.m2/`. Créer/compléter la configuration dans la section plugin comme ceci :
+Créer/compléter la configuration du fichier `~/.m2/settings.xml` dans la section plugin comme ceci :
 
 ``` xml
 <settings>
@@ -118,10 +118,10 @@ Cette application génère l'intégralité de ses pages côté serveur. Les nouv
 
 En phase avec ces principes, la prochaine étape va consister transformer l'existant en application _backend_ exposant des services HTTP/REST.
 
-## _Restification_ de l'application _legacy_
+## _RESTification_ de l'application _legacy_
 Pour passer à une architecture REST, commençons par quelque chose de facile : se débarrasser des _Servlet_ de l'application. Supprimer :
 
-* Les classes PersonServlet et HomeServlet.
+* Les classes _PersonServlet_ et _HomeServlet_.
 * Les fichiers suivants qui ne servent plus à rien `demo-webapp/src/main/java/fr/pilato/demo/sql2nosql/webapp/ApplicationInitializer.java` et `demo-webapp/src/main/java/fr/pilato/demo/sql2nosql/webapp/PersonService.java`. 
 
 
@@ -143,25 +143,27 @@ POST 		/api/1/person/_search => Récupérer des personnes suivant un critière
 POST 		/api/1/person/_init => Initialiser la base de données avec des données exemples
 ```
 
+Les puristes du REST pourront ne pas être d'accord avec cette API (l'utilisation de POST pour effectuer une recherche par critères ou encore l'utilisation de PUT au lieu de POST pour créer une nouvelle personne) mais ce n'est pas le sujet, nous allons nous concentrer sur le NoSQL.
+
 L'application aura l'architecture suivante : 
 
 {% img center /images/nantesjug/nov13/nantesjug-nov13-demo-4.png %}
 
-La _restification_ sera réalisée avec [Spring MVC](http://docs.spring.io/spring/docs/4.0.x/spring-framework-reference/html/mvc.html).
+La _RESTification_ sera réalisée avec [Spring MVC](http://docs.spring.io/spring/docs/4.0.x/spring-framework-reference/html/mvc.html).
 
-Mettez à jour :
+J'ai mis à jour les fichiers :
 
-* le fichier pom.xml à la racine du projet comme [ceci](https://raw.github.com/dadoonet/sql2nosql/02-restify/begin/pom.xml)
+* `pom.xml` à la racine du projet comme [ceci](https://raw.github.com/dadoonet/sql2nosql/02-restify/begin/pom.xml)
 
-* le fichier `demo-webapp/pom.xml` comme [ceci](https://raw.github.com/dadoonet/sql2nosql/02-restify/begin/demo-webapp/pom.xml)
+* `demo-webapp/pom.xml` comme [ceci](https://raw.github.com/dadoonet/sql2nosql/02-restify/begin/demo-webapp/pom.xml)
 
-* le fichier web.xml pour qu'il ressemble à celui là : [web.xml](https://raw.github.com/dadoonet/sql2nosql/02-restify/end/demo-webapp/src/main/webapp/WEB-INF/web.xml).
+* `demo-webapp/src/main/webapp/WEB-INF/web.xml` pour qu'il ressemble à celui là : [web.xml](https://raw.github.com/dadoonet/sql2nosql/02-restify/end/demo-webapp/src/main/webapp/WEB-INF/web.xml).
 
-Créer le fichier `demo-webapp/src/main/java/fr/pilato/demo/sql2nosql/webapp/PersonService.java` avec le contenu suivant [PersonService.java](https://github.com/dadoonet/sql2nosql/blob/02-restify/end/demo-webapp/src/main/java/fr/pilato/demo/sql2nosql/webapp/PersonService.java).
+J'ai créé le fichier `demo-webapp/src/main/java/fr/pilato/demo/sql2nosql/webapp/PersonService.java` avec le contenu suivant [PersonService.java](https://github.com/dadoonet/sql2nosql/blob/02-restify/end/demo-webapp/src/main/java/fr/pilato/demo/sql2nosql/webapp/PersonService.java).
 
-Relancer l'application comme précédemment.
+Redémarrage de l'application comme précédemment.
 
-Testons le service de récupération de toutes les personnes en accédant à la page suivante via un navigateur moderne : `http://localhost:8080/api/1/person/`. Vous obtiendrez :
+Test du service de récupération de toutes les personnes en accédant à la page suivante via un navigateur moderne : `http://localhost:8080/api/1/person/`. J'obtiens :
 
 {% img center /images/nantesjug/nov13/nantesjug-nov13-demo-4a.png %}
 
@@ -181,13 +183,13 @@ curl -XPOST http://localhost:8080/api/1/person/_init
 
 Sinon vous pouvez installer des extensions pour vos navigateurs comme par exemple [Simple REST Client](https://chrome.google.com/webstore/detail/simple-rest-client/fhjcajmcbmldlhcimfajhfbgofnpcjmb) pour Chrome ou encore [RESTClient](https://addons.mozilla.org/en-US/firefox/addon/restclient/) pour Firefox.
 
-Une fois la requête exécutée. En réintérogeant l'adresse `http://localhost:8080/api/1/person/` on obtient ceci :
+Une fois les données initialisées, la requête `http://localhost:8080/api/1/person/` donne le résultat suivant :
 
 {% img center /images/nantesjug/nov13/nantesjug-nov13-demo-4b.png %}
 
 Il s'agit un flux JSON représentant 100 personnes.
 
-Vous pouvez tester les autres services développés avec ce même principe avec `curl` ou encore le super outil que vous avez installé.
+Il est possible de tester les autres services développés avec ce même principe avec `curl` ou encore le super outil que vous avez installé.
 
 ## Couchbase en action
 Maintenant que la partie Web du _backend_ fonctionne, nous allons commencer à quitter le monde SQL en faisant en sorte d'utiliser une base NoSQL. L'heureux élu sera [Couchbase](http://www.couchbase.com/).
@@ -198,25 +200,26 @@ L'architecture de l'application va être modifiée comme ceci :
 
 {% img center /images/nantesjug/nov13/nantesjug-nov13-demo-5.png %}
 
-Télécharger [Couchbase Community Edition](http://www.couchbase.com/download). J'ai utilisé la version 2.2.0. Décompresser l'archive, installer puis lancer [Couchbase](http://www.couchbase.com/).
+J'ai téléchargé la dernière version (2.2.0) [Couchbase Community Edition](http://www.couchbase.com/download).
+Je décompresse l'archive, l'installe puis lance [Couchbase](http://www.couchbase.com/).
 
-Accéder à la console d'administration : `http://127.0.0.1:8091/index.html`. J'ai obtenu la page suivante :
+J'accède à la console d'administration : `http://127.0.0.1:8091/index.html` :
 
 {% img center /images/nantesjug/nov13/nantesjug-nov13-demo-5a.png %}
 
-Et là, sans aucune autre documentation, vous vous laisser guider en cliquant sur `SETUP`. 
+Et là, sans aucune autre documentation, je me laisse guider en cliquant sur `SETUP`. 
 
 A la page suivante, j'ai laissé les choix par défaut m'invitant à créer un nouveau cluster. J'ai modifié le paramètre `Per Server RAM Quota` avec la valeur 512 MB au lieu des 3 GB par défaut sur ma machine.
 
 Je laissé les paramètres par défaut et mis un identifiant/mot de passe administrateur.
 
-Et là, j'arrive sur l'écran suivant :
+Et là, j'ai l'écran suivant :
 
 {% img center /images/nantesjug/nov13/nantesjug-nov13-demo-5b.png %}
 
 J'ai du rouge. En tant que développeur Java, je suis éduqué pour y voir des erreurs. Je me lance alors dans une tentative de décryptage des couleurs de l'interface d'administration :
 
-* Pourquoi la phrase "Total Allocated (512 MB)" est en rouge ? L'indicateur de progression est vert, la phrase "Unused 512 MB" est en vert. Je conclue qu'il s'agit probablement d'un rouge marquant la criticité d'une ressource et non une erreur.
+* Pourquoi la phrase "Total Allocated (512 MB)" est en rouge ? L'indicateur de progression est vert, la phrase "Unused 512 MB" est en vert. Je conclue qu'il s'agit probablement d'un rouge marquant la criticité d'une ressource et non d'une erreur.
 
 * Les mots "Usable Free Space (O B)" en rouge m'inquiète un peu plus. Là encore, j'essai de me rassurer en me disant que [Couchbase](http://www.couchbase.com/) doit probablement réserver de l'espace disque progressivement et comme je n'ai encore aucune donnée, aucun espace disque n'a encore été reservé.
 
@@ -226,7 +229,7 @@ Alors je clique sur ce message "Servers Down : 1".
 
 {% img center /images/nantesjug/nov13/nantesjug-nov13-demo-5c.png %}
 
-Je décide de laisser en l'état et de compléter l'application pour voir si le client Couchbase a des difficultés à se connecter avec ce "Server Down" ;)
+Je décide de laisser en l'état et de compléter l'application pour voir si le client Couchbase a des difficultés à se connecter avec ce "Server Down : 1" ;)
 
 Pour communiquer avec Couchbase depuis l'application, nous allons utiliser la bibliothèque [couchbase-client](http://files.couchbase.com/maven2/couchbase/couchbase-client/) accessible via le repository Maven de Couchbase [http://files.couchbase.com/maven2/](http://files.couchbase.com/maven2/). Il faudrait donc modifier le fichier `demo-webapp/pom.xml` comme [ceci](https://raw.github.com/dadoonet/sql2nosql/03-couchbase-persistence/begin/demo-webapp/pom.xml) pour  ajouter la dépendance vers la librairie [couchbase-client](http://files.couchbase.com/maven2/couchbase/couchbase-client/).
 
@@ -254,7 +257,7 @@ Compléter le fichier `demo-webapp/src/main/java/fr/pilato/demo/sql2nosql/webapp
 
 Redémarrer l'application.
 
-J'obtiens la jolie stacktrace, notre plaisir quotidien sur la JVM
+J'obtiens une jolie stacktrace. Ah voilà quelque chose qui me parle !
 
 ```
 Caused by: org.springframework.beans.BeanInstantiationException: Could not instantiate bean class [fr.pilato.demo.sql2nosql.webapp.PersonService]: Constructor threw exception; nested exception is com.couchbase.client.vbucket.config.ConfigParsingException: Number of buckets must be a power of two, > 0 and <= 65536
@@ -266,25 +269,26 @@ Caused by: com.couchbase.client.vbucket.config.ConfigParsingException: Number of
 	at com.couchbase.client.vbucket.config.DefaultConfigFactory.parseEpJSON(DefaultConfigFactory.java:135)
 ```
 
+Euh finalement, ça ne me parle pas tant que ça ;)
+
 Je porte mon attention sur le message d'erreur "Number of buckets must be a power of two, > 0 and <= 65536". Après plusieurs investigations dans différents forums [là](http://www.couchbase.com/forums/thread/number-buckets-must-be-power-two-0-and-0), [là](http://www.couchbase.com/forums/thread/number-buckets-must-be-power-two), ou encore [là](http://www.couchbase.com/issues/browse/MB-8332). Je croise même un message de [Tugdual Grall](tugdual_grall) dans ces fils de discussion ;)
 
 {% img center /images/nantesjug/nov13/nantesjug-nov13-demo-5d.png %}
 
-Après avoir cliqué sur tous les menus et tous les boutons de l'interface d'administration, je ne parviens toujours pas à avancer. J'ai réussi au passage à me débarrasser du message d'avertissement "Fail Over Warning : At least two servers are required to provide replication!" en supprimant et recréant un "bucket". Je comprends que j'ai eu ce message d'erreur car lors de l'initialisation de Couchbase, la case à cocher _Replicate_ est coché par défaut. Par contre impossible de me débarrasser de l'erreur "Server Down".
+Après avoir cliqué sur tous les menus et tous les boutons de l'interface d'administration, je ne parviens toujours pas à avancer. J'ai réussi au passage à me débarrasser du message d'avertissement "Fail Over Warning : At least two servers are required to provide replication!" en supprimant et recréant un "bucket". Je comprends que j'ai eu ce message d'erreur car lors de l'initialisation de Couchbase, la case à cocher _Replicate_ est cochée par défaut. Par contre impossible de me débarrasser de l'erreur "Server Down : 1".
 
-J'ai essayé une version plus récente du client . Je remarque au passage que le client couchbase-client est disponible en fait dans le Repo Maven Central via la dépendance :
+J'ai essayé une version plus récente du client. Je remarque au passage que le client couchbase-client est disponible en fait dans le Repo Maven Central via la dépendance :
 
 ``` xml
 <dependency>
     <groupId>com.couchbase.client</groupId>
     <artifactId>couchbase-client</artifactId>
     <version>1.2.2</version>
-    <type>jar</type>
 </dependency>
 ```
 Quoiqu'il en soit, cela ne résoud pas le problème !
 
-Je décide alors de recommencer l'installation. Je n'ai pas trouvé un moyen de revenir à l'état initial via l'interface d'administration. J'arrête le serveur, je supprime tous les fichiers générés par Couchbase puis je démarre [Couchbase](http://www.couchbase.com/). Cette fois-ci je choisis 1024 MB pour la RAM, je désactive la réplication et je sélectionne un échantillon de données fourni ("beer"). Et là, c'est magique plus de "Server Down : 1" !
+Je décide alors de recommencer l'installation. Je n'ai pas trouvé un moyen de revenir à l'état initial via l'interface d'administration. J'arrête le serveur, je supprime tous les fichiers générés par Couchbase puis je démarre [Couchbase](http://www.couchbase.com/). Cette fois-ci je choisis 1024 MB pour la RAM, je désactive la réplication et je sélectionne un échantillon de données ("beer"). Et là, c'est magique plus de "Server Down : 1" !
 
 {% img center /images/nantesjug/nov13/nantesjug-nov13-demo-5e.png %}
 
@@ -302,7 +306,7 @@ Dans l'interface d'administration, à l'onglet _View_, il y a une vue _by_name_ 
 
 {% img center /images/nantesjug/nov13/nantesjug-nov13-demo-5f.png %}
 
-## Retrouver les écrans avec AngularJS
+## Les écrans avec AngularJS et Twitter Bootstrap
 Nous avons jusqu'à présent un backend qui renvoie des données au format JSON. Cette étape va consister à recréer les vues que nous avions au départ.
 
 {% img center /images/nantesjug/nov13/nantesjug-nov13-demo-6.png %}
@@ -321,19 +325,22 @@ Les écrans sont de retour.
 
 Il n'est pour le moment possible que d'effectuer des recherches par nom. 
 
-## La recherche full text
+## La recherche _full text_
+La recherche _full text_ va être implémentée avec [Elasticsearch](http://www.elasticsearch.org/). L'idée principale est d'avoir les données répliquées de [Couchbase](http://www.couchbase.com/) à [Elasticsearch](http://www.elasticsearch.org/) qui va les indéxer. L'application _front end_, pour rechercher les données, va directement intéroger [Elasticsearch](http://www.elasticsearch.org/).
+
+Nous aurons à la fin de cette étape, l'architecture suivante :
 
 {% img center /images/nantesjug/nov13/nantesjug-nov13-demo-7.png %}
 
-Télécharger [Elasticsearch v0.90.2](https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.90.2.zip) et décompresser l'archive dans le répertoire de votre choix.
+Je télécharge [Elasticsearch v0.90.2](https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.90.2.zip) et décompresser l'archive dans le répertoire de votre choix.
 
-Installer le plugin Couchbase pour Elasticsearch via l'exécutable `bin/plugin(.bat)`.
+J'installe le plugin Couchbase pour Elasticsearch (version 1.1.0) via l'exécutable `bin/plugin(.bat)`.
 
 ```
 bin/plugin -install transport-couchbase -url http://packages.couchbase.com.s3.amazonaws.com/releases/elastic-search-adapter/1.1.0/elasticsearch-transport-couchbase-1.1.0.zip
 ```
 
-Dans le fichier `config/elasticsearch.yml`, renseigner les 2 paramètres :
+Dans le fichier `config/elasticsearch.yml`, je renseigne les paramètres :
 
 ```
 couchbase.username: Administrator
@@ -341,13 +348,13 @@ couchbase.password: Administrator
 couchbase.maxConcurrentRequests: 256
 ```
 
-Démarrer Elasticsearch
+Je démarre Elasticsearch.
 
 ```
 bin/elasticsearch -f
 ```
 
-Créer un template
+Je crée un template Elasticsearch.
 
 ```
 curl -XPUT http://localhost:9200/_template/couchbase -d '
@@ -385,21 +392,21 @@ curl -XPUT http://localhost:9200/_template/couchbase -d '
 '
 ```
 
-Créer un index pour person
+Je crée un index pour person.
 
 ```
 curl -XPUT http://localhost:9200/person
 ```
 
-Revenez à présent à l'interface d'administration Couchbase : `http://127.0.0.1:8091/index.html`.
+Je reviens à l'interface d'administration Couchbase : `http://127.0.0.1:8091/index.html`.
 
-Allez à l'onglet XDCR.
+Je clique sur l'onglet XDCR.
 
-Créer un cluster de référence avec le bouton `Create Cluster Reference`
+Je crée un cluster de référence avec le bouton `Create Cluster Reference`.
 
 {% img center /images/nantesjug/nov13/nantesjug-nov13-demo-7a.png %}
 
-Créer une réplication avec le bouton `Create Replication`
+Je crée une réplication avec le bouton `Create Replication`.
 
 {% img center /images/nantesjug/nov13/nantesjug-nov13-demo-7b.png %}
 
@@ -407,16 +414,16 @@ Et là dans mon cas, ça n'a pas fonctionné.
 
 Après quelques recherches, je suis tombé sur [cette fil de discussion](https://github.com/couchbaselabs/elasticsearch-transport-couchbase/issues/3) qui conseille l'utilisation de la version 1.2.0 du plugin pour ma version de [Couchbase](http://www.couchbase.com/).
 
-Désinstallation de l'ancienne version
+Je désinstalle de l'ancienne version du plugin.
 ```
 bin/plugin -remove transport-couchbase
 ```
-Installation de la nouvelle version
+J'installe la version 1.2.0 du plugin.
 ```
 bin/plugin -install transport-couchbase -url http://packages.couchbase.com.s3.amazonaws.com/releases/elastic-search-adapter/1.2.0/elasticsearch-transport-couchbase-1.2.0.zip
 ```
 
-Je réessai la création de la réplication et j'ai toujours la même erreur. Côté ElasticSearch, je peux lire l'exception suivante dans les logs :
+Je réessaie de créer la réplication et j'ai toujours la même erreur. Côté ElasticSearch, je peux lire l'exception suivante dans les logs :
 
 ```
 013-11-23 02:30:02,779][WARN ][org.eclipse.jetty.servlet.ServletHandler] Error for /pools/default/buckets
@@ -424,13 +431,13 @@ java.lang.NoSuchMethodError: org.elasticsearch.cluster.metadata.MetaData.getIndi
 	at org.elasticsearch.transport.couchbase.capi.ElasticSearchCouchbaseBehavior.getBucketsInPool(ElasticSearchCouchbaseBehavior.java:82)
 ```
 
-Je comprends que ma version d'Elasticsearch n'est pas compatible avec la nouvelle version du plugin.
+Je comprends que ma version d'[Elasticsearch](http://www.elasticsearch.org/) n'est pas compatible avec la nouvelle version du plugin.
 
-J'ai trouvé le tableau de compatibilité suivant qui rend clair tous mes problèmes d'incompatibilité accessible [ici](https://github.com/couchbaselabs/elasticsearch-transport-couchbase).
+J'ai trouvé le tableau de compatibilité suivant qui rend clair tous mes problèmes d'incompatibilité accessible [ici](https://github.com/couchbaselabs/elasticsearch-transport-couchbase) :
 
 {% img center /images/nantesjug/nov13/nantesjug-nov13-demo-7c.png %}
 
-[Tugdual](tugdual_grall) et [David](david_pilato) ont travaillé sur la ligne Plugin=1.1.0, Couchbase=2.0, ElasticSearch=0.90.2. Et quand on prête attention aux instructions les différentes versions sont précisées.
+[Tugdual](tugdual_grall) et [David](david_pilato) ont travaillé sur la ligne Plugin=1.1.0, Couchbase=2.0, ElasticSearch=0.90.2.
 
 Vu que j'ai une base [Couchbase](http://www.couchbase.com/) qui fonctionne et que comme tout développeur j'aime bien les dernières versions, je vais télécharger [ElasticSearch 0.90.5](https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.90.5.zip) et recommencer l'installation.
 
@@ -442,13 +449,13 @@ Mais... Il y a un petit message que je n'ai pas envie de voir "Last 10 errors". 
 
 {% img center /images/nantesjug/nov13/nantesjug-nov13-demo-7e.png %}
 
-Là je ne sais pas trop quoi penser ;) La réplication ne se passe visiblement pas bien. Je e décide de faire une courte pause et de télécharger la version 2.0.0 de Couchbase.
+Là je ne sais pas trop quoi penser ;) La réplication ne se passe visiblement pas bien. Je décide de faire une courte pause et de télécharger la version 2.0.0 de Couchbase.
 
 Je démarre cette nouvelle version, elle rentre en conflit avec ma version 2.2.0 installée précédemment car il partage les mêmes répertoires de travail. Je déplace ce répertoire de travail et là plus de problème.
 
 {% img center /images/nantesjug/nov13/nantesjug-nov13-demo-7f.png %}
 
-Réinjectons des données :
+Je réinjecte les données :
 
 ```
 curl -XPOST http://localhost:8080/api/1/person/_init
@@ -459,20 +466,24 @@ curl -XPOST http://localhost:8080/api/1/person/_init
 
 Les données sont bien répliquées, on est passé de 1001 à 2001 comme prévu.
 
-Le client AngularJS sera modifié pour interroger directement ElasticSearch pour la fonctionnalité de recherche. ElasticSearch expose une API REST pour rechercher des données. Pour rechercher les personnes ayant 'Alix' dans leur nom ou prénom, il suffit d'accéder à l'adresse : `http://127.0.0.1:9200/person/_search?q=alix`.
+Le client AngularJS sera modifié pour interroger directement [Elasticsearch](http://www.elasticsearch.org/) pour la fonctionnalité de recherche. [Elasticsearch](http://www.elasticsearch.org/) expose une API REST pour rechercher des données. Pour rechercher les personnes ayant 'Alix' dans leur nom ou prénom, il suffit d'accéder à l'adresse : `http://127.0.0.1:9200/person/_search?q=alix`.
 
 {% img center /images/nantesjug/nov13/nantesjug-nov13-demo-7h.png %}
 
-
 ## Vos tableaux de bord les doigts dans le nez avec Kibana
+[Kibana](http://www.elasticsearch.org/overview/kibana/) est une application web qui permet de visualiser les données indéxées dans [Elasticsearch](http://www.elasticsearch.org/) suivant des critères.
 
-Installer le plugin Kibana pour ElasticSearch
+A l'issue de cette étape, l'architecture de l'application va ressembler à ceci :
+
+{% img center /images/nantesjug/nov13/nantesjug-nov13-demo-8.png %}
+
+J'installe le plugin Kibana pour [Elasticsearch](http://www.elasticsearch.org/).
 
 ```
 bin/plugin -install elasticsearch/kibana
 ```
 
-En lançant Kibana, `http://localhost:9200/_plugin/kibana/`, j'obtiens ceci :
+En lançant [Kibana](http://www.elasticsearch.org/overview/kibana/), `http://localhost:9200/_plugin/kibana/`, j'obtiens ceci :
 
 {% img center /images/nantesjug/nov13/nantesjug-nov13-demo-8a.png %}
 
@@ -484,16 +495,25 @@ Je clique sur `Sample Dashboard`.
 
 {% img center /images/nantesjug/nov13/nantesjug-nov13-demo-8c.png %}
 
-Démo en ligne : `http://demo.kibana.org/#/dashboard`.
+Il est possible de filtrer, visualiser les données suivant plusieurs axes d'analyse. Si vous souhaitez jouer avec [Kibana](http://www.elasticsearch.org/overview/kibana/), il y a une démo en ligne accessible à l'adresse [http://demo.kibana.org/#/dashboard](http://demo.kibana.org/#/dashboard) :
 
 {% img center /images/nantesjug/nov13/nantesjug-nov13-demo-8d.png %}
-
-L'architecture que nous obtenons au final.
-
-{% img center /images/nantesjug/nov13/nantesjug-nov13-demo-8.png %}
 
 ## Les slides de Devoxx Belgique 2013
 
 <iframe src="http://www.slideshare.net/slideshow/embed_code/23026423" width="800" height="500" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
 
+## Et pour conclure ?
+Comme vous l'avez surement constaté, cette soirée du JUG Nantes a été riche en contenu.
 
+Dans le monde des bases de données NoSQL orientées document, [Couchbase](http://www.couchbase.com/) a un concurrent direct [MongoDB](http://www.mongodb.org/). Un participant va poser la question de savoir quelles étaient les différences de fond entre ces deux bases de données. [Tugdual](https://twitter.com/tgrall), évangéliste [Couchbase](http://www.couchbase.com/), va donner les éléments de réponse suivants :
+
+* [Couchbase](http://www.couchbase.com/) est conçu pour faciliter la distribution des données, la création de nombreux clusters de données via une interface d'administration. Il est donc plus indiqué pour des systèmes nécessitant de traitement de grand volumes de données distribuées sur plusieurs machine. Créer un cluster avec [MongoDB](http://www.mongodb.org/) serait pas une tâche aussi simple que dans [Couchbase](http://www.couchbase.com/).
+
+* [MongoDB](http://www.mongodb.org/) est plus riche et plus facile à requêter que [Couchbase](http://www.couchbase.com/). Il dispose d'une API très puissante pour extraire des données. C'est pour cette raison qu'il est conseillé de coupler [Couchbase](http://www.couchbase.com/) à [Elasticsearch](http://www.elasticsearch.org/) pour disposer d'une plus grande puissance d'extraction/analyse de données.
+
+Au regard de la complémentarité des deux technologies ([Couchbase](http://www.couchbase.com/) & [Elasticsearch](http://www.elasticsearch.org/)), on peut se demander _A quand le rachat de l'un par l'autre ?_. [David](https://twitter.com/dadoonet) va affirmer, hors séance, que ce n'était pas à sa connaissance à l'ordre du jour. Il y voit en [Elasticsearch](http://www.elasticsearch.org/) un produit complet dont certains clients n'hésitent pas à s'en servir directement en base de données.
+
+Bien évidemment, si vous souhaitez mettre en oeuvre ces outils, prenez des versions compatibles entre elles et n'hésitez pas à recommencer quand vous êtes dans une impasse ;)
+
+Je ne sais pas pour vous mais je suis impatient d'être à la prochaine session du JUG Nantes : [Grails dans les tranchés + Java 8](http://nantesjug.org/#/events/2013_12_04).
