@@ -7,12 +7,12 @@ categories: jugnantes jugnantesnov
 ---
 Vous pouvez retrouvez la première partie de cet article [ici](http://blog.roddet.com/2013/11/nantesjug-novembre-part1/).
 
-[Tugdual Grall](https://twitter.com/tgrall) et [David Pilato](https://twitter.com/dadoonet) ont offert une preview d'une session qu'ils allaient donner quelques jours plus tard à [Devoxx Belgique](http://www.devoxx.be/dv13-david-pilato.html?presId=3281). Ils vont montrer, sur la base d'une application exemple, une migration du SQL au monde du NoSQL.
+Le 04 novembre dernier, [Tugdual Grall](https://twitter.com/tgrall) et [David Pilato](https://twitter.com/dadoonet) ont offert au public nantais une preview d'une session qu'ils allaient donner quelques jours plus tard à [Devoxx Belgique](http://www.devoxx.be/dv13-david-pilato.html?presId=3281). Ils vont montrer, sur la base d'une application exemple, une migration du SQL au monde du NoSQL.
 
 {% img center /images/nantesjug/nov13/nantesjug-nov13-david-pilato-tugdual-grall.jpg %}
 
 ## Pourquoi passer du SQL au NoSQL ?
-Tug et David vont commencer la session par présenter _LA_ raison qui pourrait vous convaincre de migrer d'une base SQL à une base NoSQL : la scalabilité horizontale.
+[Tugdual](https://twitter.com/tgrall) et [David](https://twitter.com/dadoonet) vont commencer la session par présenter _LA_ raison qui pourrait vous convaincre de migrer d'une base SQL à une base NoSQL : la scalabilité horizontale.
 
 Scalabilité horizontale sont les mots à la mode pour désigner la caractéristique d'un système capable de supporter une grande charge. Pour augmenter la puissance d'un système, sa stratégie consiste à multiplier le nombre de machines de petites puissances. Elle se positionne en opposition à la scalabilité verticale qui prône l'augmentation des capacités d'une machine pour répondre à des besoins de charge croissants.
 
@@ -79,7 +79,7 @@ mvn jetty:run
 ```
 
 Si l'application ne parvient pas à récupérer le plugin Maven pour Jetty.
-Créer/compléter la configuration du fichier `~/.m2/settings.xml` dans la section plugin comme ceci :
+Créer/compléter la configuration du fichier `~/.m2/settings.xml` dans la section `pluginGroups` comme ceci :
 
 ``` xml
 <settings>
@@ -211,7 +211,7 @@ Et là, sans aucune autre documentation, je me laisse guider en cliquant sur `SE
 
 A la page suivante, j'ai laissé les choix par défaut m'invitant à créer un nouveau cluster. J'ai modifié le paramètre `Per Server RAM Quota` avec la valeur 512 MB au lieu des 3 GB par défaut sur ma machine.
 
-Je laissé les paramètres par défaut et mis un identifiant/mot de passe administrateur.
+Je laissé les paramètres par défaut et saisis un identifiant/mot de passe administrateur.
 
 Et là, j'ai l'écran suivant :
 
@@ -219,17 +219,17 @@ Et là, j'ai l'écran suivant :
 
 J'ai du rouge. En tant que développeur Java, je suis éduqué pour y voir des erreurs. Je me lance alors dans une tentative de décryptage des couleurs de l'interface d'administration :
 
-* Pourquoi la phrase "Total Allocated (512 MB)" est en rouge ? L'indicateur de progression est vert, la phrase "Unused 512 MB" est en vert. Je conclue qu'il s'agit probablement d'un rouge marquant la criticité d'une ressource et non d'une erreur.
+* Pourquoi la phrase _Total Allocated (512 MB)_ est en rouge ? L'indicateur de progression est vert, la phrase _Unused 512 MB_ est en vert. Je conclue qu'il s'agit probablement d'un rouge marquant la criticité d'une ressource et non d'une erreur.
 
-* Les mots "Usable Free Space (O B)" en rouge m'inquiète un peu plus. Là encore, j'essai de me rassurer en me disant que [Couchbase](http://www.couchbase.com/) doit probablement réserver de l'espace disque progressivement et comme je n'ai encore aucune donnée, aucun espace disque n'a encore été réservé.
+* Les mots _Usable Free Space (O B)_ en rouge m'inquiète un peu plus. Là encore, j'essai de me rassurer en me disant que [Couchbase](http://www.couchbase.com/) doit probablement réserver de l'espace disque progressivement et comme je n'ai encore aucune donnée, aucun espace disque n'a encore été réservé.
 
-* La 3ème indication en rouge est "Servers Down : 1". J'ai souvent de l'imagination pour trouver les bons côtés des choses mais là, je n'ai aucune inspiration qui me vient. Je dois avoir un problème !
+* La 3ème indication en rouge est _Servers Down : 1_. J'ai souvent de l'imagination pour trouver les bons côtés des choses mais là, je n'ai aucune inspiration qui me vient. Je dois avoir un problème !
 
-Alors je clique sur ce message "Servers Down : 1".
+Alors je clique sur ce message _Servers Down : 1_.
 
 {% img center /images/nantesjug/nov13/nantesjug-nov13-demo-5c.png %}
 
-Je décide de laisser en l'état et de compléter l'application pour voir si le client Couchbase a des difficultés à se connecter avec ce "Server Down : 1" ;)
+Je décide de laisser en l'état et de compléter l'application pour voir si le client Couchbase a des difficultés à se connecter avec ce _Server Down : 1_ ;)
 
 Pour communiquer avec Couchbase depuis l'application, nous allons utiliser la bibliothèque [couchbase-client](http://files.couchbase.com/maven2/couchbase/couchbase-client/) accessible via le repository Maven de Couchbase [http://files.couchbase.com/maven2/](http://files.couchbase.com/maven2/). Il faudrait donc modifier le fichier `demo-webapp/pom.xml` comme [ceci](https://raw.github.com/dadoonet/sql2nosql/03-couchbase-persistence/begin/demo-webapp/pom.xml) pour  ajouter la dépendance vers la librairie [couchbase-client](http://files.couchbase.com/maven2/couchbase/couchbase-client/).
 
@@ -271,11 +271,11 @@ Caused by: com.couchbase.client.vbucket.config.ConfigParsingException: Number of
 
 Euh finalement, ça ne me parle pas tant que ça ;)
 
-Je porte mon attention sur le message d'erreur "Number of buckets must be a power of two, > 0 and <= 65536". Après plusieurs investigations dans différents forums [là](http://www.couchbase.com/forums/thread/number-buckets-must-be-power-two-0-and-0), [là](http://www.couchbase.com/forums/thread/number-buckets-must-be-power-two), ou encore [là](http://www.couchbase.com/issues/browse/MB-8332). Je croise même un message de [Tugdual Grall](tugdual_grall) dans ces fils de discussion ;)
+Je porte mon attention sur le message d'erreur _Number of buckets must be a power of two, > 0 and <= 65536_. Après plusieurs investigations dans différents forums [là](http://www.couchbase.com/forums/thread/number-buckets-must-be-power-two-0-and-0), [là](http://www.couchbase.com/forums/thread/number-buckets-must-be-power-two), ou encore [là](http://www.couchbase.com/issues/browse/MB-8332). Je croise même un message de [Tugdual](tugdual_grall) dans ces fils de discussion ;)
 
 {% img center /images/nantesjug/nov13/nantesjug-nov13-demo-5d.png %}
 
-Après avoir cliqué sur tous les menus et tous les boutons de l'interface d'administration, je ne parviens toujours pas à avancer. J'ai réussi au passage à me débarrasser du message d'avertissement "Fail Over Warning : At least two servers are required to provide replication!" en supprimant et recréant un "bucket". Je comprends que j'ai eu ce message d'erreur car lors de l'initialisation de Couchbase, la case à cocher _Replicate_ est cochée par défaut. Par contre impossible de me débarrasser de l'erreur "Server Down : 1".
+Après avoir cliqué sur tous les menus et tous les boutons de l'interface d'administration, je ne parviens toujours pas à avancer. J'ai réussi au passage à me débarrasser du message d'avertissement _Fail Over Warning : At least two servers are required to provide replication!_ en supprimant et recréant un _bucket_. Je comprends que j'ai eu ce message d'erreur car lors de l'initialisation de Couchbase, la case à cocher _Replicate_ est cochée par défaut. Par contre impossible de me débarrasser de l'erreur _Server Down : 1_.
 
 J'ai essayé une version plus récente du client. Je remarque au passage que le client couchbase-client est disponible en fait dans le Repo Maven Central via la dépendance :
 
@@ -288,7 +288,7 @@ J'ai essayé une version plus récente du client. Je remarque au passage que le 
 ```
 Quoiqu'il en soit, cela ne résoud pas le problème !
 
-Je décide alors de recommencer l'installation. Je n'ai pas trouvé un moyen de revenir à l'état initial via l'interface d'administration. J'arrête le serveur, je supprime tous les fichiers générés par Couchbase puis je démarre [Couchbase](http://www.couchbase.com/). Cette fois-ci je choisis 1024 MB pour la RAM, je désactive la réplication et je sélectionne un échantillon de données ("beer"). Et là, c'est magique plus de "Server Down : 1" !
+Je décide alors de recommencer l'installation. Je n'ai pas trouvé un moyen de revenir à l'état initial via l'interface d'administration. J'arrête le serveur, je supprime tous les fichiers générés par Couchbase puis je démarre [Couchbase](http://www.couchbase.com/). Cette fois-ci je choisis 1024 MB pour la RAM, je désactive la réplication et je sélectionne un échantillon de données (_beer_). Et là, c'est magique plus de _Server Down : 1_ !
 
 {% img center /images/nantesjug/nov13/nantesjug-nov13-demo-5e.png %}
 
@@ -334,7 +334,7 @@ Nous aurons à la fin de cette étape, l'architecture suivante :
 
 Je télécharge [Elasticsearch v0.90.2](https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.90.2.zip) et décompresser l'archive dans le répertoire de votre choix.
 
-J'installe le plugin Couchbase pour Elasticsearch (version 1.1.0) via l'exécutable `bin/plugin(.bat)`.
+J'installe le plugin Couchbase pour [Elasticsearch](http://www.elasticsearch.org/) (version 1.1.0) via l'exécutable `bin/plugin(.bat)`.
 
 ```
 bin/plugin -install transport-couchbase -url http://packages.couchbase.com.s3.amazonaws.com/releases/elastic-search-adapter/1.1.0/elasticsearch-transport-couchbase-1.1.0.zip
@@ -348,13 +348,13 @@ couchbase.password: Administrator
 couchbase.maxConcurrentRequests: 256
 ```
 
-Je démarre Elasticsearch.
+Je démarre [Elasticsearch](http://www.elasticsearch.org/).
 
 ```
 bin/elasticsearch -f
 ```
 
-Je crée un template Elasticsearch.
+Je crée un template [Elasticsearch](http://www.elasticsearch.org/).
 
 ```
 curl -XPUT http://localhost:9200/_template/couchbase -d '
@@ -423,7 +423,7 @@ J'installe la version 1.2.0 du plugin.
 bin/plugin -install transport-couchbase -url http://packages.couchbase.com.s3.amazonaws.com/releases/elastic-search-adapter/1.2.0/elasticsearch-transport-couchbase-1.2.0.zip
 ```
 
-Je réessaie de créer la réplication et j'ai toujours la même erreur. Côté ElasticSearch, je peux lire l'exception suivante dans les logs :
+Je réessaie de créer la réplication et j'ai toujours la même erreur. Côté [Elasticsearch](http://www.elasticsearch.org/), je peux lire l'exception suivante dans les logs :
 
 ```
 013-11-23 02:30:02,779][WARN ][org.eclipse.jetty.servlet.ServletHandler] Error for /pools/default/buckets
@@ -445,7 +445,7 @@ J'obtiens toujours la même erreur lors de la création de la réplication même
 
 {% img center /images/nantesjug/nov13/nantesjug-nov13-demo-7d.png %}
 
-Mais... Il y a un petit message que je n'ai pas envie de voir "Last 10 errors". Je clique sur ce message de couleur bleu.
+Mais... Il y a un petit message que je n'ai pas envie de voir _Last 10 errors_. Je clique sur ce message de couleur bleu.
 
 {% img center /images/nantesjug/nov13/nantesjug-nov13-demo-7e.png %}
 
