@@ -7,7 +7,7 @@ categories: jugnantes jugnantesnov
 ---
 Vous pouvez retrouvez la première partie de cet article [ici](http://blog.roddet.com/2013/11/nantesjug-novembre-part1/).
 
-[Tugdual Grall](https://twitter.com/tgrall) et [David Pilato](https://twitter.com/dadoonet) ont offert une preview d'une session qu'ils allaient donner quelques jours plutard à [Devoxx Belgique](http://www.devoxx.be/dv13-david-pilato.html?presId=3281). Ils vont montrer, sur la base d'une application exemple, une migration du SQL au monde du NoSQL.
+[Tugdual Grall](https://twitter.com/tgrall) et [David Pilato](https://twitter.com/dadoonet) ont offert une preview d'une session qu'ils allaient donner quelques jours plus tard à [Devoxx Belgique](http://www.devoxx.be/dv13-david-pilato.html?presId=3281). Ils vont montrer, sur la base d'une application exemple, une migration du SQL au monde du NoSQL.
 
 {% img center /images/nantesjug/nov13/nantesjug-nov13-david-pilato-tugdual-grall.jpg %}
 
@@ -20,7 +20,7 @@ La scalabilité horizontale s'impose de plus en plus comme _LA_ solution pour re
 
 Peut-on effectuer la scalabilité horizontale avec une base de données relationnelle ?
 
-La réponse est oui. Ca s'appelle mettre en place un _cluster de base de données_. Tug et David vont demander aux participants combien avaient déjà configuré un _cluster_ de base de données relationnelles ? Je n'ai vu qu'une seule main levée de là où j'étais assis. Cette opération requiert des compétences assez pointues pour obtenir un système fonctionnel.
+La réponse est oui. Ca s'appelle mettre en place un _cluster de base de données_. Tug et David vont demander aux participants combien avaient déjà configuré un _cluster_ de bases de données relationnelles ? Je n'ai vu qu'une seule main levée de là où j'étais assis. Cette opération requiert des compétences assez pointues pour obtenir un système fonctionnel.
 
 Et le NoSQL dans tout ça ?
 
@@ -64,7 +64,7 @@ svn co https://github.com/dadoonet/sql2nosql
 * Utiliser votre IDE préféré [Eclipse](http://eclipse.org/), [Netbeans](https://netbeans.org/), [Intellij](http://www.jetbrains.com/idea/)...
 
 ## Exécution de l'application
-L'architecture de l'application repose sur [Maven](http://maven.apache.org/). J'ai utilisé la version 3.1.1 pour écrire cette article.
+L'architecture de l'application repose sur [Maven](http://maven.apache.org/). J'ai utilisé la version 3.1.1 pour écrire cet article.
 
 Pour exécuter l'application :
 
@@ -89,7 +89,7 @@ Créer/compléter la configuration du fichier `~/.m2/settings.xml` dans la secti
 </settings>
 ```
 
-Une fois l'application démarée, vous pouvez accéder à la page d'accueil via l'adresse : `http://localhost:8080`. Elle affiche une liste de personnes.
+Une fois l'application démarrée, vous pouvez accéder à la page d'accueil via l'adresse : `http://localhost:8080`. Elle affiche une liste de personnes.
 
 {% img center /images/nantesjug/nov13/nantesjug-nov13-demo-1.png %}
 
@@ -108,7 +108,7 @@ Le mapping URL/servlet configurés dans le fichier [web.xml](https://github.com/
 
 {% img center /images/nantesjug/nov13/nantesjug-nov13-demo-3.png %}
 
-Cette application génère l'intégralité de ses pages côté serveur. Les nouvelles générations d'applications Web encouragent  :
+Cette application génère l'intégralité de ses pages côté serveur. Les nouvelles générations d'applications Web encouragent :
 
 * un Web avec de plus en plus d'intelligence côté navigateur. 
 
@@ -221,7 +221,7 @@ J'ai du rouge. En tant que développeur Java, je suis éduqué pour y voir des e
 
 * Pourquoi la phrase "Total Allocated (512 MB)" est en rouge ? L'indicateur de progression est vert, la phrase "Unused 512 MB" est en vert. Je conclue qu'il s'agit probablement d'un rouge marquant la criticité d'une ressource et non d'une erreur.
 
-* Les mots "Usable Free Space (O B)" en rouge m'inquiète un peu plus. Là encore, j'essai de me rassurer en me disant que [Couchbase](http://www.couchbase.com/) doit probablement réserver de l'espace disque progressivement et comme je n'ai encore aucune donnée, aucun espace disque n'a encore été reservé.
+* Les mots "Usable Free Space (O B)" en rouge m'inquiète un peu plus. Là encore, j'essai de me rassurer en me disant que [Couchbase](http://www.couchbase.com/) doit probablement réserver de l'espace disque progressivement et comme je n'ai encore aucune donnée, aucun espace disque n'a encore été réservé.
 
 * La 3ème indication en rouge est "Servers Down : 1". J'ai souvent de l'imagination pour trouver les bons côtés des choses mais là, je n'ai aucune inspiration qui me vient. Je dois avoir un problème !
 
@@ -311,7 +311,7 @@ Nous avons jusqu'à présent un backend qui renvoie des données au format JSON.
 
 {% img center /images/nantesjug/nov13/nantesjug-nov13-demo-6.png %}
 
-Pour ne pas trop allourdir cet article, je ne vais pas faire un cours sur AngularJS qui n'est pas le sujet principal de cette session ;)
+Pour ne pas trop alourdir cet article, je ne vais pas faire un cours sur AngularJS qui n'est pas le sujet principal de cette session ;)
 
 Vous pouvez directement retrouver les sources dans la branche `04-angular/end` ou bien les télécharger directement [ici](https://github.com/dadoonet/sql2nosql/archive/04-angular/end.zip).
 
@@ -471,7 +471,7 @@ Le client AngularJS sera modifié pour interroger directement [Elasticsearch](ht
 {% img center /images/nantesjug/nov13/nantesjug-nov13-demo-7h.png %}
 
 ## Vos tableaux de bord les doigts dans le nez avec Kibana
-[Kibana](http://www.elasticsearch.org/overview/kibana/) est une application web qui permet de visualiser les données indéxées dans [Elasticsearch](http://www.elasticsearch.org/) suivant des critères.
+[Kibana](http://www.elasticsearch.org/overview/kibana/) est une application web qui permet de visualiser les données indexées dans [Elasticsearch](http://www.elasticsearch.org/) suivant des critères.
 
 A l'issue de cette étape, l'architecture de l'application va ressembler à ceci :
 
