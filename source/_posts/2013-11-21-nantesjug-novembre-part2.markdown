@@ -503,7 +503,7 @@ Il est possible de filtrer, visualiser les données suivant plusieurs axes d'ana
 
 ## Les slides de Devoxx Belgique 2013
 
-<iframe src="http://www.slideshare.net/slideshow/embed_code/23026423" width="800" height="500" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
+<script async class="speakerdeck-embed" data-id="95cfa1f02edb0131128806fa6ec08ea7" data-ratio="1.72972972972973" src="//speakerdeck.com/assets/embed.js"></script>
 
 ## Et pour conclure ?
 Comme vous l'avez surement constaté, cette soirée du JUG Nantes a été riche en contenu.
