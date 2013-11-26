@@ -449,9 +449,11 @@ Mais... Il y a un petit message que je n'ai pas envie de voir _Last 10 errors_. 
 
 {% img center /images/nantesjug/nov13/nantesjug-nov13-demo-7e.png %}
 
-Là je ne sais pas trop quoi penser ;) La réplication ne se passe visiblement pas bien. Je décide de faire une courte pause et de télécharger la version 2.0.0 de Couchbase.
+Là je ne sais pas trop quoi penser ;) La réplication ne se passe visiblement pas bien. 
 
-Je démarre cette nouvelle version, elle rentre en conflit avec ma version 2.2.0 installée précédemment car il partage les mêmes répertoires de travail. Je déplace ce répertoire de travail et là plus de problème.
+Je décide de faire une courte pause, de télécharger la version 2.0.0 de Couchbase et de revenir à la version 0.90.2 d'[Elasticsearch](http://www.elasticsearch.org/).
+
+Je démarre la version 2.0.0 de [Couchbase](http://www.couchbase.com/), elle rentre en conflit avec ma version 2.2.0 installée précédemment car elles partagent le même répertoire de travail. Je déplace ce répertoire de travail et là plus de problème.
 
 {% img center /images/nantesjug/nov13/nantesjug-nov13-demo-7f.png %}
 
