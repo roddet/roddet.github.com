@@ -7,8 +7,8 @@ footer: false
 <div id="blog-archives">
 	<h2>2013</h2>
 	<article>
-		<h1>Workshop HTML5 #2 par GDGNantes et Stereolux (à venir)</h1>
-		<span>26 au 27 novembre, Nantes - France</span>
+		<h1><a href="/2013/12/nantesjs-gruntjs/">Nantes JS : Découverte de GruntJS</a></h1>
+		<span>19 novembre, Nantes - France</span>
 	</article>
 	<article>
 		<h1><a href="/blog/categories/jugnantesnov/">JUG Nantes : Du SQL Au NoSQL en Moins D'une Heure</a></h1>
