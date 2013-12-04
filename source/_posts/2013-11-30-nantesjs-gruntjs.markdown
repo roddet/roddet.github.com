@@ -479,7 +479,7 @@ Elles sont publiées [ici](http://slid.es/t8g/gruntjs).
 
 <iframe src="//slid.es/t8g/gruntjs/embed" width="800" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
-## Alors Grunt, qu'est-ce qu'on fait ?
+## En somme
 Par la richesse de son écosystème de plugins, [Grunt](http://gruntjs.com/) est l'outil du moment pour effectuer du _build_ côté front-end. Il est plutôt simple d'utilisation et offre de vraies opportunités de productivité dans le développement web. En donnant la possibilité d'avoir différents contextes d'exécution, il est pratique pour séparer les tâches de développement des tâches de constructions du livrable de production.
 
 [Grunt](http://gruntjs.com/) est très lié à l'environnement [NodeJS](http://nodejs.org/). Ce qui peut constituer un frein à son adoption pour les personnes évoluant dans d'autres écosystèmes.
@@ -489,7 +489,7 @@ Je pense que la gestion des erreurs de configuration de [Grunt](http://gruntjs.c
 
 [Grunt](http://gruntjs.com/) en tant qu'outil de build se prête bien à l'intégration continue. Alors il ne faut pas hésiter !
 
-C'était la première fois que j'assistais à une session du [Nantes JS](http://nantesjs.org/). Les organisateurs et les participants sont très accueillants, vous aviez une bière dans vos mains en guise de _bonjour_. Je vous recommande vivement ces soirées que ce soit pour la bière ou pour votre amour de javascript (oui il y en a qui aime) ;)
+C'était la première fois que j'assistais à une session du [Nantes JS](http://nantesjs.org/). Les organisateurs et les participants sont très accueillants, vous aviez une bière dans vos mains en guise de _bonsoir_. Je vous recommande vivement ces soirées que ce soit pour la bière ou pour votre amour de javascript (oui il y en a qui aime) ;)
 
 La prochaine soirée est prévue au mois de janvier, restez connecter via [@NantesJS](https://twitter.com/NantesJS).
 
