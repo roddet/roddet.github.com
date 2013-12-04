@@ -7,7 +7,7 @@ categories: nantesjs
 ---
 
 
-[Grunt](http://gruntjs.com/) est un outil permettant de lancer des tâches afin d'automatiser des traitements récurrents.
+[Grunt](http://gruntjs.com/) permet de lancer des tâches afin d'automatiser des traitements récurrents.
 Il se configure via l'écriture d'un code javascript.
 Il existe de nombreux outils permettant d'automatiser le lancement des tâches : [ANT](http://ant.apache.org/), [Maven](http://maven.apache.org/), [Gradle](http://www.gradle.org/), [SBT](http://www.scala-sbt.org/).
 La particularité de [Grunt](http://gruntjs.com/) par rapport aux autres outils est qu'il est conçu principalement pour traiter des tâches récurrentes du web : minification, optimisation des images, génération de sprites, compilation Sass/Less, etc.
@@ -198,7 +198,7 @@ La fonction `initConfig` crée les différentes configurations possibles. Ici la
 
 Dans la fonction d'exécution de la tâche _multitask1_, `this.target` contient le nom du contexte d'exécution et `this.data` contient les données associées.
 
-Exécuter la tâche _multitask1_ entraine son exécution pour les différents contextes d'exécution définis.
+Lancer la tâche _multitask1_ entraine son exécution pour les différents contextes d'exécution définis.
 
 ```
 >grunt multitask1
@@ -471,7 +471,7 @@ Regarder du côté du projet [async](https://github.com/caolan/async) pour ajout
 Que ce soit pour un site web statique ou pour exposer de la documentation, le plugin [grunt-carpenter](https://github.com/TxSSC/grunt-carpenter/) permet de générer un site web statique à partir de fichier markdown et HTML.
 
 ### Lancer des commandes
-Le plugin [grunt-shell](https://github.com/sindresorhus/grunt-shell) donne la possibilité de lancer des commandes dans le shell. Ce qui donne un degré de liberté important pour ordonnancer l'exécution des scripts ou même d'autres systèmes de build comme maven ;)
+Le plugin [grunt-shell](https://github.com/sindresorhus/grunt-shell) donne la possibilité de lancer des commandes dans le shell. Ce qui donne un degré de liberté important pour ordonnancer l'exécution des scripts ou même d'autres systèmes de _build_ ;)
 
 
 ## Les slides
@@ -487,9 +487,9 @@ Cette problématique n'est pas propre à [Grunt](http://gruntjs.com/). Les déve
 
 Je pense que la gestion des erreurs de configuration de [Grunt](http://gruntjs.com/) ou de ses plugins est perfectible. Durant le workshop, il m'est souvent arrivé d'écrire une configuration non autorisée sans qu'il n'y ait aucune erreur remontée. Par exemple, lorsque vous utiliser les _multi task_, il faut absolument déclarer au moins un contexte d'éxécution sinon la tâche déclarée ne sera pas exécutée même si vous l'appelez explicitement. Heureusement les erreurs de syntaxes sont plutôt bien remontées.
 
-[Grunt](http://gruntjs.com/) en tant qu'outil de build se prête bien à l'intégration continue. Alors il ne faut pas hésiter !
+[Grunt](http://gruntjs.com/) en tant qu'outil de _build_ se prête bien à l'intégration continue. Alors il ne faut pas hésiter !
 
-C'était la première fois que j'assistais à une session du [Nantes JS](http://nantesjs.org/). Les organisateurs et les participants sont très accueillants, vous aviez une bière dans vos mains en guise de _bonsoir_. Je vous recommande vivement ces soirées que ce soit pour la bière ou pour votre amour de javascript (oui il y en a qui aime) ;)
+C'était la première fois que je participais à une soirée du [Nantes JS](http://nantesjs.org/). Les organisateurs et les participants ont été très accueillants, vous aviez une bière dans vos mains en guise de _bonsoir_. Je vous recommande vivement ces soirées que ce soit pour la bière ou pour votre amour de javascript (oui il y en a qui aime) ;)
 
 La prochaine soirée est prévue au mois de janvier, restez connecter via [@NantesJS](https://twitter.com/NantesJS).
 
