@@ -155,7 +155,7 @@ Une question a été posée [Dominique](https://twitter.com/djocal) : est-ce que
 
 Les slides ne sont pas encore disponibles, je complèterai cet article dès leurs publications.
 
-## Et la soirée ? Elle continue ?
+## Et la soirée continue !
 La seconde partie de la soirée sera animée par [Jose Paumard](https://twitter.com/JosePaumard) avec sa session 
 
 {% blockquote %}
