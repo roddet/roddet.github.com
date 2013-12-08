@@ -7,6 +7,10 @@ footer: false
 <div id="blog-archives">
 	<h2>2013</h2>
 	<article>
+		<h1><a href="/blog/categories/jugnantesdec13/">JUG Nantes : Java 8 -> Lambdas, Streams Et Collectors</a></h1>
+		<span>4 décembre, Nantes - France</span>
+	</article>
+	<article>
 		<h1><a href="/2013/12/nantesjs-gruntjs/">Nantes JS : Découverte de GruntJS</a></h1>
 		<span>19 novembre, Nantes - France</span>
 	</article>
