@@ -107,7 +107,7 @@ Les différentes équipes projet qui travaillent sur des applications [Grails](h
 ## _Code first_ au lieu de _Schema first_
 [Grails](http://grails.org/) donne la possibilité de générer un schéma de base de données à partir des classes de _Domain_. Les développeurs ont pu montrer aux administrateurs des bases de données qu'un schéma généré par [Grails](http://grails.org/) est de bonne qualité.
 
-## Et l'IDE ? Ooopss, il en faut un pour développer ?
+## Et l'IDE ? Oups, il en faut un pour développer ?
 Les développeurs de [CBP Solutions](http://www.cbp-group.com/) sont globalement déçus de [GGTS](http://grails.org/products/ggts) : le _Groovy/Grails Tool Suite_. Il s'agit d'un [Eclipse](http://eclipse.org/) _re-packagé_ avec des plugins pour Groovy et [Grails](http://grails.org/).
 
 Quelques mésaventures :
@@ -122,8 +122,8 @@ Il y a des premiers retours positifs de l'IDE [Intellij IDEA](http://www.jetbrai
 Chez [CBP Solutions](http://www.cbp-group.com/), avec [Grails](http://grails.org/), un développeur a un environnement de développement opérationnel rapidement en 3 étapes depuis son IDE :
 
 * Récupération des sources d'un dépôt [Subversion](http://subversion.apache.org/).
-* Raffraichissement des dépendances (`grails refresh-dependencies`)
-* Lancerment de l'application (`grails run-app`)
+* Rafraichissement des dépendances (`grails refresh-dependencies`)
+* Lancement de l'application (`grails run-app`)
 
 [Grails](http://grails.org/) vient avec un serveur embarqué, pas besoin d'installer un serveur particulier pour développer.
 
@@ -137,7 +137,7 @@ Il est possible de faire du _Single-Page_. Vous continuer à profiter des levier
 Chez [CBP Solutions](http://www.cbp-group.com/), les applications sont faites en _Multi-Page_.
 
 ## Les tests c'est bien !
-Les applications [Grails](http://grails.org/) chez [CBP Solutions](http://www.cbp-group.com/) sont toutes dans le top 10 des applications ayant la meilleure couverture de code par les tests.
+Les 6 applications [Grails](http://grails.org/) chez [CBP Solutions](http://www.cbp-group.com/) sont toutes dans le top 10 des applications ayant la meilleure couverture de code par les tests.
  
 
 ## CBP, la suite...
@@ -148,10 +148,10 @@ Les applications [Grails](http://grails.org/) chez [CBP Solutions](http://www.cb
 * Explorer le parallélisme et mettre en place des tests de code Javascript
 
 ## En définitif
-[Dominique](https://twitter.com/djocal) a présenté le retour d'expérience au sein de [CBP Solutions](http://www.cbp-group.com/) de l'utilisation de [Grails](http://grails.org/). Il est surpris qu'il n'y ait pas un _tsunami_ de [Grails](http://grails.org/) dans les entreprises qui font de l'informatique de gestion. Il est pour lui inconcevable, aujourd'hui de partir sur un assemblage _maison_ de librairies (Spring + Hibernate + etc.). [Grails](http://grails.org/) propose un ensemble cohérent, productif, _clés en main_ pour construire des applications web, autant en profiter.
+[Dominique](https://twitter.com/djocal) a présenté son retour d'expérience au sein de [CBP Solutions](http://www.cbp-group.com/) de l'utilisation de [Grails](http://grails.org/). Il est surpris qu'il n'y ait pas un _tsunami_ de [Grails](http://grails.org/) dans les entreprises qui font de l'informatique de gestion. Il est pour lui inconcevable, aujourd'hui de partir sur un assemblage _maison_ de librairies (Spring + Hibernate + etc.). [Grails](http://grails.org/) propose un ensemble cohérent, productif, _clés en main_ pour construire des applications web, autant en profiter.
 
-Une question a été posée [Dominique](https://twitter.com/djocal) : est-ce que le côté _dynamique_ de Groovy n'était pas un problème car moins d'erreurs sont détectées à la compilation ? (je reformule avec mes mots ;)).
-[Dominique](https://twitter.com/djocal) va expliquer que ce risque est compensé par la grande couverture de code des applications permise par [Grails](http://grails.org/).
+Une question a été posée à [Dominique](https://twitter.com/djocal) : est-ce que le côté _dynamique_ de Groovy n'était pas un problème car moins d'erreurs sont détectées à la compilation ? (je reformule avec mes mots ;)).
+[Dominique](https://twitter.com/djocal) va expliquer que ce risque est compensé par la grande couverture de code par les tests permise par [Grails](http://grails.org/).
 
 Les slides ne sont pas encore disponibles, je complèterai cet article dès leurs publications.
 
