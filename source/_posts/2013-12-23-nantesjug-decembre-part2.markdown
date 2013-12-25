@@ -345,7 +345,7 @@ Les expressions _Lambda_ apporte la possibilité d'appliquer de nouveaux pattern
 ## Les slides
 Vous y trouverez des détails que je n'ai pas abordé pour rester synthétique :
 
-* Les méthodes par défaut des interfaces multiples entrainent la possibilité d'avoir un héritage multiple conflictuelle. Quelles sont les règles du compilateur ?
+* Des méthodes implémentées dans des interfaces entrainent la possibilité d'avoir un héritage multiple conflictuelle. Quelles sont les règles du compilateur ?
 * Des explications sur quelques classes du package _java.util.functions_
 * Les différents états d'un _Stream_ et leurs conséquences
 * La problématique des valeurs par défaut dans les réductions _max_ et _min_
