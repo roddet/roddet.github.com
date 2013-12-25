@@ -209,7 +209,7 @@ public interface MonInterface {
 ```
 
 ## L'API _Stream_
-Un _Stream_ sera défini comme une interface paramétrée construite à partir d'une source (une collection, un tableau, une source I/O) qui permet d'appliquer une expression _Lambda_ sur ses éléments.
+Un _Stream_ est défini comme une interface paramétrée construite à partir d'une source (une collection, un tableau, une source I/O) qui permet d'appliquer une expression _Lambda_ sur ses éléments.
 
 Comment construire un _Stream_ ?
 ```java
