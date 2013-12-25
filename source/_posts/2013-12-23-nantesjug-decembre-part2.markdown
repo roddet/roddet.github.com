@@ -6,7 +6,7 @@ comments: true
 categories: jugnantes jugnantesdec13
 ---
 
-La première partie de cet article est accessible [ici](/blog/).
+La première partie de cet article est accessible [ici](http://blog.roddet.com/2013/12/nantesjug-decembre-part1/).
 
 La deuxième partie de cette soirée du [JUG Nantes](http://nantesjug.org/) est consacrée à une présentation de Java 8 animée par [José Paumard](https://twitter.com/JosePaumard).
 
