@@ -15,13 +15,13 @@ Avant de rentrer dans le coeur de la présentation de [José](https://twitter.co
 ## Java 8 -> quoi de neuf ?
 Java 8 est une évolution majeure du langage Java.
 
-La liste complète des nouveautés peut être consultée [ici](http://openjdk.java.net/projects/jdk8/features).
-
-Elles peuvent être classées suivant plusieurs catégories pour les plus significatives : 
+Les nouveautés peuvent être classées suivant plusieurs catégories pour les plus significatives : 
 
 * **Nouveaux Projets** -> les nouvelles fonctionnalités assez structurantes pour être considérées comme des projets à part.
 * **Machine Virtuelle** -> des modifications du fonctionnement de la JVM et des travaux d'amélioration des performances.
 * **Core** -> nouveautés non structurantes du langage (ajout d'API, d'annotations, etc.).
+
+La liste complète des nouveautés : [ici](http://openjdk.java.net/projects/jdk8/features).
 
 Voici quelques nouveautés qui ont attiré mon attention.
 
@@ -29,7 +29,7 @@ Voici quelques nouveautés qui ont attiré mon attention.
 Deux projets :
 
 * Le [projet Lambda](http://openjdk.java.net/projects/lambda/) qui ajoute les _closures_ au langage Java. Il s'agit certainement de la fonctionnalité qui a le plus d'impact sur le langage. C'est le sujet principal de cette soirée.
-* Le [projet Nashorn](http://openjdk.java.net/projects/nashorn/) qui offre un moteur d'exécution Javascript sur la JVM. En prenant un raccourci, c'est du [NodeJS](http://nodejs.org/) mais sur la JVM.
+* Le [projet Nashorn](http://openjdk.java.net/projects/nashorn/) qui offre un moteur d'exécution Javascript sur la JVM.
 
 ## Java 8 -> Machine Virtuelle
 L'évolution la plus remarquable est [la suppression de la _Permanent Generation_](http://openjdk.java.net/jeps/122). Cette zone était utilisée par la JVM pour stocker les définitions des classes, méthodes, etc. Elle était bien distincte de la _Heap_ qui contient les instances des objets créées.
@@ -65,7 +65,7 @@ Avec Java 8, il est possible de créer un JAR exécutable JavaFX sans passer par
 Java 8 permettra d'écrire ce genre de chose :
 
 ```java
-new @Interned MaClasse();
+MaClasse m = new @Interned MaClasse();
 
 // ou encore
 String str = (@NotNull String) element;
@@ -174,7 +174,7 @@ public interface IntSupplier {
 }
 ```
 
-## Le nouveau package _java.util.functions_
+## Le nouveau package _java.util.function_
 Il contient des interfaces fonctionnelles usuelles utilisées pour représenter des expressions _Lambda_ en entrée et sortie de méthode.
 
 Les interfaces _Supplier_, _Consumer_, _BiConsumer_, _Function_, _BiFunction_, _Predicate_, _BiPredicate_ seront expliquées pendant la présentation.
@@ -182,9 +182,9 @@ Les interfaces _Supplier_, _Consumer_, _BiConsumer_, _Function_, _BiFunction_, _
 ## Des méthodes implémentées dans les interfaces
 Avec Java 8, il est possible d'exprimer une implémentation par défaut à une méthode d'une interface. C'est l'option qui a été choisie pour permettre d'ajouter des méthodes à des interfaces _historiques_ du JDK sans modifier toutes les classes des implémentations.
 
-Le mot clé `default` est utilisé pour définir une implémentation par défaut.
+Le mot clé _default_ est utilisé pour définir une implémentation par défaut.
 
-Exemple avec l'interface `Collection<E>` :
+Exemple avec l'interface _Collection<E>_ :
 
 ```java
 public interface Collection<E> {
@@ -267,7 +267,7 @@ Cette structure est utilisée pour modéliser une possible absence de résultat 
 
 Que peut-on faire avec un _Optional_ dans les mains ?
 
-Un exemple avec `OptionalInt` :
+Un exemple avec _OptionalInt_ :
 ```java
 OptionalInt opt = ...;
 
@@ -370,7 +370,7 @@ La réponse est probablement oui. C'est la première fois :
 
 ### _Lambda_ Java 8 et le debug ?
 
-Je trouve que le langage Java a une qualité formidable : une maintenance _possible_ sur une grosse volumétrie de code. Même sur des applications dites _legacy_ qui ont été développées de la pire des manières, j'ai toujours pu lancer l'application en debug, faire du pas à pas partout même dans les classes fournies par les librairies. Le côté impératif de la programmation fait clairement apparaître chaque étape du programme.
+Je trouve que le langage Java a une qualité : une maintenance _possible_ sur une grosse volumétrie de code. Même sur des applications dites _legacy_ qui ont été développées de la pire des manières, j'ai toujours pu lancer l'application en debug, faire du pas à pas partout même dans les classes fournies par les librairies. Le côté impératif de la programmation fait clairement apparaître chaque étape du programme.
 
 Avec Java 8, les applications vont de plus en plus ressembler à des enchainements de méthodes avec des expressions _Lambda_ en paramètres. Ce code séduisant va probablement poser des difficultés au debuggage. Va t-il falloir mettre les expressions _Lambda_ systématiquement sur plusieurs lignes pour permettre de faire du pas à pas ? Comment, pendant un debuggage, simuler l'exécution d'une opération sur un _Stream_ sans avoir à en créer un nouveau ? Aurons-nous toujours cette maintenance qui peut être pénible mais toujours possible avec une application qui vieillit avec des expressions _Lambda_ ? Peut-être tout simplement qu'il y aura moins de besoin d'utiliser un debugger ? A suivre ;)
 
