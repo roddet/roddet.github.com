@@ -8,7 +8,7 @@ categories: jugnantes jugnantesdec13
 
 La première partie de cet article est accessible [ici](/blog/).
 
-La 2nd partie de cette soirée du [JUG Nantes](http://nantesjug.org/) est consacrée à une présentation de Java 8 animée par [José Paumard](https://twitter.com/JosePaumard).
+La deuxième partie de cette soirée du [JUG Nantes](http://nantesjug.org/) est consacrée à une présentation de Java 8 animée par [José Paumard](https://twitter.com/JosePaumard).
 
 Avant de rentrer dans le coeur de la présentation de [José](https://twitter.com/JosePaumard), faisons un tour de ce que réserve Java 8.
 
