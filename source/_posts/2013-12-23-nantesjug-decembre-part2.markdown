@@ -15,7 +15,7 @@ Avant de rentrer dans le coeur de la présentation de [José](https://twitter.co
 ## Java 8 -> quoi de neuf ?
 Java 8 est une évolution majeure du langage Java.
 
-La liste complète des nouveautés peut être consulté [ici](http://openjdk.java.net/projects/jdk8/features).
+La liste complète des nouveautés peut être consultée [ici](http://openjdk.java.net/projects/jdk8/features).
 
 Elles peuvent être classées suivant plusieurs catégories pour les plus significatives : 
 
@@ -23,7 +23,7 @@ Elles peuvent être classées suivant plusieurs catégories pour les plus signif
 * **Machine Virtuelle** -> des modifications du fonctionnement de la JVM et des travaux d'amélioration des performances.
 * **Core** -> nouveautés non structurantes du langage (ajout d'API, d'annotations, etc.).
 
-Voici quelques nouveautés qui ont attirées mon attention.
+Voici quelques nouveautés qui ont attiré mon attention.
 
 ## Java 8 -> Nouveaux Projets
 Deux projets :
