@@ -368,10 +368,6 @@ La réponse est probablement oui. C'est la première fois :
 * que le langage fait une place aussi importante aux concepts de la programmation fonctionnelle.
 * qu'il y aura autant de changement dans le vocabulaire d'un développeur Java. Il parlera désormais avec des mots comme _map_, _filter_, _reduce_, _Supplier_, _Function_, _BiFunction_, _Consumer_, _BiConsumer_, etc. Y aura t-il une race d'intégriste qui va naitre dans la communauté Java comme les _Scalafistes_ de _Scala_ ? ;)
 
-### _Lambda_ Java 8 vs les langages alternatifs ?
-
-Les langages alternatifs (Scala, Groovy, etc.) de la JVM n'ont pas grand chose à envier aux expressions _Lambda_ de Java 8, ils vont déjà beaucoup plus loin depuis plusieurs années. Ils vont cependant probablement continuer à jalouser la base énorme d'utilisateurs qui reste fidèle à Java _Standard_ ;)
-
 ### _Lambda_ Java 8 et le debug ?
 
 Je trouve que le langage Java a une qualité formidable : une maintenance _possible_ sur une grosse volumétrie de code. Même sur des applications dites _legacy_ qui ont été développées de la pire des manières, j'ai toujours pu lancer l'application en debug, faire du pas à pas partout même dans les classes fournies par les librairies. Le côté impératif de la programmation fait clairement apparaître chaque étape du programme.
@@ -380,5 +376,12 @@ Avec Java 8, les applications vont de plus en plus ressembler à des enchainemen
 
 ### Fini les boucles _for_ pour les listes ?
 Les boucles _for_ servent souvent à itérer sur des listes d'éléments afin de les transformer (_map_), les filtrer (_filter_) et à faire des calculs (_reduce_). Les développeurs vont-ils privilégier l'utilisation des expressions _Lambda_ ?
+
+### _Lambda_ Java 8 vs les langages alternatifs ?
+Les langages alternatifs (Scala, Groovy, etc.) de la JVM n'ont pas grand chose à envier aux expressions _Lambda_ de Java 8, ils vont déjà beaucoup plus loin depuis plusieurs années. Ils vont cependant probablement continuer à jalouser la base énorme d'utilisateurs qui reste fidèle à Java _Standard_ ;)
+
+{% blockquote James Gosling, 1997 %}
+Java is a blue collar language. It's not PhD thesis material but a language for a job.
+{% endblockquote %}
 
 ### La date de sortie prévue de Java 8 est le 18/03/2014. Alors, impatient d'avoir Java 8 dans vos entreprises ?
