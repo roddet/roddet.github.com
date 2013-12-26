@@ -44,7 +44,7 @@ java.lang.OutOfMemoryError: PermGen space
         at java.lang.ClassLoader.defineClass(ClassLoader.java:620)
 ```
 
-Avec Java 8, dites adieu à cette erreur et à le paramétrage lié à la _Permanent Generation_.
+Avec Java 8, dites adieu à cette erreur et au paramétrage lié à la _Permanent Generation_.
 
 Cette évolution de la machine virtuelle est un des résultats de la convergence entre la machine virtuelle propriétaire d'Oracle [JRockit](http://www.oracle.com/technetwork/middleware/jrockit/overview/index-101826.html) et celle de la communauté : HotSpot. 
 En effet, [JRockit](http://www.oracle.com/technetwork/middleware/jrockit/overview/index-101826.html) est distribué avec le serveur d'application propriétaire d'Oracle [WebLogic](http://www.oracle.com/technetwork/middleware/weblogic/overview/index.html) et il a la particularité de ne pas avoir de _Permanent Generation_. Un bon signe pour la communauté ?
@@ -55,14 +55,14 @@ Quelques améliorations sont apportées au coeur du JDK.
 ### Une application JavaFX devient exécutable ([JEP 153](http://openjdk.java.net/jeps/153))
 Avant Java 8, pour rendre une application JavaFX exécutable depuis un JAR, il fallait faire deux choses : 
 
-* Créer une classe avec la méthode _public static void main(String[] args)_ qui contiendra du code d'initialisation de l'application JavaFX.
+* Créer une classe avec la méthode _public static void main(String[] args)_ qui contient du code d'initialisation de l'application JavaFX.
 * Référencer cette classe dans l'attribut _Main-Class_ du _Manifest_ du JAR. 
 
 Avec Java 8, il est possible de créer un JAR exécutable JavaFX sans passer par une classe avec une méthode _main_.
 
 
 ### Des annotations sur les types Java ([JEP 104](http://openjdk.java.net/jeps/104))
-Java 8 permettra d'écrire ce genre de chose :
+Java 8 permet d'écrire ce genre de chose :
 
 ```java
 MaClasse m = new @Interned MaClasse();
@@ -80,7 +80,7 @@ public void monitorTemperature() throws @Critical TemperatureException {...}
 La documentation officielle en version béta : [ici](http://docs.oracle.com/javase/tutorial/java/annotations/index.html). 
 
 ### Répéter des annotations ([JEP 120](http://openjdk.java.net/jeps/120))
-Avec Java 8, il sera possible d'écrire :
+Avec Java 8, il est possible d'écrire :
 
 ```java
 @Alert(role="Manager")
@@ -93,7 +93,7 @@ Plus de détails, [ici](http://docs.oracle.com/javase/tutorial/java/annotations/
 ### Accéder au nom des paramètres au runtime ([JEP 118](http://openjdk.java.net/jeps/118))
 L'idée ici est de stocker dans le _bytecode_ les noms des paramètres de méthodes ainsi que leurs types. Cette fonctionnalité pourrait apporter un vrai plus aux développeurs de librairies.
 
-Par exemple, on pourrait peut-être un jour rendre optionnel l'annotation _@PathParam_ de JAX-RS ;)
+Par exemple, l'annotation _@PathParam_ de JAX-RS pourrait être optionnelle avec un reconnaissance du nom du paramètre ;)
 
 ### Une nouvelle API pour les dates et les heures ([JEP 150](http://openjdk.java.net/jeps/150))
 Java 8 vient avec une nouvelle API pour les dates/heures qui se veut plus _clean_, _fluent_, _immutable_ et _extensible_.
@@ -105,7 +105,6 @@ LocalDate dans2ansMoins4jours = LocalDate.now().plusYears(2).minusDays(4);
 ```
 
 Documentation officielle en version béta : [ici](http://docs.oracle.com/javase/tutorial/datetime/index.html).
-
 
 ### Trie en parallèle des tableaux ([JEP 103](http://openjdk.java.net/jeps/103))
 Des méthodes sont ajoutées à la classe _java.util.Arrays_ :
@@ -338,7 +337,7 @@ Comparator<Person> comp = Comparator.comparing(Person::getLastName)
 ```
 
 ## Pourquoi des expressions _Lambda_ ?
-[José](https://twitter.com/JosePaumard) va expliquer que les expressions _Lambda_ n'ont pas été introduites dans Java 8 parce que c'est à la mode ou parce que le code écrit est plus compact.
+[José](https://twitter.com/JosePaumard) explique que les expressions _Lambda_ n'ont pas été introduites dans Java 8 parce que c'est à la mode ou parce que le code écrit est plus compact.
 
 Les expressions _Lambda_ apporte la possibilité d'appliquer de nouveaux patterns qui permettent de paralléliser simplement et de façon plus sûr des traitements.
 
@@ -346,7 +345,7 @@ Les expressions _Lambda_ apporte la possibilité d'appliquer de nouveaux pattern
 Vous y trouverez des détails que je n'ai pas abordé pour rester synthétique :
 
 * Des méthodes implémentées dans des interfaces entrainent la possibilité d'avoir un héritage multiple conflictuelle. Quelles sont les règles du compilateur ?
-* Des explications sur quelques classes du package _java.util.functions_
+* Des explications sur quelques classes du package _java.util.function_
 * Les différents états d'un _Stream_ et leurs conséquences
 * La problématique des valeurs par défaut dans les réductions _max_ et _min_
 * Une utilisation plus avancée de la classe _Collectors_
