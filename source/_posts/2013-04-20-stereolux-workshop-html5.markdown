@@ -58,7 +58,7 @@ Vous pouvez récupérer la dernière version de NodeJS : [http://nodejs.org/](ht
 * Par Google
 
 ## Récupérer les sources
-Les sources du Workshop ont été publiées sur Github : [https://github.com/antoine-richard/angular-movie-workshop](https://github.com/antoine-richard/angular-movie-workshop). Vous pouvez naviguer à travers les branches pour voir les changements entre les différentes étapes.
+Les sources du Workshop ont été publiées sur Github : [https://github.com/antoine-richard/angular-movie-workshop-early2013](https://github.com/antoine-richard/angular-movie-workshop-early2013). Vous pouvez naviguer à travers les branches pour voir les changements entre les différentes étapes.
 
 ```
 git clone https://github.com/antoine-richard/angular-movie-workshop
@@ -156,7 +156,7 @@ Ce développement va être fait en plusieurs étapes :
 ### Récupérer les sources
 {% codeblock %}
 {% raw %} 
-git clone https://github.com/antoine-richard/angular-movie-workshop -b step-0
+git clone https://github.com/antoine-richard/angular-movie-workshop-early2013 -b step-0
 {% endraw %} 
 {% endcodeblock %}
 
@@ -657,7 +657,7 @@ Deux choses à noter :
 AngularJS intègre la possibilité d'appliquer des animations CSS. Cette fonctionnalité n'est accessible actuellement qu'en béta (version 1.1.4).
 
 ### Récupérer la version béta d'AngularJS et remplacer le fichier app/lib/angular.js
-[AngularJS v1.1.4 béta](https://github.com/antoine-richard/angular-movie-workshop/raw/step-6/app/lib/angular.js)
+[AngularJS v1.1.4 béta](https://github.com/antoine-richard/angular-movie-workshop-early2013/raw/step-6/app/lib/angular.js)
 
 
 ### Ajouter le fichier ```app/css/animation.css```
@@ -824,10 +824,10 @@ Voilà Samuel L. Jackson, un acteur au-dessus des autres, bien mis en valeur :)
 ## Le code complet
 {% codeblock %}
 {% raw %} 
-git clone https://github.com/antoine-richard/angular-movie-workshop -b step-7
+git clone https://github.com/antoine-richard/angular-movie-workshop-early2013 -b step-7
 {% endraw %} 
 {% endcodeblock %}
-ou via l'interface web de Github [https://github.com/antoine-richard/angular-movie-workshop/tree/step-7](https://github.com/antoine-richard/angular-movie-workshop/tree/step-7)
+ou via l'interface web de Github [https://github.com/antoine-richard/angular-movie-workshop-early2013/tree/step-7](https://github.com/antoine-richard/angular-movie-workshop-early2013/tree/step-7)
 
 ## Le mot de la fin d'[Antoine Richard](https://twitter.com/richard_antoine)
 
@@ -837,7 +837,7 @@ ou via l'interface web de Github [https://github.com/antoine-richard/angular-mov
 ## Liens utiles
 
 * [Photos de l'événement](https://plus.google.com/events/c05p73b1ufl9n1d5uvgaepf3dhg)
-* [Les sources Workshop AngularJS](https://github.com/antoine-richard/angular-movie-workshop)
+* [Les sources Workshop AngularJS](https://github.com/antoine-richard/angular-movie-workshop-early2013)
 * [Les sources Workshop CSS 3](https://github.com/jbodet/winteriscoming)
 * [Les ressources Workshop WebGL](http://animateyourhtml5.appspot.com/)
 
