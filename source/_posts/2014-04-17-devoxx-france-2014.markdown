@@ -1,0 +1,96 @@
+---
+layout: post
+title: "Devoxx France 2014"
+date: 2014-04-17 21:41
+comments: true
+categories: devoxx devoxxfr14
+---
+
+Nous sommes le 17 avril, il est 6h30, je quitte la gare de Nantes pour Paris.
+Je ne suis pas au meilleur de ma forme, j'ai travaillé la veille en journée pour un client et le soir pour l'organisation JCertif.
+Mais en pensant à ce que j'allais faire à Paris, je regagnais tout de suite de l'énergie.
+
+
+## Pourquoi se lever aussi tôt pour aller à Paris ?
+Je me suis levé tôt pour participer aux 2 journées de conférence de l'événement [Devoxx France 2014](http://www.devoxx.fr/).
+[J'y étais l'année dernière](http://blog.roddet.com/blog/categories/devoxxfr2013/) et je tenais à réitérer l'aventure.
+Les événements IT en général et Devoxx en particulier sont des occasions de gains de connaissances et de temps inestimables.
+
+Un sujet que vous n'avez jamais le temps de creuser y sera  :
+
+* structuré : il est parfois difficile de s'y retrouver sur un sujet (des informations en vrac sur la toile).
+Une conférence est l'occasion de se voir présenter des informations de façon structurée, digeste.
+Vous apprenez quelque chose avec une logique proposée par l'auteur.
+
+* compilé : un conférencier, s'il fait bien son travail, se base généralement sur plusieurs sources d'informations pour construire sa présentation.
+Cela permet généralement de recueillir l'essentiel de différentes sources.
+
+* animé : un sujet que vous pensez sans intérêt peut devenir durant une conférence, un sujet intéressant par le jeu d'animation du présentateur.
+Ce dernier peut vous communiquer sa passion et je vous garantis qu'une passion est très contagieuse.
+L'animation du conférencier permet d'éveiller en vous des rêves, de stimuler vos ambitions.
+
+* croisé : une session inclut généralement une période de questions/réponses.
+C'est l'occasion d'assister à des échanges intéressants entre passionnés.
+Vous récolterez également des points de vue différents de celui du conférencier chez vos voisins dans la salle ou bien plus tard quelque part dans les locaux de l'événement.
+
+Alors imaginez la richesse que représenterait environ 130 présentations.
+C'est cela Devoxx France 2014.
+Et voilà pourquoi je me lève tôt ce 17 avril 2014.
+
+J'arrive sur les lieux de l'événement, je récupère mon badge d'entrée, je prends plusieurs cafés. C'est parti pour Devoxx France !
+
+La salle est pleine.
+
+Oui nous sommes nombreux à avoir eu la même idée ce jour-là.
+
+{% img center /images/devoxxfr14/j1-keynote-ere-numerique.jpg %}
+
+Mon parcours Devoxx France 2014 :
+
+* Keynote - L'Ere du numérique avec [Gilles Babinet](https://twitter.com/@babgi) et [Kwame Yamgnane](https://twitter.com/Kwame42).
+* Keynote - Le métier de développeur avec [Guy MAMOU-MANI](https://twitter.com/guy_mm).
+* Keynote - Simplon avec [Henri Fournet](http://cfp.devoxx.fr/devoxxfr2014/speaker/0b184f6351dd6b6aababf8817a477c2cb2e2bb3a/Henri%20Fournet).
+* Realtime Web avec Akka, Kafka, Spark et Mesos avec [Hayssam Saleh](https://twitter.com/@hayssams) et [Jean-Philippe Bunaz](https://twitter.com/@jpbunaz).
+* The reactive Backup talk avec [James Ward](https://twitter.com/@_JamesWard).
+* [Au secours mon code AngularJS est pourri !](http://t.co/TxUJwHaWoo) avec [Thierry Chatel](https://twitter.com/ThierryChatel).
+* Vive les WebSockets Libres avec [Jean-François Arcand](https://twitter.com/jfarcand).
+* [Des applications réactives avec Spring, AngularDart et Websocket](https://speakerdeck.com/sdeleuze/reactive-applications-with-spring-angulardart-and-websocket) avec [Sébastien Deleuze](https://twitter.com/@sdeleuze).
+* [BitCoin et monnaies cryptographiques](http://paulgreg.me/bitcoin-cryptocurrencies/) avec [Grégory Paul](https://twitter.com/@paulgreg).
+* Basses latences, hauts débits : les secrets de la finance pour avoir des systèmes réactifs avec [Cyrille DUPUYDAUBY](https://twitter.com/@cyrdup) et [Thomas Pierrain](https://twitter.com/@tpierrain).
+* [Lambda Architecture - Choose your tools for Real-Time Big Data](http://www.slideshare.net/Dataiku/dataiku-devoxx-lambda-architecture-choose-your-tools) avec [Florian Douetteau](https://twitter.com/@fdouetteau).
+* [Web performances, regardons les résultats de près](https://github.com/devoxx2014-webperf/the_slides/blob/master/Devoxx%20France%202014%20Web%20Performances.pdf?raw=true) avec [Jeff MAURY](https://twitter.com/@jeffmaury), [Nicolas Leroux](https://twitter.com/@NicolasLeroux), [Philippe Charrière](https://twitter.com/@k33g_org), [Rémi Forax](http://forax.github.io/).
+* Google Cast Development - Lessons Learned avec [Hoi Lam](https://twitter.com/@hcl21).
+* JavaScript, the next big ... bytecode avec [Mathieu Breton](https://twitter.com/@MatBreton).
+* [Groovy en 2014 et au-delà](https://speakerdeck.com/glaforge/groovy-in-2014-and-beyond-at-devoxx-france) avec [Guillaume Laforge](https://twitter.com/glaforge).
+
+Plutôt que de vous ennuyer avec les détails de chaque session, je vais plutôt vous résumer ce que je retiens de mon expérience Devoxx France.
+
+## Le métier de développeur
+
+## Les tendances technologiques
+Je retiens de Devoxx France, une chose : le big data !
+
+
+
+
+
+
+## Bilan
+Quand on sort d'un événement comme Devoxx où l'on passe sa journée dans des sessions, il est important de faire un bilan.
+Au delà des détails technologiques, voici les tendances que je note :
+
+* Les patterns de programmation réactives sont très côtés en ce moment.
+Je me rends compte à quel point, le [Reactive Manifesto](http://www.reactivemanifesto.org/) publié par [TypeSafe](https://typesafe.com/) a eu un impact certain parmi les développeurs.
+De nombreuses conférences portaient le mot réactif dans leur titre ou dans leur contenu.
+
+* Le Big Data c'est maintenant et ça fait naitre
+
+
+Je remercie au passage [SQLI](http://www.sqli.com/) de me financer chaque année les frais de participation. Ca fait plaisir !
+
+Beaucoup d'autres blogs parlent de Devoxx France 2014, voici quelques liens :
+
+* [Java mind](http://javamind-fr.blogspot.fr/search/label/Devoxx%20Fr)
+* [Java & Moi](http://javaetmoi.com/2014/04/14-prises-de-notes-a-devoxx-france-2014/)
+*
+
