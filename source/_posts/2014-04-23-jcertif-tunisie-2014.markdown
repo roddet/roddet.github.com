@@ -37,6 +37,7 @@ La matinée se poursuit avec une présentation de [Thibault Vicent](http://www.t
 
 L'après-midi laissera la place aux Workshops suivants :
 
+* Initiation à Java avec [Ouijden Dhemaid](http://www.linkedin.com/profile/view?id=48873830&locale=fr_FR&trk=tyah&trkInfo=tarId%3A1398674609090%2Ctas%3AOuijden%20Dhemaid%2Cidx%3A1-1-1)
 * Ext JS avec [Roland Chrisbel](https://twitter.com/ChrisbelM)
 * JEE Open ORM Alternatives : UPA as a challenger avec [Taher Ben Saleh](https://www.linkedin.com/profile/view?trk=tyah&trkInfo=tarId%3A1398431808806%2Ctas%3Ataha%2Cidx%3A1-2-2&locale=en_US&id=24099487)
 * Ubuntu Touch avec [Ahmed Segaire](https://www.facebook.com/neo31?fref=ts)
@@ -121,9 +122,9 @@ Vous pouvez trouver plus de photos sur la [page Facebook de l'événement](https
 
 Les prochains événements JCertif :
 
-* JCertif Côté d'Ivoire : du 10 au 12 juillet
-* JCertif Cameroun : du 19 au 20 juillet
-* JCertif Congo : du 8 au 14 septembre
+* JCertif Côté d'Ivoire : du 10 au 12 juillet 2014
+* JCertif Cameroun : du 19 au 20 juillet 2014
+* JCertif Congo : du 8 au 14 septembre 2014
 * ...+ d'autres à venir ;)
 
 Vous souhaitez faire parti de l'aventure et être partenaire d'un
