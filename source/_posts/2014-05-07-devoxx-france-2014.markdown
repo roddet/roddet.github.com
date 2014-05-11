@@ -1,0 +1,190 @@
+---
+layout: post
+title: "Devoxx France 2014, ce que je retiens !"
+date: 2014-05-07 21:41
+comments: true
+categories: devoxxfr14
+---
+
+Les 17 et 18 avril dernier, j'étais aux 2 journées de conférence de [Devoxx France 2014](http://www.devoxx.fr/).
+
+## Nous étions nombreux à avoir eu la même idée !
+
+{% img center /images/devoxxfr14/j1-keynote-ere-numerique.jpg %}
+
+## Mon parcours
+J'ai pu participer aux sessions suivantes :
+
+* Keynote - L'Ere du numérique avec [Gilles Babinet](https://twitter.com/@babgi) et [Kwame Yamgnane](https://twitter.com/Kwame42).
+* Keynote - Le métier de développeur avec [Guy MAMOU-MANI](https://twitter.com/guy_mm).
+* Keynote - Simplon avec [Henri Fournet](http://cfp.devoxx.fr/devoxxfr2014/speaker/0b184f6351dd6b6aababf8817a477c2cb2e2bb3a/Henri%20Fournet).
+* Realtime Web avec Akka, Kafka, Spark et Mesos ([slides](http://www.slideshare.net/hayssamsaleh1/realtime-web-avec-kafka-spark-et-mesos)) avec [Hayssam Saleh](https://twitter.com/@hayssams) et [Jean-Philippe Bunaz](https://twitter.com/@jpbunaz).
+* The reactive Backup talk avec [James Ward](https://twitter.com/@_JamesWard).
+* Au secours mon code AngularJS est pourri ! ([slides](http://t.co/TxUJwHaWoo)) avec [Thierry Chatel](https://twitter.com/ThierryChatel)).
+* Vive les WebSockets Libres avec [Jean-François Arcand](https://twitter.com/jfarcand).
+* Des applications réactives avec Spring, AngularDart et Websocket ([slides](https://speakerdeck.com/sdeleuze/reactive-applications-with-spring-angulardart-and-websocket)) avec [Sébastien Deleuze](https://twitter.com/@sdeleuze).
+* BitCoin et monnaies cryptographiques ([slides](http://paulgreg.me/bitcoin-cryptocurrencies/)) avec [Grégory Paul](https://twitter.com/@paulgreg).
+* Basses latences, hauts débits : les secrets de la finance pour avoir des systèmes réactifs ([slides](http://www.slideshare.net/ThomasPierrain/faible-latence-haut-debit-devoxxfr-2014-34262360)) avec [Cyrille DUPUYDAUBY](https://twitter.com/@cyrdup) et [Thomas Pierrain](https://twitter.com/@tpierrain).
+* Lambda Architecture - Choose your tools for Real-Time Big Data ([slides](http://www.slideshare.net/Dataiku/dataiku-devoxx-lambda-architecture-choose-your-tools)) avec [Florian Douetteau](https://twitter.com/@fdouetteau).
+* Web performances, regardons les résultats de près ([slides](https://github.com/devoxx2014-webperf/the_slides/blob/master/Devoxx%20France%202014%20Web%20Performances.pdf?raw=true)) avec [Jeff MAURY](https://twitter.com/@jeffmaury), [Nicolas Leroux](https://twitter.com/@NicolasLeroux), [Philippe Charrière](https://twitter.com/@k33g_org), [Rémi Forax](http://forax.github.io/).
+* Google Cast Development - Lessons Learned avec [Hoi Lam](https://twitter.com/@hcl21).
+* JavaScript, the next big ... bytecode ([slides](http://fr.slideshare.net/MathieuBreton1/javascript-thenextbigbytecode)) avec [Mathieu Breton](https://twitter.com/@MatBreton).
+* Groovy en 2014 et au-delà ([slides](https://speakerdeck.com/glaforge/groovy-in-2014-and-beyond-at-devoxx-france)) avec [Guillaume Laforge](https://twitter.com/glaforge).
+
+Plutôt que de vous ennuyer avec les détails de chaque session, je vais plutôt partager ce que je retiens réellement de Devoxx France 2014.
+
+Commençons par les news.
+
+## Le mouvement CodeForFrance
+[Tarik Rim](https://twitter.com/tariqkrim) a présenté le mouvement [Code for France](http://www.codeforfrance.org) avec son slogan  : "La France a besoin d'un update".
+Ce mouvement est directement inspiré des US qui ont un [CODE for AMERICA](http://codeforamerica.org).
+Le principe : les membres du mouvement unissent leurs forces pour mettre aux normes actuelles les différents sites web d'utilité publique.
+
+Vous pouvez suivre l'actualité du mouvement soit via [Twitter](https://twitter.com/codeforfrance) soit [en vous inscrivant avec votre compte Github](http://www.codeforfrance.org).
+
+
+## Reactive Streams
+[James Ward](https://twitter.com/@_JamesWard) a annoncé, durant son talk, le lancement de [Reactive Streams](http://www.reactive-streams.org).
+Il s'agit d'une initiative visant à standardiser les traitements asynchrones de flux sur la JVM.
+Les grands noms de la JVM sont contributeurs du projet : [Oracle](), [RedHat](), [Twitter](), [TypeSafe](http://typesafe.com), [Pivotal](), [Netflix](), etc.
+L'objectif est, à terme, d'intégrer ces travaux dans une future version du JDK.
+
+Un premier brouillon de la spécification est disponible. Si vous souhaitez vous lancer, vous pouvez parcourir les sources du projet sur [Github](https://github.com/reactive-streams/reactive-streams).
+
+Un article d'InfoQ est disponible sur le sujet : [Les Reactive Streams avec Akka Streams](http://www.infoq.com/fr/news/2014/05/reactive-streams-akka-streams).
+
+
+Abordons à présent les tendances technologiques.
+
+## La réactivité c'est maintenant !
+Devoxx France 2014 a comporté de nombreux talks avec le mot magique "réactif" :
+[Les Applications Réactives : un nouveau paradigme pour relever les défis de l'économie numérique](http://cfp.devoxx.fr/devoxxfr2014/talk/SAC-948/Les%20Applications%20Réactives%20:%20un%20nouveau%20paradigme%20pour%20relever%20les%20défis%20de%20l'économie%20numérique.),
+[Building Reactive Apps](http://cfp.devoxx.fr/devoxxfr2014/talk/KYH-943/The%20Reactive%20Backup%20talk),
+[Reactive Angular](http://cfp.devoxx.fr/devoxxfr2014/talk/WDJ-026/Reactive%20Angular),
+[Des applications réactives avec Spring, AngularDart et Websocket](http://cfp.devoxx.fr/devoxxfr2014/talk/FCN-711/Des%20applications%20réactives%20avec%20Spring%204,%20AngularDart%20et%20Websocket),
+[Basses latences, hauts débits : les secrets de la finance pour avoir des systèmes réactifs](http://www.slideshare.net/ThomasPierrain/faible-latence-haut-debit-devoxxfr-2014-34262360), etc.
+
+Donc si vous souhaitez être "tendance" aujourd'hui, soyez "réactif" ! Ca y est c'est le moment !
+
+## Le Big Data, le driver technologique
+Devoxx France 2014 m'a conforté dans l'idée que j'avais du Big Data comme moteur des nouvelles architectures et des nouvelles technologies.
+
+Le Big Data est arrivé avec des techniques qui lui étaient indispensable (NoSQL, Scalabilité horizontale, parallélisme, cloud, etc.) et finalement ces techniques sont en train de gagner peu à peu les projets Small Data ou Big Code.
+
+Prenons l'exemple du NoSQL.
+Je me rappelle encore il y a quelques années, le NoSQL était présenté comme une solution en réponse aux limites des bases de données relationnelles.
+Le discours a, depuis, bien évolué et d'autres atouts ont apparu. L'accroche de [MongoDB](http://www.mongodb.org) c'est "Agile et Scalable" (noter bien le "Agile" en premier).
+Aujourd'hui, le NoSQL séduit de plus en plus, je vous invite à visiter la page [MongoDB Production Deployments](http://www.mongodb.org/about/production-deployments/) et à scroller jusqu'à ce que vous en ayez marre :)
+Et ce ne sont pas tous des projets avec des données monstrueuses.
+
+Le Big Data encourage l'application [des principes de programmation réactive](http://www.reactivemanifesto.org) et nous voilà tous plonger dedans en ce moment.
+
+Le Big Data possède encore de nombreuses ressources qui sont encore à bonnes distances des projets habituels d'entreprise.
+Si vous souhaitez avoir une vision générale des briques et des outils du domaine, je vous recommande le talk _Lambda Architecture - Choose your tools for Real-Time Big Data_ ([slides](http://www.slideshare.net/Dataiku/dataiku-devoxx-lambda-architecture-choose-your-tools)) avec [Florian Douetteau](https://twitter.com/@fdouetteau).
+
+Pour un retour d'expériences, regarder plutôt du côté de _Realtime Web avec Akka, Kafka, Spark et Mesos_ ([slides](http://www.slideshare.net/hayssamsaleh1/realtime-web-avec-kafka-spark-et-mesos)).
+
+Il y a probablement dans ces outils des fondements de ce qui va devenir la norme de demain et tout le monde sait que demain c'est aujourd'hui :)
+
+## Frontend/Javascript
+J'ai vécu Devoxx France 2013 comme un événement qui criait  :
+
+{% blockquote Ma perception Frontend Devoxx France 2013 %}
+Javascript c'est cool, c'est prêt pour l'entreprise ! Vas-y mon ami !
+{% endblockquote %}
+
+Il y avait plusieurs sessions dans ce sens :
+[Frontend live Coding](http://www.devoxx.com/display/FR13/Frontend+Live+Coding+++Tour+d%27horizon+de+l%27outillage+et+des+technos+web+d%27aujourd%27hui),
+[AngularJS, ou le futur du développement web](http://www.devoxx.com/display/FR13/AngularJS%2C+ou+le+futur+du+developpement+Web),
+[Du Javascript Propre ? Challenge Accepted](http://www.devoxx.com/display/FR13/Du+Javascript+propre+++Challenge+Accepted), etc.
+
+Sur l'axe Frontend, j'ai vu Devoxx France 2014 comme un événement qui criait cette fois-ci :
+
+{% blockquote Ma perception Frontend Devoxx France 2014 %}
+Maintenant que vous avez adopté Javascript, vous savez, dans Javascript il y a aussi "The Bad Parts". Jettez un oeil aux alternatives, on ne sait jamais ;)
+{% endblockquote %}
+
+La session _JavaScript, the next big ... bytecode_ ([slides](http://fr.slideshare.net/MathieuBreton1/javascript-thenextbigbytecode)) est très intéressante sur ce sujet.
+Vous apprendrez  :
+
+* qu'il y a plus de 170 langages/transpileurs qui génèrent du JavaScript.
+* Les leaders de la transpilation sont : [TypeScript](http://www.typescriptlang.org), [CoffeeScript](http://coffeescript.org), [Dart](https://www.dartlang.org),
+[ASM.JS](http://asmjs.org)
+* [Dart](https://www.dartlang.org) est le plus complet, [ASM.JS](http://asmjs.org) très prometteur, [TypeScript](http://www.typescriptlang.org) utilisable à court terme et [CoffeeScript](http://coffeescript.org) utilisable mais attention aux erreurs trop fréquentes de syntaxe.
+
+Je note l'opération séduction de [Dart](https://www.dartlang.org) qui met sur la table les atouts suivants :
+
+* Je suis un langage typé comme Java, tu connais Java ? Viens, je te promets que ça sera facile !
+* Je suis nativement [plus performant que Javascript](https://www.dartlang.org/performance/).
+Je serai un jour dans Chrome, donc tu pourras m'utiliser directement pour bénéficier de mes performances.
+* Je vais devenir [un standard un jour](http://www.ecma-international.org/memento/TC52.htm). Je rêve secrètement que Firefox, Safari et Internet Explorer m'implémente ;)
+* N'aies pas peur de moi, je sais [transpiler du javascript comme tout le monde](https://www.dartlang.org/tools/dart2js/).
+* Hey ! Tu aimes AngularJS ? Moi aussi [je sais faire !](https://angulardart.org).
+
+Si vous vous êtes lancé sur des projets AngularJS, les slides de la session _Au secours mon code AngularJS est pourri !_ ([slides](http://t.co/TxUJwHaWoo)) va vous intéresser.
+Vous y trouverez un recueil de bonnes pratiques applicables immédiatement.
+
+
+## Les performances
+J'ai suivi deux talks qui faisaient un focus sur les performances :
+
+_Web performances, regardons les résultats de près_ ([slides](https://github.com/devoxx2014-webperf/the_slides/blob/master/Devoxx%20France%202014%20Web%20Performances.pdf?raw=true)).
+
+Une application est réalisée avec différentes technologies (Java EE/JAX-RS, NodeJS/Express, Play2/Scala, Undertow, Vertx, Finatra) puis des tests de charge sont réalisés sur chaque implémentation.
+Ce que je retiens de ce talk :
+
+* Il faut faire très attention aux API utilisés.
+Pour l'application NodeJS, utiliser ```res.send(movies)``` à la place de ```res.sendfile(...)``` rendait l'application environ 14 fois moins performante.
+* Lors d'un test de charge, n'ayez pas l'injecteur et l'application sur la même machine. Les résultats seront probablement très éloignés de la réalité.
+* Gatling c'est super ! Ca je le savais déjà ;)
+* Contrairement à ce que pensaient les participants, Java EE/JAX-RS est très performant et a remporté quelques combats.
+* Je regrette que les ressources n'aient pas été monitorées pour avoir une idée des différences de consommation.
+
+
+_Basses latences, hauts débits : les secrets de la finance pour avoir des systèmes réactifs_ ([slides](http://www.slideshare.net/ThomasPierrain/faible-latence-haut-debit-devoxxfr-2014-34262360)).
+
+Il s'agit là d'un talk de très bonne qualité qui présente :
+
+* L'essentiel des métiers de la finance
+* Différentes approches qui ne fonctionnent pas toujours pour supporter du haut débit : mono thread, un thread par élément, un pool de thread, multi tasks / thread pool.
+* Le [pattern sequencer](http://dupdob.wordpress.com/2014/04/18/sequencer/), la notion de conflation
+* Une dose de [principes réactifs](http://www.reactivemanifesto.org).
+
+## La révolution Docker
+Je n'ai pas pu participer à la session _La révolution Docker_ ([slides](http://www.slideshare.net/ndeloof/la-revolution-docker)).
+Cette session était très attendue, la salle était pleine avant le début de la session.
+
+[Docker](https://www.docker.io/) est donc un outil qu'il faut regarder de près aujourd'hui.
+Vous pouvez une introduction à Docker sur le blog [Le Touilleur Express](http://www.touilleur-express.fr/2014/05/03/docker-un-outil-simple-et-genial/).
+
+Si vous venez au [BreizhCamp 2014](www.breizhcamp.org) prochain, il y aura une session [Demarrer avec Docker](http://www.breizhcamp.org/programme/).
+
+## Java & Co, l'heure est à la simplification !
+Comme le montre mon parcours, je n'ai pas participer à beaucoup de sessions sur Java ou Java EE ou Spring ou etc.
+Je profite généralement des conférences pour élargir mes horizons.
+Etant présent à la conférence et pour avoir parcouru plusieurs fois le programme, j'ai tout de même un ressenti.
+
+Le moment est venu de faire simple avec Java.
+Il est temps de s'attaquer à la complexité de démarrer un projet Java et surtout de réaliser des applications simples sans sortir l'artillerie lourde.
+Il y avait déjà des existants comme [Play! Framework](http://www.playframework.com/) et cette tendance se poursuit.
+
+Le projet [Spring Boot](http://projects.spring.io/spring-boot/) a cet objectif et se veut être le produit phare du moment dans l'écosystème Spring.
+Voici [une classe Java](https://github.com/joshlong/ws.tagit/blob/master/service/src/main/java/ws/tagit/Application.java),
+avec une méthode main qui démarre un container (tomcat ou jetty),
+expose un service REST sécurisé par OAuth et avec le support de CORS,
+gère les accès à la base de données.
+Le tout en moins de 300 lignes de code (pour Java c'est révolution !)
+On peut donc dès aujourd'hui avoir des applications simples, utiles qui tiennent raisonnablement dans un seul fichier !
+
+[Xavier Hanin](https://twitter.com/xavierhanin) a présenté le framework [RESTX](http://restx.io/).
+Ce framework regroupe pleins de bonnes idées pour développement des services REST : le rechargement à chaud, des outils pour tester ses services REST, une configuration avancée par annotation, des jeux de données fournies par le framework, etc.
+
+[José Paumard](https://twitter.com/JosePaumard) a présenté _50 nouvelles choses que l'on peut faire avec Java 8_ ([slides](http://www.slideshare.net/jpaumard/50-nouvelles-choses-que-lon-peut-faire-avec-java-8)).
+Java 8 vient simplifier beaucoup de choses : les dates, les manipulations de collections, traitements parallèles, etc.
+
+Si vous travailler avec Java au quotidien, votre nouveau défi est à présent de faire simple après avoir fait très très compliqué !
+
+## D'autres ressources ?
+Consulter la page suivante : [Ils ont parlé de nous](http://www.devoxx.fr/2014/05/ils-ont-parle-de-nous/).
+
+

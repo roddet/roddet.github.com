@@ -6,9 +6,13 @@ footer: false
 
 <div id="blog-archives">
 	<h2>2014</h2>
-	<article>
-    	<h1><a href="/2014/04/jcertif-tunisie-2014/">JCertif Tunisie 2014</a></h1>
-    	<span>19 au 20 avril 2014, Sousse - Tunisie</span>
+    <article>
+        <h1><a href="/2014/04/jcertif-tunisie-2014/">JCertif Tunisie 2014</a></h1>
+        <span>19 au 20 avril 2014, Sousse - Tunisie</span>
+    </article>
+    <article>
+        <h1><a href="/2014/05/devoxx-france-2014/">Devoxx France 2014</a></h1>
+        <span>16 au 18 avril 2014, Paris - France</span>
     </article>
     <h2>2013</h2>
 	<article>
