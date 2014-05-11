@@ -160,20 +160,20 @@ Vous pouvez une introduction à Docker sur le blog [Le Touilleur Express](http:/
 Si vous venez au [BreizhCamp 2014](www.breizhcamp.org) prochain, il y aura une session [Demarrer avec Docker](http://www.breizhcamp.org/programme/).
 
 ## Java & Co, l'heure est à la simplification !
-Comme le montre mon parcours, je n'ai pas participer à beaucoup de sessions sur Java ou Java EE ou Spring ou etc.
+Comme le montre mon parcours, je n'ai pas participé à beaucoup de sessions sur Java ou Java EE ou Spring ou etc.
 Je profite généralement des conférences pour élargir mes horizons.
 Etant présent à la conférence et pour avoir parcouru plusieurs fois le programme, j'ai tout de même un ressenti.
 
 Le moment est venu de faire simple avec Java.
 Il est temps de s'attaquer à la complexité de démarrer un projet Java et surtout de réaliser des applications simples sans sortir l'artillerie lourde.
-Il y avait déjà des existants comme [Play! Framework](http://www.playframework.com/) et cette tendance se poursuit.
+Il y a déjà des existants comme [Play! Framework](http://www.playframework.com/) et cette tendance se poursuit.
 
 Le projet [Spring Boot](http://projects.spring.io/spring-boot/) a cet objectif et se veut être le produit phare du moment dans l'écosystème Spring.
 Voici [une classe Java](https://github.com/joshlong/ws.tagit/blob/master/service/src/main/java/ws/tagit/Application.java),
-avec une méthode main qui démarre un container (tomcat ou jetty),
+avec une méthode _main()_ qui démarre un container (tomcat ou jetty),
 expose un service REST sécurisé par OAuth et avec le support de CORS,
 gère les accès à la base de données.
-Le tout en moins de 300 lignes de code (pour Java c'est révolution !)
+Le tout en moins de 300 lignes de code (pour Java c'est une révolution !)
 On peut donc dès aujourd'hui avoir des applications simples, utiles qui tiennent raisonnablement dans un seul fichier !
 
 [Xavier Hanin](https://twitter.com/xavierhanin) a présenté le framework [RESTX](http://restx.io/).
