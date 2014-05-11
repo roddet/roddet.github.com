@@ -50,7 +50,7 @@ L'après-midi laissera la place aux Workshops suivants :
 
 {% img center /images/jcTunisie2014/workshop_jour_1.jpg %}
 
-Une rencontre entre différents acteurs IT de Tunisie était organisée en marge des Workshops sous le thème de l'intégration des étudiants dans le milieu professionnel.
+Une rencontre entre différents acteurs IT de Tunisie est organisée en marge des Workshops sous le thème de l'intégration des étudiants dans le milieu professionnel.
 Les entités présentes étaient de différentes natures :
 
 * Entreprises IT et Industriels : [ProxymIT](https://www.linkedin.com/company/proxym-it), [Vermeg](http://www.vermeg.com/), [TMI](http://www.tmi.com.tn/), [Objis](http://www.objis.com/), etc.
