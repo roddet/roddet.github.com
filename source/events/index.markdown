@@ -6,6 +6,10 @@ footer: false
 
 <div id="blog-archives">
 	<h2>2014</h2>
+	<article>
+        <h1>BreizhCamp 2014 (prochainement)</h1>
+        <span>21 au 23 mai 2014, Rennes - France</span>
+    </article>
     <article>
         <h1><a href="/2014/04/jcertif-tunisie-2014/">JCertif Tunisie 2014</a></h1>
         <span>19 au 20 avril 2014, Sousse - Tunisie</span>
