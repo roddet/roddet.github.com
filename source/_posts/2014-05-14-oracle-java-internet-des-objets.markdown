@@ -15,7 +15,7 @@ C'est tellement l'année de l'Internet des Objets que :
 * les conférences IT ont maintenant des tracks dédiés, [_Future Devoxx_](http://cfp.devoxx.fr/devoxxfr2014/talks/hack),
 [Un après-midi (Démo NAO, Objets connectés, Démo ORA Smart Glasses) au BreizhCamp](http://cfp.devoxx.fr/devoxxfr2014/talks/hack), etc.
 * des conférences dédiées fleurissent un peu partout dans le monde : [IoT Conference](http://blog.econocom.com/blog/2014-lannee-de-linternet-des-objets-grand-public/), [IoT Asia](http://www.internetofthingsasia.com/), [IoT Day](http://iotday.org/), etc.
-* des objets connectés en tout genres apparaissent. Il en y a tellement que [Amazon a créé une rubrique dédiée "Wearable Technology"](http://www.amazon.com/b?node=9013937011).
+* des objets connectés en tout genre apparaissent. Il en y a tellement que [Amazon a créé une rubrique dédiée "Wearable Technology"](http://www.amazon.com/b?node=9013937011).
 
 [Oracle](http://www.oracle.com/index.html) l'a bien intégré et déploit beaucoup d'énergie sur ce sujet ces derniers temps comme nous allons le voir.
 
