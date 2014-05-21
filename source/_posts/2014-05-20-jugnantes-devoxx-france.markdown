@@ -6,12 +6,12 @@ comments: true
 categories: devoxxfr14 jugnantes
 ---
 
-Ce mardi 20 mai, c'était une soirée Devoxx France avec le [JUG Nantes](http://nantesjug.org/#/).
+Ce mardi 20 mai, c'était soirée Devoxx France avec le [JUG Nantes](http://nantesjug.org/#/).
 
-Comme d'habitude, il y a eu deux parties :
+Le contenu :
 
 * Un tour d'horizon de _Devoxx France 2014_ avec [Thibaud Raison](http://nantesjug.org/#/speakers/thibaud_raison) et [Pierre Cosson](http://nantesjug.org/#/speakers/pierre_cosson).
-* La session _Devoxx France 2014_ _Gradle ne fait pas que remplacer Maven_ rejouée par [Cédric Champeau](https://twitter.com/CedricChampeau). 
+* La session _Devoxx France 2014_ [_Gradle ne fait pas que remplacer Maven_](http://cfp.devoxx.fr/devoxxfr2014/talk/UGD-950/Gradle%20ne%20fait%20pas%20que%20remplacer%20Maven) rejouée par [Cédric Champeau](https://twitter.com/CedricChampeau). 
 
 ## Tour d'horizon de Devoxx France 2014
 [Thibaud](http://nantesjug.org/#/speakers/thibaud_raison) et [Pierre](http://nantesjug.org/#/speakers/pierre_cosson) ont fait un résumé de leurs parcours _Devoxx_, donné leurs avis sur différentes sessions.
@@ -20,7 +20,7 @@ Comme d'habitude, il y a eu deux parties :
 
 Ils ont identifié 4 thèmes principaux : Java 8, Javascript, Docker et Big Data. Les _Keynote_ ne les ont pas vraiment marqué.
 
-[Thibaud](http://nantesjug.org/#/speakers/thibaud_raison) et [Pierre](http://nantesjug.org/#/speakers/pierre_cosson) ont ensuite résumé et noté quelques sessions.
+[Thibaud](http://nantesjug.org/#/speakers/thibaud_raison) et [Pierre](http://nantesjug.org/#/speakers/pierre_cosson) ont noté quelques sessions.
 
 Est notée 4/4 :
 
@@ -43,7 +43,7 @@ Sont notées 2/4 :
 Le bilan Devoxx ? 
 
 {% blockquote Thibaud Raison et Pierre Cosson au JUG Nantes %}
-Après Devoxx France, on est motivé, on repart avec pleins d'idées et des trucs à tester.
+Après Devoxx France, on est motivé, on repart avec plein d'idées et des trucs à tester.
 {% endblockquote %}
 
 Et l'année prochaine ?
@@ -57,7 +57,7 @@ _Devoxx France 2015_ ça sera du 8 au 10 avril au Palais des Congrès. 1800 pers
 Jusqu'à l'année dernière, je ne prenais pas très au sérieux les alternatives à Maven.
 En effet, Maven est un des _super-héros_ du développeur Java.
 
-Il a apporté :
+Il a encouragé :
 
 * La modularisation. Les projets sont devenus de plus en plus modulaires.
 * Une normalisation (organisation des répertoires, cycle de vie d'un build, exécution des tests, etc.)
@@ -85,7 +85,7 @@ J'étais allergique aux alternatives à Maven parce qu'elles :
 * pouvaient utiliser des langages dynamiques. J'estimais perdre en lisibilité et du temps à apprendre un nouveau langage.
 * avaient une communauté restreinte et donc peu de plugins, réponses StackOverflow, etc.
 
-Avec l'émergence des technologies frontend, des langages fonctionnels, des langages dynamiques, j'ai eu l'occasion de voir d'autres systèmes de _Build_ ([Grunt](http://gruntjs.com/), [SBT](http://www.scala-sbt.org/), [Gant](http://gant.codehaus.org/), etc.).
+Avec l'émergence des technologies frontend, des langages fonctionnels, des langages dynamiques, j'ai eu l'occasion de voir d'autres systèmes de _Build_ ([Gradle](http://www.gradle.org/), [Grunt](http://gruntjs.com/), [SBT](http://www.scala-sbt.org/), [Gant](http://gant.codehaus.org/), etc.).
 Et [Maven](http://maven.apache.org/) me parait, désormais, vieilli face à ses concurrents.
 
 Le projet [Gradle](http://www.gradle.org/) a bonne presse en ce moment.
