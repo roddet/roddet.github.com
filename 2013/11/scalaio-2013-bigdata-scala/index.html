@@ -1,0 +1,336 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Scala IO 2013 => Big Data + Scala - Rossi Oddet</title>
+  <meta name="author" content="Rossi Oddet">
+
+  
+  <meta name="description" content="Présentateurs Sam Bessalah, indépendant intervenant sur des sujets tournant autour du Big Data, Machine Learning&#8230; Twitter : @samklr
+Sa bio sur &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://roddet.github.com/2013/11/scalaio-2013-bigdata-scala">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Rossi Oddet" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-32190657-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>	
+  <h1><a href="/">Rossi Oddet</a></h1>
+  
+    <h2>Blog d'un artisan développeur</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:roddet.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/events">Evénements</a></li>
+  <li><a href="/viededev">Vie de Développeur</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Scala IO 2013 => Big Data + Scala</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-11-07T09:30:00-05:00" pubdate data-updated="true">Nov 7<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>Présentateurs</h2>
+
+<p><img class="left" src="/images/scalaio2013/speaker-sam-bessalah.jpg">
+Sam Bessalah, indépendant intervenant sur des sujets tournant autour du <em>Big Data</em>, <em>Machine Learning</em>&#8230;</p>
+
+<ul>
+<li>Twitter : <a href="https://twitter.com/samklr">@samklr</a></li>
+<li>Sa bio sur <a href="http://scala.io/speakers/sam-bessalah.html">Scala IO</a></li>
+<li>La description de <a href="http://scala.io/events/big-data-plus-scala.html">la session ScalaIO</a></li>
+</ul>
+
+
+<br><br>
+
+
+<h2>Big Data + Analytics</h2>
+
+<p><img class="left" src="/images/scalaio2013/big-data-scala-1.jpg">
+<em>What is Big Data Analytics ?</em></p>
+
+<p>C&#8217;est par cette question que commence le talk de Sam. La réponse sera :</p>
+
+<blockquote><p>It&#8217;s about doing aggregations and running complex models on large datasets, offline, in real time or both.</p></blockquote>
+
+
+<p>Pour analyser de gros volumes de données distribuées, il y a donc 3 stratégies :</p>
+
+<ul>
+<li><em>offline</em> (mode batch),</li>
+<li>en temps réel,</li>
+<li>ou les deux en même temps.</li>
+</ul>
+
+
+<p>Sam va tout au long de la session présenter les outils du <em>Big Data</em> et leurs utilisations avec Scala. Il précisera pour chaque outil les stratégies compatibles.</p>
+
+<h2>Hadoop + Scala</h2>
+
+<p><a href="http://hadoop.apache.org/">Hadoop</a> est un système permettant de créer des applications scalables massivement distribuées.
+Dans le domaine du Big Data, il est utilisé en mode batch et non en temps réel.</p>
+
+<p>Pour traiter de grands volumes de données distribuées, <a href="http://hadoop.apache.org/">Hadoop</a> possède un module appelé <em>Hadoop MapReduce</em> qui applique le pattern <a href="http://fr.wikipedia.org/wiki/MapReduce"><em>Map Reduce</em></a>.</p>
+
+<p>Sam a pris le temps d&#8217;expliquer le concept de <em>Map Reduce</em> par des schémas et un exemple de code Scala.</p>
+
+<p>Pour définir des <em>jobs Hadoop MapReduce</em> en scala, Sam conseille l&#8217;utilisation de la librairie <a href="https://github.com/twitter/scalding">Scalding</a>.</p>
+
+<h2>Storm + Scala</h2>
+
+<p><a href="http://storm-project.net/">Storm</a>, contrairement à Hadoop, va permettre de traiter massivement les données en temps réel.</p>
+
+<p>Pour utiliser <a href="http://storm-project.net/">Storm</a> avec un DSL Scala, il y a le projet <a href="https://github.com/velvia/ScalaStorm">ScalaStorm</a>.</p>
+
+<h2>SummingBird => Scala</h2>
+
+<p><a href="https://github.com/twitter/summingbird">SummingBird</a> est une librairie Scala qui fournit une abstraction du pattern <em>Map Reduce</em> applicable à <a href="http://hadoop.apache.org/">Hadoop</a> et à <a href="http://storm-project.net/">Storm</a>.</p>
+
+<p>Ainsi, vous définissez vos jobs avec <a href="https://github.com/twitter/summingbird">SummingBird</a> et vous allez pouvoir les exécuter dans <a href="http://hadoop.apache.org/">Hadoop</a> ou <a href="http://storm-project.net/">Storm</a>.</p>
+
+<h2>Apache Spark + Scala</h2>
+
+<p><a href="http://spark.incubator.apache.org/">Apache Spark</a> est une alternative au module <em>Hadoop MapReduce</em> qui permet de faire des traitements distribués.</p>
+
+<p>Il est réputé plus performant que <em>Hadoop MapReduce</em> et reste compatible avec <a href="http://hadoop.apache.org/">Apache Hadoop</a>.</p>
+
+<p>Le concept clé de <a href="http://spark.incubator.apache.org/">Spark</a> est de permettre le traitement simplifié de collections de données distribuées.
+Il dispose d&#8217;une API en Scala, Java et Python donnant la possibilité d&#8217;enchainer des actions (count, collect, save, &#8230;) ou encore des transformations (map, filter, groupBy, join, &#8230;).</p>
+
+<p><a href="http://spark.incubator.apache.org/">Spark</a> s&#8217;utilise en mode batch et non en temps réel.</p>
+
+<h2>Apache Spark Streaming + Scala</h2>
+
+<p><a href="http://spark.incubator.apache.org/docs/latest/streaming-programming-guide.html">Apache Spark Streaming</a> étend les possibilités de <a href="http://spark.incubator.apache.org/">Spark</a> en traitant des <em>streams</em> de données en temps réel.</p>
+
+<h2>Les slides de la présentation</h2>
+
+<script async class="speakerdeck-embed" data-id="02c383b01f9901312c660a36078c81b4" data-ratio="1.33333333333333" src="//speakerdeck.com/assets/embed.js"></script>
+
+
+<h2>Ce que j&#8217;en ai pensé</h2>
+
+<p>Ce talk m&#8217;a permis de découvrir l&#8217;univers du Big Data. Scala y semble bien implanté :</p>
+
+<ul>
+<li>Existence de multiples API pour manipuler les systèmes les plus utilisés</li>
+<li>Des projets comme <a href="http://spark.incubator.apache.org/">Spark</a> ou <a href="https://github.com/twitter/summingbird">SummingBird</a> sont écrits en scala.</li>
+</ul>
+
+
+<p>La programmation fonctionnelle (<em>FP</em>) semble trouver avec le Big Data un créneau d&#8217;utilisation particulièrement adapté. En effet, effectuer des analyses de données consiste souvent à appliquer un enchainement de transformations à ces données. Et la <em>FP</em>, de part sa nature, est l&#8217;outil idéal pour représenter un enchainement de fonctions :)</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Rossi Oddet</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-11-07T09:30:00-05:00" pubdate data-updated="true">Nov 7<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/scalaio2013/'>scalaio2013</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://roddet.github.com/2013/11/scalaio-2013-bigdata-scala/" data-via="rossioddet" data-counturl="http://roddet.github.com/2013/11/scalaio-2013-bigdata-scala/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2013/11/scalaio-2013-patterns-web-reactive/" title="Previous Post: Scala IO 2013 => Patterns de développement pour une application web réactive et concurrente">&laquo; Scala IO 2013 => Patterns de développement pour une application web réactive et concurrente</a>
+      
+      
+        <a class="basic-alignment right" href="/2013/11/nantesjug-novembre-part1/" title="Next Post: Soirée JUG Nantes : Du SQL au NoSQL en moins d'une heure (Partie 1)">Soirée JUG Nantes : Du SQL au NoSQL en moins d'une heure (Partie 1) &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Rossi Oddet</h1>
+  <br/>
+  <table>
+  	<tr><td width="30%"><img src="/images/photo.jpeg" width="75"/></td>
+  		<td>&nbsp;&nbsp;</td>
+    <td width="70%"> <p>Développeur, Blogger et passionné par les communautés IT.</p></td></tr>
+</table>
+</section>
+<a class="twitter-timeline" href="https://twitter.com/rossioddet" data-widget-id="314511007521312768">Tweets by @rossioddet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Rossi Oddet -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogroddet';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://roddet.github.com/2013/11/scalaio-2013-bigdata-scala/';
+        var disqus_url = 'http://roddet.github.com/2013/11/scalaio-2013-bigdata-scala/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

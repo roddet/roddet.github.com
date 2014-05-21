@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: devoxxfr14 | Rossi Oddet]]></title>
+  <link href="http://roddet.github.com/blog/categories/devoxxfr14/atom.xml" rel="self"/>
+  <link href="http://roddet.github.com/"/>
+  <updated>2014-05-21T01:43:46-04:00</updated>
+  <id>http://roddet.github.com/</id>
+  <author>
+    <name><![CDATA[Rossi Oddet]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Soirée Devoxx France 2014 au JUG Nantes]]></title>
+    <link href="http://roddet.github.com/2014/05/jugnantes-devoxx-france/"/>
+    <updated>2014-05-20T08:41:00-04:00</updated>
+    <id>http://roddet.github.com/2014/05/jugnantes-devoxx-france</id>
+    <content type="html"><![CDATA[<p>Ce mardi 20 mai, c'était soirée Devoxx France avec le <a href="http://nantesjug.org/#/">JUG Nantes</a>.</p>
+
+<p>Le contenu :</p>
+
+<ul>
+<li>Un tour d'horizon de <em>Devoxx France 2014</em> avec <a href="http://nantesjug.org/#/speakers/thibaud_raison">Thibaud Raison</a> et <a href="http://nantesjug.org/#/speakers/pierre_cosson">Pierre Cosson</a>.</li>
+<li>La session <em>Devoxx France 2014</em> <a href="http://cfp.devoxx.fr/devoxxfr2014/talk/UGD-950/Gradle%20ne%20fait%20pas%20que%20remplacer%20Maven"><em>Gradle ne fait pas que remplacer Maven</em></a> rejouée par <a href="https://twitter.com/CedricChampeau">Cédric Champeau</a>.</li>
+</ul>
+
+
+<h2>Tour d'horizon de Devoxx France 2014</h2>
+
+<p><a href="http://nantesjug.org/#/speakers/thibaud_raison">Thibaud</a> et <a href="http://nantesjug.org/#/speakers/pierre_cosson">Pierre</a> ont fait un résumé de leurs parcours <em>Devoxx</em>, donné leurs avis sur différentes sessions.</p>
+
+<p><img class="center" src="/images/nantesjug/mai14/retour-devoxx-france.jpg"></p>
+
+<p>Ils ont identifié 4 thèmes principaux : Java 8, Javascript, Docker et Big Data. Les <em>Keynote</em> ne les ont pas vraiment marqué.</p>
+
+<p><a href="http://nantesjug.org/#/speakers/thibaud_raison">Thibaud</a> et <a href="http://nantesjug.org/#/speakers/pierre_cosson">Pierre</a> ont noté quelques sessions.</p>
+
+<p>Est notée 4/4 :</p>
+
+<ul>
+<li><a href="http://cfp.devoxx.fr/devoxxfr2014/talk/DNY-501/Java%208%20Streams%20&amp;%20Collectors%20:%20patterns,%20performances,%20parall%C3%A9lisation">Java 8 Streams &amp; Collectors : patterns, performances, parallélisation</a></li>
+</ul>
+
+
+<p>Sont notées 3/4 :</p>
+
+<ul>
+<li><a href="http://cfp.devoxx.fr/devoxxfr2014/talk/DLD-453/JavaScript,%20the%20next%20big%20...%20bytecode">JavaScript, the next big ... bytecode</a></li>
+<li><a href="http://cfp.devoxx.fr/devoxxfr2014/talk/ZSJ-347/Promesses%20et%20Yield%20:%20les%20Future%3C%3F%3E%20de%20JavaScript">Promesses et Yield : les Future&lt;?> de JavaScript</a></li>
+<li><a href="http://cfp.devoxx.fr/devoxxfr2014/talk/CDH-803/Construire%20une%20application%20r%C3%A9elle%20de%20jeux%20en%20ligne%20avec%20NoSQL">Construire une application réelle de jeux en ligne avec NoSQL</a></li>
+<li><a href="http://cfp.devoxx.fr/devoxxfr2014/talk/MBI-023/Mise%20en%20production%20continue%20-%201%20an%20apr%C3%A8s">http://cfp.devoxx.fr/devoxxfr2014/talk/MBI-023/Mise%20en%20production%20continue%20-%201%20an%20apr%C3%A8s</a></li>
+</ul>
+
+
+<p>Sont notées 2/4 :</p>
+
+<ul>
+<li><a href="http://cfp.devoxx.fr/devoxxfr2014/talk/UGH-991/30%20minutes%20pour%20d%C3%A9velopper%20une%20appli%20Java%20EE%20%3F%20C%27est%20largement%20suffisant%20avec%20Forge%202.0!">30 minutes pour développer une appli Java EE ? C'est largement suffisant avec Forge 2.0!</a></li>
+<li><a href="http://cfp.devoxx.fr/devoxxfr2014/talk/DWS-586/50%20nouvelles%20choses%20que%20l%27on%20peut%20faire%20avec%20Java%208">50 nouvelles choses que l'on peut faire avec Java 8</a></li>
+<li><a href="http://cfp.devoxx.fr/devoxxfr2014/talk/WFL-752/Lambda%20Architecture%20-%20Choose%20your%20tools%20for%20Real-Time%20Big%20Data">Lambda Architecture - Choose your tools for Real-Time Big Data</a></li>
+<li><a href="http://cfp.devoxx.fr/devoxxfr2014/talk/TYU-863/Web%20performances,%20regardons%20les%20r%C3%A9sultats%20de%20pr%C3%A8s">Web performances, regardons les résultats de près</a></li>
+</ul>
+
+
+<p>Le bilan Devoxx ?</p>
+
+<p><blockquote><p>Après Devoxx France, on est motivé, on repart avec plein d'idées et des trucs à tester.</p><footer><strong>Thibaud Raison et Pierre Cosson au JUG Nantes</strong></footer></blockquote></p>
+
+<p>Et l'année prochaine ?</p>
+
+<p><em>Devoxx France 2015</em> ça sera du 8 au 10 avril au Palais des Congrès. 1800 personnes sont attendues.</p>
+
+<p><a href="http://nantesjug.org/#/speakers/thibaud_raison">Thibaud</a> et <a href="http://nantesjug.org/#/speakers/pierre_cosson">Pierre</a> mettront à disposition leurs slides sur <a href="http://nantesjug.org/#/events/2014_05_20">le site du JUG Nantes</a> très prochainement.</p>
+
+<h2>Un petit mot sur Maven avant d'aborder la session de Cédric</h2>
+
+<p>Jusqu'à l'année dernière, je ne prenais pas très au sérieux les alternatives à Maven.
+En effet, Maven est un des <em>super-héros</em> du développeur Java.</p>
+
+<p>Il a encouragé :</p>
+
+<ul>
+<li>La modularisation. Les projets sont devenus de plus en plus modulaires.</li>
+<li>Une normalisation (organisation des répertoires, cycle de vie d'un build, exécution des tests, etc.)</li>
+<li>Un essor de l'intégration continue</li>
+</ul>
+
+
+<p>Au regard de tous ces services rendus, beaucoup de développeurs Java sont très attachés à Maven et sont donc beaucoup moins réceptifs aux alternatives.
+J'étais un de ces développeurs.
+Ca fait presque 8 ans que j'utilise Maven et presque autant de temps à en dire du bien.
+J'ai même fait de <a href="http://www.slideshare.net/RossiOddet/maven-par-la-pratique-14995676">la promotion en Afrique lors de JCertif 2012</a>.</p>
+
+<p>Il y a 3 ans, lorsque <a href="https://twitter.com/gboissinot">Grégory Boissinot</a> présentait Gradle à ce même JUG Nantes.
+Je n'étais pas réceptif et en plus le projet manquait de stabilité (modification trop fréquente de l'API).</p>
+
+<p>Je me disais :</p>
+
+<p><blockquote><p>C'est quoi cette chose qui ne veut pas rentrer dans le standard !</p></blockquote></p>
+
+<p>Je m'imaginais dans l'armée et je voyais les personnes qui faisaient autre chose comme des déserteurs.</p>
+
+<p>J'étais allergique aux alternatives à Maven parce qu'elles :</p>
+
+<ul>
+<li>donnaient de la flexibilité au <em>standard</em> Maven. Je me disais : Flexibilité = Entorse à la Norme = Désordre = Instabilité = Déserteurs :)</li>
+<li>pouvaient utiliser des langages dynamiques. J'estimais perdre en lisibilité et du temps à apprendre un nouveau langage.</li>
+<li>avaient une communauté restreinte et donc peu de plugins, réponses StackOverflow, etc.</li>
+</ul>
+
+
+<p>Avec l'émergence des technologies frontend, des langages fonctionnels, des langages dynamiques, j'ai eu l'occasion de voir d'autres systèmes de <em>Build</em> (<a href="http://www.gradle.org/">Gradle</a>, <a href="http://gruntjs.com/">Grunt</a>, <a href="http://www.scala-sbt.org/">SBT</a>, <a href="http://gant.codehaus.org/">Gant</a>, etc.).
+Et <a href="http://maven.apache.org/">Maven</a> me parait, désormais, vieilli face à ses concurrents.</p>
+
+<p>Le projet <a href="http://www.gradle.org/">Gradle</a> a bonne presse en ce moment.
+Il a été bien aidé par des projets comme <a href="https://community.jboss.org/wiki/Gradlewhy?_sscc=t">Hibernate qui l'a adopté</a>.
+L'année dernière, <a href="http://www.infoworld.com/t/development-tools/google-positions-gradle-the-build-system-of-choice-android-218852">Google l'a choisi comme système de build pour Android Studio</a>.</p>
+
+<p>C'est donc en mode <em>réceptif</em> que j'ai participé à la session de <a href="https://twitter.com/CedricChampeau">Cédric</a>.</p>
+
+<h2><em>Gradle ne fait pas que remplacer Maven</em></h2>
+
+<p><img class="center" src="/images/nantesjug/mai14/gradle-devoxx.jpg"></p>
+
+<p>Je vous invite à parcourir les slides de <a href="https://twitter.com/CedricChampeau">Cédric</a> qui se lisent bien.</p>
+
+<script async class="speakerdeck-embed" data-id="846b09f0a93a0131565b426f673016e8" data-ratio="1.77777777777778" src="http://roddet.github.com//speakerdeck.com/assets/embed.js"></script>
+
+
+<p>Parmi tous les avantages de Gradle par rapport à Maven, deux choses m'ont interpellé :</p>
+
+<ul>
+<li><p>Le Wrapper. Pour un projet donné, vous pouvez générer un wrapper (<code>gradle init</code>) qui permettre à tous les utilisateurs de récupérer la version de Gradle à utiliser pour le projet.
+C'est particulièrement pratique pour l'intégration continue et aussi pour changer de version de gradle d'un projet.
+Cela permet aussi de faire cohabiter simplement différentes versions de l'outil de build chez un développeur.</p></li>
+<li><p>Pour réutiliser de la configuration de Build, Maven utilise l'héritage et Gradle utilise la composition.
+C'est sur des points comme celui là que <a href="http://maven.apache.org/">Maven</a> montre sa vieillesse.
+Il a été conçu à une époque où l'héritage était le roi pour mutualiser du code. Les choses ont changé depuis... mais pas Maven...</p></li>
+</ul>
+
+
+<p>Une chose est sûre, pour passer de <a href="http://maven.apache.org/">Maven</a> à <a href="http://www.gradle.org/">Gradle</a>, il faut apprendre Gradle.
+<a href="http://maven.apache.org/">Maven</a> a ses défauts qui sont connus et maitrisés.
+Il n'y a aujourd'hui aucune surprise à démarrer un projet avec <a href="http://maven.apache.org/">Maven</a>.
+Est-ce que les experts <a href="http://maven.apache.org/">Maven</a> sont prêts à prendre des risques ? Apprendre une nouvelle technologie alors que <a href="http://maven.apache.org/">Maven</a> fonctionne ?</p>
+
+<p>Noter l'existence du projet <a href="https://github.com/takari/maven-polyglot">Maven Polyglot</a> qui va permettre de faire de la configuration Maven avec plusieurs langages : clojure, ruby, scala, yaml, et même Groovy :)
+Est-ce une réponse suffisante ?</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Devoxx France 2014, ce que je retiens !]]></title>
+    <link href="http://roddet.github.com/2014/05/devoxx-france-2014/"/>
+    <updated>2014-05-07T21:41:00-04:00</updated>
+    <id>http://roddet.github.com/2014/05/devoxx-france-2014</id>
+    <content type="html"><![CDATA[<p>Les 17 et 18 avril dernier, j'étais aux 2 journées de conférence de <a href="http://www.devoxx.fr/">Devoxx France 2014</a>.</p>
+
+<h2>Nous étions nombreux à avoir eu la même idée !</h2>
+
+<p><img class="center" src="/images/devoxxfr14/j1-keynote-ere-numerique.jpg"></p>
+
+<h2>Mon parcours</h2>
+
+<p>J'ai pu participer aux sessions suivantes :</p>
+
+<ul>
+<li>Keynote - L'Ere du numérique avec <a href="https://twitter.com/@babgi">Gilles Babinet</a> et <a href="https://twitter.com/Kwame42">Kwame Yamgnane</a>.</li>
+<li>Keynote - Le métier de développeur avec <a href="https://twitter.com/guy_mm">Guy MAMOU-MANI</a>.</li>
+<li>Keynote - Simplon avec <a href="http://cfp.devoxx.fr/devoxxfr2014/speaker/0b184f6351dd6b6aababf8817a477c2cb2e2bb3a/Henri%20Fournet">Henri Fournet</a>.</li>
+<li>Realtime Web avec Akka, Kafka, Spark et Mesos (<a href="http://www.slideshare.net/hayssamsaleh1/realtime-web-avec-kafka-spark-et-mesos">slides</a>) avec <a href="https://twitter.com/@hayssams">Hayssam Saleh</a> et <a href="https://twitter.com/@jpbunaz">Jean-Philippe Bunaz</a>.</li>
+<li>The reactive Backup talk avec <a href="https://twitter.com/@_JamesWard">James Ward</a>.</li>
+<li>Au secours mon code AngularJS est pourri ! (<a href="http://t.co/TxUJwHaWoo">slides</a>) avec <a href="https://twitter.com/ThierryChatel">Thierry Chatel</a>).</li>
+<li>Vive les WebSockets Libres avec <a href="https://twitter.com/jfarcand">Jean-François Arcand</a>.</li>
+<li>Des applications réactives avec Spring, AngularDart et Websocket (<a href="https://speakerdeck.com/sdeleuze/reactive-applications-with-spring-angulardart-and-websocket">slides</a>) avec <a href="https://twitter.com/@sdeleuze">Sébastien Deleuze</a>.</li>
+<li>BitCoin et monnaies cryptographiques (<a href="http://paulgreg.me/bitcoin-cryptocurrencies/">slides</a>) avec <a href="https://twitter.com/@paulgreg">Grégory Paul</a>.</li>
+<li>Basses latences, hauts débits : les secrets de la finance pour avoir des systèmes réactifs (<a href="http://www.slideshare.net/ThomasPierrain/faible-latence-haut-debit-devoxxfr-2014-34262360">slides</a>) avec <a href="https://twitter.com/@cyrdup">Cyrille DUPUYDAUBY</a> et <a href="https://twitter.com/@tpierrain">Thomas Pierrain</a>.</li>
+<li>Lambda Architecture - Choose your tools for Real-Time Big Data (<a href="http://www.slideshare.net/Dataiku/dataiku-devoxx-lambda-architecture-choose-your-tools">slides</a>) avec <a href="https://twitter.com/@fdouetteau">Florian Douetteau</a>.</li>
+<li>Web performances, regardons les résultats de près (<a href="https://github.com/devoxx2014-webperf/the_slides/blob/master/Devoxx%20France%202014%20Web%20Performances.pdf?raw=true">slides</a>) avec <a href="https://twitter.com/@jeffmaury">Jeff MAURY</a>, <a href="https://twitter.com/@NicolasLeroux">Nicolas Leroux</a>, <a href="https://twitter.com/@k33g_org">Philippe Charrière</a>, <a href="http://forax.github.io/">Rémi Forax</a>.</li>
+<li>Google Cast Development - Lessons Learned avec <a href="https://twitter.com/@hcl21">Hoi Lam</a>.</li>
+<li>JavaScript, the next big ... bytecode (<a href="http://fr.slideshare.net/MathieuBreton1/javascript-thenextbigbytecode">slides</a>) avec <a href="https://twitter.com/@MatBreton">Mathieu Breton</a>.</li>
+<li>Groovy en 2014 et au-delà (<a href="https://speakerdeck.com/glaforge/groovy-in-2014-and-beyond-at-devoxx-france">slides</a>) avec <a href="https://twitter.com/glaforge">Guillaume Laforge</a>.</li>
+</ul>
+
+
+<p>Plutôt que de vous ennuyer avec les détails de chaque session, je vais plutôt partager ce que je retiens réellement de Devoxx France 2014.</p>
+
+<p>Commençons par les news.</p>
+
+<h2>Le mouvement CodeForFrance</h2>
+
+<p><a href="https://twitter.com/tariqkrim">Tarik Rim</a> a présenté le mouvement <a href="http://www.codeforfrance.org">Code for France</a> avec son slogan  : "La France a besoin d'un update".
+Ce mouvement est directement inspiré des US qui ont un <a href="http://codeforamerica.org">CODE for AMERICA</a>.
+Le principe : les membres du mouvement unissent leurs forces pour mettre aux normes actuelles les différents sites web d'utilité publique.</p>
+
+<p>Vous pouvez suivre l'actualité du mouvement soit via <a href="https://twitter.com/codeforfrance">Twitter</a> soit <a href="http://www.codeforfrance.org">en vous inscrivant avec votre compte Github</a>.</p>
+
+<h2>Reactive Streams</h2>
+
+<p><a href="https://twitter.com/@_JamesWard">James Ward</a> a annoncé, durant son talk, le lancement de <a href="http://www.reactive-streams.org">Reactive Streams</a>.
+Il s'agit d'une initiative visant à standardiser les traitements asynchrones de flux sur la JVM.
+Les grands noms de la JVM sont contributeurs du projet : <a href="">Oracle</a>, <a href="">RedHat</a>, <a href="">Twitter</a>, <a href="http://typesafe.com">TypeSafe</a>, <a href="">Pivotal</a>, <a href="">Netflix</a>, etc.
+L'objectif est, à terme, d'intégrer ces travaux dans une future version du JDK.</p>
+
+<p>Un premier brouillon de la spécification est disponible. Si vous souhaitez vous lancer, vous pouvez parcourir les sources du projet sur <a href="https://github.com/reactive-streams/reactive-streams">Github</a>.</p>
+
+<p>Un article d'InfoQ est disponible sur le sujet : <a href="http://www.infoq.com/fr/news/2014/05/reactive-streams-akka-streams">Les Reactive Streams avec Akka Streams</a>.</p>
+
+<p>Abordons à présent les tendances technologiques.</p>
+
+<h2>La réactivité c'est maintenant !</h2>
+
+<p>Devoxx France 2014 a comporté de nombreux talks avec le mot magique "réactif" :
+<a href="http://cfp.devoxx.fr/devoxxfr2014/talk/SAC-948/Les%20Applications%20R%C3%A9actives%20:%20un%20nouveau%20paradigme%20pour%20relever%20les%20d%C3%A9fis%20de%20l'%C3%A9conomie%20num%C3%A9rique.">Les Applications Réactives : un nouveau paradigme pour relever les défis de l'économie numérique</a>,
+<a href="http://cfp.devoxx.fr/devoxxfr2014/talk/KYH-943/The%20Reactive%20Backup%20talk">Building Reactive Apps</a>,
+<a href="http://cfp.devoxx.fr/devoxxfr2014/talk/WDJ-026/Reactive%20Angular">Reactive Angular</a>,
+<a href="http://cfp.devoxx.fr/devoxxfr2014/talk/FCN-711/Des%20applications%20r%C3%A9actives%20avec%20Spring%204,%20AngularDart%20et%20Websocket">Des applications réactives avec Spring, AngularDart et Websocket</a>,
+<a href="http://www.slideshare.net/ThomasPierrain/faible-latence-haut-debit-devoxxfr-2014-34262360">Basses latences, hauts débits : les secrets de la finance pour avoir des systèmes réactifs</a>, etc.</p>
+
+<p>Donc si vous souhaitez être "tendance" aujourd'hui, soyez "réactif" ! Ca y est c'est le moment !</p>
+
+<h2>Le Big Data, le driver technologique</h2>
+
+<p>Devoxx France 2014 m'a conforté dans l'idée que j'avais du Big Data comme moteur des nouvelles architectures et des nouvelles technologies.</p>
+
+<p>Le Big Data est arrivé avec des techniques qui lui étaient indispensable (NoSQL, Scalabilité horizontale, parallélisme, cloud, etc.) et finalement ces techniques sont en train de gagner peu à peu les projets Small Data ou Big Code.</p>
+
+<p>Prenons l'exemple du NoSQL.
+Je me rappelle encore il y a quelques années, le NoSQL était présenté comme une solution en réponse aux limites des bases de données relationnelles.
+Le discours a, depuis, bien évolué et d'autres atouts ont apparu. L'accroche de <a href="http://www.mongodb.org">MongoDB</a> c'est "Agile et Scalable" (noter bien le "Agile" en premier).
+Aujourd'hui, le NoSQL séduit de plus en plus, je vous invite à visiter la page <a href="http://www.mongodb.org/about/production-deployments/">MongoDB Production Deployments</a> et à scroller jusqu'à ce que vous en ayez marre :)
+Et ce ne sont pas tous des projets avec des données monstrueuses.</p>
+
+<p>Le Big Data encourage l'application <a href="http://www.reactivemanifesto.org">des principes de programmation réactive</a> et nous voilà tous plonger dedans en ce moment.</p>
+
+<p>Le Big Data possède encore de nombreuses ressources qui sont encore à bonnes distances des projets habituels d'entreprise.
+Si vous souhaitez avoir une vision générale des briques et des outils du domaine, je vous recommande le talk <em>Lambda Architecture - Choose your tools for Real-Time Big Data</em> (<a href="http://www.slideshare.net/Dataiku/dataiku-devoxx-lambda-architecture-choose-your-tools">slides</a>) avec <a href="https://twitter.com/@fdouetteau">Florian Douetteau</a>.</p>
+
+<p>Pour un retour d'expériences, regarder plutôt du côté de <em>Realtime Web avec Akka, Kafka, Spark et Mesos</em> (<a href="http://www.slideshare.net/hayssamsaleh1/realtime-web-avec-kafka-spark-et-mesos">slides</a>).</p>
+
+<p>Il y a probablement dans ces outils des fondements de ce qui va devenir la norme de demain et tout le monde sait que demain c'est aujourd'hui :)</p>
+
+<h2>Frontend/Javascript</h2>
+
+<p>J'ai vécu Devoxx France 2013 comme un événement qui criait  :</p>
+
+<p><blockquote><p>Javascript c'est cool, c'est prêt pour l'entreprise ! Vas-y mon ami !</p><footer><strong>Ma perception Frontend Devoxx France 2013</strong></footer></blockquote></p>
+
+<p>Il y avait plusieurs sessions dans ce sens :
+<a href="http://www.devoxx.com/display/FR13/Frontend+Live+Coding+++Tour+d%27horizon+de+l%27outillage+et+des+technos+web+d%27aujourd%27hui">Frontend live Coding</a>,
+<a href="http://www.devoxx.com/display/FR13/AngularJS%2C+ou+le+futur+du+developpement+Web">AngularJS, ou le futur du développement web</a>,
+<a href="http://www.devoxx.com/display/FR13/Du+Javascript+propre+++Challenge+Accepted">Du Javascript Propre ? Challenge Accepted</a>, etc.</p>
+
+<p>Sur l'axe Frontend, j'ai vu Devoxx France 2014 comme un événement qui criait cette fois-ci :</p>
+
+<p><blockquote><p>Maintenant que vous avez adopté Javascript, vous savez, dans Javascript il y a aussi "The Bad Parts". Jettez un oeil aux alternatives, on ne sait jamais ;)</p><footer><strong>Ma perception Frontend Devoxx France 2014</strong></footer></blockquote></p>
+
+<p>La session <em>JavaScript, the next big ... bytecode</em> (<a href="http://fr.slideshare.net/MathieuBreton1/javascript-thenextbigbytecode">slides</a>) est très intéressante sur ce sujet.
+Vous apprendrez  :</p>
+
+<ul>
+<li>qu'il y a plus de 170 langages/transpileurs qui génèrent du JavaScript.</li>
+<li>Les leaders de la transpilation sont : <a href="http://www.typescriptlang.org">TypeScript</a>, <a href="http://coffeescript.org">CoffeeScript</a>, <a href="https://www.dartlang.org">Dart</a>,
+<a href="http://asmjs.org">ASM.JS</a></li>
+<li><a href="https://www.dartlang.org">Dart</a> est le plus complet, <a href="http://asmjs.org">ASM.JS</a> très prometteur, <a href="http://www.typescriptlang.org">TypeScript</a> utilisable à court terme et <a href="http://coffeescript.org">CoffeeScript</a> utilisable mais attention aux erreurs trop fréquentes de syntaxe.</li>
+</ul>
+
+
+<p>Je note l'opération séduction de <a href="https://www.dartlang.org">Dart</a> qui met sur la table les atouts suivants :</p>
+
+<ul>
+<li>Je suis un langage typé comme Java, tu connais Java ? Viens, je te promets que ça sera facile !</li>
+<li>Je suis nativement <a href="https://www.dartlang.org/performance/">plus performant que Javascript</a>.
+Je serai un jour dans Chrome, donc tu pourras m'utiliser directement pour bénéficier de mes performances.</li>
+<li>Je vais devenir <a href="http://www.ecma-international.org/memento/TC52.htm">un standard un jour</a>. Je rêve secrètement que Firefox, Safari et Internet Explorer m'implémente ;)</li>
+<li>N'aies pas peur de moi, je sais <a href="https://www.dartlang.org/tools/dart2js/">transpiler du javascript comme tout le monde</a>.</li>
+<li>Hey ! Tu aimes AngularJS ? Moi aussi <a href="https://angulardart.org">je sais faire !</a>.</li>
+</ul>
+
+
+<p>Si vous vous êtes lancé sur des projets AngularJS, les slides de la session <em>Au secours mon code AngularJS est pourri !</em> (<a href="http://t.co/TxUJwHaWoo">slides</a>) va vous intéresser.
+Vous y trouverez un recueil de bonnes pratiques applicables immédiatement.</p>
+
+<h2>Les performances</h2>
+
+<p>J'ai suivi deux talks qui faisaient un focus sur les performances :</p>
+
+<p><em>Web performances, regardons les résultats de près</em> (<a href="https://github.com/devoxx2014-webperf/the_slides/blob/master/Devoxx%20France%202014%20Web%20Performances.pdf?raw=true">slides</a>).</p>
+
+<p>Une application est réalisée avec différentes technologies (Java EE/JAX-RS, NodeJS/Express, Play2/Scala, Undertow, Vertx, Finatra) puis des tests de charge sont réalisés sur chaque implémentation.
+Ce que je retiens de ce talk :</p>
+
+<ul>
+<li>Il faut faire très attention aux API utilisés.
+Pour l'application NodeJS, utiliser <code>res.send(movies)</code> à la place de <code>res.sendfile(...)</code> rendait l'application environ 14 fois moins performante.</li>
+<li>Lors d'un test de charge, n'ayez pas l'injecteur et l'application sur la même machine. Les résultats seront probablement très éloignés de la réalité.</li>
+<li>Gatling c'est super ! Ca je le savais déjà ;)</li>
+<li>Contrairement à ce que pensaient les participants, Java EE/JAX-RS est très performant et a remporté quelques combats.</li>
+<li>Je regrette que les ressources n'aient pas été monitorées pour avoir une idée des différences de consommation.</li>
+</ul>
+
+
+<p><em>Basses latences, hauts débits : les secrets de la finance pour avoir des systèmes réactifs</em> (<a href="http://www.slideshare.net/ThomasPierrain/faible-latence-haut-debit-devoxxfr-2014-34262360">slides</a>).</p>
+
+<p>Il s'agit là d'un talk de très bonne qualité qui présente :</p>
+
+<ul>
+<li>L'essentiel des métiers de la finance</li>
+<li>Différentes approches qui ne fonctionnent pas toujours pour supporter du haut débit : mono thread, un thread par élément, un pool de thread, multi tasks / thread pool.</li>
+<li>Le <a href="http://dupdob.wordpress.com/2014/04/18/sequencer/">pattern sequencer</a>, la notion de conflation</li>
+<li>Une dose de <a href="http://www.reactivemanifesto.org">principes réactifs</a>.</li>
+</ul>
+
+
+<h2>La révolution Docker</h2>
+
+<p>Je n'ai pas pu participer à la session <em>La révolution Docker</em> (<a href="http://www.slideshare.net/ndeloof/la-revolution-docker">slides</a>).
+Cette session était très attendue, la salle était pleine avant le début de la session.</p>
+
+<p><a href="https://www.docker.io/">Docker</a> est donc un outil qu'il faut regarder de près aujourd'hui.
+Vous pouvez une introduction à Docker sur le blog <a href="http://www.touilleur-express.fr/2014/05/03/docker-un-outil-simple-et-genial/">Le Touilleur Express</a>.</p>
+
+<p>Si vous venez au <a href="www.breizhcamp.org">BreizhCamp 2014</a> prochain, il y aura une session <a href="http://www.breizhcamp.org/programme/">Demarrer avec Docker</a>.</p>
+
+<h2>Java &amp; Co, l'heure est à la simplification !</h2>
+
+<p>Comme le montre mon parcours, je n'ai pas participé à beaucoup de sessions sur Java ou Java EE ou Spring ou etc.
+Je profite généralement des conférences pour élargir mes horizons.
+Etant présent à la conférence et pour avoir parcouru plusieurs fois le programme, j'ai tout de même un ressenti.</p>
+
+<p>Le moment est venu de faire simple avec Java.
+Il est temps de s'attaquer à la complexité de démarrer un projet Java et surtout de réaliser des applications simples sans sortir l'artillerie lourde.
+Il y a déjà des existants comme <a href="http://www.playframework.com/">Play! Framework</a> et cette tendance se poursuit.</p>
+
+<p>Le projet <a href="http://projects.spring.io/spring-boot/">Spring Boot</a> a cet objectif et se veut être le produit phare du moment dans l'écosystème Spring.
+Voici <a href="https://github.com/joshlong/ws.tagit/blob/master/service/src/main/java/ws/tagit/Application.java">une classe Java</a>,
+avec une méthode <em>main()</em> qui démarre un container (tomcat ou jetty),
+expose un service REST sécurisé par OAuth et avec le support de CORS,
+gère les accès à la base de données.
+Le tout en moins de 300 lignes de code (pour Java c'est une révolution !)
+On peut donc dès aujourd'hui avoir des applications simples, utiles qui tiennent raisonnablement dans un seul fichier !</p>
+
+<p><a href="https://twitter.com/xavierhanin">Xavier Hanin</a> a présenté le framework <a href="http://restx.io/">RESTX</a>.
+Ce framework regroupe pleins de bonnes idées pour développement des services REST : le rechargement à chaud, des outils pour tester ses services REST, une configuration avancée par annotation, des jeux de données fournies par le framework, etc.</p>
+
+<p><a href="https://twitter.com/JosePaumard">José Paumard</a> a présenté <em>50 nouvelles choses que l'on peut faire avec Java 8</em> (<a href="http://www.slideshare.net/jpaumard/50-nouvelles-choses-que-lon-peut-faire-avec-java-8">slides</a>).
+Java 8 vient simplifier beaucoup de choses : les dates, les manipulations de collections, traitements parallèles, etc.</p>
+
+<p>Si vous travailler avec Java au quotidien, votre nouveau défi est à présent de faire simple après avoir fait très très compliqué !</p>
+
+<h2>D'autres ressources ?</h2>
+
+<p>Consulter la page suivante : <a href="http://www.devoxx.fr/2014/05/ils-ont-parle-de-nous/">Ils ont parlé de nous</a>.</p>
+]]></content>
+  </entry>
+  
+</feed>

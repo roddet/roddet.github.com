@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: websocket | Rossi Oddet]]></title>
+  <link href="http://roddet.github.com/blog/categories/websocket/atom.xml" rel="self"/>
+  <link href="http://roddet.github.com/"/>
+  <updated>2014-05-21T01:43:46-04:00</updated>
+  <id>http://roddet.github.com/</id>
+  <author>
+    <name><![CDATA[Rossi Oddet]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Devoxx France 2013 # Conférence # Java EE 7 plus en détail]]></title>
+    <link href="http://roddet.github.com/2013/04/devoxxfr13-conference-javaee7-en-detail/"/>
+    <updated>2013-04-06T14:14:00-04:00</updated>
+    <id>http://roddet.github.com/2013/04/devoxxfr13-conference-javaee7-en-detail</id>
+    <content type="html"><![CDATA[<p>Vous pouvez retrouvez la description de la session <a href="http://www.devoxx.com/display/FR13/Java+EE+7+en+detail">sur le site de Devoxx France</a>.</p>
+
+<p><img class="center" src="http://blog.roddet.com/images/devoxxfr13/javaee7detail/affiche.jpg"></p>
+
+<h2>Pourquoi j'ai choisi cette session ?</h2>
+
+<p>En tant que développeur Java EE depuis plusieurs années, je souhaitais avoir les dernières nouvelles sur la version 7 à venir.</p>
+
+<h2>Le présentateur</h2>
+
+<p>David Delabassee <a href="https://twitter.com/delabassee">@delabassee</a> (<a href="http://www.devoxx.com/display/FR13/David+Delabassee">Bio</a>)</p>
+
+<h2>Le succès de Java EE 6</h2>
+
+<p>La session commence par un rappel du succès de Java EE 6 :</p>
+
+<ul>
+<li>Plus de 50 millions de téléchargements de composants Java EE 6</li>
+<li>Choix N°1 pour le développement en entreprise</li>
+<li>La version la plus rapide de Java EE</li>
+</ul>
+
+
+<h2>Le périmètre de Java EE 7</h2>
+
+<p>Java EE 7 a deux objectifs :</p>
+
+<ul>
+<li>Améliorer la productivité des développements Java EE</li>
+<li>Apporter un support de HTML 5 (WebSockets, JSON, Formulaires)</li>
+</ul>
+
+
+<p>Voici un vue d'ensemble de Java EE 7 :</p>
+
+<p><img class="center" src="http://blog.roddet.com/images/devoxxfr13/javaee7detail/overview.jpg"></p>
+
+<p>En vert les nouveaux modules :</p>
+
+<ul>
+<li>JSR 236 : Concurrency Utilities</li>
+<li>JSR 352 : Batch Applications</li>
+<li>JSR 353 : Java API for JSON</li>
+<li>JSR 356 : Java API for WebSocket</li>
+</ul>
+
+
+<p>En orange les modules qui subissent les évolutions majeures :</p>
+
+<ul>
+<li>JAX-RS 2.0</li>
+<li>EL 3.0</li>
+<li>JMS 2.0</li>
+</ul>
+
+
+<p>En gris les modules mis à jour.</p>
+
+<h2>Java API for JSON</h2>
+
+<p>Cette nouvelle API permettra de parser et générer du JSON. Lors de sa 1ère version, le binding JSON vers objet Java ne sera pas présent. Il est prévu dans une version ultérieure.</p>
+
+<p>Ce nouveau composant offrira une API en Streaming permettant de traiter de gros documents JSON.</p>
+
+<h2>Java API for Websocket</h2>
+
+<p>Elle est composée de 2 parties : client &amp; serveur.</p>
+
+<h3>Exemple de partie serveur</h3>
+
+<p>``` java
+import javax.websocket.*;</p>
+
+<p>@ServerEndPoint("/hello")
+public class HelloBean {</p>
+
+<pre><code>@OnMessage
+public String sayHello(String name){
+    return "Hello " + name;
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<h3>Exemple de partie cliente</h3>
+
+<p>``` java
+@ClientEndPoint
+public class HelloClient {</p>
+
+<pre><code>@OnMessage
+public void message(String message, Session session) {
+    // traitement de messages provenant du serveur
+}
+</code></pre>
+
+<p>}
+<code>
+Pour lancer la connexion du client au serveur
+</code>java
+WebSocketContainer c = ContainerProvider.getWebSocketContainer();
+c.connectToServer(HelloClient.class, "hello")
+```</p>
+
+<h2>Batch Applications</h2>
+
+<p>Il s'agit ici d'apporter un standard dans la création des batchs en Java.</p>
+
+<p>Ce composant apporte les concepts suivants :</p>
+
+<ul>
+<li>Job : Le processus du batch dans sa globalité</li>
+<li>Step : un traitement indépendant d'un batch</li>
+<li>JobOperator : Gestion de l'exécution du batch</li>
+<li>JobRepository : Métadonnées des jobs</li>
+</ul>
+
+
+<p>Il y a 2 types de step :</p>
+
+<ul>
+<li>"Chunked" un traitement standard utilisant le pattern "reader-processor-writer"</li>
+<li>"Batchlet" un traitement spécifique utilisant notre propre pattern</li>
+</ul>
+
+
+<p>Un job est paramétrable via un fichier XML. Exemple :
+```xml
+<job id="myJob"></p>
+
+<pre><code>&lt;step id="init"&gt;
+    &lt;chunk reader ref="MyReader" processor ref="MyProcessor" writer ref="MyWriter"/&gt;
+    &lt;next on="initialized" to="process" /&gt;
+    &lt;fail on="initError"/&gt;
+&lt;/step&gt;
+&lt;step id="process"&gt;
+    &lt;batchlet ref="ProcessAndEmail" /&gt;
+    &lt;end on="success"/&gt;
+    &lt;fail on="*" exit-status="FAILURE"/&gt;
+&lt;/step&gt;
+</code></pre>
+
+<p></job>
+```
+Il est possible de mettre en place des intercepteurs à différents niveaux (JobListener, StepListener, ChunkListener, etc...).</p>
+
+<p>Pour lancer un Job :
+```java
+try {</p>
+
+<pre><code>JobOperator jop = BatchRuntime.getJobOperator();
+long jobId = jop.start("myJob"); // META-INF/batch.xml
+</code></pre>
+
+<p>} catch(JobStartException e) {</p>
+
+<p>}</p>
+
+<p>```
+Il est possible de lancer les traitements d'un job en parallèle.</p>
+
+<h2>Concurrency Utilities for Java EE</h2>
+
+<p>L'objectif de cette JSR est d'offrir la possibilité d'exécuter des traitements concurrents dans un container Java EE sans compromettre son intégrité.
+Elle sera cohérente avec l'API existante en Java SE (java.util.concurrent.*) en fournissant une version "managed" de java.util.concurrent.ExecutorService : ManagedExecutorService (récupérable via JNDI).</p>
+
+<h2>JAX-RS 2.0</h2>
+
+<h3>La partie cliente entre dans la standard.</h3>
+
+<p>Exemple :
+```java
+Client client = ClientFactory.newClient();</p>
+
+<p>String name = client.target(".../orders/{orderId}/customer")</p>
+
+<pre><code>                .resolveTemplate("orderId", "10")
+                .queryParam("shipped", "true")
+                .request()
+                .get(String.class)
+</code></pre>
+
+<p>```</p>
+
+<h3>Des requêtes asynchrones possibles pour la partie cliente</h3>
+
+<p>```java
+Client client = ClientFactory.newClient();</p>
+
+<p>Future<String> future = client.target(".../orders/{orderId}/customer")</p>
+
+<pre><code>                .resolveTemplate("orderId", "10")
+                .queryParam("shipped", "true")
+                .request()
+                .async()
+                .get(
+                    new InvocationCallBack&lt;String&gt;(){
+                        public void completed(String result){
+
+                        }
+                        public void failed(InvocationException e){
+
+                        }
+                    }
+                )
+</code></pre>
+
+<p>```</p>
+
+<h3>Possibilité de créer des intercepteurs</h3>
+
+<p>```java
+public class MyInterceptor implements ReaderInterceptor {</p>
+
+<pre><code>@Override
+Object aroundReadFrom(ReaderInterceptorContext ctx){
+    // Traitement de l'intercepteur
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<h2>JMS 2.0</h2>
+
+<p>Ca faisait longtemps que JMS n'avait pas évolué.</p>
+
+<p>L'objectif de Java EE 7 sur ce point :</p>
+
+<ul>
+<li>Simplifier l'API</li>
+<li>Offrir la possibilité d'injecter des ressources</li>
+<li>Les objets Connection, Session, etc... sont AutoCloseable (plus besoin de fermer explicitement ces ressources)</li>
+</ul>
+
+
+<h3>Injection de ressources par annotations</h3>
+
+<p>```java
+@Resource(lookup = "jms/connFactory")
+ConnectionFactory cf;</p>
+
+<p>@Resource(lookup = "jms/inboundQueue")
+Destination dest;
+```</p>
+
+<h3>Création de JMSContext</h3>
+
+<p>C'est une combinaison de la Connection et la Session.</p>
+
+<p>```java
+try(JMSContext context = cf.createContext();){</p>
+
+<pre><code>//
+</code></pre>
+
+<p>}</p>
+
+<p>```</p>
+
+<h3>On peut envoyer un String directement sans passer par un objet spécifique</h3>
+
+<p>```java
+try(JMSContext context = cf.createContext();){</p>
+
+<pre><code>context.createProducer().send(dest,"Hello");
+</code></pre>
+
+<p>}
+```</p>
+
+<h3>JMSContext peut être injecté</h3>
+
+<p><code>java
+@Inject
+JMSContext context;
+</code></p>
+
+<h2>Bean Validation 1.1</h2>
+
+<h3>Validation des paramètres d'une méthode</h3>
+
+<p>```java
+public void myMethod(</p>
+
+<pre><code>@NotNull String name, 
+@NotNull @Max("10")){
+//
+</code></pre>
+
+<p>}</p>
+
+<p>```</p>
+
+<h3>Validation du résultat d'une méthode</h3>
+
+<p>```java
+@Future
+public Date getProchainDevoxxFrance(){</p>
+
+<pre><code>//
+</code></pre>
+
+<p>}
+```</p>
+
+<h2>Et bien sûr les autres nouveautés :</h2>
+
+<ul>
+<li>JSF 2.2 : support HTML5, Composant d'upload de fichier, ...</li>
+<li>Servlet 3.1 : IO Non bloquant, ...</li>
+<li>JPA 2.1 : Génération de schéma, ...</li>
+<li>JTA 1.2 : déclaration de transaction en dehors des EJB, etc...</li>
+<li>CDI 1.1 : Ordonnancement des intercepteurs, ...</li>
+<li>EJB 3.2 : Asynchronisme, ...</li>
+<li>EL 3.0 : Support des lambdas, Collection, ...</li>
+<li>JavaMail 1.5</li>
+</ul>
+
+
+<h2>Petite réorganisation des profils Java EE</h2>
+
+<h3>Web Profile</h3>
+
+<ul>
+<li>Servlet, JSF, JSP</li>
+<li>WebSocket, JSON-P</li>
+<li>JAX-RS</li>
+<li>EL, Beans Validation</li>
+<li>EJB (Lite), CDI, JTA, JPA, ...</li>
+</ul>
+
+
+<h3>Plateforme complète</h3>
+
+<ul>
+<li>Web Profile</li>
+<li>Concurrency Utilities, Batch API</li>
+<li>JMS, EJB, JAX-WS, JAXB, JavaMail, ...</li>
+</ul>
+
+
+<h2>Liens utiles</h2>
+
+<ul>
+<li><a href="http://glassfish.org/javaee7">Java EE 7</a></li>
+<li><a href="https://blogs.oracle.com/theaquarium/">The Aquarium</a></li>
+<li><a href="http://glassfish.java.net/adoptajsr/">Adopt-A-JSR</a></li>
+<li><a href="http://glassfish.java.net/fishcat/">FishCat</a></li>
+</ul>
+
+
+<h2>RoadMap à court terme</h2>
+
+<p>Les spécifications seront validées à la fin du mois d'Avril. La première version de GlassFish stable sortira quelques jours après.
+JCache n'est pas dans le périmètre de Java EE 7.</p>
+
+<h2>Bilan</h2>
+
+<p>Session interressante qui présente en 1h les grandes nouveautés attendues pour Java EE 7. Après quelques recherches sur SlideShare, Parleys etc.. je n'ai pas retrouvé les slides de la présentation. Je l'ajouterai à ce billet lorsqu'il sera disponible.</p>
+
+<p>Maintenant il ne reste plus qu'à approfondir chaque sujet et tester :)</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,287 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>BreizhCamp 2013 # Utilisation de python sur le robot humanoïde NAO - Rossi Oddet</title>
+  <meta name="author" content="Rossi Oddet">
+
+  
+  <meta name="description" content="Animateurs Franck Calzada Manager BU Expertise SQLI Nantes, NAO Developer
+NAO Robot humanoïde Déroulement Cette session sera conjointement animée &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://roddet.github.com/2013/06/breizhcamp-python-nao">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Rossi Oddet" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-32190657-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>	
+  <h1><a href="/">Rossi Oddet</a></h1>
+  
+    <h2>Blog d'un artisan développeur</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:roddet.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/events">Evénements</a></li>
+  <li><a href="/viededev">Vie de Développeur</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">BreizhCamp 2013 # Utilisation De Python Sur Le Robot Humanoïde NAO</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-14T14:00:00-04:00" pubdate data-updated="true">Jun 14<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><img class="center" src="/images/breizhcamp13/nao/nao1.jpg"></p>
+
+<h2>Animateurs</h2>
+
+<ul>
+<li><a href="https://twitter.com/f_calzada">Franck Calzada</a> Manager BU Expertise SQLI Nantes, NAO Developer</li>
+<li><a href="http://www.aldebaran-robotics.com/en/">NAO</a> Robot humanoïde</li>
+</ul>
+
+
+<h2>Déroulement</h2>
+
+<p>Cette session sera conjointement animée par un humain (Franck) et un humanoïde (NAO).</p>
+
+<p>Tout commence par la prise de parole de NAO qui fait l&#8217;introduction de la session. Il va nous présenter l&#8217;agenda et va ensuite passer la main à l&#8217;humain en lui souhaitant bonne chance :)
+C&#8217;était très impressionnant de voir l&#8217;humanoïde s&#8217;exprimer avec des mouvements, on s&#8217;y croyait&#8230; On a notamment vu NAO se lever et s&#8217;asseoir après sa prestation.</p>
+
+<p>L&#8217;humain va ensuite nous présenter l&#8217;histoire de NAO, ses caractéristiques techniques, l&#8217;environnement de développement, etc&#8230;
+Franck va être souvent interrompue par NAO, on découvre par l&#8217;occasion que NAO a un mode autonome qui lui fait faire des petits mouvements de temps de temps. Si l&#8217;on fait abstraction que c&#8217;est un robot, il bougait presque comme un humain :)</p>
+
+<p>La session va se terminer par une série de démonstration :</p>
+
+<h3>NAO qui fait dessine une voiture</h3>
+
+<p><img class="center" src="/images/breizhcamp13/nao/nao2.jpg"></p>
+
+<h3>NAO joue au Golf</h3>
+
+<p><a href="https://plus.google.com/u/0/events/chg8m02mqghjaoeh2khvf39pu70/103932114865279499816/5889631493992066962">La vidéo</a></p>
+
+<h3>NAO qui lit dans l&#8217;esprit de Franck</h3>
+
+<p>NAO dit : &#8220;Franck, la personne a qui tu penses est Barack Obama !&#8221;</p>
+
+<p><img class="center" src="/images/breizhcamp13/nao/nao3.jpg"></p>
+
+<h2>Bilan</h2>
+
+<p>Session très intéressante qui nous plongeait un peu dans notre imagination de ce que peut faire NAO. En voyant NAO, on se dit qu&#8217;on n&#8217;est plus très loin des films de sciences fictions où un robot pourrait nous faire notre café&#8230;</p>
+
+<p>Session à revoir en vidéo lorsqu&#8217;elle sera disponible !</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Rossi Oddet</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-14T14:00:00-04:00" pubdate data-updated="true">Jun 14<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/breizhcamp13/'>breizhcamp13</a>, <a class='category' href='/blog/categories/nao/'>nao</a>, <a class='category' href='/blog/categories/python/'>python</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://roddet.github.com/2013/06/breizhcamp-python-nao/" data-via="rossioddet" data-counturl="http://roddet.github.com/2013/06/breizhcamp-python-nao/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2013/06/breizhcamp-web-components/" title="Previous Post: BreizhCamp 2013 # Web Components, l'avenir des développeurs web">&laquo; BreizhCamp 2013 # Web Components, l'avenir des développeurs web</a>
+      
+      
+        <a class="basic-alignment right" href="/2013/06/breizhcamp-android-bootstrap/" title="Next Post: BreizhCamp 2013 # Android BootStrap">BreizhCamp 2013 # Android BootStrap &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Rossi Oddet</h1>
+  <br/>
+  <table>
+  	<tr><td width="30%"><img src="/images/photo.jpeg" width="75"/></td>
+  		<td>&nbsp;&nbsp;</td>
+    <td width="70%"> <p>Développeur, Blogger et passionné par les communautés IT.</p></td></tr>
+</table>
+</section>
+<a class="twitter-timeline" href="https://twitter.com/rossioddet" data-widget-id="314511007521312768">Tweets by @rossioddet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Rossi Oddet -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogroddet';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://roddet.github.com/2013/06/breizhcamp-python-nao/';
+        var disqus_url = 'http://roddet.github.com/2013/06/breizhcamp-python-nao/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

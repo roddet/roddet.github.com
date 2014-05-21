@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: scalaio2013 | Rossi Oddet]]></title>
+  <link href="http://roddet.github.com/blog/categories/scalaio2013/atom.xml" rel="self"/>
+  <link href="http://roddet.github.com/"/>
+  <updated>2014-05-21T01:43:46-04:00</updated>
+  <id>http://roddet.github.com/</id>
+  <author>
+    <name><![CDATA[Rossi Oddet]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Scala IO 2013 => Big Data + Scala]]></title>
+    <link href="http://roddet.github.com/2013/11/scalaio-2013-bigdata-scala/"/>
+    <updated>2013-11-07T09:30:00-05:00</updated>
+    <id>http://roddet.github.com/2013/11/scalaio-2013-bigdata-scala</id>
+    <content type="html"><![CDATA[<h2>Présentateurs</h2>
+
+<p><img class="left" src="/images/scalaio2013/speaker-sam-bessalah.jpg">
+Sam Bessalah, indépendant intervenant sur des sujets tournant autour du <em>Big Data</em>, <em>Machine Learning</em>...</p>
+
+<ul>
+<li>Twitter : <a href="https://twitter.com/samklr">@samklr</a></li>
+<li>Sa bio sur <a href="http://scala.io/speakers/sam-bessalah.html">Scala IO</a></li>
+<li>La description de <a href="http://scala.io/events/big-data-plus-scala.html">la session ScalaIO</a></li>
+</ul>
+
+
+<br><br>
+
+
+<h2>Big Data + Analytics</h2>
+
+<p><img class="left" src="/images/scalaio2013/big-data-scala-1.jpg">
+<em>What is Big Data Analytics ?</em></p>
+
+<p>C'est par cette question que commence le talk de Sam. La réponse sera :</p>
+
+<p><blockquote><p>It's about doing aggregations and running complex models on large datasets, offline, in real time or both.</p></blockquote></p>
+
+<p>Pour analyser de gros volumes de données distribuées, il y a donc 3 stratégies :</p>
+
+<ul>
+<li><em>offline</em> (mode batch),</li>
+<li>en temps réel,</li>
+<li>ou les deux en même temps.</li>
+</ul>
+
+
+<p>Sam va tout au long de la session présenter les outils du <em>Big Data</em> et leurs utilisations avec Scala. Il précisera pour chaque outil les stratégies compatibles.</p>
+
+<h2>Hadoop + Scala</h2>
+
+<p><a href="http://hadoop.apache.org/">Hadoop</a> est un système permettant de créer des applications scalables massivement distribuées.
+Dans le domaine du Big Data, il est utilisé en mode batch et non en temps réel.</p>
+
+<p>Pour traiter de grands volumes de données distribuées, <a href="http://hadoop.apache.org/">Hadoop</a> possède un module appelé <em>Hadoop MapReduce</em> qui applique le pattern <a href="http://fr.wikipedia.org/wiki/MapReduce"><em>Map Reduce</em></a>.</p>
+
+<p>Sam a pris le temps d'expliquer le concept de <em>Map Reduce</em> par des schémas et un exemple de code Scala.</p>
+
+<p>Pour définir des <em>jobs Hadoop MapReduce</em> en scala, Sam conseille l'utilisation de la librairie <a href="https://github.com/twitter/scalding">Scalding</a>.</p>
+
+<h2>Storm + Scala</h2>
+
+<p><a href="http://storm-project.net/">Storm</a>, contrairement à Hadoop, va permettre de traiter massivement les données en temps réel.</p>
+
+<p>Pour utiliser <a href="http://storm-project.net/">Storm</a> avec un DSL Scala, il y a le projet <a href="https://github.com/velvia/ScalaStorm">ScalaStorm</a>.</p>
+
+<h2>SummingBird => Scala</h2>
+
+<p><a href="https://github.com/twitter/summingbird">SummingBird</a> est une librairie Scala qui fournit une abstraction du pattern <em>Map Reduce</em> applicable à <a href="http://hadoop.apache.org/">Hadoop</a> et à <a href="http://storm-project.net/">Storm</a>.</p>
+
+<p>Ainsi, vous définissez vos jobs avec <a href="https://github.com/twitter/summingbird">SummingBird</a> et vous allez pouvoir les exécuter dans <a href="http://hadoop.apache.org/">Hadoop</a> ou <a href="http://storm-project.net/">Storm</a>.</p>
+
+<h2>Apache Spark + Scala</h2>
+
+<p><a href="http://spark.incubator.apache.org/">Apache Spark</a> est une alternative au module <em>Hadoop MapReduce</em> qui permet de faire des traitements distribués.</p>
+
+<p>Il est réputé plus performant que <em>Hadoop MapReduce</em> et reste compatible avec <a href="http://hadoop.apache.org/">Apache Hadoop</a>.</p>
+
+<p>Le concept clé de <a href="http://spark.incubator.apache.org/">Spark</a> est de permettre le traitement simplifié de collections de données distribuées.
+Il dispose d'une API en Scala, Java et Python donnant la possibilité d'enchainer des actions (count, collect, save, ...) ou encore des transformations (map, filter, groupBy, join, ...).</p>
+
+<p><a href="http://spark.incubator.apache.org/">Spark</a> s'utilise en mode batch et non en temps réel.</p>
+
+<h2>Apache Spark Streaming + Scala</h2>
+
+<p><a href="http://spark.incubator.apache.org/docs/latest/streaming-programming-guide.html">Apache Spark Streaming</a> étend les possibilités de <a href="http://spark.incubator.apache.org/">Spark</a> en traitant des <em>streams</em> de données en temps réel.</p>
+
+<h2>Les slides de la présentation</h2>
+
+<script async class="speakerdeck-embed" data-id="02c383b01f9901312c660a36078c81b4" data-ratio="1.33333333333333" src="http://roddet.github.com//speakerdeck.com/assets/embed.js"></script>
+
+
+<h2>Ce que j'en ai pensé</h2>
+
+<p>Ce talk m'a permis de découvrir l'univers du Big Data. Scala y semble bien implanté :</p>
+
+<ul>
+<li>Existence de multiples API pour manipuler les systèmes les plus utilisés</li>
+<li>Des projets comme <a href="http://spark.incubator.apache.org/">Spark</a> ou <a href="https://github.com/twitter/summingbird">SummingBird</a> sont écrits en scala.</li>
+</ul>
+
+
+<p>La programmation fonctionnelle (<em>FP</em>) semble trouver avec le Big Data un créneau d'utilisation particulièrement adapté. En effet, effectuer des analyses de données consiste souvent à appliquer un enchainement de transformations à ces données. Et la <em>FP</em>, de part sa nature, est l'outil idéal pour représenter un enchainement de fonctions :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Scala IO 2013 => Patterns de développement pour une application web réactive et concurrente]]></title>
+    <link href="http://roddet.github.com/2013/11/scalaio-2013-patterns-web-reactive/"/>
+    <updated>2013-11-06T09:30:00-05:00</updated>
+    <id>http://roddet.github.com/2013/11/scalaio-2013-patterns-web-reactive</id>
+    <content type="html"><![CDATA[<h2>Présentateurs</h2>
+
+<p><img class="left" src="/images/scalaio2013/speaker-fabrice-croiseaux.png">
+Fabrice Croiseaux, CEO chez InTech Luxembourg. Il anime régulièrement des podcasts <a href="http://www.niptech.com/podcast/category/nipdev/">NipDev</a>.</p>
+
+<ul>
+<li>Twitter : <a href="https://twitter.com/fXzo">@fXzo</a></li>
+<li>LinkedIn : <a href="http://www.linkedin.com/in/fcroiseaux">http://www.linkedin.com/in/fcroiseaux</a></li>
+<li>Github : <a href="https://github.com/fcroiseaux">fcroiseaux</a></li>
+<li>Sa bio sur <a href="http://scala.io/speakers/fabrice-croiseaux.html">Scala IO</a></li>
+</ul>
+
+
+<br>
+
+
+<p><img class="left" src="/images/scalaio2013/speaker-antoine-detante.png">
+Antoine Detante, Ingénieur chez InTech Luxembourg.</p>
+
+<ul>
+<li>Twitter : <a href="https://twitter.com/antoined">@antoined</a></li>
+<li>LinkedIn : <a href="http://www.linkedin.com/in/fcroiseaux">http://www.linkedin.com/in/fcroiseaux</a></li>
+<li>Github : <a href="https://github.com/adetante">adetante</a></li>
+<li>Sa bio sur <a href="http://scala.io/speakers/antoine-detante.html">Scala IO</a></li>
+</ul>
+
+
+<br><br>
+
+
+<p>=> La description de <a href="http://scala.io/events/patterns-de-developpement-pour-une-application-web.html">la session ScalaIO</a></p>
+
+<h2>Le Talk !</h2>
+
+<p>Antoine et Fabrice sont arrivés 2nd au concours <a href="http://typesafe.com/blog/developer-contest-winners-announced">Typesafe’s Developer Contest</a> qui a eu lieu en début d'année.</p>
+
+<p>Ils ont concouru avec une application <em>Car Race Dashboard</em> construite avec <a href="http://www.playframework.com/">Play! Framework</a> qui offre en temps réel la visualisation d'un <em>dashboard</em> de course de voitures.</p>
+
+<p>Ce talk a été l'occasion pour eux de présenter leur travail.</p>
+
+<p><img class="center" src="/images/scalaio2013/web-reactive-1.jpg"></p>
+
+<h2>Une application construite avec 3 composants principaux</h2>
+
+<ul>
+<li><p><em>Race Simulation</em> => un moteur qui simule le déplacement de voitures</p></li>
+<li><p><em>Race Dashboard</em> => Stockage des positions dans une base <a href="http://www.mongodb.org/">Mongo DB</a> + calcul des statistiques en asynchrone + notification des résultats</p></li>
+<li><p><em>Web Client</em> => un client web qui affiche en temps réel l'évolution de la course</p></li>
+</ul>
+
+
+<h2><em>Race Simulation</em></h2>
+
+<h3>Du KML en guise de circuit</h3>
+
+<p>Pour simuler le déplacement d'une voiture, il faut déterminer une liste de coordonnées possibles.
+Cette liste de coordonnées est commune à toutes les voitures lors d'une course.
+Elle dépend évidemment du circuit sélectionné pour la course.</p>
+
+<p>La liste des points est obtenue à partir d'un fichier <a href="http://en.wikipedia.org/wiki/Keyhole_Markup_Language">KML</a> pour un circuit. A titre d'exemple, vous pouvez consulter celui du Mans <a href="http://www.comintech.net/kml/LeMans.kml">ici</a>.
+Ce fichier <em>XML</em> sera parsé pour récupérer la liste des coordonnées possibles pour une course donnée.</p>
+
+<p>Curieux de voir à quoi ressemble le code Scala qui a en entrée une URL de fichier <a href="http://en.wikipedia.org/wiki/Keyhole_Markup_Language">KML</a> et en sortie une liste de points ?</p>
+
+<p>``` scala TrackParser https://github.com/intechgrp/CarRaceDashboard/blob/master/app/simulation/TrackParser.scala
+def readTrack(url: String): List[TrackPoint] = readTrack(XML.load(url))</p>
+
+<p>def readTrack(data: Elem): List[TrackPoint] = {</p>
+
+<pre><code>val positions = (for {
+  pos &lt;- (data \\ "coordinates").text.split("\n")
+  if (pos.trim.length &gt; 0)
+} yield pos.trim).toList.map {
+  pos =&gt;
+    val coordinates = pos.split(",")
+    Position(coordinates(1).toDouble, coordinates(0).toDouble)
+}
+positions.zipWithIndex.map(v =&gt; TrackPoint(v._2, v._1))
+</code></pre>
+
+<p>}
+```</p>
+
+<h3>Des acteurs, des acteurs, des acteurs</h3>
+
+<ul>
+<li><p><em>Race Actor</em> => Acteur qui représente la course et qui permet de lancer toutes les voitures via un événement <em>start</em>. Il va aussi se charger de communiquer l'évolution des voitures au composant <em>Race Dashboard</em>.</p></li>
+<li><p><em>Car Actor</em> => Acteur qui simule le déplacement d'une voiture.
+Une fois l'événement <em>start</em> reçu du <em>Race Actor</em>, il va déplacer à intervalle régulier une voiture suivant la liste des points ordonnés du circuit.</p></li>
+</ul>
+
+
+<p><a href="https://github.com/intechgrp/CarRaceDashboard/blob/master/app/simulation/Race.scala">Code source des acteurs</a></p>
+
+<h2><em>Race Dashboard</em></h2>
+
+<h3><em>Storage Actor</em></h3>
+
+<p>Cet acteur va sauvegarder les vitesses, positions et les distances successives dans la base <a href="http://www.mongodb.org/">Mongo DB</a>.
+Le driver <a href="http://reactivemongo.org/">Reactive Mongo</a> y est utilisé.</p>
+
+<p><a href="https://github.com/intechgrp/CarRaceDashboard/blob/master/app/models/StorageActor.scala">Code Source de l'acteur</a></p>
+
+<h3><em>Stats Actor</em></h3>
+
+<p><em>Stats Actor</em> calcule à partir des données stockées :</p>
+
+<ul>
+<li>La vitesse moyenne</li>
+<li>La vitesse maximale</li>
+<li>Le classement général</li>
+</ul>
+
+
+<p><a href="https://github.com/intechgrp/CarRaceDashboard/blob/master/app/models/StatsActor.scala">Code Source de l'acteur</a></p>
+
+<h3><em>RTEventListener</em></h3>
+
+<p>Un acteur <em>RTEventListener</em> est instancié pour chaque client Web. Il écoute les messages du composant des acteurs <em>Storage Actor</em> et <em>Stats Actor</em> puis notifie via <a href="http://en.wikipedia.org/wiki/Server-sent_events">SSE</a> le client web.</p>
+
+<h2><em>Web Client</em></h2>
+
+<p>Le client Web est construit avec :</p>
+
+<ul>
+<li><a href="http://coffeescript.org/">Coffescript</a> qui s'intègre naturellement avec <a href="http://www.playframework.com/">Play! Framework</a></li>
+<li><a href="http://backbonejs.org/">backbone.js</a> pour une structure MVC</li>
+<li><a href="http://getbootstrap.com/">Twitter Bootstrap</a> pour la présentation générale de l'application</li>
+<li><a href="http://kineticjs.com/">Kineticjs</a> pour le dessin du circuit et le déplacement des voitures</li>
+</ul>
+
+
+<h2>A quoi ressemble l'application ?</h2>
+
+<p><img class="center" src="/images/scalaio2013/web-reactive-2.png"></p>
+
+<h2>Les slides de la présentation</h2>
+
+<iframe src="http://www.slideshare.net/slideshow/embed_code/27621039" width="597" height="486" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
+
+
+<h2>Ce que j'en ai pensé</h2>
+
+<p>Ce talk montre un exemple d'architecture se reposant complètement sur <a href="http://fr.wikipedia.org/wiki/Mod%C3%A8le_d'acteur">le modèle d'acteur</a>.
+Ce style d'architecture permet une organisation séparant clairement les responsabilités entre les acteurs et une communication asynchrone entre les différents composants.</p>
+
+<p>Je me suis poser la question de l'intérêt de l'instanciation d'un acteur <em>RTEventListener</em> par client Web. Je pensais trouver 1 acteur unique pour communiquer via <a href="http://en.wikipedia.org/wiki/Server-sent_events">SSE</a> avec tous les clients. Je comprends qu'en utilisant 1 acteur par client Web, on se donne l'opportunité de notifier de façon concurrente les clients.</p>
+
+<p>Asynchronisme + séparation des responsabilités + concurrence constituent-ils les fondations d'une application web réactive ?</p>
+
+<p>Vous souhaitez en savoir plus sur ce style d'architecture ? Consulter le code sur <a href="https://github.com/intechgrp/CarRaceDashboard/">Github</a> et surtout inscrivez-vous au cours gratuit <a href="https://www.coursera.org/course/reactive"><em>Principles of Reactive Programming</em></a> de Coursera.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Scala IO 2013 => Our journey from UML/MDD to Scala macros]]></title>
+    <link href="http://roddet.github.com/2013/11/scalaio-2013-uml-scala/"/>
+    <updated>2013-11-05T09:30:00-05:00</updated>
+    <id>http://roddet.github.com/2013/11/scalaio-2013-uml-scala</id>
+    <content type="html"><![CDATA[<h2>Présentateur</h2>
+
+<p><img class="left" src="/images/scalaio2013/speaker-hayssam-saleh.png">
+Hayssam Saleh, CTO chez Ebiznext.</p>
+
+<ul>
+<li>Twitter : <a href="https://twitter.com/hayssams">@hayssams</a></li>
+<li>LinkedIn : <a href="http://fr.linkedin.com/in/hayssams">http://fr.linkedin.com/in/hayssams</a></li>
+<li>Github : <a href="https://github.com/hayssams">hayssams</a></li>
+<li>Sa bio sur <a href="http://scala.io/speakers/hayssam-saleh.html">Scala IO</a></li>
+<li>La description de <a href="http://scala.io/events/our-journey-from-umlmdd-to-scala-macros.html">sa session ScalaIO</a></li>
+</ul>
+
+
+<br><br>
+
+
+<h2>Le Talk !</h2>
+
+<p>Ce talk nous présente un retour d'expérience concernant une migration UML vers des macros scala pour modéliser une application.</p>
+
+<p><img class="center" src="/images/scalaio2013/uml-scala-1.jpg"></p>
+
+<h2>Les inconvénients d'une modélisation basée sur UML</h2>
+
+<ul>
+<li><p>Un cycle de vie peu efficace composé d'un enchainement de transformations : UML -> XMI -> Code -> ByteCode. Il fallait près de 4h pour avoir le livrable correspondant à une modification du modèle. L'étape la plus chronophage (78% du temps) était <em>XMI -> Code</em>.</p></li>
+<li><p>Pas de solution <em>exploitable dans un vrai projet</em> pour effectuer des merges de modèles UML. Ce qui entrainait la mise en place d'un <em>lock</em> (1 modification à la fois) pour éviter d'avoir à effectuer des merges.</p></li>
+<li><p>Le manque de représentation standard de certaines caractéristiques du modèle (Les génériques Java par exemple)</p></li>
+</ul>
+
+
+<h2>Un DSL comme alternative</h2>
+
+<p>Hayssam et son équipe ont proposé alors de s'orienter vers l'utilisation d'un DSL qui doit avoir les caractéristiques suivantes :</p>
+
+<ul>
+<li>Compréhensible du <em>product owner</em></li>
+<li>Compilable du développeur</li>
+</ul>
+
+
+<h2>Des macros Slick</h2>
+
+<p>Les macros Scala utilisées sont basées sur <a href="http://slick.typesafe.com/">Slick</a>, un framework de persistance. Hayssam va nous présenter un exemple de <em>modélisation</em> avec une macro Slick et comment se traduisent les définitions des :</p>
+
+<ul>
+<li>Entités => <em>case classes</em></li>
+<li>Relations 0..1 => <em>Option</em></li>
+<li>Relations 1..1 => Composition d'entités</li>
+<li>Relations n..n => <em>List</em></li>
+<li>Contraintes => via l'utilisation de mots clés du DSL</li>
+</ul>
+
+
+<h2>Un export UML</h2>
+
+<p>Les macros <a href="http://slick.typesafe.com/">Slick</a> vont permettre de générer des diagrammes UML via l'exécution d'une ligne de code.</p>
+
+<h2>La magie faite à la compilation, pas d'injection au runtime</h2>
+
+<p>Les macros <a href="http://slick.typesafe.com/">Slick</a> vont impacter le code à la compilation, le bytecode généré contient déjà toutes les transformations. Cela permet de profiter de toute la puissance du compilateur et donc du typage fort de Scala.</p>
+
+<p>Pas de magie au runtime => à l'exécution, seul le code compilé est exécuté.</p>
+
+<p><a href="http://slick.typesafe.com/">Slick</a> permet aussi de contruire des requêtes qui vont profiter d'un typage fort facilitant la détection d'erreurs à la compilation.</p>
+
+<h2>Les slides de la présentation</h2>
+
+<iframe src="http://www.slideshare.net/slideshow/embed_code/27545078" width="650" height="534" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
+
+
+<h2>Ce que j'en ai pensé</h2>
+
+<p>Je suis arrivé un peu par hasard dans cette session. C'était en fin de journée et je m'étais en fait trompé de salle :) Cela dit, je suis content d'y avoir assisté.</p>
+
+<p>Il est intéressant d'avoir des retours d'expérience d'utilisation de DSL dans le monde de l'entreprise. La modélisation qui constitue souvent naturellement la richesse documentaire des applications est ici faite sans induire la double maintenance habituelle (modèle + code). Nous échappons ici à la génération de codes que nous détestons la plupart du temps en tant que développeur.</p>
+
+<p>Ce qui m'a manqué dans cette présentation, ce sont les impacts sur le plan humain et organisationnel de cette migration. J'imagine que des personnes qui étaient <em>habituées</em> à modéliser via des <em>boites</em> ont dû, au moins au début, manifester une certaine hostilité face à ce changement :) J'aurai voulu savoir s'il y avait eu une stratégie particulière pour créer de l'adhésion autour de ce nouveau paradigme.</p>
+
+<p>Pour en savoir plus, le dépôt Github <a href="https://github.com/ebiznext/slick-macros">https://github.com/ebiznext/slick-macros</a> contient les exemples du Talk et ce <a href="https://github.com/ebiznext/slick-macros/wiki">Wiki</a> documente la solution proposée.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Scala IO 2013 => PHPz for the rest of us]]></title>
+    <link href="http://roddet.github.com/2013/11/scalaio-2013-phpz/"/>
+    <updated>2013-11-04T09:30:00-05:00</updated>
+    <id>http://roddet.github.com/2013/11/scalaio-2013-phpz</id>
+    <content type="html"><![CDATA[<h2>Présentateur</h2>
+
+<p><img class="left" src="/images/scalaio2013/speaker-clement-delafargue.jpeg">
+Clément Delafargue, Consultant chez Penazen Consulting.</p>
+
+<ul>
+<li>Twitter : <a href="https://twitter.com/clementd">@clementd</a></li>
+<li>LinkedIn : <a href="http://www.linkedin.com/in/cdelafargue">http://www.linkedin.com/in/cdelafargue</a></li>
+<li>Blog : <a href="http://blog.clement.delafargue.name/">http://blog.clement.delafargue.name</a></li>
+<li>Github : <a href="https://github.com/divarvel">divarnel</a></li>
+</ul>
+
+
+<br><br><br><br><br>
+
+
+<h2>Comment faire des délicieux bouritos en Php ?</h2>
+
+<p><img class="left" src="/images/scalaio2013/phpz-1.jpg" width="300"></p>
+
+<p><a href="http://scala.io/">Scala IO</a>, c'était aussi des sessions courtes qui n'étaient pas dans le planning. Elles étaient appelées "Lightning talk" et avait lieu durant la pause de midi.</p>
+
+<p>Dans le lot de ces présentations, il y avait ce talk sur <em>Phpz</em>. Un talk suréaliste qui a apporté une belle ambiance à l'événement.</p>
+
+<p>Juste avant de démarrer le talk, Clément nous préviens que cette présentation n'est pas du tout sérieuse et qu'il va nous montrer comment faire de délicieux bouritos en Php.</p>
+
+<p>Le ton du talk était lancé ! Nous aurons droit à 3 étapes :</p>
+
+<ul>
+<li>Les avantages de la programmation fonctionnelle</li>
+<li>Les caractéristiques de Php</li>
+<li>Phpz pour faire des délicieux bouritos</li>
+</ul>
+
+
+<h2>Les avantages de la programmation fonctionnelle</h2>
+
+<ul>
+<li>La pureté</li>
+<li>Pas d'effet de bord</li>
+<li><em>Equational Reasoning</em></li>
+</ul>
+
+
+<h2>Les caractéristiques de Php</h2>
+
+<ul>
+<li>Du code en prod via FTP</li>
+<li>Pas de système de type</li>
+<li>Déploiement facile et robuste</li>
+<li>Bon écosystème</li>
+</ul>
+
+
+<h2>Phpz pour faire des délicieux bouritos</h2>
+
+<p>Inspiré de <a href="https://github.com/scalaz/scalaz">Scalaz</a>, Phpz <em>apporte</em> la puissance de la programmation fonctionnelle à Php. Clément nous a partagé les difficultés qu'il a rencontrées pour mettre en place des <em>typeclass</em> en Php.</p>
+
+<p>Selon Clément, la version actuelle pourrait rendre votre application jusqu'à 40 fois moins performante mais il ne perd pas espoir que cet aspect s'améliore dans les prochaines versions. Il attend vos <em>pull request</em> avec impatience.</p>
+
+<p>Il y a <a href="https://twitter.com/gcouprie">Geoffroy Couprie</a> qui a poussé l'amusement un peu plus loin en créant <a href="http://geal.github.io/pod/">POD</a> un langage basé sur Phpz.</p>
+
+<h2>Les slides de la présentation</h2>
+
+<iframe src="http://www.slideshare.net/slideshow/embed_code/27780581?rel=0" width="597" height="486" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
+
+
+<h2>Ce que j'en ai pensé</h2>
+
+<p>J'ai trouvé cette présentation très drôle, j'ai rigolé pendant toute la présentation. Si vous vous demandez pourquoi, c'est que vous n'avez pas parcouru les slides :)</p>
+
+<p>Au regard du titre de la présentation, je pensais que nous avions à faire à quelqu'un qui aime Php (ils sont de plus en plus rares à l'avouer dans mon entourage) mais en fait tout au long de la présentation nous nous sommes rapidement rendu compte que c'était bien évidemment ironique. On sent bien que Clément est un <em>fan</em> de la programmation fonctionnelle et qu'il n'apprécie pas beaucoup Php.</p>
+
+<p>Difficile à dire qui a l'esprit le plus tordu, Clément avec Phpz ou Geoffroy qui l'utilise pour en faire un langage... je vous laisse juger :)</p>
+
+<p>Voici un conseil de Clément que j'ai retrouvé sur son <a href="http://blog.clement.delafargue.name/posts/2013-04-01-delicious-burritos-in-php-with-phpz.html">blog</a> qui résume bien l'ambiance de ce talk :</p>
+
+<p><img class="center" src="/images/scalaio2013/phpz-drupal.jpg"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Scala IO 2013 => Spray : REST on Akka]]></title>
+    <link href="http://roddet.github.com/2013/10/scalaio-2013-spray-rest-on-akka/"/>
+    <updated>2013-10-30T09:30:00-04:00</updated>
+    <id>http://roddet.github.com/2013/10/scalaio-2013-spray-rest-on-akka</id>
+    <content type="html"><![CDATA[<h2>Présentateur</h2>
+
+<p><img class="left" src="/images/scalaio2013/speaker-mathias-doenitz.png">
+Mathias Doenitz, lead developpeur de <a href="http://spray.io/">spray.io</a>, commiteur sur le projet <a href="http://akka.io/">Akka</a>.</p>
+
+<ul>
+<li>Twitter : <a href="https://twitter.com/sirthias">@sirthias</a></li>
+<li>G+ : <a href="https://plus.google.com/117715287005040955399">Mathias Doenitz</a></li>
+<li>Sa bio sur <a href="http://scala.io/speakers/mathias-doenitz.html">Scala IO</a></li>
+<li>La description de <a href="http://scala.io/events/spray-rest-on-akka.html">sa session ScalaIO</a></li>
+</ul>
+
+
+<br><br><br>
+
+
+<h2>Le Talk</h2>
+
+<p>Ce talk a eu comme objectif la présentation de Spray, une couche HTTP pour les acteurs d'<a href="http://akka.io/">Akka</a> à destination des développeurs Scala.</p>
+
+<p><img src="/images/scalaio2013/mathias-doenitz-spray-io.jpg"></p>
+
+<h2>En Java nous avons déjà ce qu'il faut pour faire du HTTP</h2>
+
+<p>Pour communiquer à travers HTTP, nous disposons de multiples librairies et frameworks dans l'écosystème de la JVM (Servlets, Restlet, Spring MVC, JAXRS, ...). Scala étant basé sur la JVM, nous pouvons bien entendu "réutiliser" certains de ces outils.</p>
+
+<p>Mais...</p>
+
+<h2>Les outils Java => un enfer pour le développeur Scala</h2>
+
+<p>Le développeur Scala est frustré car il y retrouve tous les défauts du monde Java qu'il a justement fui en faisant du Scala.</p>
+
+<p>Quels sont ces défauts que nous retrouvons généralement dans nos librairies/frameworks ?</p>
+
+<ul>
+<li><p><em>Un conteneur Servlet</em> avec sa session qui limite la scalabilité horizontale</p></li>
+<li><p><em>XML, XML, XML,...</em> Java étant un langage pas assez expressif pour être utilisé en DSL de façon convenable. Les configurations des outils Java reposent souvent sur d'autres formats XML, properties, ... là où les autres langages peuvent aisément s'utiliser en configuration. On pensera à <a href="http://groovy.codehaus.org/">Groovy</a> avec la configuration d'un build <a href="http://www.gradle.org/">Gradle</a> ou encore à Scala avec la configuration <a href="http://www.scala-sbt.org/">SBT</a>. C'est dommage de se retrouver avec des fichiers XML à configurer lorsqu'on travaille avec un langage pour lequel il possible de créer un DSL qui compile !</p></li>
+<li><p><em>Des API et objets du modèle "mutables"</em>. En développant en <em>Scala Style</em>, vous vous débrouillez pour réaliser une application en prenant soin d'éviter d'utiliser des objets <em>mutables</em> et vous voilà <em>condamné</em> à utiliser une API qui ne respecte pas vos principes et qui peut vous entrainer des comportements difficiles à prévoir.</p></li>
+<li><p><em>Les collections Java</em>. Scala fournit une API <em>riche</em> pour manipuler des collections. Il est dommage de s'en priver.</p></li>
+<li><p><em>Un typage limité</em>. Impossible de détecter des problèmes de configuration à la <em>compile</em>, trop de surprises au <em>runtime</em>.</p></li>
+</ul>
+
+
+<h2>Que souhaite le développeur Scala ?</h2>
+
+<ul>
+<li>Retrouver ses <em>case class</em></li>
+<li>Communiquer en asynchrone via des messages (<em>Merci Akka</em>)</li>
+<li>Utiliser des <em>closures</em>, on est en 2013 quand même ! :)</li>
+<li>Consolider plusieurs requêtes asynchrones grâce aux <em>Futures</em></li>
+<li>Manipuler <em>naturellement</em> ses collections avec une API avancée</li>
+</ul>
+
+
+<p>=> En somme, pouvoir pleinement profiter de Scala !</p>
+
+<h2>Et voilà Spray !</h2>
+
+<p>Spray a pour objectif de réaliser les souhaits du développeur Scala en se reposant complètement sur Scala et Akka.</p>
+
+<p>Spray est construit de façon modulaire pour nous donner la possibilité de n'utiliser que les parties qui nous intéressent. Il y a de nombreux modules : <a href="http://spray.io/documentation/spray-caching/#spray-caching">spray-caching</a>, <a href="http://spray.io/documentation/spray-can/#spray-can">spray-can</a>, <a href="http://spray.io/documentation/spray-client/#spray-client">spray-client</a>, <a href="http://spray.io/documentation/spray-http/#spray-http">spray-http</a>, <a href="http://spray.io/documentation/spray-httpx/#spray-httpx">spray-httpx</a>, <a href="http://spray.io/documentation/spray-io/#spray-io">spray-io</a>, <a href="http://spray.io/documentation/spray-servlet/#spray-servlet">spray-servlet</a>, <a href="http://spray.io/documentation/spray-routing/#spray-routing">spray-routing</a>, <a href="http://spray.io/documentation/spray-testkit/#spray-testkit">spray-testkit</a>, <a href="http://spray.io/documentation/spray-util/#spray-util">spray-util</a>, <a href="https://github.com/spray/spray-json">spray-json</a>.</p>
+
+<p>Mathias a poursuivi son talk en présentant quelques modules de Spray :</p>
+
+<ul>
+<li><p><a href="http://spray.io/documentation/spray-http/#spray-http">spray-http</a> => structures de données HTTP basées sur les <em>case class</em>. Ce module permet entre autres de créer des objets <em>Requête</em>, <em>Réponse</em>. Le paramétrage HTTP est lui aussi typé, des <em>case class</em> pour <em>Accept-Charset</em>, <em>Accept-Encoding</em> etc...</p></li>
+<li><p><a href="http://spray.io/documentation/spray-can/#spray-can">spray-can</a> => API HTTP serveur et cliente de bas niveau construit sur <a href="http://doc.akka.io/docs/akka/2.1.0/scala/io.html">Akka IO</a>.</p></li>
+<li><p><a href="http://spray.io/documentation/spray-routing/#spray-routing">spray-routing</a> => ce module fournit un DSL avec des très nombreuses directives pour décrire :</p>
+
+<ul>
+<li>le routage des requêtes</li>
+<li>(Un)marshalling d'objets</li>
+<li>la mise en cache des ressources statiques</li>
+<li>la gestion des erreurs</li>
+<li>...</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>A savoir !</h2>
+
+<ul>
+<li>Spray est encore en cours de développement. A sa version finale, il changera de nom et s'appelera <em>akka-http</em>.</li>
+<li><a href="http://www.playframework.com/">Play Framework</a> va progressivement abandonner <a href="http://netty.io/">Netty</a> pour <em>akka-http</em>.</li>
+</ul>
+
+
+<h2>Les slides de la présentation</h2>
+
+<iframe src="http://spray.io/scala.io/" width="800" height="500" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen> </iframe>
+
+
+<p>Lien direct : <a href="http://spray.io/scala.io/">http://spray.io/scala.io/</a></p>
+
+<h2>Ce que j'en ai pensé</h2>
+
+<p>Une bonne présentation d'un outil plein de promesses pour les développeurs Scala. Nous avons là une librairie qui va probablement devenir la référence dans l'écosystème de <a href="http://typesafe.com/">TypeSafe</a>.</p>
+
+<p>L'abandon progressif de <a href="http://netty.io/">Netty</a> au profit de <em>akka-http</em> dans le projet <a href="http://www.playframework.com/">Play Framework</a> montre une nouvelle fois la volonté de <a href="http://typesafe.com/">TypeSafe</a> de créer un écosystème d'outils <em>fortement typés</em> pour Scala et ne garder de Java que la JVM :)</p>
+
+<p>On peut <em>légitimement</em> se poser la question de la durée du support du langage Java dans les projets comme <a href="http://www.playframework.com/">Play Framework</a> et <a href="http://akka.io/">Akka</a> lorsque Scala aura <em>son</em> écosystème suffisamment développé.</p>
+
+<p>Si vous souhaitez en savoir plus, je vous recommande les liens suivants :</p>
+
+<ul>
+<li><a href="http://spray.io/introduction/what-is-spray/#philosophy">La philosophie de Spray</a>, pourquoi il n'est pas conçu comme un framework</li>
+<li><a href="http://spray.io/introduction/other-resources/">Des vidéos, slides, podcasts de l'équipe Spray</a></li>
+<li>Et bien sûr, la documentation officielle à travers <a href="http://spray.io/introduction/">l'introduction</a> et <a href="http://spray.io/documentation/">la référence</a>.</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

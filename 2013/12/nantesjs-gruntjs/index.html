@@ -1,0 +1,1020 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Soirée NantesJS : Découverte de GruntJS - Rossi Oddet</title>
+  <meta name="author" content="Rossi Oddet">
+
+  
+  <meta name="description" content="Grunt permet de lancer des tâches afin d&#8217;automatiser des traitements récurrents.
+Il se configure via l&#8217;écriture d&#8217;un code &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://roddet.github.com/2013/12/nantesjs-gruntjs">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Rossi Oddet" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-32190657-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>	
+  <h1><a href="/">Rossi Oddet</a></h1>
+  
+    <h2>Blog d'un artisan développeur</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:roddet.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/events">Evénements</a></li>
+  <li><a href="/viededev">Vie de Développeur</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Soirée NantesJS : Découverte De GruntJS</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-04T08:00:00-05:00" pubdate data-updated="true">Dec 4<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><a href="http://gruntjs.com/">Grunt</a> permet de lancer des tâches afin d&#8217;automatiser des traitements récurrents.
+Il se configure via l&#8217;écriture d&#8217;un code javascript.
+Il existe de nombreux outils permettant d&#8217;automatiser le lancement des tâches : <a href="http://ant.apache.org/">ANT</a>, <a href="http://maven.apache.org/">Maven</a>, <a href="http://www.gradle.org/">Gradle</a>, <a href="http://www.scala-sbt.org/">SBT</a>.
+La particularité de <a href="http://gruntjs.com/">Grunt</a> par rapport aux autres outils est qu&#8217;il est conçu principalement pour traiter des tâches récurrentes du web : minification, optimisation des images, génération de sprites, compilation Sass/Less, etc.</p>
+
+<p>La soirée <a href="http://nantesjs.org/">NantesJS</a> du 19 novembre dernier a eu comme objectif une présentation et une prise en main de <a href="http://gruntjs.com/">Grunt</a>.</p>
+
+<p><img class="center" src="/images/nantesjs/nov13/nantesjs-speakers.jpg"></p>
+
+<p>C&#8217;est devant un public composé de professionnels que <a href="https://twitter.com/t8g">Thomas Moyse</a> (à gauche dans la photo) commence une présentation de <a href="http://gruntjs.com/">Grunt</a>. <a href="https://twitter.com/xavier_seignard">Xavier Seignard</a> (à droite) prendra de temps en temps la parole pour partager son expérience sur l&#8217;utilisation de <a href="http://gruntjs.com/">Grunt</a>.</p>
+
+<p><a href="https://twitter.com/t8g">Thomas</a> va mettre l&#8217;accent sur le nombre important de plugins de Grunt : 1688. Dans <a href="http://gruntjs.com/plugins">la page des plugins Grunt</a>, je compte 1847 plugins au moment de l&#8217;écriture de l&#8217;article. <a href="http://gruntjs.com/">Grunt</a> dispose donc d&#8217;un écosystème riche.</p>
+
+<p>Après la présentation succincte de <a href="http://gruntjs.com/">Grunt</a>, la soirée se transforme en Workshop et nous allons découvrir progressivement cet outil.</p>
+
+<h2>Installer Grunt</h2>
+
+<p><a href="http://gruntjs.com/">Grunt</a> s&#8217;installe via <a href="https://npmjs.org/">NPM</a> (Node Packaged Modules) le gestionnaire de package de <a href="http://nodejs.org/">NodeJS</a>.</p>
+
+<p><a href="http://nodejs.org/download/">Télécharger et installer NodeJS</a>. Veuillez vérifier l&#8217;accès à la commande <code>npm</code> après l&#8217;installation.</p>
+
+<p>Installer le client grunt via la commande :</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>npm install -g grunt-cli</span></code></pre></td></tr></table></div></figure>
+
+
+<p>A savoir : chaque projet va posséder son installation de <a href="http://gruntjs.com/">Grunt</a> et <code>grunt-cli</code> permet d&#8217;avoir accès à la commande <code>grunt</code> de façon globale quelque soit le projet.</p>
+
+<h2>Création d&#8217;un projet</h2>
+
+<p>Créer un répertoire.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>mkdir nantesjs-grunt
+</span><span class='line'>cd nantesjs-grunt</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Initialiser un projet avec <a href="https://npmjs.org/">NPM</a>.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>npm init</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Tapez la touche entrée à toutes les questions.
+Le fichier <code>package.json</code> est créé avec le contenu suivant :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;nantesjs-grunt&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s2">&quot;version&quot;</span><span class="o">:</span> <span class="s2">&quot;0.0.0&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;ERROR: No README.md file found!&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="s2">&quot;index.js&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s2">&quot;scripts&quot;</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>    <span class="s2">&quot;test&quot;</span><span class="o">:</span> <span class="s2">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>  <span class="s2">&quot;repository&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s2">&quot;author&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s2">&quot;license&quot;</span><span class="o">:</span> <span class="s2">&quot;BSD&quot;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Ce fichier représente l&#8217;identité d&#8217;un projet dans l&#8217;univers <a href="http://nodejs.org/">NodeJS</a>.</p>
+
+<p>Installer <a href="http://gruntjs.com/">Grunt</a> pour le projet.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">npm</span> <span class="nx">install</span> <span class="nx">grunt</span> <span class="o">--</span><span class="nx">save</span><span class="o">-</span><span class="nx">dev</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Le fichier <code>package.json</code> est mis à jour comme suit :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;nantesjs-grunt&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s2">&quot;version&quot;</span><span class="o">:</span> <span class="s2">&quot;0.0.0&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;ERROR: No README.md file found!&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="s2">&quot;index.js&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s2">&quot;scripts&quot;</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>    <span class="s2">&quot;test&quot;</span><span class="o">:</span> <span class="s2">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>  <span class="s2">&quot;repository&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s2">&quot;author&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s2">&quot;license&quot;</span><span class="o">:</span> <span class="s2">&quot;BSD&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s2">&quot;devDependencies&quot;</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>    <span class="s2">&quot;grunt&quot;</span><span class="o">:</span> <span class="s2">&quot;~0.4.2&quot;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Un répertoire <code>node_modules</code> est créé avec un répertoire <code>grunt</code> qui contient une installation de <a href="http://gruntjs.com/">Grunt</a> dans sa version 0.4.2.</p>
+
+<h2>Hello World Grunt !</h2>
+
+<p><a href="http://gruntjs.com/">Grunt</a> se configure dans un fichier <code>Gruntfile.js</code> avec du code javasript.</p>
+
+<p>Créer un fichier <code>Gruntfile.js</code>.</p>
+
+<p>Modifiez ce fichier comme suit pour créer un <em>Hello World</em>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">grunt</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">grunt</span><span class="p">.</span><span class="nx">registerTask</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="s1">&#39;Ma tâche à moi&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Hello World Grunt !&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>La fonction <code>registerTask</code> permet la création d&#8217;une tâche avec le nom <em>hello</em>, la description <em>Ma tâche à moi</em> et une fonction qui sera exécutée lorsque cette tâche sera appelée.</p>
+
+<p><code>console.log</code> écrit du texte dans la console.</p>
+
+<p>Pour lancer la tâche <em>hello</em>, exécuter la commande :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">grunt</span> <span class="nx">hello</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Le résultat dans la console</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">&gt;</span><span class="nx">grunt</span> <span class="nx">hello</span>
+</span><span class='line'><span class="nx">Running</span> <span class="s2">&quot;hello&quot;</span> <span class="nx">task</span>
+</span><span class='line'><span class="o">---------------------</span>
+</span><span class='line'><span class="nx">Hello</span> <span class="nx">World</span> <span class="nx">Grunt</span> <span class="o">!</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">Done</span><span class="p">,</span> <span class="nx">without</span> <span class="nx">errors</span><span class="p">.</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Une tâche par défaut</h2>
+
+<p>Il possible de spécifier une tâche par défaut à <a href="http://gruntjs.com/">Grunt</a>.
+Il suffit de lui donner le nom <em>default</em> comme suit :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">grunt</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">grunt</span><span class="p">.</span><span class="nx">registerTask</span><span class="p">(</span><span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="s1">&#39;Ma tâche à moi&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Hello World Grunt !&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>La tâche est lancée via la commande suivante sans avoir à préciser le nom d&#8217;une tâche.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">grunt</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Connaitre la liste des tâches disponibles</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">grunt</span> <span class="o">--</span><span class="nx">help</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Un alias pour composer des tâches</h2>
+
+<p>Un alias permet de composer plusieurs tâches. Par défaut, les tâches sont exécutées de façon séquentielle.</p>
+
+<p>Un alias est créé à l&#8217;aide d&#8217;une fonction <code>registerTask</code> en précisant un nom d&#8217;alias et un tableau de noms des tâches.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">grunt</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">grunt</span><span class="p">.</span><span class="nx">registerTask</span><span class="p">(</span><span class="s1">&#39;step1&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Step 1&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">grunt</span><span class="p">.</span><span class="nx">registerTask</span><span class="p">(</span><span class="s1">&#39;step2&#39;</span><span class="p">,</span> <span class="s1">&#39;ma tâche à moi&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Step 2&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">grunt</span><span class="p">.</span><span class="nx">registerTask</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;step1&#39;</span><span class="p">,</span> <span class="s1">&#39;step2&#39;</span><span class="p">]);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Lancer l&#8217;alias <em>all</em></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">&gt;</span> <span class="nx">grunt</span> <span class="nx">all</span>
+</span><span class='line'><span class="nx">Running</span> <span class="s2">&quot;step1&quot;</span> <span class="nx">task</span>
+</span><span class='line'><span class="o">--------------------</span>
+</span><span class='line'><span class="nx">Step</span> <span class="mi">1</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">Running</span> <span class="s2">&quot;step2&quot;</span> <span class="nx">task</span>
+</span><span class='line'><span class="o">--------------------</span>
+</span><span class='line'><span class="nx">Step</span> <span class="mi">2</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">Done</span><span class="p">,</span> <span class="nx">without</span> <span class="nx">errors</span><span class="p">.</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Le <em>multi task</em></h2>
+
+<p>Le <em>multi task</em> sert à créer des tâches qui peuvent s&#8217;exécuter suivant plusieurs cibles.</p>
+
+<p>Ci-dessous un exemple d&#8217;utilisation de <em>multi task</em>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">grunt</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">grunt</span><span class="p">.</span><span class="nx">initConfig</span><span class="p">({</span>
+</span><span class='line'>      <span class="nx">multitask1</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>          <span class="nx">conf1</span><span class="o">:</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span>
+</span><span class='line'>          <span class="nx">conf2</span><span class="o">:</span> <span class="s1">&#39;hello world&#39;</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">})</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">grunt</span><span class="p">.</span><span class="nx">registerMultiTask</span><span class="p">(</span><span class="s1">&#39;multitask1&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;target = &#39;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">target</span><span class="p">);</span>
+</span><span class='line'>      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;data = &quot;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">})</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>La fonction <code>initConfig</code> crée les différentes configurations possibles. Ici la tâche <em>multitask1</em> possède 2 contextes d&#8217;exécution <code>conf1</code>et <code>conf2</code>. Chaque contexte d&#8217;exécution possède son jeu de données.</p>
+
+<p>Dans la fonction d&#8217;exécution de la tâche <em>multitask1</em>, <code>this.target</code> contient le nom du contexte d&#8217;exécution et <code>this.data</code> contient les données associées.</p>
+
+<p>Lancer la tâche <em>multitask1</em> entraine son exécution pour les différents contextes d&#8217;exécution définis.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">&gt;</span><span class="nx">grunt</span> <span class="nx">multitask1</span>
+</span><span class='line'><span class="nx">Running</span> <span class="s2">&quot;multitask1:conf1&quot;</span> <span class="p">(</span><span class="nx">multitask1</span><span class="p">)</span> <span class="nx">task</span>
+</span><span class='line'><span class="o">--------------------------------------------</span>
+</span><span class='line'><span class="nx">target</span> <span class="o">=</span> <span class="nx">conf1</span>
+</span><span class='line'><span class="nx">data</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">Running</span> <span class="s2">&quot;multitask1:conf2&quot;</span> <span class="p">(</span><span class="nx">multitask1</span><span class="p">)</span> <span class="nx">task</span>
+</span><span class='line'><span class="o">--------------------------------------------</span>
+</span><span class='line'><span class="nx">target</span> <span class="o">=</span> <span class="nx">conf2</span>
+</span><span class='line'><span class="nx">data</span> <span class="o">=</span> <span class="nx">hello</span> <span class="nx">world</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">Done</span><span class="p">,</span> <span class="nx">without</span> <span class="nx">errors</span><span class="p">.</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Il est possible d&#8217;exécuter une tâche de type <em>multi task</em> sur une configuration particulière comme suit :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">&gt;</span><span class="nx">grunt</span> <span class="nx">multitask1</span><span class="o">:</span><span class="nx">conf2</span>
+</span><span class='line'><span class="nx">Running</span> <span class="s2">&quot;multitask1:conf2&quot;</span> <span class="p">(</span><span class="nx">multitask1</span><span class="p">)</span> <span class="nx">task</span>
+</span><span class='line'><span class="o">--------------------------------------------</span>
+</span><span class='line'><span class="nx">target</span> <span class="o">=</span> <span class="nx">conf2</span>
+</span><span class='line'><span class="nx">data</span> <span class="o">=</span> <span class="nx">hello</span> <span class="nx">world</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">Done</span><span class="p">,</span> <span class="nx">without</span> <span class="nx">errors</span><span class="p">.</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Partager de la configuration via l&#8217;API <em>options</em></h2>
+
+<p>L&#8217;API <em>options</em> offre la possibilité de mutualiser de la configuration <a href="http://gruntjs.com/">Grunt</a>. Cette configuration peut être surchargée par un contexte d&#8217;exécution.</p>
+
+<p>Voici un exemple d&#8217;utilisation des <em>options</em> via le partage de configuration <em>key</em> pour les différents contextes d&#8217;exécution.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">grunt</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">grunt</span><span class="p">.</span><span class="nx">initConfig</span><span class="p">({</span>
+</span><span class='line'>      <span class="nx">multitask1</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>          <span class="nx">options</span><span class="o">:</span><span class="p">{</span><span class="nx">key</span><span class="o">:</span><span class="s2">&quot;v1&quot;</span><span class="p">},</span>
+</span><span class='line'>          <span class="nx">conf1</span><span class="o">:</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span>
+</span><span class='line'>          <span class="nx">conf2</span><span class="o">:</span><span class="s1">&#39;hello world&#39;</span><span class="p">,</span>
+</span><span class='line'>          <span class="nx">conf3</span><span class="o">:</span><span class="p">{</span>
+</span><span class='line'>              <span class="nx">options</span><span class="o">:</span><span class="p">{</span><span class="nx">key</span><span class="o">:</span><span class="s2">&quot;v2&quot;</span><span class="p">}</span>
+</span><span class='line'>          <span class="p">}</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">grunt</span><span class="p">.</span><span class="nx">registerMultiTask</span><span class="p">(</span><span class="s1">&#39;multitask1&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;target = &#39;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">target</span><span class="p">);</span>
+</span><span class='line'>      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;data = &quot;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+</span><span class='line'>      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;version = &quot;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">().</span><span class="nx">key</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Dans cet exemple, <em>key</em> vaut</p>
+
+<ul>
+<li><em>v1</em> pour <em>conf1</em> et <em>conf2</em></li>
+<li><em>v2</em> pour <em>conf3</em></li>
+</ul>
+
+
+<p>L&#8217;appel de la fonction <code>this.options().key</code> renvoie la valeur de la donnée <em>key</em> dans le contexte d&#8217;exécution courant.</p>
+
+<p>Le résultat de l&#8217;exécution de <em>multitask1</em> donne :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">&gt;</span><span class="nx">grunt</span> <span class="nx">multitask1</span>
+</span><span class='line'><span class="nx">Running</span> <span class="s2">&quot;multitask1:conf1&quot;</span> <span class="p">(</span><span class="nx">multitask1</span><span class="p">)</span> <span class="nx">task</span>
+</span><span class='line'><span class="o">--------------------------------------------</span>
+</span><span class='line'><span class="nx">target</span> <span class="o">=</span> <span class="nx">conf1</span>
+</span><span class='line'><span class="nx">data</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span>
+</span><span class='line'><span class="nx">version</span> <span class="o">=</span> <span class="nx">v1</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">Running</span> <span class="s2">&quot;multitask1:conf2&quot;</span> <span class="p">(</span><span class="nx">multitask1</span><span class="p">)</span> <span class="nx">task</span>
+</span><span class='line'><span class="o">--------------------------------------------</span>
+</span><span class='line'><span class="nx">target</span> <span class="o">=</span> <span class="nx">conf2</span>
+</span><span class='line'><span class="nx">data</span> <span class="o">=</span> <span class="nx">hello</span> <span class="nx">world</span>
+</span><span class='line'><span class="nx">version</span> <span class="o">=</span> <span class="nx">v1</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">Running</span> <span class="s2">&quot;multitask1:conf3&quot;</span> <span class="p">(</span><span class="nx">multitask1</span><span class="p">)</span> <span class="nx">task</span>
+</span><span class='line'><span class="o">--------------------------------------------</span>
+</span><span class='line'><span class="nx">target</span> <span class="o">=</span> <span class="nx">conf3</span>
+</span><span class='line'><span class="nx">data</span> <span class="o">=</span> <span class="p">[</span><span class="nx">object</span> <span class="nb">Object</span><span class="p">]</span>
+</span><span class='line'><span class="nx">version</span> <span class="o">=</span> <span class="nx">v2</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">Done</span><span class="p">,</span> <span class="nx">without</span> <span class="nx">errors</span><span class="p">.</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Les templates</h2>
+
+<p>Il est possible d&#8217;utiliser un template avec <a href="http://gruntjs.com/">Grunt</a> par exemple pour partager une valeur entre plusieurs contextes d&#8217;exécution.</p>
+
+<p>La partie variable d&#8217;un template se déclare via les symboles : <em>&lt;%= XXXX %></em>.</p>
+
+<p>Un exemple d&#8217;utilisation d&#8217;un template.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">grunt</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">grunt</span><span class="p">.</span><span class="nx">initConfig</span><span class="p">({</span>
+</span><span class='line'>      <span class="nx">multitask1</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>          <span class="nx">options</span><span class="o">:</span><span class="p">{</span><span class="nx">key</span><span class="o">:</span><span class="s1">&#39;&lt;%= version %&gt;&#39;</span><span class="p">},</span>
+</span><span class='line'>          <span class="nx">conf1</span><span class="o">:</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+</span><span class='line'>      <span class="p">},</span>
+</span><span class='line'>      <span class="nx">version</span> <span class="o">:</span> <span class="s1">&#39;v15&#39;</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">grunt</span><span class="p">.</span><span class="nx">registerMultiTask</span><span class="p">(</span><span class="s1">&#39;multitask1&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;version = &quot;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">().</span><span class="nx">key</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>L&#8217;exécution de la tâche <em>multitask1</em> affiche bien le numéro de version <em>v15</em>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">&gt;</span><span class="nx">grunt</span> <span class="nx">multitask1</span>
+</span><span class='line'><span class="nx">Running</span> <span class="s2">&quot;multitask1:conf1&quot;</span> <span class="p">(</span><span class="nx">multitask1</span><span class="p">)</span> <span class="nx">task</span>
+</span><span class='line'><span class="o">--------------------------------------------</span>
+</span><span class='line'><span class="nx">version</span> <span class="o">=</span> <span class="nx">v15</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">Done</span><span class="p">,</span> <span class="nx">without</span> <span class="nx">errors</span><span class="p">.</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Plusieurs modes pour déclarer des fichiers</h2>
+
+<p>Les différentes tâches utilisées avec <a href="http://gruntjs.com/">Grunt</a> consistent la plupart du temps à manipuler des fichiers.</p>
+
+<p>Il existe plusieurs modes pour désigner des fichiers avec <a href="http://gruntjs.com/">Grunt</a> : mode <em>compact</em>, mode <em>object</em>, mode <em>array</em> et le mode <em>dynamic</em>.</p>
+
+<p>Afin d&#8217;illustrer ces différents modes, nous allons utiliser le plugin <code>grunt-contrib-copy</code> qui donne la possibilité de copier des fichiers dans un répertoire.</p>
+
+<p>Installer le plugin</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">npm</span> <span class="nx">install</span> <span class="nx">grunt</span><span class="o">-</span><span class="nx">contrib</span><span class="o">-</span><span class="nx">copy</span> <span class="o">--</span><span class="nx">save</span><span class="o">-</span><span class="nx">dev</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Le plugin est installé dans le répertoire <code>node_modules</code>. Le fichier <code>package.json</code> est mis à jour avec la ligne <code>"grunt-contrib-copy": "~0.4.1"</code> qui vient compléter la section <code>devDependencies</code>.</p>
+
+<p>Mettre à jour le fichier <code>Gruntfile.js</code> comme suit.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">grunt</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">grunt</span><span class="p">.</span><span class="nx">initConfig</span><span class="p">({</span>
+</span><span class='line'>      <span class="nx">copy</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>          <span class="nx">main</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>              <span class="o">???</span>  
+</span><span class='line'>          <span class="p">}</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">&#39;grunt-contrib-copy&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>La fonction <code>grunt.loadNpmTasks</code> charge le plugin <code>grunt-contrib-copy</code>. Ce plugin expose la tâche <code>copy</code> sous la forme d&#8217;une <em>multi task</em> configurable dans la fonction <code>grunt.initConfig</code>.</p>
+
+<p>La tâche <code>copy</code> peut être exécutée avec la commande :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">grunt</span> <span class="nx">copy</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Mode <em>Compact</em></h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">grunt</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">grunt</span><span class="p">.</span><span class="nx">initConfig</span><span class="p">({</span>
+</span><span class='line'>      <span class="nx">copy</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>          <span class="nx">main</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>              <span class="nx">src</span><span class="o">:</span><span class="p">[</span><span class="s1">&#39;*.js&#39;</span><span class="p">,</span> <span class="s1">&#39;*.json&#39;</span><span class="p">],</span>
+</span><span class='line'>              <span class="nx">dest</span><span class="o">:</span><span class="s1">&#39;tmp/&#39;</span>  
+</span><span class='line'>          <span class="p">}</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">&#39;grunt-contrib-copy&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Deux paramètres <code>src</code> (fichiers à copier) et <code>dest</code> (répertoire de destination) sont définis.</p>
+
+<h2>Mode <em>Object</em></h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">grunt</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">grunt</span><span class="p">.</span><span class="nx">initConfig</span><span class="p">({</span>
+</span><span class='line'>      <span class="nx">copy</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>          <span class="nx">main</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>              <span class="nx">files</span> <span class="o">:</span> <span class="p">{</span><span class="s1">&#39;tmp/&#39;</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;*.js&#39;</span><span class="p">,</span> <span class="s1">&#39;*.json&#39;</span><span class="p">]}</span>
+</span><span class='line'>          <span class="p">}</span>
+</span><span class='line'>          
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">&#39;grunt-contrib-copy&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Mode <em>Array</em></h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">grunt</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">grunt</span><span class="p">.</span><span class="nx">initConfig</span><span class="p">({</span>
+</span><span class='line'>      <span class="nx">copy</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>          <span class="nx">main</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>              <span class="nx">files</span> <span class="o">:</span> <span class="p">[</span>
+</span><span class='line'>                  <span class="p">{</span>
+</span><span class='line'>                      <span class="nx">src</span><span class="o">:</span><span class="p">[</span><span class="s1">&#39;*.js&#39;</span><span class="p">,</span> <span class="s1">&#39;*.json&#39;</span><span class="p">],</span>
+</span><span class='line'>                      <span class="nx">dest</span><span class="o">:</span><span class="s1">&#39;tmp/&#39;</span>  
+</span><span class='line'>                  <span class="p">}</span>
+</span><span class='line'>              <span class="p">]</span>
+</span><span class='line'>          <span class="p">}</span>
+</span><span class='line'>          
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">&#39;grunt-contrib-copy&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Mode <em>Dynamic</em></h2>
+
+<p>Ce mode permet une configuration plus fine.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">files</span><span class="o">:</span> <span class="p">[{</span>
+</span><span class='line'>  <span class="nx">expand</span><span class="o">:</span><span class="kr">boolean</span><span class="p">,</span> <span class="c1">// true =&gt; mode dynamique sinon mode précédent</span>
+</span><span class='line'>  <span class="nx">cwd</span><span class="o">:</span><span class="nx">string</span><span class="p">,</span> <span class="c1">// le répertoire de base</span>
+</span><span class='line'>  <span class="nx">src</span><span class="o">:</span> <span class="p">[</span><span class="nx">string</span><span class="p">],</span> <span class="c1">// les fichiers sources</span>
+</span><span class='line'>  <span class="nx">dest</span><span class="o">:</span> <span class="nx">string</span><span class="p">,</span> <span class="c1">// le répertoire de destination</span>
+</span><span class='line'>  <span class="nx">ext</span><span class="o">:</span><span class="nx">string</span><span class="p">,</span> <span class="c1">// ajouter une extension aux fichiers </span>
+</span><span class='line'>  <span class="nx">flatten</span><span class="o">:</span><span class="kr">boolean</span><span class="p">,</span> <span class="c1">// ne pas garder l&#39;arborescence et tout mettre au même endroit.</span>
+</span><span class='line'>  <span class="nx">rename</span><span class="o">:</span><span class="kd">function</span> <span class="c1">// renommer à la volée</span>
+</span><span class='line'><span class="p">}]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Exemple d&#8217;utilisation.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">grunt</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">grunt</span><span class="p">.</span><span class="nx">initConfig</span><span class="p">({</span>
+</span><span class='line'>      <span class="nx">copy</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>          <span class="nx">main</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>              <span class="nx">files</span><span class="o">:</span> <span class="p">[{</span>
+</span><span class='line'>                  <span class="nx">expand</span><span class="o">:</span><span class="kc">true</span><span class="p">,</span>
+</span><span class='line'>                  <span class="nx">cwd</span><span class="o">:</span><span class="s1">&#39;node_modules/&#39;</span><span class="p">,</span>
+</span><span class='line'>                  <span class="nx">src</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;**/*.js&#39;</span><span class="p">],</span>
+</span><span class='line'>                  <span class="nx">dest</span><span class="o">:</span> <span class="s1">&#39;temp/&#39;</span>
+</span><span class='line'>              <span class="p">}]</span>
+</span><span class='line'>          <span class="p">}</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">&#39;grunt-contrib-copy&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Quelques trucs &amp; astuces</h2>
+
+<h3>Les plugins</h3>
+
+<p>Utiliser <a href="http://gruntjs.com/">Grunt</a> consiste surtout à ordonnancer des tâches de plugins existants. Il est rare d&#8217;avoir besoin de créer ses propres tâches. Il est conseillé de privilégier l&#8217;utilisation des plugins dont le nom commence par <code>grunt-contrib</code>. Il s&#8217;agit de plugins maintenus officiellement par l&#8217;équipe <a href="http://gruntjs.com/">Grunt</a>.</p>
+
+<h3>Asynchronisme</h3>
+
+<p>Regarder du côté du projet <a href="https://github.com/caolan/async">async</a> pour ajouter de l&#8217;asynchronisme dans l&#8217;exécution des tâches.</p>
+
+<h3>Fonctions utilitaires de <a href="http://gruntjs.com/">Grunt</a></h3>
+
+<p><a href="http://gruntjs.com/">Grunt</a> vient avec quelques fonctions utilitaires comme : <code>grunt.file.copy</code>, <code>grunt.file.readJSON</code>, <code>grunt.template.today("yyyy-mm-dd")</code>, etc. Ne pas hésiter à les utiliser.</p>
+
+<h3>Construire un site statique</h3>
+
+<p>Que ce soit pour un site web statique ou pour exposer de la documentation, le plugin <a href="https://github.com/TxSSC/grunt-carpenter/">grunt-carpenter</a> permet de générer un site web statique à partir de fichier markdown et HTML.</p>
+
+<h3>Lancer des commandes</h3>
+
+<p>Le plugin <a href="https://github.com/sindresorhus/grunt-shell">grunt-shell</a> donne la possibilité de lancer des commandes dans le shell. Ce qui donne un degré de liberté important pour ordonnancer l&#8217;exécution des scripts ou même d&#8217;autres systèmes de <em>build</em> ;)</p>
+
+<h2>Les slides</h2>
+
+<p>Elles sont publiées <a href="http://slid.es/t8g/gruntjs">ici</a>.</p>
+
+<iframe src="//slid.es/t8g/gruntjs/embed" width="800" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+
+<h2>En somme</h2>
+
+<p>Par la richesse de son écosystème de plugins, <a href="http://gruntjs.com/">Grunt</a> est l&#8217;outil du moment pour effectuer du <em>build</em> côté front-end. Il est plutôt simple d&#8217;utilisation et offre de vraies opportunités de productivité dans le développement web. En donnant la possibilité d&#8217;avoir différents contextes d&#8217;exécution, il est pratique pour séparer les tâches de développement des tâches de constructions du livrable de production.</p>
+
+<p><a href="http://gruntjs.com/">Grunt</a> est très lié à l&#8217;environnement <a href="http://nodejs.org/">NodeJS</a>. Ce qui peut constituer un frein à son adoption pour les personnes évoluant dans d&#8217;autres écosystèmes.
+Cette problématique n&#8217;est pas propre à <a href="http://gruntjs.com/">Grunt</a>. Les développeurs Java qui vantent par exemple les mérites de <a href="http://maven.apache.org/">Maven</a> auront également du mal à le faire adopter à des personnes qui n&#8217;ont pas de <a href="http://en.wikipedia.org/wiki/Java_Development_Kit">JDK</a> sur leur machine. Alors soyons ouvert d&#8217;esprit et n&#8217;ayons pas peur des écosystèmes qui peuvent nous être étrangers. Vous aimez <a href="http://jekyllrb.com/">Jekyll</a> ? Installer <a href="http://jekyllrb.com/">Ruby</a>. Vous trouvez <a href="http://www.methods.co.nz/asciidoc/index.html">AsciiDoc</a> sympa ? Installer <a href="http://www.python.org/">Python</a>. Vous aimez l&#8217;emploi ? Installer <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java</a> ;)</p>
+
+<p>Je pense que la gestion des erreurs de configuration de <a href="http://gruntjs.com/">Grunt</a> ou de ses plugins est perfectible. Durant le workshop, il m&#8217;est souvent arrivé d&#8217;écrire une configuration non autorisée sans qu&#8217;il n&#8217;y ait aucune erreur remontée. Par exemple, lorsque vous utiliser les <em>multi task</em>, il faut absolument déclarer au moins un contexte d&#8217;éxécution sinon la tâche déclarée ne sera pas exécutée même si vous l&#8217;appelez explicitement. Heureusement les erreurs de syntaxes sont plutôt bien remontées.</p>
+
+<p><a href="http://gruntjs.com/">Grunt</a> en tant qu&#8217;outil de <em>build</em> se prête bien à l&#8217;intégration continue. Alors il ne faut pas hésiter !</p>
+
+<p>C&#8217;était la première fois que je participais à une soirée du <a href="http://nantesjs.org/">Nantes JS</a>. Les organisateurs et les participants ont été très accueillants, vous aviez une bière dans vos mains en guise de <em>bonsoir</em>. Je vous recommande vivement ces soirées que ce soit pour la bière ou pour votre amour de javascript (oui il y en a qui aime) ;)</p>
+
+<p>La prochaine soirée est prévue au mois de janvier, restez connecter via <a href="https://twitter.com/NantesJS">@NantesJS</a>.</p>
+
+<p><img class="center" src="/images/nantesjs/nov13/nantesjs-logo.png"></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Rossi Oddet</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-04T08:00:00-05:00" pubdate data-updated="true">Dec 4<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/nantesjs/'>nantesjs</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://roddet.github.com/2013/12/nantesjs-gruntjs/" data-via="rossioddet" data-counturl="http://roddet.github.com/2013/12/nantesjs-gruntjs/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2013/11/nantesjug-novembre-part2/" title="Previous Post: Soirée JUG Nantes : Du SQL au NoSQL en moins d'une heure (Partie 2)">&laquo; Soirée JUG Nantes : Du SQL au NoSQL en moins d'une heure (Partie 2)</a>
+      
+      
+        <a class="basic-alignment right" href="/2013/12/nantesjug-decembre-part1/" title="Next Post: Soirée JUG Nantes : Java 8 -> Lambdas, Streams et Collectors (Partie 1)">Soirée JUG Nantes : Java 8 -> Lambdas, Streams et Collectors (Partie 1) &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Rossi Oddet</h1>
+  <br/>
+  <table>
+  	<tr><td width="30%"><img src="/images/photo.jpeg" width="75"/></td>
+  		<td>&nbsp;&nbsp;</td>
+    <td width="70%"> <p>Développeur, Blogger et passionné par les communautés IT.</p></td></tr>
+</table>
+</section>
+<a class="twitter-timeline" href="https://twitter.com/rossioddet" data-widget-id="314511007521312768">Tweets by @rossioddet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Rossi Oddet -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogroddet';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://roddet.github.com/2013/12/nantesjs-gruntjs/';
+        var disqus_url = 'http://roddet.github.com/2013/12/nantesjs-gruntjs/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,1074 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: stereolux | Rossi Oddet]]></title>
+  <link href="http://roddet.github.com/blog/categories/stereolux/atom.xml" rel="self"/>
+  <link href="http://roddet.github.com/"/>
+  <updated>2014-05-21T01:43:46-04:00</updated>
+  <id>http://roddet.github.com/</id>
+  <author>
+    <name><![CDATA[Rossi Oddet]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[GDG Nantes & Stereolux : Workshop HTML5]]></title>
+    <link href="http://roddet.github.com/2013/04/stereolux-workshop-html5/"/>
+    <updated>2013-04-20T19:17:00-04:00</updated>
+    <id>http://roddet.github.com/2013/04/stereolux-workshop-html5</id>
+    <content type="html"><![CDATA[<p>Le 16/04 dernier, le <a href="http://www.stereolux.org/">Stéréolux</a> et le <a href="http://www.gdgnantes.com/">GDG Nantes</a> ont organisé un Workshop HTML5.</p>
+
+<p><img class="center" src="http://blog.roddet.com/images/stereolux/html5/2013_04_16_workshop_html5.jpg"></p>
+
+<h2>Une présentation du GDG Nantes &amp; Stereolux</h2>
+
+<p><img class="left" src="http://blog.roddet.com/images/stereolux/html5/presentation_stereolux.jpg"></p>
+
+<p>L'événement commence par une présentation du GDG Nantes et de Stereolux.</p>
+
+<p>Le GDG Nantes (GDG = Google Developpers Group) est le groupe d'utilisateurs des technologies Google de Nantes. Il organise régulièrement des conférences, des concours et même des apéros :)</p>
+
+<p>Le Stereolux organise des événements (ateliers, conférence, concert, ...) autour de la création numérique.</p>
+
+<p>Les deux entités collaborent pour la première fois ensemble sur un événement. On sentait l'attention particulière des leaders de ces entités dans le choix des mots. En effet, si le GDG Nantes a l'habitude d'avoir un public de développeur, il avait en face un public mixte (développeur et créateurs numériques). Et l'inverse pour le Stereolux :)</p>
+
+<h2>HTML5 pour les créatifs</h2>
+
+<p><a href="https://plus.google.com/114772056028520115043/about">Jean-François Garreau</a> nous a ensuite fait une présentation générale d'HTML5.
+Il a enchainé les démonstrations d'applications web présentant des animations graphiques nous plongeant dans des univers variés (<a href="http://www.chrome.com/maze/">Google Maze</a>, <a href="http://www.chromeexperiments.com/detail/plink-multiplayer-music-experience/">Plink</a>, <a href="http://www.ro.me/">Rome</a>...).</p>
+
+<p>On retiendra qu'HTML5 n'est pas uniquement l'affaire des développeurs d'applications de gestion mais aussi celle des créateurs d'animations diffusées sur le web.</p>
+
+<p><img class="center" src="http://blog.roddet.com/images/stereolux/html5/html5_creatif.jpg"></p>
+
+<h2>3 Workshops</h2>
+
+<p>Il fallait faire un choix entre les workshops suivants :</p>
+
+<ul>
+<li>Responsive design</li>
+<li>3D sur le web (WebGL)</li>
+<li>Applications web dynamiques (avec AngularJS)</li>
+</ul>
+
+
+<p>J'aurai voulu assister à tous les workshops mais un choix devait être fait...snif...
+Mon choix s'est porté sur "AngularJS".</p>
+
+<h2>Workshop : Applications web dynamiques avec AngularJS</h2>
+
+<p>Cette session était animée par <a href="https://twitter.com/richard_antoine">Antoine Richard</a>, un passionné de la dynamique côté navigateur. Il avait prévu nous faire développer et c'est ce qui s'est passé !</p>
+
+<p><img class="center" src="http://blog.roddet.com/images/stereolux/html5/angular-4.png"></p>
+
+<h2>Installation de NodeJS</h2>
+
+<p>Les programmes d'installation de <a href="http://nodejs.org/">NodeJS</a> ont été distribués pour les plateformes Linux, Mac et Windows. J'avais déjà NodeJS installé sur ma machine, donc rien à faire pour moi à cette étape.</p>
+
+<p>Vous pouvez récupérer la dernière version de NodeJS : <a href="http://nodejs.org/">http://nodejs.org/</a>.</p>
+
+<h2>Angular en quelques mots</h2>
+
+<ul>
+<li>Single Page Application</li>
+<li>Etendre HTML</li>
+<li>Simple et puissant</li>
+<li>Par Google</li>
+</ul>
+
+
+<h2>Récupérer les sources</h2>
+
+<p>Les sources du Workshop ont été publiées sur Github : <a href="https://github.com/antoine-richard/angular-movie-workshop-early2013">https://github.com/antoine-richard/angular-movie-workshop-early2013</a>. Vous pouvez naviguer à travers les branches pour voir les changements entre les différentes étapes.</p>
+
+<p><code>
+git clone https://github.com/antoine-richard/angular-movie-workshop
+</code></p>
+
+<p>Vous allez récupérer 3 fichiers avec l'arborescence suivante :
+<img class="center" src="http://blog.roddet.com/images/stereolux/html5/angular-1.png"></p>
+
+<p>En affichant le fichier index.html dans un navigateur on obtient :</p>
+
+<p><img class="center" src="http://blog.roddet.com/images/stereolux/html5/angular-2.png"></p>
+
+<h2>Manipuler le DOM "sans" javascript</h2>
+
+<p>Cette partie a pour objectif d'illustrer la mise en place d'AngularJS dans une application et une modification du DOM sans écriture de code Javascript</p>
+
+<h3>Inclure le script angular.js</h3>
+
+<p>``` html app/index.html</p>
+
+<script src="lib/angular.js"></script>
+
+
+<p>```</p>
+
+<h3>Déclarer l'attribut ng-app</h3>
+
+<p>``` html app/index.html</p>
+
+<div id="container" class="intro" ng-app>
+```
+
+L'attribut ```ng-app``` permet de d'indiquer l'emplacement de l'application AngularJS. Il est possible d'avoir plusieurs applications dans une même page.
+
+### Déclarer un modèle "name" lié au champ de saisie
+``` html app/index.html
+<input type="text" ng-model="name"/>
+```
+
+### Utilisation du modèle pour afficher les mots saisis
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>app/index.html </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>Hello {{name}} !<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+### Fichier app/index.html complet
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>app/index.html </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>
+</span><span class='line'><span class="cp">&lt;!doctype html&gt;</span>
+</span><span class='line'><span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;head&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;X-UA-Compatible&quot;</span> <span class="na">content=</span><span class="s">&quot;IE=edge&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;title&gt;</span>Movies App - AngularJS workshop at Stereolux<span class="nt">&lt;/title&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;css/movies.css&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;lib/angular.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class='line'><span class="nt">&lt;/head&gt;</span>
+</span><span class='line'><span class="nt">&lt;body&gt;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;container&quot;</span> <span class="na">class=</span><span class="s">&quot;intro&quot;</span> <span class="na">ng-app</span><span class="nt">&gt;</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nt">&lt;label&gt;</span>What&#39;s your name ?<span class="nt">&lt;/label&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">ng-model=</span><span class="s">&quot;name&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;p&gt;</span>Hello {{name}} !<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nt">&lt;p</span> <span class="na">id=</span><span class="s">&quot;footer&quot;</span><span class="nt">&gt;</span>AngularJS workshop at Stereolux<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+### Test
+
+<img class="center" src="http://blog.roddet.com/images/stereolux/html5/angular-3.png">
+
+Ce que nous saisissons est automatiquement copié à la suite de "Hello".
+
+Cet exemple simple permet de mettre en évidence la philosophie d'AngularJS. La manipulation du DOM que nous faisons habituellement en javascript est dans cet exemple effectuée de façon déclarative.
+
+## Maintenant un peu de cinéma !
+Après avoir écrit nos premières lignes d'AngularJS, nous passons au développement d'une application permettant de visualiser une liste de films, le détail de chaque film et des informations sur les acteurs principaux.
+
+Ce développement va être fait en plusieurs étapes :
+
+* [Step-0 : Utilisation d'un template](#step-0)
+* [Step-1 : Externalisation du contrôleur + Appel AJAX](#step-1)
+* [Step-2 : Filtre et Tri](#step-2)
+* [Step-3 : Navigation entre différentes vues](#step-3)
+* [Step-4 : Service AngularJS](#step-4)
+* [Step-5 : Animation](#step-5)
+* [Step-6 : Directives](#step-6)
+* [Step-7 : Code complet](#complet)
+
+<a name="step-0"></a>
+## Step-0 : Utilisation d'un template
+
+### Récupérer les sources
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git clone https://github.com/antoine-richard/angular-movie-workshop-early2013 -b step-0</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<img class="center" src="http://blog.roddet.com/images/stereolux/html5/angular-5.png">
+
+Il y a 2 parties :
+
+* app : l'application que nous allons développer
+* server : un backend qui expose des services REST
+
+### Lancer le serveur
+Se positionner à la racine des sources récupérées et lancer la commande :
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>node server/web-server.js</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+L'application initiale est accessible via l'adresse : http://localhost:8000/app/index.html
+
+<img class="center" src="http://blog.roddet.com/images/stereolux/html5/angular-6.png">
+
+A cette étape, les données affichées sont statiques dans la page HTML :
+
+``` html app/index.html
+...
+<div id="container">
+
+    <div>
+
+        <h1>Movies</h1>
+
+        <ul>
+            <li>
+                <span>Reservoir Dogs</span>
+                <a href="#">Actors</a>
+                <a href="#">Sheet</a>
+                <span class="year">1992</span>
+            </li>
+            <li>
+                <span>Pulp Fiction</span>
+                <a href="#">Actors</a>
+                <a href="#">Sheet</a>
+                <span class="year">1994</span>
+            </li>
+        </ul>
+
+    </div>
+</div>
+...
+```
+L'objectif est maintenant d'apporter du dynamisme à cette page (injection des données via javascript).
+
+### Suppression des données statiques
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>app/index.html </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>
+</span><span class='line'><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;container&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">ng-view</span><span class="nt">&gt;&lt;/div&gt;</span>
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+Les noeuds ```<h1>``` et ```<ul>``` sont supprimés.
+
+L'attribut ```ng-view``` déclare l'emplacement de la vue AngularJS. Nativement, il ne peut y avoir qu'un seul attribut ```ng-view``` par application AngularJS.
+
+### Créer un fragment HTML représentant la liste des films
+Créer un fichier ```app/partials/movies.html``` représentant le template des informations supprimées précédemment.
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>app/partials/movies.html </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>
+</span><span class='line'><span class="nt">&lt;h1&gt;</span>Movies<span class="nt">&lt;/h1&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;ul&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;li</span> <span class="na">ng-repeat=</span><span class="s">&quot;movie in movies&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;span&gt;</span>{{movie.title}}<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Actors<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Sheet<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;year&quot;</span><span class="nt">&gt;</span>{{movie.year}}<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/li&gt;</span>
+</span><span class='line'><span class="nt">&lt;/ul&gt;</span>
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+On remarquera l'utilisation de ```ng-repeat``` qui est une directive fournie par AngularJS pour itérer sur un ensemble d'objets.
+Dans notre cas, la boucle se fera sur la liste des films (variable ```movies```).
+
+{{movie.title}} permet d'afficher la propriété title de l'objet ```movie```.
+
+### Modifier le contrôleur
+
+``` javascript app/js/app.js
+angular
+    .module('moviesApp', [])
+    .config(function($routeProvider) {
+        $routeProvider.when('/movies', { controller: 'MoviesCtrl', templateUrl: 'partials/movies.html' });
+    })
+    .controller('MoviesCtrl', function($scope) {
+        $scope.movies = [
+            { title: "Reservoir Dogs", year: 1992 },
+            { title: "Pulp Fiction", year: 1994 },
+            { title: "Jackie Brown", year: 1997 }
+        ];
+    });
+```
+
+$routeProvider permet de faire le lien entre une URL, un contrôleur et un template.
+
+$scope.movies permet d'ajouter une variable qui porte le nom ```movies``` et qui sera visible dans les vues. C'est sur cette variable qu'est appliqué la directive ```ng-repeat``` à la précédente étape.
+
+### Test
+http://localhost:8000/app/index.html#/movies
+
+<img class="center" src="http://blog.roddet.com/images/stereolux/html5/angular-7.png">
+
+<a name="step-1"></a>
+## Step-1 : Externalisation du contrôleur + Appel AJAX
+L'objectif de cette étape est de mettre à jour la vue non plus via un tableau javascript "en dur" mais avec un appel serveur asynchrone. Nous allons profiter pour externaliser les contrôleurs de l'application.
+
+### Inclusion du nouveau fichier à créer
+```html app/index.html
+<script src="js/controllers.js"></script>
+```
+
+### Suppression du contrôleur dans le fichier app/js/app.js
+```javascript app/js/app.js
+var app = angular.module('moviesApp', []);
+
+app.config(function($routeProvider) {
+    $routeProvider.when('/movies', { controller: 'MoviesCtrl', templateUrl: 'partials/movies.html' });
+});
+```
+
+### Création du fichier app/js/controllers.js
+```javascript app/js/controllers.js
+app.controller('MoviesCtrl', ['$http', '$scope', function($http, $scope) {
+    $http.get('/server/data/movies.json/$').success(function(movies) {
+        $scope.movies = movies;
+    });
+}]);
+```
+$http fourni par AngularJS permet de faire un appel HTTP asynchrone. 
+
+A noter qu'il est possible d'utiliser $resource pour effectuer des appels REST. Son utilisation doit être préférée à $http lorsque le serveur à interroger est RESTful. $http est un service de plus bas niveau que $resource.
+
+
+### Test
+
+http://localhost:8000/app/index.html#/movies
+
+<img class="center" src="http://blog.roddet.com/images/stereolux/html5/angular-9.png">
+
+<a name="step-2"></a>
+## Step-2 : Filtre et Tri
+Dans cette étape, l'écran principal va être enrichi pour permettre un filtre de données par titre et un tri suivant plusieurs critères.
+
+### Ajout d'un filtre et un tri
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>app/partials/movies.html </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>
+</span><span class='line'><span class="nt">&lt;h1&gt;</span>Movies<span class="nt">&lt;/h1&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;filter-box&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;div&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;label&gt;</span>Filter<span class="nt">&lt;/label&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">ng-model=</span><span class="s">&quot;query.title&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;div&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;label&gt;</span>Sort by<span class="nt">&lt;/label&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;select</span> <span class="na">ng-model=</span><span class="s">&quot;order&quot;</span> <span class="na">ng-init=</span><span class="s">&quot;order=&#39;year&#39;&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;year&quot;</span><span class="nt">&gt;</span>Year<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;title&quot;</span><span class="nt">&gt;</span>Title<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/select&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;ul&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;li</span> <span class="na">ng-repeat=</span><span class="s">&quot;movie in movies | filter:query | orderBy:order&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;span&gt;</span>{{movie.title}}<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Actors<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Sheet<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;year&quot;</span><span class="nt">&gt;</span>{{movie.year}}<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/li&gt;</span>
+</span><span class='line'><span class="nt">&lt;/ul&gt;</span>
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+__ng-model="query.title"__ permet de faire une correspondance entre la saisie de la partie filter et la valeur de la propriété ```title``` du filtre.
+
+__movie in movies | filter:query__ le symbole ```|``` permet de définir une fonction à appliquer sur un ensemble de données, ici ```movies```. Le mot clé ```filter``` permet de filtrer des données suivant un ensemble de critères. Ici l'objet ```query``` est un conteneur qui contient l'ensemble de clé/valeur représentant le filtre à appliquer. Dans notre exemple, il contient ```title=XXX``` où ```XXX``` est la valeur saisie.
+
+La combinaison des deux éléments précédents permet ainsi d'appliquer un filtre sur les films affichés en fonction du texte saisi.
+
+__ng-model="order"__ déclare un modèle qui porte le nom ```order``` et qui contient la valeur sélectionnée dans la liste déroulante.
+
+__ng-init="order='year'"__ déclare la valeur initiale (à l'affichage de la vue) du modèle ```order```. Cela permet d'appliquer un tri par défaut.
+
+__| orderBy:order__ applique un tri suivant une propriété (valeur du modèle ```order```).
+
+### Test
+<img class="center" src="http://blog.roddet.com/images/stereolux/html5/angular-8.png">
+
+### Préparation de l'étape suivante
+Ajoutons ensuite les 2 fichiers suivants pour préparer l'étape "Step-3".
+
+* ```app/partials/actors.html``` : template d'affichage des acteurs d'un film
+``` html app/partials/actors.html
+<h2>
+    Pulp Fiction
+    <a href="#/movies">Home</a>
+</h2>
+<h3>
+    Actors
+    <a href="#/movies/44">Movie</a>
+</h3>
+
+<ul>
+    <li>
+        <span>Bruce Willis</span>
+        <span class="role">Butch Coolidge</span>
+    </li>
+    <li>
+        <span>Samuel L. Jackson</span>
+        <span class="role">Jules Winnfield</span>
+    </li>
+    <li>
+        <span>John Travolta</span>
+        <span class="role">Vincent Vega</span>
+    </li>
+</ul>
+```
+
+* ```app/partials/movie.html``` : template d'affichage du détail d'un film.
+
+``` html app/partials/movie.html
+<h2>
+    Pulp Fiction
+    <a href="#/movies">Home</a>
+</h2>
+<h3>
+    Info sheet
+    <a href="#/movies/44/actors">Actors</a>
+</h3>
+
+<ul>
+    <li>
+        <span class="info">Year</span>
+        <span>1994</span>
+    </li>
+    <li>
+        <span class="info">Duration</span>
+        <span>154 minutes</span>
+    </li>
+    <li>
+        <span class="info">Budget</span>
+        <span>$8.5 million</span>
+    </li>
+</ul>
+
+<img src="http://roddet.github.com/server/data/posters/pulp_fiction.jpg">
+```
+<a name="step-3"></a>
+## Step-3 : Navigation entre différentes vues
+Cette étape va permettre la mise en place de plusieurs vues accessibles via des URL spécifiques :
+
+* ```/movies``` : la vue développée jusqu'ici
+* ```/movies/:movieId``` (exemple /movies/4) : affichage du détail d'un film, le template à utiliser est ```app/partials/movie.html```
+* ```/movies/:movieId/actors``` (exemple /movies/4/actors) : affichage des acteurs principaux d'un film, le template à utiliser est ```app/partials/actors.html```
+
+### Configuration de la navigation  
+```javascript app/js/app.js
+var app = angular.module('moviesApp', []);
+
+app.config(function($routeProvider) {
+    $routeProvider
+        .when('/movies',                    { controller: 'MoviesCtrl',         templateUrl: 'partials/movies.html' })
+        .when('/movies/:movieId',           { controller: 'MovieDetailCtrl',            templateUrl: 'partials/movie.html'  })
+        .when('/movies/:movieId/actors',    { controller: 'MovieActorsCtrl',            templateUrl: 'partials/actors.html' })
+        .otherwise(                     { redirectTo: '/movies' });
+});
+```
+### Mise à jour des contrôleurs
+```
+app.controller('MoviesCtrl', ['$http', '$scope', function($http, $scope) {
+    $http.get('/server/data/movies.json/$')
+    .success(function(movies) {
+        $scope.movies = movies;
+    });
+}]);
+
+app.controller('MovieDetailCtrl', ['$http', '$scope', '$routeParams', function($http, $scope, $routeParams) {
+    $http.get('/server/data/movies.json/'+$routeParams.movieId+'/$') // Lightweight movie object
+    .success(function(lightweightMovie) {
+        $scope.movie = lightweightMovie;
+    });
+}]);
+
+app.controller('MovieActorsCtrl', ['$http', '$scope', '$routeParams', function($http, $scope, $routeParams) {
+    $http.get('/server/data/movies.json/'+$routeParams.movieId) // Heavyweight movie object
+    .success(function(fullMovie) {
+        $scope.movie = fullMovie;
+    });
+}]);
+```
+
+### Le template d'affichage des acteurs d'un film
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>app/partials/actors.html </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>
+</span><span class='line'><span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">&quot;light&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    {{movie.title}}
+</span><span class='line'>    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#/movies&quot;</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'><span class="nt">&lt;/h2&gt;</span>
+</span><span class='line'><span class="nt">&lt;h3&gt;</span>
+</span><span class='line'>    Actors
+</span><span class='line'>    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#/movies/{{movie.id}}&quot;</span><span class="nt">&gt;</span>Movie<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'><span class="nt">&lt;/h3&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;ul&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;li</span> <span class="na">ng-repeat=</span><span class="s">&quot;actor in movie.actors&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;span&gt;</span>{{actor.name}}<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;role&quot;</span><span class="nt">&gt;</span>{{actor.role}}<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/li&gt;</span>
+</span><span class='line'><span class="nt">&lt;/ul&gt;</span>
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+### Le template d'affichage du détail d'un film
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>app/partials/movie.html </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>
+</span><span class='line'><span class="nt">&lt;h2&gt;</span>
+</span><span class='line'>    {{movie.title}}
+</span><span class='line'>    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#/movies&quot;</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'><span class="nt">&lt;/h2&gt;</span>
+</span><span class='line'><span class="nt">&lt;h3&gt;</span>
+</span><span class='line'>    Info sheet
+</span><span class='line'>    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#/movies/{{movie.id}}/actors&quot;</span><span class="nt">&gt;</span>Actors<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'><span class="nt">&lt;/h3&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;ul&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;li&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;info&quot;</span><span class="nt">&gt;</span>Year<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;span&gt;</span>{{movie.year}}<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;li&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;info&quot;</span><span class="nt">&gt;</span>Duration<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;span&gt;</span>{{movie.duration}} minutes<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;li&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;info&quot;</span><span class="nt">&gt;</span>Budget<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;span&gt;</span>${{movie.budget}} million<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/li&gt;</span>
+</span><span class='line'><span class="nt">&lt;/ul&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;img</span> <span class="na">ng-src=</span><span class="s">&quot;{{movie.poster}}&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+### Mise à jour du template d'affichage de tous les films
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>app/partials/movies.html </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>
+</span><span class='line'><span class="nt">&lt;h1&gt;</span>Movies<span class="nt">&lt;/h1&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;filter-box&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;div&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;label&gt;</span>Filter<span class="nt">&lt;/label&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">ng-model=</span><span class="s">&quot;query.title&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;div&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;label&gt;</span>Sort by<span class="nt">&lt;/label&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;select</span> <span class="na">ng-model=</span><span class="s">&quot;order&quot;</span> <span class="na">ng-init=</span><span class="s">&quot;order=&#39;year&#39;&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;year&quot;</span><span class="nt">&gt;</span>Year<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;title&quot;</span><span class="nt">&gt;</span>Title<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/select&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;ul&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;li</span> <span class="na">ng-repeat=</span><span class="s">&quot;movie in movies | filter:query | orderBy:order&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;span&gt;</span>{{movie.title}}<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#/movies/{{movie.id}}/actors&quot;</span><span class="nt">&gt;</span>Actors<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#/movies/{{movie.id}}&quot;</span><span class="nt">&gt;</span>Sheet<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;year&quot;</span><span class="nt">&gt;</span>{{movie.year}}<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/li&gt;</span>
+</span><span class='line'><span class="nt">&lt;/ul&gt;</span>
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+### Test
+<img class="center" src="http://blog.roddet.com/images/stereolux/html5/angular-10.png">
+
+<img class="center" src="http://blog.roddet.com/images/stereolux/html5/angular-11.png">
+
+<img class="center" src="http://blog.roddet.com/images/stereolux/html5/angular-12.png">
+
+<a name="step-4"></a>
+## Step-4 : Mise en place d'un service AngularJS
+AngularJS permet la mise en place de services réutilisables que les contrôleurs peuvent appeler. Cela permet d'avoir des contrôleurs ne contenant pas de logique complexe.
+
+Nous allons maintenant mettre en place dans l'application une gestion de films favoris.
+
+### Inclusion d'un nouveau fichier javascript pour nos services
+``` html app/index.html
+<script src="js/services.js"></script>
+```
+
+### Service de gestion de favoris
+``` javascript app/js/services.js
+app.factory('starService', function() {
+    
+    var starred = [];
+
+    return {
+        toggleStar: function(id) {
+            starred[id] = !starred[id];
+        },
+        isStarred: function(id) {
+            return starred[id];
+        }
+    }
+
+});
+```
+
+La méthode ```factory``` permet de déclarer un service réutilisable avec un nom (ici ```starService```). Ce service est un singleton.
+
+Il expose deux fonctions :
+
+* ```toggleStar(id)``` pour ajouter en favori
+* ```isStarred(id)``` qui détermine si un film est favori
+
+### Utilisation du service depuis le contrôleur
+
+```javascript app/js/controllers.js
+app.controller('MovieDetailCtrl', ['$http', '$scope', '$routeParams', 'starService', function($http, $scope, $routeParams, starService) {
+    $http.get('/server/data/movies.json/'+$routeParams.movieId+'/$') // Lightweight movie object
+    .success(function(lightweightMovie) {
+        $scope.movie = lightweightMovie;
+        $scope.favorite = starService.isStarred(lightweightMovie.id) ? "filled" : "";
+    });
+    $scope.toggleStar = function(id) {
+        starService.toggleStar(id);
+        $scope.favorite = starService.isStarred(id) ? "filled" : "";
+    }
+}]);
+```
+Lors du retour de l'appel serveur, le service créé est utilisé pour savoir si le film récupéré a été mis en favori. Si le film est favori la variable ```favorite``` prend la valeur ```filled``` sinon elle vaudra "".
+
+La fonction ```toggleStar``` mise dans l'objet __$scope__ lui permettra d'être utilisée par les templates.
+
+### Mise à jour du template d'affichage du détail d'un film
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>app/partials/movie.html </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>
+</span><span class='line'><span class="nt">&lt;h2&gt;</span>
+</span><span class='line'>    {{movie.title}}
+</span><span class='line'>    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#/movies&quot;</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'><span class="nt">&lt;/h2&gt;</span>
+</span><span class='line'><span class="nt">&lt;h3&gt;</span>
+</span><span class='line'>    Info sheet
+</span><span class='line'>    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#/movies/{{movie.id}}/actors&quot;</span><span class="nt">&gt;</span>Actors<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'><span class="nt">&lt;/h3&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;ul&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;li&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;info&quot;</span><span class="nt">&gt;</span>Year<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;span&gt;</span>{{movie.year}}<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;li&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;info&quot;</span><span class="nt">&gt;</span>Duration<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;span&gt;</span>{{movie.duration}} minutes<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;li&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;info&quot;</span><span class="nt">&gt;</span>Budget<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;span&gt;</span>${{movie.budget}} million<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;li&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;info&quot;</span><span class="nt">&gt;</span>Favorite<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;star {{favorite}}&quot;</span> <span class="na">ng-click=</span><span class="s">&quot;toggleStar(movie.id)&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/li&gt;</span>
+</span><span class='line'><span class="nt">&lt;/ul&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;img</span> <span class="na">ng-src=</span><span class="s">&quot;{{movie.poster}}&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+Deux choses à noter :
+
+* {{favorite}}  va prendre la valeur ```filled``` ou ```""``` suivant la logique définie dans le contrôleur
+* ```ng-click``` permet de définir une action à exécuter lors du clic sur la zone favori. L'action consiste à appeler la fonction ```toggleStar``` définie précédemment avec l'identifiant du film.
+
+### Test
+<img class="center" src="http://blog.roddet.com/images/stereolux/html5/angular-13.png">
+
+<a name="step-5"></a>
+## Step-5 : Animation
+AngularJS intègre la possibilité d'appliquer des animations CSS. Cette fonctionnalité n'est accessible actuellement qu'en béta (version 1.1.4).
+
+### Récupérer la version béta d'AngularJS et remplacer le fichier app/lib/angular.js
+[AngularJS v1.1.4 béta](https://github.com/antoine-richard/angular-movie-workshop-early2013/raw/step-6/app/lib/angular.js)
+
+
+### Ajouter le fichier ```app/css/animation.css```
+
+```css app/css/animation.css
+.custom-enter-setup, .custom-leave-setup, .custom-move-setup {
+  -webkit-transition: .5s linear all;
+  -moz-transition: .5s linear all;
+  -o-transition: .5s linear all;
+  transition: .5s linear all;
+  position: relative;
+}
+
+.custom-enter-setup {
+  left: -10px;
+  opacity: 0;
+}
+.custom-enter-setup.custom-enter-start {
+  left: 0;
+  opacity: 1;
+}
+
+.custom-leave-setup {
+  left: 0;
+  opacity: 1;
+}
+.custom-leave-setup.custom-leave-start {
+  left: -10px;
+  opacity: 0;
+}
+
+.custom-move-setup {
+  opacity: 0.5;
+}
+.custom-move-setup.custom-move-start {
+  opacity: 1;
+}
+```
+
+### Inclure le nouveau fichier CSS
+
+```html app/index.html
+...
+<link rel="stylesheet" href="css/animation.css"/>
+...
+```
+
+### Appliquer une animation à la liste des films
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>app/partials/movies.html </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>
+</span><span class='line'>...
+</span><span class='line'><span class="nt">&lt;ul&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;li</span> <span class="na">ng-repeat=</span><span class="s">&quot;movie in movies | filter:query | orderBy:order&quot;</span> <span class="na">ng-animate=</span><span class="s">&quot;&#39;custom&#39;&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;span&gt;</span>{{movie.title}}<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#/movies/{{movie.id}}/actors&quot;</span><span class="nt">&gt;</span>Actors<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#/movies/{{movie.id}}&quot;</span><span class="nt">&gt;</span>Sheet<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;year&quot;</span><span class="nt">&gt;</span>{{movie.year}}<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/li&gt;</span>
+</span><span class='line'><span class="nt">&lt;/ul&gt;</span>
+</span><span class='line'>...
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+* On remarquera l'utilisation de la directive ```ng-animate``` pour appliquer une animation à un élément du DOM.
+
+* ```custom``` représente le préfixe des noms des classes CSS qu'AngularJS va appliquer.
+
+* Les suffixes ```enter-setup```, ```leave-setup```, ... que l'on voit dans le fichier ```app/css/animation.css``` sont des mots clés qu'AngularJS va utiliser pour appliquer les styles successifs dans l'ordre.
+
+### Test
+En rechargeant la page principale, on obtient une animation (changement d'opacité et translation de la gauche vers la droite).
+
+<a name="step-6"></a>
+## Step-6 : Directives
+Nous avons jusqu'ici utiliser des directives fournies par AngularJS. Il est temps d'en créer une pour notre application.
+
+
+### Création d'un fichier source de directives
+```javascript app/js/directives.js 
+angular.module('moviesApp.directives', [])
+.directive('mvActor', function() {
+    return {
+        restrict: 'E',
+        replace: true,
+        scope: {
+            name: '='
+        },
+        template: '<span></span>',
+        link: function(scope, element, attributes) {
+            if (scope.name === 'Samuel L. Jackson') {
+                scope.name += ' !';
+                element.addClass('samuel');
+            }
+        }
+    };
+});
+```
+Un nouveau module dont le nom est ```moviesApp.directives``` est créé. Il ne définit que la directive :
+
+* porte le nom ```mvActor```
+* est de type ```Element``` (restrict : E). Une directive peut être de type :
+     * ```E``` : Element ```<mv-actor></mv-actor>```
+     * ```A``` : Attribut  ```<div mv-actor="samuel" />```
+     * ```C``` : Class  ```<div class="mv-actor:exp;" />```
+     * ```M``` : Comment ```<!-- directive mv-actor exp -->```
+* va remplacer l'élément du DOM sur lequel il est appliqué (```replace:true```)
+* est paramétrable via une propriété ```name```
+* va se baser sur le template défini pour l'attribut ```template``` pour générer l'affichage
+* va exécuter la fonction définie pour la propriété ```link``` après la phase de "compilation" de la directive et avant de créer l'affichage de la vue. C'est via cette propriété que l'on peut injecter du dynamisme à une directive.
+
+Cette directive applique un traitement particulier à "Samuel L. Jackson" :
+
+* Ajout du ```!``` à la suite de son nom
+* Application de la classe ```samuel``` qui permet d'afficher sa photo
+
+### Inclure le nouveau fichier de script ```app/js/directives.js```
+```html app/index.html
+<script src="js/directives.js"></script>
+```
+
+### Déclaration du module directives comme dépendance de l'application
+
+```javascript app/js/app.js
+var app = angular.module('moviesApp', ['moviesApp.directives']);
+...
+```
+
+### Utilisation de la directive
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>app/partials/actors.html </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="c">&lt;!--[if lte IE 8]&gt;</span>
+</span><span class='line'><span class="c">    &lt;script&gt;</span>
+</span><span class='line'><span class="c">        document.createElement(&#39;mv-actor&#39;);</span>
+</span><span class='line'><span class="c">    &lt;/script&gt;</span>
+</span><span class='line'><span class="c">&lt;![endif]--&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">&quot;light&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    {{movie.title}}
+</span><span class='line'>    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#/movies&quot;</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'><span class="nt">&lt;/h2&gt;</span>
+</span><span class='line'><span class="nt">&lt;h3&gt;</span>
+</span><span class='line'>    Actors
+</span><span class='line'>    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#/movies/{{movie.id}}&quot;</span><span class="nt">&gt;</span>Movie<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'><span class="nt">&lt;/h3&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;ul&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;li</span> <span class="na">ng-repeat=</span><span class="s">&quot;actor in movie.actors&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;mv</span><span class="na">-actor</span> <span class="na">name=</span><span class="s">&quot;actor.name&quot;</span><span class="nt">&gt;</span><span class="err">&lt;</span>/mv-actor&gt;
+</span><span class='line'>        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;role&quot;</span><span class="nt">&gt;</span>{{actor.role}}<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/li&gt;</span>
+</span><span class='line'><span class="nt">&lt;/ul&gt;</span>
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+### Test
+
+<img class="center" src="http://blog.roddet.com/images/stereolux/html5/angular-14.png">
+
+Voilà Samuel L. Jackson, un acteur au-dessus des autres, bien mis en valeur :)
+
+<a name="complet"></a>
+## Le code complet
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git clone https://github.com/antoine-richard/angular-movie-workshop-early2013 -b step-7</span></code></pre></td></tr></table></div></figure></notextile></div>
+ou via l'interface web de Github [https://github.com/antoine-richard/angular-movie-workshop-early2013/tree/step-7](https://github.com/antoine-richard/angular-movie-workshop-early2013/tree/step-7)
+
+## Le mot de la fin d'[Antoine Richard](https://twitter.com/richard_antoine)
+
+<blockquote class="twitter-tweet"><p>@<a href="https://twitter.com/rossioddet">rossioddet</a> merci :) préserve toi de manipuler le DOM hors des directives et ta maintenabilité sera bien gardée !</p>&mdash; Antoine RICHARD (@richard_antoine) <a href="https://twitter.com/richard_antoine/status/324261610392801280">April 16, 2013</a></blockquote>
+<script async src="http://roddet.github.com//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+## Liens utiles
+
+* [Photos de l'événement](https://plus.google.com/events/c05p73b1ufl9n1d5uvgaepf3dhg)
+* [Les sources Workshop AngularJS](https://github.com/antoine-richard/angular-movie-workshop-early2013)
+* [Les sources Workshop CSS 3](https://github.com/jbodet/winteriscoming)
+* [Les ressources Workshop WebGL](http://animateyourhtml5.appspot.com/)
+
+]]></content>
+  </entry>
+  
+</feed>

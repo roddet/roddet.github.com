@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: python | Rossi Oddet]]></title>
+  <link href="http://roddet.github.com/blog/categories/python/atom.xml" rel="self"/>
+  <link href="http://roddet.github.com/"/>
+  <updated>2014-05-21T01:43:46-04:00</updated>
+  <id>http://roddet.github.com/</id>
+  <author>
+    <name><![CDATA[Rossi Oddet]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[BreizhCamp 2013 # Utilisation de python sur le robot humanoïde NAO]]></title>
+    <link href="http://roddet.github.com/2013/06/breizhcamp-python-nao/"/>
+    <updated>2013-06-14T14:00:00-04:00</updated>
+    <id>http://roddet.github.com/2013/06/breizhcamp-python-nao</id>
+    <content type="html"><![CDATA[<p><img class="center" src="/images/breizhcamp13/nao/nao1.jpg"></p>
+
+<h2>Animateurs</h2>
+
+<ul>
+<li><a href="https://twitter.com/f_calzada">Franck Calzada</a> Manager BU Expertise SQLI Nantes, NAO Developer</li>
+<li><a href="http://www.aldebaran-robotics.com/en/">NAO</a> Robot humanoïde</li>
+</ul>
+
+
+<h2>Déroulement</h2>
+
+<p>Cette session sera conjointement animée par un humain (Franck) et un humanoïde (NAO).</p>
+
+<p>Tout commence par la prise de parole de NAO qui fait l'introduction de la session. Il va nous présenter l'agenda et va ensuite passer la main à l'humain en lui souhaitant bonne chance :)
+C'était très impressionnant de voir l'humanoïde s'exprimer avec des mouvements, on s'y croyait... On a notamment vu NAO se lever et s'asseoir après sa prestation.</p>
+
+<p>L'humain va ensuite nous présenter l'histoire de NAO, ses caractéristiques techniques, l'environnement de développement, etc...
+Franck va être souvent interrompue par NAO, on découvre par l'occasion que NAO a un mode autonome qui lui fait faire des petits mouvements de temps de temps. Si l'on fait abstraction que c'est un robot, il bougait presque comme un humain :)</p>
+
+<p>La session va se terminer par une série de démonstration :</p>
+
+<h3>NAO qui fait dessine une voiture</h3>
+
+<p><img class="center" src="/images/breizhcamp13/nao/nao2.jpg"></p>
+
+<h3>NAO joue au Golf</h3>
+
+<p><a href="https://plus.google.com/u/0/events/chg8m02mqghjaoeh2khvf39pu70/103932114865279499816/5889631493992066962">La vidéo</a></p>
+
+<h3>NAO qui lit dans l'esprit de Franck</h3>
+
+<p>NAO dit : "Franck, la personne a qui tu penses est Barack Obama !"</p>
+
+<p><img class="center" src="/images/breizhcamp13/nao/nao3.jpg"></p>
+
+<h2>Bilan</h2>
+
+<p>Session très intéressante qui nous plongeait un peu dans notre imagination de ce que peut faire NAO. En voyant NAO, on se dit qu'on n'est plus très loin des films de sciences fictions où un robot pourrait nous faire notre café...</p>
+
+<p>Session à revoir en vidéo lorsqu'elle sera disponible !</p>
+]]></content>
+  </entry>
+  
+</feed>

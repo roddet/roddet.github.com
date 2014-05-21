@@ -1,0 +1,669 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Devoxx France 2013 # Conférence # Java EE 7 plus en détail - Rossi Oddet</title>
+  <meta name="author" content="Rossi Oddet">
+
+  
+  <meta name="description" content="Vous pouvez retrouvez la description de la session sur le site de Devoxx France. Pourquoi j&#8217;ai choisi cette session ? En tant que développeur &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://roddet.github.com/2013/04/devoxxfr13-conference-javaee7-en-detail">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Rossi Oddet" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-32190657-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>	
+  <h1><a href="/">Rossi Oddet</a></h1>
+  
+    <h2>Blog d'un artisan développeur</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:roddet.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/events">Evénements</a></li>
+  <li><a href="/viededev">Vie de Développeur</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Devoxx France 2013 # Conférence # Java EE 7 Plus en Détail</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-06T14:14:00-04:00" pubdate data-updated="true">Apr 6<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Vous pouvez retrouvez la description de la session <a href="http://www.devoxx.com/display/FR13/Java+EE+7+en+detail">sur le site de Devoxx France</a>.</p>
+
+<p><img class="center" src="http://blog.roddet.com/images/devoxxfr13/javaee7detail/affiche.jpg"></p>
+
+<h2>Pourquoi j&#8217;ai choisi cette session ?</h2>
+
+<p>En tant que développeur Java EE depuis plusieurs années, je souhaitais avoir les dernières nouvelles sur la version 7 à venir.</p>
+
+<h2>Le présentateur</h2>
+
+<p>David Delabassee <a href="https://twitter.com/delabassee">@delabassee</a> (<a href="http://www.devoxx.com/display/FR13/David+Delabassee">Bio</a>)</p>
+
+<h2>Le succès de Java EE 6</h2>
+
+<p>La session commence par un rappel du succès de Java EE 6 :</p>
+
+<ul>
+<li>Plus de 50 millions de téléchargements de composants Java EE 6</li>
+<li>Choix N°1 pour le développement en entreprise</li>
+<li>La version la plus rapide de Java EE</li>
+</ul>
+
+
+<h2>Le périmètre de Java EE 7</h2>
+
+<p>Java EE 7 a deux objectifs :</p>
+
+<ul>
+<li>Améliorer la productivité des développements Java EE</li>
+<li>Apporter un support de HTML 5 (WebSockets, JSON, Formulaires)</li>
+</ul>
+
+
+<p>Voici un vue d&#8217;ensemble de Java EE 7 :</p>
+
+<p><img class="center" src="http://blog.roddet.com/images/devoxxfr13/javaee7detail/overview.jpg"></p>
+
+<p>En vert les nouveaux modules :</p>
+
+<ul>
+<li>JSR 236 : Concurrency Utilities</li>
+<li>JSR 352 : Batch Applications</li>
+<li>JSR 353 : Java API for JSON</li>
+<li>JSR 356 : Java API for WebSocket</li>
+</ul>
+
+
+<p>En orange les modules qui subissent les évolutions majeures :</p>
+
+<ul>
+<li>JAX-RS 2.0</li>
+<li>EL 3.0</li>
+<li>JMS 2.0</li>
+</ul>
+
+
+<p>En gris les modules mis à jour.</p>
+
+<h2>Java API for JSON</h2>
+
+<p>Cette nouvelle API permettra de parser et générer du JSON. Lors de sa 1ère version, le binding JSON vers objet Java ne sera pas présent. Il est prévu dans une version ultérieure.</p>
+
+<p>Ce nouveau composant offrira une API en Streaming permettant de traiter de gros documents JSON.</p>
+
+<h2>Java API for Websocket</h2>
+
+<p>Elle est composée de 2 parties : client &amp; serveur.</p>
+
+<h3>Exemple de partie serveur</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">import</span> <span class="nn">javax.websocket.*</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nd">@ServerEndPoint</span><span class="o">(</span><span class="s">&quot;/hello&quot;</span><span class="o">)</span>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloBean</span> <span class="o">{</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="nd">@OnMessage</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="n">String</span> <span class="nf">sayHello</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">){</span>
+</span><span class='line'>      <span class="k">return</span> <span class="s">&quot;Hello &quot;</span> <span class="o">+</span> <span class="n">name</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Exemple de partie cliente</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@ClientEndPoint</span>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloClient</span> <span class="o">{</span>
+</span><span class='line'>  <span class="nd">@OnMessage</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">message</span><span class="o">(</span><span class="n">String</span> <span class="n">message</span><span class="o">,</span> <span class="n">Session</span> <span class="n">session</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="c1">// traitement de messages provenant du serveur</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Pour lancer la connexion du client au serveur</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">WebSocketContainer</span> <span class="n">c</span> <span class="o">=</span> <span class="n">ContainerProvider</span><span class="o">.</span><span class="na">getWebSocketContainer</span><span class="o">();</span>
+</span><span class='line'><span class="n">c</span><span class="o">.</span><span class="na">connectToServer</span><span class="o">(</span><span class="n">HelloClient</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">&quot;hello&quot;</span><span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Batch Applications</h2>
+
+<p>Il s&#8217;agit ici d&#8217;apporter un standard dans la création des batchs en Java.</p>
+
+<p>Ce composant apporte les concepts suivants :</p>
+
+<ul>
+<li>Job : Le processus du batch dans sa globalité</li>
+<li>Step : un traitement indépendant d&#8217;un batch</li>
+<li>JobOperator : Gestion de l&#8217;exécution du batch</li>
+<li>JobRepository : Métadonnées des jobs</li>
+</ul>
+
+
+<p>Il y a 2 types de step :</p>
+
+<ul>
+<li>&#8220;Chunked&#8221; un traitement standard utilisant le pattern &#8220;reader-processor-writer&#8221;</li>
+<li>&#8220;Batchlet&#8221; un traitement spécifique utilisant notre propre pattern</li>
+</ul>
+
+
+<p>Un job est paramétrable via un fichier XML. Exemple :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;job</span> <span class="na">id=</span><span class="s">&quot;myJob&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;step</span> <span class="na">id=</span><span class="s">&quot;init&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;chunk</span> <span class="err">reader</span> <span class="na">ref=</span><span class="s">&quot;MyReader&quot;</span> <span class="err">processor</span> <span class="na">ref=</span><span class="s">&quot;MyProcessor&quot;</span> <span class="err">writer</span> <span class="na">ref=</span><span class="s">&quot;MyWriter&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;next</span> <span class="na">on=</span><span class="s">&quot;initialized&quot;</span> <span class="na">to=</span><span class="s">&quot;process&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;fail</span> <span class="na">on=</span><span class="s">&quot;initError&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/step&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;step</span> <span class="na">id=</span><span class="s">&quot;process&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;batchlet</span> <span class="na">ref=</span><span class="s">&quot;ProcessAndEmail&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;end</span> <span class="na">on=</span><span class="s">&quot;success&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;fail</span> <span class="na">on=</span><span class="s">&quot;*&quot;</span> <span class="na">exit-status=</span><span class="s">&quot;FAILURE&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/step&gt;</span>
+</span><span class='line'><span class="nt">&lt;/job&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Il est possible de mettre en place des intercepteurs à différents niveaux (JobListener, StepListener, ChunkListener, etc&#8230;).</p>
+
+<p>Pour lancer un Job :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="k">try</span> <span class="o">{</span>
+</span><span class='line'>  <span class="n">JobOperator</span> <span class="n">jop</span> <span class="o">=</span> <span class="n">BatchRuntime</span><span class="o">.</span><span class="na">getJobOperator</span><span class="o">();</span>
+</span><span class='line'>  <span class="kt">long</span> <span class="n">jobId</span> <span class="o">=</span> <span class="n">jop</span><span class="o">.</span><span class="na">start</span><span class="o">(</span><span class="s">&quot;myJob&quot;</span><span class="o">);</span> <span class="c1">// META-INF/batch.xml</span>
+</span><span class='line'><span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">JobStartException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>  
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Il est possible de lancer les traitements d&#8217;un job en parallèle.</p>
+
+<h2>Concurrency Utilities for Java EE</h2>
+
+<p>L&#8217;objectif de cette JSR est d&#8217;offrir la possibilité d&#8217;exécuter des traitements concurrents dans un container Java EE sans compromettre son intégrité.
+Elle sera cohérente avec l&#8217;API existante en Java SE (java.util.concurrent.*) en fournissant une version &#8220;managed&#8221; de java.util.concurrent.ExecutorService : ManagedExecutorService (récupérable via JNDI).</p>
+
+<h2>JAX-RS 2.0</h2>
+
+<h3>La partie cliente entre dans la standard.</h3>
+
+<p>Exemple :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">Client</span> <span class="n">client</span> <span class="o">=</span> <span class="n">ClientFactory</span><span class="o">.</span><span class="na">newClient</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">target</span><span class="o">(</span><span class="s">&quot;.../orders/{orderId}/customer&quot;</span><span class="o">)</span>
+</span><span class='line'>                  <span class="o">.</span><span class="na">resolveTemplate</span><span class="o">(</span><span class="s">&quot;orderId&quot;</span><span class="o">,</span> <span class="s">&quot;10&quot;</span><span class="o">)</span>
+</span><span class='line'>                  <span class="o">.</span><span class="na">queryParam</span><span class="o">(</span><span class="s">&quot;shipped&quot;</span><span class="o">,</span> <span class="s">&quot;true&quot;</span><span class="o">)</span>
+</span><span class='line'>                  <span class="o">.</span><span class="na">request</span><span class="o">()</span>
+</span><span class='line'>                  <span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Des requêtes asynchrones possibles pour la partie cliente</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">Client</span> <span class="n">client</span> <span class="o">=</span> <span class="n">ClientFactory</span><span class="o">.</span><span class="na">newClient</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">Future</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">future</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">target</span><span class="o">(</span><span class="s">&quot;.../orders/{orderId}/customer&quot;</span><span class="o">)</span>
+</span><span class='line'>                  <span class="o">.</span><span class="na">resolveTemplate</span><span class="o">(</span><span class="s">&quot;orderId&quot;</span><span class="o">,</span> <span class="s">&quot;10&quot;</span><span class="o">)</span>
+</span><span class='line'>                  <span class="o">.</span><span class="na">queryParam</span><span class="o">(</span><span class="s">&quot;shipped&quot;</span><span class="o">,</span> <span class="s">&quot;true&quot;</span><span class="o">)</span>
+</span><span class='line'>                  <span class="o">.</span><span class="na">request</span><span class="o">()</span>
+</span><span class='line'>                  <span class="o">.</span><span class="na">async</span><span class="o">()</span>
+</span><span class='line'>                  <span class="o">.</span><span class="na">get</span><span class="o">(</span>
+</span><span class='line'>                      <span class="k">new</span> <span class="n">InvocationCallBack</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;(){</span>
+</span><span class='line'>                          <span class="kd">public</span> <span class="kt">void</span> <span class="nf">completed</span><span class="o">(</span><span class="n">String</span> <span class="n">result</span><span class="o">){</span>
+</span><span class='line'>
+</span><span class='line'>                          <span class="o">}</span>
+</span><span class='line'>                          <span class="kd">public</span> <span class="kt">void</span> <span class="nf">failed</span><span class="o">(</span><span class="n">InvocationException</span> <span class="n">e</span><span class="o">){</span>
+</span><span class='line'>
+</span><span class='line'>                          <span class="o">}</span>
+</span><span class='line'>                      <span class="o">}</span>
+</span><span class='line'>                  <span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Possibilité de créer des intercepteurs</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyInterceptor</span> <span class="kd">implements</span> <span class="n">ReaderInterceptor</span> <span class="o">{</span>
+</span><span class='line'>  <span class="nd">@Override</span>
+</span><span class='line'>  <span class="n">Object</span> <span class="nf">aroundReadFrom</span><span class="o">(</span><span class="n">ReaderInterceptorContext</span> <span class="n">ctx</span><span class="o">){</span>
+</span><span class='line'>      <span class="c1">// Traitement de l&#39;intercepteur</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>JMS 2.0</h2>
+
+<p>Ca faisait longtemps que JMS n&#8217;avait pas évolué.</p>
+
+<p>L&#8217;objectif de Java EE 7 sur ce point :</p>
+
+<ul>
+<li>Simplifier l&#8217;API</li>
+<li>Offrir la possibilité d&#8217;injecter des ressources</li>
+<li>Les objets Connection, Session, etc&#8230; sont AutoCloseable (plus besoin de fermer explicitement ces ressources)</li>
+</ul>
+
+
+<h3>Injection de ressources par annotations</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@Resource</span><span class="o">(</span><span class="n">lookup</span> <span class="o">=</span> <span class="s">&quot;jms/connFactory&quot;</span><span class="o">)</span>
+</span><span class='line'><span class="n">ConnectionFactory</span> <span class="n">cf</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nd">@Resource</span><span class="o">(</span><span class="n">lookup</span> <span class="o">=</span> <span class="s">&quot;jms/inboundQueue&quot;</span><span class="o">)</span>
+</span><span class='line'><span class="n">Destination</span> <span class="n">dest</span><span class="o">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Création de JMSContext</h3>
+
+<p>C&#8217;est une combinaison de la Connection et la Session.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="k">try</span><span class="o">(</span><span class="n">JMSContext</span> <span class="n">context</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="na">createContext</span><span class="o">();){</span>
+</span><span class='line'>  <span class="c1">//</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>On peut envoyer un String directement sans passer par un objet spécifique</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="k">try</span><span class="o">(</span><span class="n">JMSContext</span> <span class="n">context</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="na">createContext</span><span class="o">();){</span>
+</span><span class='line'>  <span class="n">context</span><span class="o">.</span><span class="na">createProducer</span><span class="o">().</span><span class="na">send</span><span class="o">(</span><span class="n">dest</span><span class="o">,</span><span class="s">&quot;Hello&quot;</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>JMSContext peut être injecté</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@Inject</span>
+</span><span class='line'><span class="n">JMSContext</span> <span class="n">context</span><span class="o">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Bean Validation 1.1</h2>
+
+<h3>Validation des paramètres d&#8217;une méthode</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kt">void</span> <span class="nf">myMethod</span><span class="o">(</span>
+</span><span class='line'>  <span class="nd">@NotNull</span> <span class="n">String</span> <span class="n">name</span><span class="o">,</span>
+</span><span class='line'>  <span class="nd">@NotNull</span> <span class="nd">@Max</span><span class="o">(</span><span class="s">&quot;10&quot;</span><span class="o">)){</span>
+</span><span class='line'>  <span class="c1">//</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Validation du résultat d&#8217;une méthode</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@Future</span>
+</span><span class='line'><span class="kd">public</span> <span class="n">Date</span> <span class="nf">getProchainDevoxxFrance</span><span class="o">(){</span>
+</span><span class='line'>  <span class="c1">//</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Et bien sûr les autres nouveautés :</h2>
+
+<ul>
+<li>JSF 2.2 : support HTML5, Composant d&#8217;upload de fichier, &#8230;</li>
+<li>Servlet 3.1 : IO Non bloquant, &#8230;</li>
+<li>JPA 2.1 : Génération de schéma, &#8230;</li>
+<li>JTA 1.2 : déclaration de transaction en dehors des EJB, etc&#8230;</li>
+<li>CDI 1.1 : Ordonnancement des intercepteurs, &#8230;</li>
+<li>EJB 3.2 : Asynchronisme, &#8230;</li>
+<li>EL 3.0 : Support des lambdas, Collection, &#8230;</li>
+<li>JavaMail 1.5</li>
+</ul>
+
+
+<h2>Petite réorganisation des profils Java EE</h2>
+
+<h3>Web Profile</h3>
+
+<ul>
+<li>Servlet, JSF, JSP</li>
+<li>WebSocket, JSON-P</li>
+<li>JAX-RS</li>
+<li>EL, Beans Validation</li>
+<li>EJB (Lite), CDI, JTA, JPA, &#8230;</li>
+</ul>
+
+
+<h3>Plateforme complète</h3>
+
+<ul>
+<li>Web Profile</li>
+<li>Concurrency Utilities, Batch API</li>
+<li>JMS, EJB, JAX-WS, JAXB, JavaMail, &#8230;</li>
+</ul>
+
+
+<h2>Liens utiles</h2>
+
+<ul>
+<li><a href="http://glassfish.org/javaee7">Java EE 7</a></li>
+<li><a href="https://blogs.oracle.com/theaquarium/">The Aquarium</a></li>
+<li><a href="http://glassfish.java.net/adoptajsr/">Adopt-A-JSR</a></li>
+<li><a href="http://glassfish.java.net/fishcat/">FishCat</a></li>
+</ul>
+
+
+<h2>RoadMap à court terme</h2>
+
+<p>Les spécifications seront validées à la fin du mois d&#8217;Avril. La première version de GlassFish stable sortira quelques jours après.
+JCache n&#8217;est pas dans le périmètre de Java EE 7.</p>
+
+<h2>Bilan</h2>
+
+<p>Session interressante qui présente en 1h les grandes nouveautés attendues pour Java EE 7. Après quelques recherches sur SlideShare, Parleys etc.. je n&#8217;ai pas retrouvé les slides de la présentation. Je l&#8217;ajouterai à ce billet lorsqu&#8217;il sera disponible.</p>
+
+<p>Maintenant il ne reste plus qu&#8217;à approfondir chaque sujet et tester :)</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Rossi Oddet</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-06T14:14:00-04:00" pubdate data-updated="true">Apr 6<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/batch/'>batch</a>, <a class='category' href='/blog/categories/devoxxfr2013/'>devoxxfr2013</a>, <a class='category' href='/blog/categories/java/'>java</a>, <a class='category' href='/blog/categories/javaee7/'>javaee7</a>, <a class='category' href='/blog/categories/json/'>json</a>, <a class='category' href='/blog/categories/websocket/'>websocket</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://roddet.github.com/2013/04/devoxxfr13-conference-javaee7-en-detail/" data-via="rossioddet" data-counturl="http://roddet.github.com/2013/04/devoxxfr13-conference-javaee7-en-detail/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2013/04/devoxxfr13-tools-in-action-yeoman-angular/" title="Previous Post: Devoxx France 2013 # Tools In Action # Live coding avec Yeoman & AngularJS">&laquo; Devoxx France 2013 # Tools In Action # Live coding avec Yeoman & AngularJS</a>
+      
+      
+        <a class="basic-alignment right" href="/2013/04/stereolux-workshop-html5/" title="Next Post: GDG Nantes & Stereolux : Workshop HTML5">GDG Nantes & Stereolux : Workshop HTML5 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Rossi Oddet</h1>
+  <br/>
+  <table>
+  	<tr><td width="30%"><img src="/images/photo.jpeg" width="75"/></td>
+  		<td>&nbsp;&nbsp;</td>
+    <td width="70%"> <p>Développeur, Blogger et passionné par les communautés IT.</p></td></tr>
+</table>
+</section>
+<a class="twitter-timeline" href="https://twitter.com/rossioddet" data-widget-id="314511007521312768">Tweets by @rossioddet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Rossi Oddet -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogroddet';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://roddet.github.com/2013/04/devoxxfr13-conference-javaee7-en-detail/';
+        var disqus_url = 'http://roddet.github.com/2013/04/devoxxfr13-conference-javaee7-en-detail/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

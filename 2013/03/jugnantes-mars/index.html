@@ -1,0 +1,312 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>JUG Nantes : Traçabilité des architectures distribuées - Rossi Oddet</title>
+  <meta name="author" content="Rossi Oddet">
+
+  
+  <meta name="description" content="Hier j&#8217;ai eu l&#8217;occasion d&#8217;être présent à la session qu&#8217;organisait le JUG Nantes sur le thème : traçabilité d&#8217;une &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://roddet.github.com/2013/03/jugnantes-mars">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Rossi Oddet" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-32190657-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>	
+  <h1><a href="/">Rossi Oddet</a></h1>
+  
+    <h2>Blog d'un artisan développeur</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:roddet.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/events">Evénements</a></li>
+  <li><a href="/viededev">Vie de Développeur</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">JUG Nantes : Traçabilité Des Architectures Distribuées</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-19T20:15:00-04:00" pubdate data-updated="true">Mar 19<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Hier j&#8217;ai eu l&#8217;occasion d&#8217;être présent à la session qu&#8217;organisait le JUG Nantes sur le thème : traçabilité d&#8217;une architecture distribuée &amp; un retour sur le code story 2013.</p>
+
+<p>Les intervenants : Sébastien Prunier &amp; Jérôme Creignou</p>
+
+<p>Voici un petit résumé de ce que l&#8217;on peut retenir.</p>
+
+<h2>Code Story 2013</h2>
+
+<p>La session a commencé par le retour sur le code story 2013 qui a consisté à réaliser une même application avec différentes technologies (Sébastien => Java &amp; Jetty Embedded, Jérôme => Javascript &amp; NodeJS).
+J&#8217;en retiens surtout le panel d&#8217;outil utilisé :</p>
+
+<ul>
+<li>Pour Sébastien c&#8217;est du Jetty Embedded, JUnit &amp; Heroku. On peut quand même noter que le choix de Jetty n&#8217;est pas un hazard. Travailler avec Jetty est une approche que je vois de plus en plus qui se rapproche du modèle de programmation de NodeJS ou Play Framework où l&#8217;on souhaite avoir un contrôle accru des éléments composants le protocole HTTP (qu&#8217;est-ce qu&#8217;il y a dans la requête, qu&#8217;est-ce que je met exactement dans le réponse ? etc&#8230;). Vous pouvez trouver le détail de ses choix techniques là : <a href="http://sebprunier.wordpress.com/2013/01/10/code-story-concours-pour-devoxx-france-2013/">http://sebprunier.wordpress.com/2013/01/10/code-story-concours-pour-devoxx-france-2013/</a></li>
+<li><p>Pour Jérôme, une particularité : tout le cycle de développement entièrement sur le cloud avec Javascript &amp; NodeJS. Oui entièrement : du développement au déploiement. Voici les outils :</p>
+
+<ul>
+<li><a href="https://c9.io/">Cloud 9</a>  pour le développement. Pour du Javascript, l&#8217;IDE offre un debugger javascript et même un terminal. On peut faire du Git en ligne de commande :)</li>
+<li><a href="https://travis-ci.org/">Travis CI</a> pour l&#8217;intégration continue</li>
+<li><a href="http://www.heroku.com/">Heroku</a> pour le déploiement</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>Traçabilité d&#8217;une architecture distribuée avec NodeJS &amp; MongoDB</h2>
+
+<p>Les intervenants ont présenté une application qu&#8217;ils ont réalisé en 15 jours qui permet de traçer les requêtes à travers un SI multi-couche et hétérogène.</p>
+
+<p>Le principe :</p>
+
+<ul>
+<li>Modifier les applications pour injecter et propager un identifiant de requête généré</li>
+<li>Installer sur chaque machine un agent construit avec Node.js qui parse les logs suivant un pattern configurable. Chaque agent structure en JSON les logs collectées et les envoie à un serveur de consolidation.</li>
+<li>Un serveur de consolidation récupère les données des agents et persiste les infos dans une base MongoDB. Il met à disposition également une IHM pour visualiser les données et faire des statistiques.
+Un particularité à noter avec Node.js, la stratégie de lecture des fichiers de logs. Les fichiers ne sont pas montés en mémoire en totalité. L&#8217;API est notifié par l&#8217;OS qu&#8217;il y a eu un changement dans les fichiers et envoie le différentiel, ce qui fait que la lecture du fichier se fait efficacement.</li>
+</ul>
+
+
+<p>Panorama des technologies utilisées :</p>
+
+<ul>
+<li><a href="http://knockoutjs.com/">Knockout.js</a></li>
+<li><a href="http://expressjs.com/">Expressjs</a></li>
+<li><a href="http://d3js.org/">D3js</a></li>
+<li><a href="http://underscorejs.org/">Underscorejs</a></li>
+<li><a href="https://github.com/flatiron/winston">Winston</a></li>
+<li><a href="http://lesscss.org/">Less</a></li>
+<li><a href="https://github.com/dominictarr/JSONStream">JSONStream</a></li>
+<li><a href="https://github.com/dominictarr/event-stream">Event Stream</a></li>
+</ul>
+
+
+<p>Les axes d&#8217;améliorations qu&#8217;ils ont déjà identifiés :</p>
+
+<ul>
+<li>Passer de MongoDB à CoucheBase pour 2 raisons : l&#8217;interface d&#8217;administration plus facile à vendre que la ligne de commande &amp; pour des meilleurs performances</li>
+<li>Améliorer l&#8217;interface UI, le rendre un peu plus responsive</li>
+<li>Etudier une intégration avec <a href="http://www.logstash.net/">Log Stash</a></li>
+</ul>
+
+
+<p>Voici les slides :</p>
+
+<iframe src="http://www.slideshare.net/slideshow/embed_code/17381444" width="600" height="500" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen webkitallowfullscreen mozallowfullscreen> </iframe>
+
+
+<p></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Rossi Oddet</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-19T20:15:00-04:00" pubdate data-updated="true">Mar 19<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/javascript/'>javascript</a>, <a class='category' href='/blog/categories/jugnantes/'>jugnantes</a>, <a class='category' href='/blog/categories/nodejs/'>nodejs</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://roddet.github.com/2013/03/jugnantes-mars/" data-via="rossioddet" data-counturl="http://roddet.github.com/2013/03/jugnantes-mars/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2012/11/jcertif-2012-mes-sessions/" title="Previous Post: JCertif 2012 - Mes sessions">&laquo; JCertif 2012 - Mes sessions</a>
+      
+      
+        <a class="basic-alignment right" href="/2013/03/devoxxfr13-lab-gatling-crash-course/" title="Next Post: Devoxx France 2013 # Lab # Gatling Crash Course">Devoxx France 2013 # Lab # Gatling Crash Course &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Rossi Oddet</h1>
+  <br/>
+  <table>
+  	<tr><td width="30%"><img src="/images/photo.jpeg" width="75"/></td>
+  		<td>&nbsp;&nbsp;</td>
+    <td width="70%"> <p>Développeur, Blogger et passionné par les communautés IT.</p></td></tr>
+</table>
+</section>
+<a class="twitter-timeline" href="https://twitter.com/rossioddet" data-widget-id="314511007521312768">Tweets by @rossioddet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Rossi Oddet -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogroddet';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://roddet.github.com/2013/03/jugnantes-mars/';
+        var disqus_url = 'http://roddet.github.com/2013/03/jugnantes-mars/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

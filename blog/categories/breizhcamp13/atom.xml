@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: breizhcamp13 | Rossi Oddet]]></title>
+  <link href="http://roddet.github.com/blog/categories/breizhcamp13/atom.xml" rel="self"/>
+  <link href="http://roddet.github.com/"/>
+  <updated>2014-05-21T01:43:46-04:00</updated>
+  <id>http://roddet.github.com/</id>
+  <author>
+    <name><![CDATA[Rossi Oddet]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[BreizhCamp 2013 # J'y étais]]></title>
+    <link href="http://roddet.github.com/2013/06/breizhcamp-j-y-etais/"/>
+    <updated>2013-06-14T20:00:00-04:00</updated>
+    <id>http://roddet.github.com/2013/06/breizhcamp-j-y-etais</id>
+    <content type="html"><![CDATA[<p>Les 13 et 14 juin derniers, j'ai eu l'occasion de participer pour la première fois à l'événement <a href="http://www.breizhcamp.org/">BreizhCamp</a> qui a lieu chaque année à Rennes.</p>
+
+<p>Pendant 2 jours, se sont enchainés différents formats (Conférence, Université, Hands-on, Tools In Action, Quickies) de présentation sur des sujets variés.</p>
+
+<h2>Rencontre avec NAO</h2>
+
+<p>Il y avait un participant pas comme les autres sur le stand de <a href="http://www.sqli.com/">SQLI</a> : le robot NAO.</p>
+
+<p><img class="center" src="/images/breizhcamp13/parcours/nao_stand_sqli.jpg"></p>
+
+<p>C'était la première fois que je le voyais "en vrai". On pouvait l'entendre nous souhaiter la bienvenue au BreizhCamp ou encore le voir exécuter des chorégraphies (Thriller, Gangnam Style, ...)</p>
+
+<p><img class="center" src="/images/breizhcamp13/parcours/nao_stand_sqli_thriller.jpg"></p>
+
+<p>C'était impressionnant de voir ses capacités en terme de liberté de mouvements ou encore d'interaction via le son ou encore l'image.</p>
+
+<h2>Le logo BreizhCamp</h2>
+
+<p>Nous avons pu découvrir l'origine du logo du BreizhCamp (voir image ci-dessous).</p>
+
+<p><img class="center" src="/images/breizhcamp13/parcours/logo-breizh.jpg"></p>
+
+<h2>Le a.k.a BreizhCamp Style</h2>
+
+<p>Nous avons tous dansé (au moins en esprit) la version revisitée du Gangnam Style.</p>
+
+<p><img class="center" src="/images/breizhcamp13/parcours/breizhcamp-style.jpg"></p>
+
+<h2>Les sessions</h2>
+
+<p>J'ai pu participer aux sessions suivantes (les liens vous mènent aux articles liés du blog) :</p>
+
+<h3>Jour 1</h3>
+
+<ul>
+<li><a href="http://blog.roddet.com/2013/06/breizhcamp-javascript-sol-au-plafond/">Javascript du sol au plafond</a> avec Xavier Seignard et Sébastien Prunier</li>
+<li><a href="http://blog.roddet.com/2013/06/breizhcamp-angularjs-directives/">Angularjs - démystification des directives</a> avec Antoine Richard</li>
+<li><a href="http://blog.roddet.com/2013/06/breizhcamp-dans-scas-la/">C'est le moment de s'lancer dans s'cas là !</a> avec Ludwine Probst et Jonathan Winandy</li>
+<li><a href="http://blog.roddet.com/2013/06/breizhcamp-gatling/">Stressez vos applications web avec Gatling</a> en tant qu'animateur.</li>
+</ul>
+
+
+<h3>Jour 2</h3>
+
+<ul>
+<li><a href="http://blog.roddet.com/2013/06/breizhcamp-winter-is-coming/">Winter is coming (Keynote)</a> avec Didier Gérard et Aurélien Pelletier</li>
+<li>SASS, Compass et Blueprint, ou les css à la cool par Mathias Standaert</li>
+<li><a href="http://blog.roddet.com/2013/06/breizhcamp-web-components/">Web Components, l'avenir des développeurs web</a> par Julien Vey</li>
+<li>Un jeu iOS/Android sans HTML, Objective-C, Java ? par Florian Ramière</li>
+<li><a href="http://blog.roddet.com/2013/06/breizhcamp-python-nao/">Utilisation de python sur le robot humanoïde NAO</a> par Franck Calzada et NAO</li>
+<li><a href="http://blog.roddet.com/2013/06/breizhcamp-android-bootstrap/">Android BootStrap : Rex sur les librairies android</a> par Jean-François Garreau</li>
+<li><a href="http://blog.roddet.com/2013/06/breizhcamp-papy-fait-du-scala/">Papy fait du Scala</a> avec Damien Lecan</li>
+<li>Bien configurer Scala SBT en entreprise avec Damien Lecan</li>
+</ul>
+
+
+<h2>Un petit bilan</h2>
+
+<p>Le BreizhCamp, c'est 2 jours concentrés de technologies. J'ai évidemment appris beaucoup de choses. Quand je prends un peu de recul et que je regarde les sessions auxquelles j'ai assisté, je constate qu'il n'y a aucune qui parle de Java EE (ma spécialité normalement...:)). En regardant <a href="http://www.breizhcamp.org/programme/">le programme du BreizhCamp</a>, on se rend compte que Java EE n'est pas beaucoup représenté (à peine un Hands-on). On pourrait penser qu'avec la sortie de Java EE 7 qui a eu lieu la veille, on serait inondé de sessions sur le sujet, et non !
+Ce n'est pas une spécificité du BreizhCamp, Devoxx France 2013 m'a aussi donné ce sentiment global. A croire qu'à force d'évoluer lentement sans de véritables innovations, la plateforme Java EE donne l'impression de vieillir et de provoquer ainsi un certain désintérêt de ses disciples...</p>
+
+<p>Les conférences permettent aussi d'afficher les technologies "à la mode". On peut sans conteste dire que la technologie qui a été omniprésente au BreizhCamp est <a href="http://angularjs.org/">AngularJS</a>. Dans la plupart des présentations d'une technologie Web, une référence à <a href="http://angularjs.org/">AngularJS</a> était citée. On pouvait même croire que ce mot était utilisé pour apporter du crédit à certains propos (oui j'exagère un peu :)). C'est tout de même surprenant d'avoir un produit qui fait autant l'unanimité et semble ne pas avoir de concurrents... J'aime la concurrence, je pense que c'est ce qui fait progresser des produits et j'espère avoir des concurrents qui vont se démarquer rapidement... On entend de loin <a href="http://emberjs.com/">Emberjs</a> mais on l'entend encore de trop loin...</p>
+
+<p><a href="http://www.aldebaran-robotics.com/en/">NAO</a> nous a également permis de nous ouvrir l'esprit en pensant à autre chose qu'à des applications web. Oui c'est vrai nous faisons toujours la même chose même si nous varions la déco avec AngularJS (oui moi aussi j'en parle :)), du NodeJS, du Java ou du Scala. <a href="http://www.aldebaran-robotics.com/en/">NAO</a> nous projette dans le futur et comme dit Franck Calzada "Avec NAO, à nous d'imaginer les usages !".</p>
+
+<p>Bravo aux organisateurs pour ce bel événement et rendez-vous l'année prochaine, au BreizhCamp 2014 !</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[BreizhCamp 2013 # Papy fait du Scala]]></title>
+    <link href="http://roddet.github.com/2013/06/breizhcamp-papy-fait-du-scala/"/>
+    <updated>2013-06-14T16:00:00-04:00</updated>
+    <id>http://roddet.github.com/2013/06/breizhcamp-papy-fait-du-scala</id>
+    <content type="html"><![CDATA[<p><img class="center" src="/images/breizhcamp13/papy_scala/papy-scala.jpg"></p>
+
+<h2>Animateurs</h2>
+
+<ul>
+<li><a href="https://twitter.com/dlecan">Damien Lecan</a> Architecte Java &amp; Co SQLI Nantes</li>
+</ul>
+
+
+<h2>Les supports</h2>
+
+<p>Les slides c'est par <a href="http://blog.dlecan.com/breizhcamp2013/papy-fait-du-scala/">ici</a>.</p>
+
+<h2>Résumé</h2>
+
+<p>Damien nous a fait une synthèse du langage Scala et de son écosystème. Il nous a également fait un retour d'expérience sur l'utilisation de Scala dans le projet <a href="https://github.com/dlecan/play2-war-plugin">Play2War</a> qui permet créer un packaging WAR d'une application Play! Framework.</p>
+
+<h2>Ce que j'en retiens</h2>
+
+<ul>
+<li>Scala permet de faire aussi bien la programmation orientée objet que la programmation fonctionnelle</li>
+<li>Avec Scala, on peut utiliser toutes les librairies écrites en Java</li>
+<li>Le code Scala est compilé en Bytecode Java habituel et exécuté sur la JVM</li>
+<li>Scala est typé statiquement et permet l'inférence de type</li>
+<li>Immutabilité, notion importante avec Scala</li>
+<li>Important : "Une bibliothèque compilée avec une version particulière de Scala ne fonctionnera pas nécessairement avec une version plus récente ou plus ancienne."</li>
+<li>Apprendre un nouveau langage nous permet de nous ouvrir l'esprit et nous remettre en question. Je pense par exemple qu'apprendre un langage comme Scala peut nous aider à porter un autre regard sur Java et même nous faire progresser en Java :)</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[BreizhCamp 2013 # Android BootStrap]]></title>
+    <link href="http://roddet.github.com/2013/06/breizhcamp-android-bootstrap/"/>
+    <updated>2013-06-14T15:00:00-04:00</updated>
+    <id>http://roddet.github.com/2013/06/breizhcamp-android-bootstrap</id>
+    <content type="html"><![CDATA[<p><img class="center" src="/images/breizhcamp13/android_bootstrap/android-bootstrap.jpg"></p>
+
+<h2>Animateurs</h2>
+
+<ul>
+<li><a href="https://plus.google.com/114772056028520115043">Jean-François Garreau</a> SQLI Nantes</li>
+</ul>
+
+
+<h2>Les supports</h2>
+
+<p>Les slides c'est par <a href="http://blog.binomed.fr/binomed_docs/Prezs/AndroidBootstrap/bootstrap.html">ici</a>.</p>
+
+<p>Les sources de l'application BreizhCamp c'est par <a href="https://github.com/binomed/DevFestCodeLab/tree/breizhcamp">là</a>.</p>
+
+<h2>Déroulement</h2>
+
+<p>Jean-François a commencé par nous expliquer l'importance des librairies. Nous avons en tant que développeur, dès fois, la facheuse tendance de "ré-inventer la roue" à chaque projet. Cela est particulière le cas sur la plateforme Android dont le SDK nous fournit déjà pas mal de composants prêts à l'emploi. Il faut le savoir, les librairies existent et certaines ont particulièrement été éprouvées.</p>
+
+<p>Tout n'est pas parfait dans le monde des librairies Android. Intégrer des librairies dans notre application peut nous emmener des complications en terme de gestion de version, de conflits, du poids total, de l'environnement de développement, ...</p>
+
+<p>Jean-François va ensuite nous présenter l'utilisation de plusieurs librairies (ActionBarSherlock, ACRA, Compatibility package, ViewPager, ...) à travers la réalisation d'une application pour le BreizhCamp (visualisation des sessions, des présentateurs, etc...).</p>
+
+<p>Il va terminer par nous présenter les bonnes pratiques d'intégration des librairies dans un projet Android et nous conseille de suivre de prêt <a href="http://www.androidbootstrap.com/">Android BootStrap</a> et <a href="http://androidkickstartr.com/">Android KickStartR</a></p>
+
+<h2>Ce que j'en retiens</h2>
+
+<ul>
+<li>Il existe des librairies Android pratiques à utiliser</li>
+<li>L'utilisation d'une librairie peut être problématique suivant qu'elle :
+
+<ul>
+<li>soit distribué en APK ou en JAR</li>
+<li>soit disponible dans un dépôt Maven ou non</li>
+<li>s'utilise par héritage ou par composition. L'héritage multiple étant interdit en Java, une librairie peut nous bloquer l'usage d'une autre.</li>
+</ul>
+</li>
+<li>Qu'il y a 2 projets à surveiller : <a href="http://www.androidbootstrap.com/">Android BootStrap</a> et <a href="http://androidkickstartr.com/">Android KickStartR</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[BreizhCamp 2013 # Utilisation de python sur le robot humanoïde NAO]]></title>
+    <link href="http://roddet.github.com/2013/06/breizhcamp-python-nao/"/>
+    <updated>2013-06-14T14:00:00-04:00</updated>
+    <id>http://roddet.github.com/2013/06/breizhcamp-python-nao</id>
+    <content type="html"><![CDATA[<p><img class="center" src="/images/breizhcamp13/nao/nao1.jpg"></p>
+
+<h2>Animateurs</h2>
+
+<ul>
+<li><a href="https://twitter.com/f_calzada">Franck Calzada</a> Manager BU Expertise SQLI Nantes, NAO Developer</li>
+<li><a href="http://www.aldebaran-robotics.com/en/">NAO</a> Robot humanoïde</li>
+</ul>
+
+
+<h2>Déroulement</h2>
+
+<p>Cette session sera conjointement animée par un humain (Franck) et un humanoïde (NAO).</p>
+
+<p>Tout commence par la prise de parole de NAO qui fait l'introduction de la session. Il va nous présenter l'agenda et va ensuite passer la main à l'humain en lui souhaitant bonne chance :)
+C'était très impressionnant de voir l'humanoïde s'exprimer avec des mouvements, on s'y croyait... On a notamment vu NAO se lever et s'asseoir après sa prestation.</p>
+
+<p>L'humain va ensuite nous présenter l'histoire de NAO, ses caractéristiques techniques, l'environnement de développement, etc...
+Franck va être souvent interrompue par NAO, on découvre par l'occasion que NAO a un mode autonome qui lui fait faire des petits mouvements de temps de temps. Si l'on fait abstraction que c'est un robot, il bougait presque comme un humain :)</p>
+
+<p>La session va se terminer par une série de démonstration :</p>
+
+<h3>NAO qui fait dessine une voiture</h3>
+
+<p><img class="center" src="/images/breizhcamp13/nao/nao2.jpg"></p>
+
+<h3>NAO joue au Golf</h3>
+
+<p><a href="https://plus.google.com/u/0/events/chg8m02mqghjaoeh2khvf39pu70/103932114865279499816/5889631493992066962">La vidéo</a></p>
+
+<h3>NAO qui lit dans l'esprit de Franck</h3>
+
+<p>NAO dit : "Franck, la personne a qui tu penses est Barack Obama !"</p>
+
+<p><img class="center" src="/images/breizhcamp13/nao/nao3.jpg"></p>
+
+<h2>Bilan</h2>
+
+<p>Session très intéressante qui nous plongeait un peu dans notre imagination de ce que peut faire NAO. En voyant NAO, on se dit qu'on n'est plus très loin des films de sciences fictions où un robot pourrait nous faire notre café...</p>
+
+<p>Session à revoir en vidéo lorsqu'elle sera disponible !</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[BreizhCamp 2013 # Web Components, l'avenir des développeurs web]]></title>
+    <link href="http://roddet.github.com/2013/06/breizhcamp-web-components/"/>
+    <updated>2013-06-14T11:00:00-04:00</updated>
+    <id>http://roddet.github.com/2013/06/breizhcamp-web-components</id>
+    <content type="html"><![CDATA[<p><img class="center" src="/images/breizhcamp13/webcomponents/webcomponents.jpg"></p>
+
+<h2>Animateur</h2>
+
+<p><a href="https://twitter.com/julienvey">Julien Vey</a></p>
+
+<h2>Les slides</h2>
+
+<script async class="speakerdeck-embed" data-id="b8111950b6ab013009c6568084fd8fdd" data-ratio="1.33333333333333" src="http://roddet.github.com//speakerdeck.com/assets/embed.js"></script>
+
+
+<h2></h2>
+]]></content>
+  </entry>
+  
+</feed>

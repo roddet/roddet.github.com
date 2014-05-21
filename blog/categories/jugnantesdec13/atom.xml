@@ -1,0 +1,656 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: jugnantesdec13 | Rossi Oddet]]></title>
+  <link href="http://roddet.github.com/blog/categories/jugnantesdec13/atom.xml" rel="self"/>
+  <link href="http://roddet.github.com/"/>
+  <updated>2014-05-21T01:43:46-04:00</updated>
+  <id>http://roddet.github.com/</id>
+  <author>
+    <name><![CDATA[Rossi Oddet]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Soirée JUG Nantes : Java 8 -> Lambdas, Streams et Collectors (Partie 2)]]></title>
+    <link href="http://roddet.github.com/2013/12/nantesjug-decembre-part2/"/>
+    <updated>2013-12-26T09:00:00-05:00</updated>
+    <id>http://roddet.github.com/2013/12/nantesjug-decembre-part2</id>
+    <content type="html"><![CDATA[<p>La première partie de cet article est accessible <a href="http://blog.roddet.com/2013/12/nantesjug-decembre-part1/">ici</a>.</p>
+
+<p>La deuxième partie de cette soirée du <a href="http://nantesjug.org/">JUG Nantes</a> est consacrée à une présentation de Java 8 animée par <a href="https://twitter.com/JosePaumard">José Paumard</a>.</p>
+
+<p>Avant de rentrer dans le coeur de la présentation de <a href="https://twitter.com/JosePaumard">José</a>, faisons un tour de ce que réserve Java 8.</p>
+
+<h2>Java 8 -> quoi de neuf ?</h2>
+
+<p>Java 8 est une évolution majeure du langage Java.</p>
+
+<p>Les nouveautés peuvent être classées suivant plusieurs catégories pour les plus significatives :</p>
+
+<ul>
+<li><strong>Nouveaux Projets</strong> -> les nouvelles fonctionnalités assez structurantes pour être considérées comme des projets à part.</li>
+<li><strong>Machine Virtuelle</strong> -> des modifications du fonctionnement de la JVM et des travaux d'amélioration des performances.</li>
+<li><strong>Core</strong> -> nouveautés non structurantes du langage (ajout d'API, d'annotations, etc.).</li>
+</ul>
+
+
+<p>La liste complète des nouveautés : <a href="http://openjdk.java.net/projects/jdk8/features">ici</a>.</p>
+
+<p>Voici quelques nouveautés qui ont attiré mon attention.</p>
+
+<h2>Java 8 -> Nouveaux Projets</h2>
+
+<p>Deux projets :</p>
+
+<ul>
+<li>Le <a href="http://openjdk.java.net/projects/lambda/">projet Lambda</a> qui ajoute les <em>closures</em> au langage Java. Il s'agit certainement de la fonctionnalité qui a le plus d'impact sur le langage. C'est le sujet principal de cette soirée.</li>
+<li>Le <a href="http://openjdk.java.net/projects/nashorn/">projet Nashorn</a> qui offre un moteur d'exécution Javascript sur la JVM.</li>
+</ul>
+
+
+<h2>Java 8 -> Machine Virtuelle</h2>
+
+<p>L'évolution la plus remarquable est <a href="http://openjdk.java.net/jeps/122">la suppression de la <em>Permanent Generation</em></a>. Cette zone était utilisée par la JVM pour stocker les définitions des classes, méthodes, etc. Elle était bien distincte de la <em>Heap</em> qui contient les instances des objets créées.</p>
+
+<p>Par défaut, la <em>Permanent Generation</em> a la taille maximale de 64MB. Il est possible de modifier cette valeur avec le paramètre <em>-XX:MaxPermSize</em>.</p>
+
+<p>Si vous avez le plaisir de travailler sur application <em>usine</em> (nombreuses classes, nombreuses librairies), habituelle du milieu professionnel, vous avez peut-être déjà rencontré une erreur qui ressemble à cela :</p>
+
+<p>```
+java.lang.OutOfMemoryError: PermGen space</p>
+
+<pre><code>    at java.lang.ClassLoader.defineClass1(Native Method)
+    at java.lang.ClassLoader.defineClass(ClassLoader.java:620)
+</code></pre>
+
+<p>```</p>
+
+<p>Avec Java 8, dites adieu à cette erreur et au paramétrage lié à la <em>Permanent Generation</em>.</p>
+
+<p>Cette évolution de la machine virtuelle est un des résultats de la convergence entre la machine virtuelle propriétaire d'Oracle <a href="http://www.oracle.com/technetwork/middleware/jrockit/overview/index-101826.html">JRockit</a> et celle de la communauté : HotSpot.
+En effet, <a href="http://www.oracle.com/technetwork/middleware/jrockit/overview/index-101826.html">JRockit</a> est distribué avec le serveur d'application propriétaire d'Oracle <a href="http://www.oracle.com/technetwork/middleware/weblogic/overview/index.html">WebLogic</a> et il a la particularité de ne pas avoir de <em>Permanent Generation</em>. Un bon signe pour la communauté ?</p>
+
+<h2>Java 8 -> Core</h2>
+
+<p>Quelques améliorations sont apportées au coeur du JDK.</p>
+
+<h3>Une application JavaFX devient exécutable (<a href="http://openjdk.java.net/jeps/153">JEP 153</a>)</h3>
+
+<p>Avant Java 8, pour rendre une application JavaFX exécutable depuis un JAR, il fallait faire deux choses :</p>
+
+<ul>
+<li>Créer une classe avec la méthode <em>public static void main(String[] args)</em> qui contient du code d'initialisation de l'application JavaFX.</li>
+<li>Référencer cette classe dans l'attribut <em>Main-Class</em> du <em>Manifest</em> du JAR.</li>
+</ul>
+
+
+<p>Avec Java 8, il est possible de créer un JAR exécutable JavaFX sans passer par une classe avec une méthode <em>main</em>.</p>
+
+<h3>Des annotations sur les types Java (<a href="http://openjdk.java.net/jeps/104">JEP 104</a>)</h3>
+
+<p>Java 8 permet d'écrire ce genre de chose :</p>
+
+<p>```java
+MaClasse m = new @Interned MaClasse();</p>
+
+<p>// ou encore
+String str = (@NotNull String) element;</p>
+
+<p>// ou encore
+public class MaClasse<T> implements @ReadOnly List&lt;@ReadOnly T></p>
+
+<p>// ou encore
+public void monitorTemperature() throws @Critical TemperatureException {...}
+```</p>
+
+<p>La documentation officielle en version béta : <a href="http://docs.oracle.com/javase/tutorial/java/annotations/index.html">ici</a>.</p>
+
+<h3>Répéter des annotations (<a href="http://openjdk.java.net/jeps/120">JEP 120</a>)</h3>
+
+<p>Avec Java 8, il est possible d'écrire :</p>
+
+<p><code>java
+@Alert(role="Manager")
+@Alert(role="Administrator")
+public class UnauthorizedAccessException extends SecurityException { ... }
+</code></p>
+
+<p>Plus de détails, <a href="http://docs.oracle.com/javase/tutorial/java/annotations/repeating.html">ici</a>.</p>
+
+<h3>Accéder au nom des paramètres au runtime (<a href="http://openjdk.java.net/jeps/118">JEP 118</a>)</h3>
+
+<p>L'idée ici est de stocker dans le <em>bytecode</em> les noms des paramètres de méthodes ainsi que leurs types. Cette fonctionnalité pourrait apporter un vrai plus aux développeurs de librairies.</p>
+
+<p>Par exemple, l'annotation <em>@PathParam</em> de JAX-RS pourrait être optionnelle avec un reconnaissance du nom du paramètre ;)</p>
+
+<h3>Une nouvelle API pour les dates et les heures (<a href="http://openjdk.java.net/jeps/150">JEP 150</a>)</h3>
+
+<p>Java 8 vient avec une nouvelle API pour les dates/heures qui se veut plus <em>clean</em>, <em>fluent</em>, <em>immutable</em> et <em>extensible</em>.</p>
+
+<p>Un aperçu d'utilisation :
+<code>java
+LocalDate aujourdhui = LocalDate.now();
+LocalDate dans2ansMoins4jours = LocalDate.now().plusYears(2).minusDays(4);
+</code></p>
+
+<p>Documentation officielle en version béta : <a href="http://docs.oracle.com/javase/tutorial/datetime/index.html">ici</a>.</p>
+
+<h3>Trie en parallèle des tableaux (<a href="http://openjdk.java.net/jeps/103">JEP 103</a>)</h3>
+
+<p>Des méthodes sont ajoutées à la classe <em>java.util.Arrays</em> :
+<code>java
+Arrays.parallelSort(...);
+</code></p>
+
+<h2>Revenons au JUG !</h2>
+
+<p>Les nantais ont répondu présent pour découvrir Java 8 et pour <a href="https://twitter.com/JosePaumard">José</a>, c'est la session qui clôture son tour de Bretagne... Ou plutôt de l'ouest de la France pour les plus susceptibles ;)</p>
+
+<p><a href="https://twitter.com/JosePaumard">José</a> va faire un zoom sur les expressions <em>Lambda</em> et ses impacts sur le JDK 8.</p>
+
+<p><img class="center" src="/images/nantesjug/dec13/nantesjug-jose-paumard.jpg"></p>
+
+<h2>Une introduction aux expressions Lambda</h2>
+
+<p><a href="https://twitter.com/JosePaumard">José</a> va illustrer les expressions <em>Lambda</em> à l'aide du pattern <em>Map - Filter - Reduce</em>. Il va montrer une implémentation en Java 7 et une équivalence en Java 8 avec les expressions <em>Lambda</em>.</p>
+
+<p>Illustration -> Approche impérative (avant Java 8) vs Approche fonctionnel (SQL)</p>
+
+<p><img class="center" src="/images/nantesjug/dec13/nantesjug-prog-imp-vs-fonctionnel-by-jose-paumard.gif"></p>
+
+<p>Illustration -> Passage d'un code Java 7 à un code Java 8 avec une expression <em>Lambda</em>.</p>
+
+<p><img class="center" src="/images/nantesjug/dec13/nantesjug-lambdas-by-jose-paumard.gif"></p>
+
+<h2>Syntaxes d'une expression <em>Lambda</em></h2>
+
+<p>```java
+mapper = (Person person) -> person.getAge();</p>
+
+<p>mapper = person -> person.getAge(); // sans préciser le type</p>
+
+<p>mapper = Person::getAge; // méthode non statique</p>
+
+<p>sum = Integer::max; // méthode statique</p>
+
+<p>mapper = (Person person) -> {</p>
+
+<pre><code>System.out.println("Mapping " + person);
+return person.getAge();
+</code></pre>
+
+<p>}</p>
+
+<p>reducer = (int i1, int i2) -> {</p>
+
+<pre><code>return i1 + i2;
+</code></pre>
+
+<p>}</p>
+
+<p>reducer = (int i1, int i2) -> i1 + i2;</p>
+
+<p>reducer = (i1, i2) -> i1 + i2; // sans préciser les types</p>
+
+<p>```</p>
+
+<h2>La notion d'interface fonctionnelle</h2>
+
+<p>Une expression <em>Lambda</em> peut être définie comme une <em>instance</em> d'une interface dite fonctionnelle. Une interface fonctionnelle est une interface avec une seule méthode abstraite.</p>
+
+<p>L'annotation <em>@FunctionalInterface</em> peut être utilisée pour désigner une interface fonctionnelle. Elle est optionnelle et comme l'annotation <em>@Override</em>, elle ne sert qu'à apporter une sécurité supplémentaire à la compilation. Une interface annotée avec <em>@FunctionalInterface</em> ne compilera pas si elle possède plusieurs méthodes sans implémentation par défaut.</p>
+
+<p>Un exemple d'utilisation dans le JDK 8.</p>
+
+<p>```java
+package java.util.function;</p>
+
+<p>@FunctionalInterface
+public interface IntSupplier {</p>
+
+<pre><code>int getAsInt();
+</code></pre>
+
+<p>}
+```</p>
+
+<h2>Le nouveau package <em>java.util.function</em></h2>
+
+<p>Il contient des interfaces fonctionnelles usuelles utilisées pour représenter des expressions <em>Lambda</em> en entrée et sortie de méthode.</p>
+
+<p>Les interfaces <em>Supplier</em>, <em>Consumer</em>, <em>BiConsumer</em>, <em>Function</em>, <em>BiFunction</em>, <em>Predicate</em>, <em>BiPredicate</em> seront expliquées pendant la présentation.</p>
+
+<h2>Des méthodes implémentées dans les interfaces</h2>
+
+<p>Avec Java 8, il est possible d'exprimer une implémentation par défaut à une méthode d'une interface. C'est l'option qui a été choisie pour permettre d'ajouter des méthodes à des interfaces <em>historiques</em> du JDK sans modifier toutes les classes des implémentations.</p>
+
+<p>Le mot clé <em>default</em> est utilisé pour définir une implémentation par défaut.</p>
+
+<p>Exemple avec l'interface <em>Collection<E></em> :</p>
+
+<p>```java
+public interface Collection<E> {</p>
+
+<pre><code>...
+
+default Stream&lt;E&gt; stream() {
+    return ...;
+}
+</code></pre>
+
+<p> }
+```</p>
+
+<p>Java 8 autorise aussi les méthodes statiques dans les interfaces.</p>
+
+<p>```java
+public interface MonInterface {</p>
+
+<pre><code>public static void main(String[] args) {
+    System.out.println("Désormais, le Hello World en Java se fera avec une interface");
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<h2>L'API <em>Stream</em></h2>
+
+<p>Un <em>Stream</em> est défini comme une interface paramétrée construite à partir d'une source (une collection, un tableau, une source I/O) qui permet d'appliquer une expression <em>Lambda</em> sur ses éléments.</p>
+
+<p>Comment construire un <em>Stream</em> ?
+```java
+// A partir d'une collection
+Collection<String> collection = ...;
+Stream<String> stream1 = collection.stream();</p>
+
+<p>// A partir d'un tableau
+Stream<String> stream2 = Arrays.stream(new String[]{"un", "deux", "trois"});</p>
+
+<p>// A partir d'une factory de Stream
+// Stream.of, Stream.empty, Stream.generate, Stream.iterate, etc.
+Stream<String> stream3 = Stream.of("un", "deux", "trois");</p>
+
+<p>// A partir de quelques méthodes de classes du JDK mises à jour
+IntStream stream4 = random.ints();
+```</p>
+
+<p>Un exemple d'utilisation ?</p>
+
+<p>```
+int sum = persons.stream()</p>
+
+<pre><code>.map(p -&gt; p.getAge())
+.filter(a -&gt; a &gt; 20)
+.reduce(0, (a1, a2) -&gt; a1 + a2);
+</code></pre>
+
+<p>```</p>
+
+<p>Deux types d'opérations sont applicables à un <em>Stream</em> : une opération dite <em>intermédiaire</em> et une dite <em>terminale</em>. Seule une opération dite <em>terminale</em> déclenche le traitement modélisé. Dans l'exemple précédent, <em>map</em> et <em>filter</em> sont des opérations intermédiaires et <em>reduce</em> une opération terminale.</p>
+
+<p>Attention, un <em>Stream</em> ne peut être traité qu'une seule fois. Une fois une opération <em>terminale</em> exécutée, il est nécessaire de créer un nouveau <em>Stream</em>.</p>
+
+<p>Illustration -> Un <em>Stream</em> est <em>lazy</em> (seule l'opération terminale déclenche le traitement) !</p>
+
+<p><img class="center" src="/images/nantesjug/dec13/nantesjug-stream-lazy-by-jose-paumard.gif"></p>
+
+<h2><em>Stream</em> parallèle</h2>
+
+<p>Il permet d'exécuter du code modélisé dans un <em>Stream</em> en parallèle.</p>
+
+<p>Comment construire un <em>Stream</em> parallèle ?</p>
+
+<p>```java
+// Appeler parallelStream() au lieu de stream()
+Stream<String> s = strings.parallelStream();</p>
+
+<p>// Appeler parallel() sur un stream existant
+Stream<String> s = strings.stream().parallel();
+```</p>
+
+<p>Attention, un <em>Stream</em> parallèle ne signifie pas toujours plus performant. Le parallélisme entraine des opérations supplémentaires et ses performances sont dépendantes de la nature des opérations à exécuter. Il n'y a donc pas de recette magique de performance, la règle <em>mesurer pour optimiser</em> s'applique toujours.</p>
+
+<h2>Les <em>Optionals</em></h2>
+
+<p>Certaines méthodes des classes du JDK 8 vont renvoyer des instances de la famille <em>Optional</em> : <em>Optional<T></em>, <em>OptionalInt</em>, <em>OptionalLong</em>, <em>OptionalDouble</em>.</p>
+
+<p>Cette structure est utilisée pour modéliser une possible absence de résultat d'un traitement.</p>
+
+<p>Que peut-on faire avec un <em>Optional</em> dans les mains ?</p>
+
+<p>Un exemple avec <em>OptionalInt</em> :
+```java
+OptionalInt opt = ...;</p>
+
+<p>// Tester s'il contient une valeur et récupérer la valeur
+if(opt.isPresent()) {</p>
+
+<pre><code>int valeur1 = opt.get();
+</code></pre>
+
+<p>} else {</p>
+
+<pre><code>...
+</code></pre>
+
+<p>}</p>
+
+<p>// Lire la valeur ou lancer une exception NoSuchElementException s'il n'y a pas de valeur
+int valeur2 = opt.getAsInt();</p>
+
+<p>// Lire la valeur ou lancer une exception particulière s'il n'y a pas de valeur
+int valeur3 = opt.orElseThrow(exceptionSupplier);</p>
+
+<p>// Lire la valeur si elle existe sinon retourner une valeur par défaut
+int valeur4 = opt.orElse(12);
+```</p>
+
+<h2>Les réductions &amp; La classe Collectors</h2>
+
+<p>L'API <em>Stream</em> donne accès à plusieurs réductions : <em>reduce()</em>, <em>count()</em>, <em>min()</em>, <em>max()</em>, <em>findFirst()</em>, etc.</p>
+
+<p>La méthode <em>collect</em> applicable à un <em>Stream</em> permet d'appliquer des réductions complexes à partir d'un <em>Collector</em>.
+Sans rentrer dans les détails de la définition d'un <em>Collector</em>, la classe <em>Collectors</em> fournit un ensemble d'instance de <em>Collector</em> qui facilitent le travail du développeur.</p>
+
+<p>Quelques exemples d'utilisation de la classe <em>Collectors</em>.</p>
+
+<p>```java
+// Transformer un Stream en List
+List<Person> liste1 = persons.stream().collect(Collectors.toList());</p>
+
+<p>// Transformer un Stream en Set
+Set<String> liste2 = persons.stream().collect(Collectors.toSet());</p>
+
+<p>// Transformer un Stream en TreeSet
+TreeSet<String> liste3 = persons.stream().collect(Collectors.toSet(TreeSet::new));</p>
+
+<p>// Concaténer les noms d'une liste de personnes
+String names1 = persons.stream().map(Person::getName).collect(Collectors.joining());</p>
+
+<p>// Concaténer les noms séparés par une virgule d'une liste de personnes
+String names2 = persons.stream().map(Person::getName).collect(Collectors.joining(","));</p>
+
+<p>// Compter le nombre de personnes
+int nbPersons = persons.stream().collect(Collectors.counting());</p>
+
+<p>// Moyenne des ages des personnes
+double moyenneAge = persons.stream().collect(Collectors.averagingDouble(Person::getAge));</p>
+
+<p>// Regroupement des personnes par age
+Map&lt;Integer, List<Person>> map = persons.stream().collect(Collectors.groupingBy(Person::getAge));</p>
+
+<p>// Regroupement des personnes par age en utilisant un Set
+Map&lt;Integer, Set<Person>> map = persons.stream().collect(Collectors.groupingBy(Person::getAge,Collectors.toSet()));</p>
+
+<p>// Répartir les données en 2 ensembles : true -> liste des personnes age > 20 et false -> le reste
+Map&lt;Boolean, List<Person>> map = persons.stream().collect(Collectors.partitionningBy(p -> p.getAge() > 20));</p>
+
+<p>```</p>
+
+<h2>Nouvelle API pour construire des comparateurs</h2>
+
+<p>Avec Java 8, ça devient presqu'un plaisir de créer une instance de l'interface <em>Comparator</em> :
+```java
+Comparator<Person> comp = Comparator.comparing(Person::getLastName)</p>
+
+<pre><code>                                .thenComparing(Person::getFirstName)
+                                .thenComparing(Person::getAge);
+</code></pre>
+
+<p>```</p>
+
+<h2>Pourquoi des expressions <em>Lambda</em> ?</h2>
+
+<p><a href="https://twitter.com/JosePaumard">José</a> explique que les expressions <em>Lambda</em> n'ont pas été introduites dans Java 8 parce que c'est à la mode ou parce que le code écrit est plus compact.</p>
+
+<p>Les expressions <em>Lambda</em> apporte la possibilité d'appliquer de nouveaux patterns qui permettent de paralléliser simplement et de façon plus sûr des traitements.</p>
+
+<h2>Les slides</h2>
+
+<p>Vous y trouverez des détails que je n'ai pas abordé pour rester synthétique :</p>
+
+<ul>
+<li>Des méthodes implémentées dans des interfaces entrainent la possibilité d'avoir un héritage multiple conflictuelle. Quelles sont les règles du compilateur ?</li>
+<li>Des explications sur quelques classes du package <em>java.util.function</em></li>
+<li>Les différents états d'un <em>Stream</em> et leurs conséquences</li>
+<li>La problématique des valeurs par défaut dans les réductions <em>max</em> et <em>min</em></li>
+<li>Une utilisation plus avancée de la classe <em>Collectors</em></li>
+<li>Des choses qui ne marchent pas avec le traitement parallèle</li>
+</ul>
+
+
+<p>Alors, installer vous confortablement et prenez votre temps, il y a 330 slides ;)</p>
+
+<iframe src="http://www.slideshare.net/slideshow/embed_code/29010060" width="800" height="500" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
+
+
+<h2>Qu'est-ce que j'ai pensé de tout ça ?</h2>
+
+<p>Dans l'ensemble, j'ai trouvé cette présentation claire, progressive et surtout riche en contenu. Elle présente bien les expressions <em>Lambda</em> et ses impacts sur la future version du JDK.</p>
+
+<h3><em>Lambda</em> Java 8, une révolution ?</h3>
+
+<p>La réponse est probablement oui. C'est la première fois :</p>
+
+<ul>
+<li>qu'il est possible de déclarer des paramètres sans préciser leurs types (paramètres d'entrée d'une expression <em>Lambda</em>).</li>
+<li>qu'une "méthode" (particulière certes) peut être passée en paramètre d'une autre.</li>
+<li>que le langage fait une place aussi importante aux concepts de la programmation fonctionnelle.</li>
+<li>qu'il y aura autant de changement dans le vocabulaire d'un développeur Java. Il parlera désormais avec des mots comme <em>map</em>, <em>filter</em>, <em>reduce</em>, <em>Supplier</em>, <em>Function</em>, <em>BiFunction</em>, <em>Consumer</em>, <em>BiConsumer</em>, etc. Y aura t-il une race d'intégriste qui va naitre dans la communauté Java comme les <em>Scalafistes</em> de <em>Scala</em> ? ;)</li>
+</ul>
+
+
+<h3><em>Lambda</em> Java 8 et le debug ?</h3>
+
+<p>Je trouve que le langage Java a une qualité : une maintenance <em>possible</em> sur une grosse volumétrie de code. Même sur des applications dites <em>legacy</em> qui ont été développées de la pire des manières, j'ai toujours pu lancer l'application en debug, faire du pas à pas partout même dans les classes fournies par les librairies. Le côté impératif de la programmation fait clairement apparaître chaque étape du programme.</p>
+
+<p>Avec Java 8, les applications vont de plus en plus ressembler à des enchainements de méthodes avec des expressions <em>Lambda</em> en paramètres. Ce code séduisant va probablement poser des difficultés au debuggage. Va t-il falloir mettre les expressions <em>Lambda</em> systématiquement sur plusieurs lignes pour permettre de faire du pas à pas ? Comment, pendant un debuggage, simuler l'exécution d'une opération sur un <em>Stream</em> sans avoir à en créer un nouveau ? Aurons-nous toujours cette maintenance qui peut être pénible mais toujours possible avec une application qui vieillit avec des expressions <em>Lambda</em> ? Peut-être tout simplement qu'il y aura moins de besoin d'utiliser un debugger ? A suivre ;)</p>
+
+<h3>Fini les boucles <em>for</em> pour les listes ?</h3>
+
+<p>Les boucles <em>for</em> servent souvent à itérer sur des listes d'éléments afin de les transformer (<em>map</em>), les filtrer (<em>filter</em>) et à faire des calculs (<em>reduce</em>). Les développeurs vont-ils privilégier l'utilisation des expressions <em>Lambda</em> ?</p>
+
+<h3><em>Lambda</em> Java 8 vs les langages alternatifs ?</h3>
+
+<p>Les langages alternatifs (Scala, Groovy, etc.) de la JVM n'ont pas grand chose à envier aux expressions <em>Lambda</em> de Java 8, ils vont déjà beaucoup plus loin depuis plusieurs années. Ils vont cependant probablement continuer à jalouser la base énorme d'utilisateurs qui reste fidèle à Java <em>Standard</em> ;)</p>
+
+<p><blockquote><p>Java is a blue collar language. It's not PhD thesis material but a language for a job.</p><footer><strong>James Gosling</strong> <cite>1997</cite></footer></blockquote></p>
+
+<h3>La date de sortie prévue de Java 8 est le 18/03/2014. Alors, impatient d'avoir Java 8 dans vos entreprises ?</h3>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Soirée JUG Nantes : Java 8 -> Lambdas, Streams et Collectors (Partie 1)]]></title>
+    <link href="http://roddet.github.com/2013/12/nantesjug-decembre-part1/"/>
+    <updated>2013-12-06T21:41:00-05:00</updated>
+    <id>http://roddet.github.com/2013/12/nantesjug-decembre-part1</id>
+    <content type="html"><![CDATA[<p>Java 8, difficile de trouver mieux comme thème pour une soirée d'un JUG.
+JUG qui, pour rappel, veut dire <em>Java User Group</em> (Groupe d'utilisateurs de Java).
+Ces derniers temps, les JUGs se sont diversifiées jusqu'à avoir des soirées qui n'ont rien (ou peu) à voir avec Java.
+Ce n'est pas la faute aux JUGs, c'est vrai que les actualités IT <em>sexy</em> viennent souvent d'ailleurs ;)</p>
+
+<p>Mais ce 4 décembre à 19h à l'<a href="http://www.epitech.eu/nantes/ecole-informatique-nantes.aspx">EPITECH Nantes</a>, c'était place à un sujet phare de l'écosystème Java :</p>
+
+<p><blockquote><p>La sortie imminente de Java 8 !</p></blockquote></p>
+
+<p>Avant de parler de Java 8, la soirée commence par un autre sujet :
+<blockquote><p>Grails dans les tranchées</p></blockquote>
+Ce <em>quickie</em> est animé par <a href="https://twitter.com/djocal">Dominique Jocal</a>, Architecte Logiciel et Responsable de 2 domaines applicatifs chez <a href="http://www.cbp-group.com/">CBP Solutions</a>.</p>
+
+<h2><em>Grails dans les tranchées</em> ? Mais avant... c'est quoi Grails ?</h2>
+
+<p><a href="http://grails.org/">Grails</a> est un framework de création d'applications web s'exécutant sur la <a href="http://en.wikipedia.org/wiki/Java_virtual_machine">JVM</a>. Le langage de développement est <a href="http://groovy.codehaus.org/">Groovy</a>, un Java <em>sucré</em>.</p>
+
+<p>Il fait partie de la famille des frameworks dits <em>productifs</em> qui ont les caractéristiques suivantes :</p>
+
+<ul>
+<li><em><strong>Full Stack</strong></em> -> Ces frameworks viennent avec toutes les briques applicatives nécessaires pour répondre aux problématiques courantes du web (communiquer avec une base de données, écrire des règles métiers, créer des pages web, gérer l'authentification, etc.).</li>
+<li><em><strong>Simple</strong></em> -> tout est fait pour faciliter le travail du développeur. Un mode opératoire simple est fourni pour mettre en place les fonctionnalités récurrentes du web.</li>
+<li><em><strong>Web Friendly</strong></em> -> Avec ces frameworks, vous arrêtez de vous battre avec le Web et en particulier le protocole HTTP. Vous saurez simplement exposer des services de type <em>REST</em>, gérer proprement les codes erreurs HTTP, etc.</li>
+</ul>
+
+
+<p>Le précurseur dans ce domaine est <a href="http://rubyonrails.org/">Ruby On Rails</a> créé en 2005 qui a fait la promotion au passage du langage Ruby.</p>
+
+<p>Depuis, plusieurs frameworks sont apparus dans les autres écosystèmes :</p>
+
+<ul>
+<li><a href="http://cakephp.org/">CakePhp</a> pour Php.</li>
+<li><a href="https://www.djangoproject.com/">Django</a> pour Python.</li>
+<li><a href="http://www.playframework.com/">Play! Framework</a> pour Java ou Scala.</li>
+<li><a href="http://sailsjs.org/">Sails</a> pour Javascript.</li>
+<li>etc.</li>
+</ul>
+
+
+<p><a href="http://grails.org/">Grails</a> complète cette liste de frameworks qui ont pour objectif principale la simplification des applications web.
+C'est un produit open source qui tourne sur la <a href="http://en.wikipedia.org/wiki/Java_virtual_machine">JVM</a>.</p>
+
+<p>Pour ceux qui évoluent dans l'écosystème Java, pas de surprise avec <a href="http://grails.org/">Grails</a>.
+Il est construit à l'aide de la boite à outils <a href="http://projects.spring.io/spring-framework/">Spring Framework</a>. Il s'agit d'ailleurs de la même compagnie derrière : <a href="http://www.gopivotal.com/">Pivotal</a>.</p>
+
+<p><a href="http://grails.org/">Grails</a> possède son propre serveur web et il est possible de générer un package WAR pour un déploiement dans un autre serveur d'application.</p>
+
+<h2>Grails chez CBP</h2>
+
+<p><a href="https://twitter.com/djocal">Dominique</a> vient avec ce <em>Quickie</em> présenter un retour d'expérience de l'utilisation de <a href="http://grails.org/">Grails</a> chez <a href="http://www.cbp-group.com/">CBP Solutions</a>.</p>
+
+<p>C'est devant une salle pleine qu'il commence à présenter le contexte <a href="http://www.cbp-group.com/">CBP Solutions</a>.</p>
+
+<p><img class="center" src="/images/nantesjug/dec13/nantesjug-dominique-jocal.jpg"></p>
+
+<p><a href="http://www.cbp-group.com/">CBP Solutions</a> c'est :</p>
+
+<ul>
+<li>Des centaines d'applications <a href="http://en.wikipedia.org/wiki/IBM_RPG">IBM RPG</a></li>
+<li>60 applications Java</li>
+<li>6 applications <a href="http://grails.org/">Grails</a></li>
+</ul>
+
+
+<p><blockquote><p>CBP ce n'est pas du "Big Data" mais du "Big Rules" !</p><footer><strong>Dominique Jocal</strong></footer></blockquote></p>
+
+<p>Les enjeux de <a href="http://www.cbp-group.com/">CBP Solutions</a> sont les mêmes que pour la grande majorité des entreprises : il y a plus de codes que de données :) Non j'exagère c'est vrai. Seulement tout le monde n'a pas les mêmes problématiques que Facebook ou Twitter en terme de scalabilité sur le traitement de données. Le grand défi de la plupart des entreprises est de créer facilement des applications et surtout pouvoir effectuer la maintenance du code grandissant avec le temps.</p>
+
+<h2>Le <em>Domain</em> plus de métiers, plus de responsabilité</h2>
+
+<p>Les applications web de gestion consistent la plupart du temps à manipuler des données. Ces données sont souvent stockées dans des bases de données relationnelles. Elles sont alors stockées dans des tables. Afin de récupérer ces données dans l'univers applicatif et pouvoir aisément les manipuler, les développeurs sont amenés à créer des classes du <em>Domain</em>. Par exemple, si l'application consiste à manipuler des données d'une personne, ces données seront stockées dans une table <em>Personne</em> et une classe <em>Personne</em> sera créée pour encapsuler les données d'une personne (nom, prénom, etc.).</p>
+
+<p>Il y a quelques années, il était <em>très tendance</em> d'avoir des classes du <em>Domain</em> sans aucune règle métier.
+Cela avait du sens, il était question de construire des applications monolithiques qui répondaient à tous les besoins des entreprises.
+Il fallait avoir des classes de <em>Domain</em> les plus neutres possibles car elles devaient s'adapter à tous les contextes des différents endroits de l'applicatif. Elles étaient utilisées dans différents cas métiers.</p>
+
+<p>De nos jours, la <em>tendance</em> est plutôt de créer de multiples applications de petites tailles.
+Cela donne les avantages suivants :</p>
+
+<ul>
+<li>Une petite application est plus facile à maintenir. Son périmètre métier est identifié, c'est plus facile de l'apprendre, de le comprendre.</li>
+<li>Il devient plus simple dans un <em>SI</em> (Système d'Information) d'identifier une brique applicative en erreur et l'origine des erreurs. En effet, les entrées/sorties d'une application de petite taille sont maitrisées et le développeur est dans des conditions idéales pour reproduire des erreurs dans son environnement de développement.</li>
+<li>Chaque application a son cycle de vie. Il n'est plus indispensable de <em>re-packager</em> l'ensemble pour une évolution qui concerne un seul module. Plus besoin de redémarrer toutes les applications pour la mise à jour d'un libellé d'une application particulière.</li>
+</ul>
+
+
+<p>En construisant des applications de périmètre fonctionnel réduit, le besoin d'avoir des classes <em>Domain</em> les plus génériques possibles ne se posent plus. Il devient alors naturel de concentrer les besoins métiers dans ces classes.</p>
+
+<p>Quel meilleur endroit pour préciser que le nom d'une personne est obligatoire que dans la classe <em>Domain</em> <em>Person</em> ?</p>
+
+<p>C'est dans cette logique que <a href="https://twitter.com/djocal">Dominique</a> explique que le classes du <em>Domain</em> doivent être moins anémiques. Elles vont porter les logiques métiers dont elles sont soumises.</p>
+
+<p><a href="http://grails.org/">Grails</a> apporte un support de validation déclaratif dans les classes de <em>Domain</em>.
+Les différentes contraintes de validation des données sont déclarées directement dans ces classes.
+<a href="http://grails.org/">Grails</a> fournit aussi un cadre de développement facilitant l'écriture des tests des classes du <em>Domain</em>.</p>
+
+<h2>La <em>Pizza Team</em></h2>
+
+<p>Le principe de la <em>Pizza Team</em> consiste à créer des équipes de petite taille (idéalement 1 pizza suffit à nourrir l'équipe) qui sont responsables de l'ensemble de l'application (du code à la base de données).</p>
+
+<p>Voici donc à quoi pourrait ressembler votre équipe :</p>
+
+<p><img class="center" src="/images/nantesjug/dec13/pizza-team.jpg"></p>
+
+<p>Chez <a href="http://www.cbp-group.com/">CBP Solutions</a>, ces principes sont appliqués, à la différence qu'il y a une équipe garante de la cohérence et l'urbanisation des données.</p>
+
+<p>Les différentes équipes projet qui travaillent sur des applications <a href="http://grails.org/">Grails</a> co-conçoivent la base de données avec les garants des données du <em>SI</em>.</p>
+
+<h2><em>Code first</em> au lieu de <em>Schema first</em></h2>
+
+<p><a href="http://grails.org/">Grails</a> donne la possibilité de générer un schéma de base de données à partir des classes de <em>Domain</em>. Les développeurs ont pu montrer aux administrateurs des bases de données qu'un schéma généré par <a href="http://grails.org/">Grails</a> est de bonne qualité.</p>
+
+<h2>Et l'IDE ? Oups, il en faut un pour développer ?</h2>
+
+<p>Les développeurs de <a href="http://www.cbp-group.com/">CBP Solutions</a> sont globalement déçus de <a href="http://grails.org/products/ggts">GGTS</a> : le <em>Groovy/Grails Tool Suite</em>. Il s'agit d'un <a href="http://eclipse.org/">Eclipse</a> <em>re-packagé</em> avec des plugins pour Groovy et <a href="http://grails.org/">Grails</a>.</p>
+
+<p>Quelques mésaventures :</p>
+
+<ul>
+<li>Il arrive des compilations de code Groovy qui prennent beaucoup de temps pour se terminer en <em>OutOfMemoryError</em>.</li>
+<li>Des besoins fréquents de redémarrage de l'IDE et de l'application <a href="http://grails.org/">Grails</a></li>
+<li>Il est nécessaire d'avoir des PCs puissants (i7, 8GB de RAM, SSD).</li>
+</ul>
+
+
+<p>Il y a des premiers retours positifs de l'IDE <a href="http://www.jetbrains.com/idea/">Intellij IDEA</a>.</p>
+
+<h2>Grails -> Un développeur opérationnel tout de suite !</h2>
+
+<p>Chez <a href="http://www.cbp-group.com/">CBP Solutions</a>, avec <a href="http://grails.org/">Grails</a>, un développeur a un environnement de développement opérationnel rapidement en 3 étapes depuis son IDE :</p>
+
+<ul>
+<li>Récupération des sources d'un dépôt <a href="http://subversion.apache.org/">Subversion</a>.</li>
+<li>Rafraichissement des dépendances (<code>grails refresh-dependencies</code>)</li>
+<li>Lancement de l'application (<code>grails run-app</code>)</li>
+</ul>
+
+
+<p><a href="http://grails.org/">Grails</a> vient avec un serveur embarqué, pas besoin d'installer un serveur particulier pour développer.</p>
+
+<p><a href="http://grails.org/">Grails</a> permet simplement de séparer les configurations de production de celles de développement. Par exemple, votre application peut fonctionner en mode développement sur une base de données en mémoire comme <a href="http://www.h2database.com/html/main.html">H2</a> et fonctionner en production avec une base de données <a href="https://mariadb.org/">MariaDB</a>.</p>
+
+<h2>Multi-Page vs Single-Page</h2>
+
+<p><a href="http://grails.org/">Grails</a> offre un cadre de développement avancé pour les applications <em>Multi-Page</em>.</p>
+
+<p>Il est possible de faire du <em>Single-Page</em>. Vous continuer à profiter des leviers de productivités côté <em>back-end</em>. Pour le <em>front-end</em>, cherchez du côté de l'univers Javascript (<em>Vanilla</em> ou frameworks type AngularJS, EmberJS, etc.).</p>
+
+<p>Chez <a href="http://www.cbp-group.com/">CBP Solutions</a>, les applications sont faites en <em>Multi-Page</em>.</p>
+
+<h2>Les tests c'est bien !</h2>
+
+<p>Les 6 applications <a href="http://grails.org/">Grails</a> chez <a href="http://www.cbp-group.com/">CBP Solutions</a> sont toutes dans le top 10 des applications ayant la meilleure couverture de code par les tests.</p>
+
+<h2>CBP, la suite...</h2>
+
+<p><a href="https://twitter.com/djocal">Dominique</a> a énoncé les projets qu'il avait en tête :</p>
+
+<ul>
+<li>Partager les astuces dans un Blog</li>
+<li><a href="http://grails.org/">Grails</a>! <a href="http://grails.org/">Grails</a>! <a href="http://grails.org/">Grails</a>! <a href="http://www.cbp-group.com/">CBP Solutions</a> continue avec <a href="http://grails.org/">Grails</a> !</li>
+<li>Explorer le parallélisme et mettre en place des tests de code Javascript</li>
+</ul>
+
+
+<h2>En définitif</h2>
+
+<p><a href="https://twitter.com/djocal">Dominique</a> a présenté son retour d'expérience au sein de <a href="http://www.cbp-group.com/">CBP Solutions</a> de l'utilisation de <a href="http://grails.org/">Grails</a>. Il est surpris qu'il n'y ait pas un <em>tsunami</em> de <a href="http://grails.org/">Grails</a> dans les entreprises qui font de l'informatique de gestion. Il est pour lui inconcevable, aujourd'hui de partir sur un assemblage <em>maison</em> de librairies (Spring + Hibernate + etc.). <a href="http://grails.org/">Grails</a> propose un ensemble cohérent, productif, <em>clés en main</em> pour construire des applications web, autant en profiter.</p>
+
+<p>Une question a été posée à <a href="https://twitter.com/djocal">Dominique</a> : est-ce que le côté <em>dynamique</em> de Groovy n'était pas un problème car moins d'erreurs sont détectées à la compilation ? (je reformule avec mes mots ;)).
+<a href="https://twitter.com/djocal">Dominique</a> va expliquer que ce risque est compensé par la grande couverture de code par les tests permise par <a href="http://grails.org/">Grails</a>.</p>
+
+<p>Les slides ne sont pas encore disponibles, je complèterai cet article dès leurs publications.</p>
+
+<h2>Et la soirée continue !</h2>
+
+<p>La seconde partie de la soirée sera animée par <a href="https://twitter.com/JosePaumard">Jose Paumard</a> avec sa session</p>
+
+<p><blockquote><p>Java 8 : Lambdas, Streams et Collectors -> le nouveau visage de l'API Collection</p></blockquote></p>
+
+<p>A suivre dans un prochain article.</p>
+]]></content>
+  </entry>
+  
+</feed>

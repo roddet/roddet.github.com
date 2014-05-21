@@ -1,0 +1,321 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Scala IO 2013 => De Maven à SBT - Rossi Oddet</title>
+  <meta name="author" content="Rossi Oddet">
+
+  
+  <meta name="description" content="Présentateur Stéphane Manciot, Architecte chez ebiznext. Twitter : @smanciot
+LinkedIn : http://www.linkedin.com/in/smanciot
+Sa bio sur Scala IO
+La &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://roddet.github.com/2013/10/scalaio-2013-maven-sbt">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Rossi Oddet" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-32190657-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>	
+  <h1><a href="/">Rossi Oddet</a></h1>
+  
+    <h2>Blog d'un artisan développeur</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:roddet.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/events">Evénements</a></li>
+  <li><a href="/viededev">Vie de Développeur</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Scala IO 2013 => De Maven à SBT</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-28T09:30:00-04:00" pubdate data-updated="true">Oct 28<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>Présentateur</h2>
+
+<p><img class="left" src="/images/scalaio2013/speaker-stephane-manciot.jpg">
+Stéphane Manciot, Architecte chez ebiznext.</p>
+
+<ul>
+<li>Twitter : <a href="https://twitter.com/smanciot">@smanciot</a></li>
+<li>LinkedIn : <a href="http://www.linkedin.com/in/smanciot">http://www.linkedin.com/in/smanciot</a></li>
+<li>Sa bio sur <a href="http://scala.io/speakers/stephane-manciot.html">Scala IO</a></li>
+<li>La description de <a href="http://scala.io/events/de-maven-a-sbt.html">sa session ScalaIO</a></li>
+</ul>
+
+
+<br><br><br>
+
+
+<h2>Une photo comme si vous y étiez !</h2>
+
+<p><img class="center" src="/images/scalaio2013/stephane-manciot-maven-sbt-1.jpg"></p>
+
+<h2>Le Talk</h2>
+
+<p>Stéphane nous a défini ce qui serait pour lui un outil de build idéal, c&#8217;est à dire un outil qui <em>facilite la vie des développeurs</em>. Ce talk fait suite à une migration de Maven à SBT d&#8217;un projet entièrement écrit en Java. Oui pas de code Scala dans le projet !</p>
+
+<p>Deux idées principales dans ce <em>talk</em> :</p>
+
+<h3>Partie 1 => SBT c&#8217;est mieux que Maven</h3>
+
+<p>SBT et Maven seront comparés sur les thèmes suivants :</p>
+
+<ul>
+<li>Plugins Maven vs tâches SBT</li>
+<li>Phases Maven vs Gestion des dépendances des tâches SBT</li>
+<li>Performances</li>
+<li>Gestion multiprojets</li>
+<li>Cross compilation pour les projets Scala</li>
+<li>Gestion des dépendances</li>
+</ul>
+
+
+<h3>Partie 2 => On peut faire du SBT en Entreprise</h3>
+
+<p>Voici les préconisations de Stéphane :</p>
+
+<ul>
+<li>Configurer 2 catégories de dépôt en entreprise : Ivy et Maven.</li>
+<li>Une solution pour publier les versions <em>snapshots</em> et <em>releases</em> (voir le code SBT dans les slides)</li>
+<li>Une publication dans Sonar avec le plugin <a href="https://github.com/ebiznext/sbt-sonar">sbt-sonar</a> avec une couverture du code via le plugin <a href="https://bitbucket.org/jmhofer/jacoco4sbt">jacoco4sbt</a></li>
+</ul>
+
+
+<h2>Les slides de la présentation</h2>
+
+<iframe src="http://www.slideshare.net/slideshow/embed_code/27564746" width="600" height="500" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
+
+
+<h2>Ce que j&#8217;en ai pensé</h2>
+
+<p>Une présentation intéressante qui met en évidence les différences de philosophie entre Maven et SBT. Pour ceux qui utilisent Maven au quotidien, elle montre les défauts de Maven qui ne sont pas toujours visibles lorsqu&#8217;on ne connait pas d&#8217;autres outils de build.</p>
+
+<p>On pourra néanmoins regretter le manque d&#8217;objectivité lors de la comparaison Maven vs SBT. En effet, aucun défaut de SBT n&#8217;est cité dans les slides et à mon avis il y en a quand même :) J&#8217;ai le sentiment que la migration de Maven vers SBT de quelques projets Java chez ebiznext a surtout été motivé par la volonté d&#8217;harmoniser le système de build avec les projets scala de l&#8217;entreprise. Comme le confirmera la séance de questions/réponses, Gradle n&#8217;a par exemple pas été envisagé comme remplaçant éventuel de Maven.</p>
+
+<p>Un dépôt Git est disponible pour illustrer ce talk <a href="https://github.com/ebiznext/maven2sbt">maven2sbt</a>.</p>
+
+<p>J&#8217;ai lancé les 2 builds (Maven et SBT). Le build SBT est Ok, j&#8217;ai eu une erreur avec build Maven (Maven 3.1.1 et commande <em>mvn clean install</em>).</p>
+
+<p><img class="center" src="/images/scalaio2013/stephane-manciot-maven-sbt-2.png"></p>
+
+<p><em>Mise à jour du 29/10/2013</em></p>
+
+<p><em>Le build Maven fonctionne bien si l&#8217;on effectue &#8220;mvn clean&#8221; suivi de &#8220;mvn install&#8221;</em></p>
+
+<p>Quoi qu&#8217;il en soit, c&#8217;est une très bonne initiative surtout que ce build traite des problématiques de génération de code, de compilation de code groovy, etc&#8230;</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Rossi Oddet</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-28T09:30:00-04:00" pubdate data-updated="true">Oct 28<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/maven/'>maven</a>, <a class='category' href='/blog/categories/sbt/'>sbt</a>, <a class='category' href='/blog/categories/scala/'>scala</a>, <a class='category' href='/blog/categories/scalaio2013/'>scalaio2013</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://roddet.github.com/2013/10/scalaio-2013-maven-sbt/" data-via="rossioddet" data-counturl="http://roddet.github.com/2013/10/scalaio-2013-maven-sbt/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2013/10/scalaio-2013-failure-the-good-parts/" title="Previous Post: Scala IO 2013 => Failure : The Good Parts">&laquo; Scala IO 2013 => Failure : The Good Parts</a>
+      
+      
+        <a class="basic-alignment right" href="/2013/10/scalaio-2013-pimp-my-gc-scala-supersonique/" title="Next Post: Scala IO 2013 => Pimp my GC - du Scala supersonique">Scala IO 2013 => Pimp my GC - du Scala supersonique &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Rossi Oddet</h1>
+  <br/>
+  <table>
+  	<tr><td width="30%"><img src="/images/photo.jpeg" width="75"/></td>
+  		<td>&nbsp;&nbsp;</td>
+    <td width="70%"> <p>Développeur, Blogger et passionné par les communautés IT.</p></td></tr>
+</table>
+</section>
+<a class="twitter-timeline" href="https://twitter.com/rossioddet" data-widget-id="314511007521312768">Tweets by @rossioddet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Rossi Oddet -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogroddet';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://roddet.github.com/2013/10/scalaio-2013-maven-sbt/';
+        var disqus_url = 'http://roddet.github.com/2013/10/scalaio-2013-maven-sbt/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

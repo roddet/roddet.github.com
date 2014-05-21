@@ -1,0 +1,1569 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: devoxxfr2013 | Rossi Oddet]]></title>
+  <link href="http://roddet.github.com/blog/categories/devoxxfr2013/atom.xml" rel="self"/>
+  <link href="http://roddet.github.com/"/>
+  <updated>2014-05-21T01:43:46-04:00</updated>
+  <id>http://roddet.github.com/</id>
+  <author>
+    <name><![CDATA[Rossi Oddet]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Devoxx France 2013 # Conférence # Java EE 7 plus en détail]]></title>
+    <link href="http://roddet.github.com/2013/04/devoxxfr13-conference-javaee7-en-detail/"/>
+    <updated>2013-04-06T14:14:00-04:00</updated>
+    <id>http://roddet.github.com/2013/04/devoxxfr13-conference-javaee7-en-detail</id>
+    <content type="html"><![CDATA[<p>Vous pouvez retrouvez la description de la session <a href="http://www.devoxx.com/display/FR13/Java+EE+7+en+detail">sur le site de Devoxx France</a>.</p>
+
+<p><img class="center" src="http://blog.roddet.com/images/devoxxfr13/javaee7detail/affiche.jpg"></p>
+
+<h2>Pourquoi j'ai choisi cette session ?</h2>
+
+<p>En tant que développeur Java EE depuis plusieurs années, je souhaitais avoir les dernières nouvelles sur la version 7 à venir.</p>
+
+<h2>Le présentateur</h2>
+
+<p>David Delabassee <a href="https://twitter.com/delabassee">@delabassee</a> (<a href="http://www.devoxx.com/display/FR13/David+Delabassee">Bio</a>)</p>
+
+<h2>Le succès de Java EE 6</h2>
+
+<p>La session commence par un rappel du succès de Java EE 6 :</p>
+
+<ul>
+<li>Plus de 50 millions de téléchargements de composants Java EE 6</li>
+<li>Choix N°1 pour le développement en entreprise</li>
+<li>La version la plus rapide de Java EE</li>
+</ul>
+
+
+<h2>Le périmètre de Java EE 7</h2>
+
+<p>Java EE 7 a deux objectifs :</p>
+
+<ul>
+<li>Améliorer la productivité des développements Java EE</li>
+<li>Apporter un support de HTML 5 (WebSockets, JSON, Formulaires)</li>
+</ul>
+
+
+<p>Voici un vue d'ensemble de Java EE 7 :</p>
+
+<p><img class="center" src="http://blog.roddet.com/images/devoxxfr13/javaee7detail/overview.jpg"></p>
+
+<p>En vert les nouveaux modules :</p>
+
+<ul>
+<li>JSR 236 : Concurrency Utilities</li>
+<li>JSR 352 : Batch Applications</li>
+<li>JSR 353 : Java API for JSON</li>
+<li>JSR 356 : Java API for WebSocket</li>
+</ul>
+
+
+<p>En orange les modules qui subissent les évolutions majeures :</p>
+
+<ul>
+<li>JAX-RS 2.0</li>
+<li>EL 3.0</li>
+<li>JMS 2.0</li>
+</ul>
+
+
+<p>En gris les modules mis à jour.</p>
+
+<h2>Java API for JSON</h2>
+
+<p>Cette nouvelle API permettra de parser et générer du JSON. Lors de sa 1ère version, le binding JSON vers objet Java ne sera pas présent. Il est prévu dans une version ultérieure.</p>
+
+<p>Ce nouveau composant offrira une API en Streaming permettant de traiter de gros documents JSON.</p>
+
+<h2>Java API for Websocket</h2>
+
+<p>Elle est composée de 2 parties : client &amp; serveur.</p>
+
+<h3>Exemple de partie serveur</h3>
+
+<p>``` java
+import javax.websocket.*;</p>
+
+<p>@ServerEndPoint("/hello")
+public class HelloBean {</p>
+
+<pre><code>@OnMessage
+public String sayHello(String name){
+    return "Hello " + name;
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<h3>Exemple de partie cliente</h3>
+
+<p>``` java
+@ClientEndPoint
+public class HelloClient {</p>
+
+<pre><code>@OnMessage
+public void message(String message, Session session) {
+    // traitement de messages provenant du serveur
+}
+</code></pre>
+
+<p>}
+<code>
+Pour lancer la connexion du client au serveur
+</code>java
+WebSocketContainer c = ContainerProvider.getWebSocketContainer();
+c.connectToServer(HelloClient.class, "hello")
+```</p>
+
+<h2>Batch Applications</h2>
+
+<p>Il s'agit ici d'apporter un standard dans la création des batchs en Java.</p>
+
+<p>Ce composant apporte les concepts suivants :</p>
+
+<ul>
+<li>Job : Le processus du batch dans sa globalité</li>
+<li>Step : un traitement indépendant d'un batch</li>
+<li>JobOperator : Gestion de l'exécution du batch</li>
+<li>JobRepository : Métadonnées des jobs</li>
+</ul>
+
+
+<p>Il y a 2 types de step :</p>
+
+<ul>
+<li>"Chunked" un traitement standard utilisant le pattern "reader-processor-writer"</li>
+<li>"Batchlet" un traitement spécifique utilisant notre propre pattern</li>
+</ul>
+
+
+<p>Un job est paramétrable via un fichier XML. Exemple :
+```xml
+<job id="myJob"></p>
+
+<pre><code>&lt;step id="init"&gt;
+    &lt;chunk reader ref="MyReader" processor ref="MyProcessor" writer ref="MyWriter"/&gt;
+    &lt;next on="initialized" to="process" /&gt;
+    &lt;fail on="initError"/&gt;
+&lt;/step&gt;
+&lt;step id="process"&gt;
+    &lt;batchlet ref="ProcessAndEmail" /&gt;
+    &lt;end on="success"/&gt;
+    &lt;fail on="*" exit-status="FAILURE"/&gt;
+&lt;/step&gt;
+</code></pre>
+
+<p></job>
+```
+Il est possible de mettre en place des intercepteurs à différents niveaux (JobListener, StepListener, ChunkListener, etc...).</p>
+
+<p>Pour lancer un Job :
+```java
+try {</p>
+
+<pre><code>JobOperator jop = BatchRuntime.getJobOperator();
+long jobId = jop.start("myJob"); // META-INF/batch.xml
+</code></pre>
+
+<p>} catch(JobStartException e) {</p>
+
+<p>}</p>
+
+<p>```
+Il est possible de lancer les traitements d'un job en parallèle.</p>
+
+<h2>Concurrency Utilities for Java EE</h2>
+
+<p>L'objectif de cette JSR est d'offrir la possibilité d'exécuter des traitements concurrents dans un container Java EE sans compromettre son intégrité.
+Elle sera cohérente avec l'API existante en Java SE (java.util.concurrent.*) en fournissant une version "managed" de java.util.concurrent.ExecutorService : ManagedExecutorService (récupérable via JNDI).</p>
+
+<h2>JAX-RS 2.0</h2>
+
+<h3>La partie cliente entre dans la standard.</h3>
+
+<p>Exemple :
+```java
+Client client = ClientFactory.newClient();</p>
+
+<p>String name = client.target(".../orders/{orderId}/customer")</p>
+
+<pre><code>                .resolveTemplate("orderId", "10")
+                .queryParam("shipped", "true")
+                .request()
+                .get(String.class)
+</code></pre>
+
+<p>```</p>
+
+<h3>Des requêtes asynchrones possibles pour la partie cliente</h3>
+
+<p>```java
+Client client = ClientFactory.newClient();</p>
+
+<p>Future<String> future = client.target(".../orders/{orderId}/customer")</p>
+
+<pre><code>                .resolveTemplate("orderId", "10")
+                .queryParam("shipped", "true")
+                .request()
+                .async()
+                .get(
+                    new InvocationCallBack&lt;String&gt;(){
+                        public void completed(String result){
+
+                        }
+                        public void failed(InvocationException e){
+
+                        }
+                    }
+                )
+</code></pre>
+
+<p>```</p>
+
+<h3>Possibilité de créer des intercepteurs</h3>
+
+<p>```java
+public class MyInterceptor implements ReaderInterceptor {</p>
+
+<pre><code>@Override
+Object aroundReadFrom(ReaderInterceptorContext ctx){
+    // Traitement de l'intercepteur
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<h2>JMS 2.0</h2>
+
+<p>Ca faisait longtemps que JMS n'avait pas évolué.</p>
+
+<p>L'objectif de Java EE 7 sur ce point :</p>
+
+<ul>
+<li>Simplifier l'API</li>
+<li>Offrir la possibilité d'injecter des ressources</li>
+<li>Les objets Connection, Session, etc... sont AutoCloseable (plus besoin de fermer explicitement ces ressources)</li>
+</ul>
+
+
+<h3>Injection de ressources par annotations</h3>
+
+<p>```java
+@Resource(lookup = "jms/connFactory")
+ConnectionFactory cf;</p>
+
+<p>@Resource(lookup = "jms/inboundQueue")
+Destination dest;
+```</p>
+
+<h3>Création de JMSContext</h3>
+
+<p>C'est une combinaison de la Connection et la Session.</p>
+
+<p>```java
+try(JMSContext context = cf.createContext();){</p>
+
+<pre><code>//
+</code></pre>
+
+<p>}</p>
+
+<p>```</p>
+
+<h3>On peut envoyer un String directement sans passer par un objet spécifique</h3>
+
+<p>```java
+try(JMSContext context = cf.createContext();){</p>
+
+<pre><code>context.createProducer().send(dest,"Hello");
+</code></pre>
+
+<p>}
+```</p>
+
+<h3>JMSContext peut être injecté</h3>
+
+<p><code>java
+@Inject
+JMSContext context;
+</code></p>
+
+<h2>Bean Validation 1.1</h2>
+
+<h3>Validation des paramètres d'une méthode</h3>
+
+<p>```java
+public void myMethod(</p>
+
+<pre><code>@NotNull String name, 
+@NotNull @Max("10")){
+//
+</code></pre>
+
+<p>}</p>
+
+<p>```</p>
+
+<h3>Validation du résultat d'une méthode</h3>
+
+<p>```java
+@Future
+public Date getProchainDevoxxFrance(){</p>
+
+<pre><code>//
+</code></pre>
+
+<p>}
+```</p>
+
+<h2>Et bien sûr les autres nouveautés :</h2>
+
+<ul>
+<li>JSF 2.2 : support HTML5, Composant d'upload de fichier, ...</li>
+<li>Servlet 3.1 : IO Non bloquant, ...</li>
+<li>JPA 2.1 : Génération de schéma, ...</li>
+<li>JTA 1.2 : déclaration de transaction en dehors des EJB, etc...</li>
+<li>CDI 1.1 : Ordonnancement des intercepteurs, ...</li>
+<li>EJB 3.2 : Asynchronisme, ...</li>
+<li>EL 3.0 : Support des lambdas, Collection, ...</li>
+<li>JavaMail 1.5</li>
+</ul>
+
+
+<h2>Petite réorganisation des profils Java EE</h2>
+
+<h3>Web Profile</h3>
+
+<ul>
+<li>Servlet, JSF, JSP</li>
+<li>WebSocket, JSON-P</li>
+<li>JAX-RS</li>
+<li>EL, Beans Validation</li>
+<li>EJB (Lite), CDI, JTA, JPA, ...</li>
+</ul>
+
+
+<h3>Plateforme complète</h3>
+
+<ul>
+<li>Web Profile</li>
+<li>Concurrency Utilities, Batch API</li>
+<li>JMS, EJB, JAX-WS, JAXB, JavaMail, ...</li>
+</ul>
+
+
+<h2>Liens utiles</h2>
+
+<ul>
+<li><a href="http://glassfish.org/javaee7">Java EE 7</a></li>
+<li><a href="https://blogs.oracle.com/theaquarium/">The Aquarium</a></li>
+<li><a href="http://glassfish.java.net/adoptajsr/">Adopt-A-JSR</a></li>
+<li><a href="http://glassfish.java.net/fishcat/">FishCat</a></li>
+</ul>
+
+
+<h2>RoadMap à court terme</h2>
+
+<p>Les spécifications seront validées à la fin du mois d'Avril. La première version de GlassFish stable sortira quelques jours après.
+JCache n'est pas dans le périmètre de Java EE 7.</p>
+
+<h2>Bilan</h2>
+
+<p>Session interressante qui présente en 1h les grandes nouveautés attendues pour Java EE 7. Après quelques recherches sur SlideShare, Parleys etc.. je n'ai pas retrouvé les slides de la présentation. Je l'ajouterai à ce billet lorsqu'il sera disponible.</p>
+
+<p>Maintenant il ne reste plus qu'à approfondir chaque sujet et tester :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Devoxx France 2013 # Tools In Action # Live coding avec Yeoman & AngularJS]]></title>
+    <link href="http://roddet.github.com/2013/04/devoxxfr13-tools-in-action-yeoman-angular/"/>
+    <updated>2013-04-05T23:09:00-04:00</updated>
+    <id>http://roddet.github.com/2013/04/devoxxfr13-tools-in-action-yeoman-angular</id>
+    <content type="html"><![CDATA[<p>Vous pouvez retrouvez la description de la session <a href="http://www.devoxx.com/pages/viewpage.action?pageId=6817513">sur le site de Devoxx France</a>.</p>
+
+<p><img class="center" src="http://blog.roddet.com/images/devoxxfr13/yeomanangular/slide.jpg"></p>
+
+<h2>Pourquoi j'ai choisi cette session ?</h2>
+
+<p><a href="http://yeoman.io/">Yeoman</a> bien qu'encore en version béta fait déjà beaucoup parlé de lui. Cette session va être, en ce qui me concerne, la 2nd fois qu'on aborde Yeoman dans la même journée (voir <a href="http://blog.roddet.com/2013/04/devoxxfr13-university-frontend-live-coding/">la session Frontend Live Coding</a>).</p>
+
+<p>Quand à <a href="http://angularjs.org/">Angular JS</a>, il fait tant parler de lui et j'étais curieux de voir son intégration avec Yeoman.</p>
+
+<h2>Le présentateur</h2>
+
+<p>Matthieu Lux <a href="https://twitter.com/swiip">@swiip</a> <a href="http://swiip.github.io/">http://swiip.github.io/</a></p>
+
+<p><img class="center" src="http://blog.roddet.com/images/devoxxfr13/yeomanangular/speaker.jpg"></p>
+
+<h2>Yeoman</h2>
+
+<p>La session commence par une présentation rapide de Yeoman.</p>
+
+<p>En résumé, il s'agit d'un ensemble d'outils qui existaient déjà :</p>
+
+<ul>
+<li>Yo - générateur</li>
+<li>Bower - gestion des dépendances</li>
+<li>Grunt - preview, build, test...</li>
+</ul>
+
+
+<h2>AngularJS</h2>
+
+<p>Il définit AngularJS comme un framework MVC apportant du "déclaratif" dans le modèle de programmation par opposition au modèle "impératif" du traditionnel Javascript ou de JQuery.</p>
+
+<p><img class="center" src="http://blog.roddet.com/images/devoxxfr13/yeomanangular/angularmvc.png"></p>
+
+<h2>Démo</h2>
+
+<p>Pré-requis: avoir installé NodeJS.</p>
+
+<p>Il faut ensuite installer Grunt, Bower, Yo, express et monk.
+<code>
+npm install -g yo grunt-cli bower express monk
+</code>
+Récupérer les trois fichiers <a href="https://github.com/Swiip/yeoman-angular/tree/master/server">"serveur"</a> et copier les dans un répertoire. Ou encore faire un clone du dépôt.</p>
+
+<p>Lancer la partie serveur :
+<code>
+node app.js
+</code></p>
+
+<h3>Etape 1 : Ajouter les dépendances JQuery et Bootstrap</h3>
+
+<p>Modifier le fichier component.json
+```
+{
+  ...
+  "dependencies": {</p>
+
+<pre><code>....
+"jquery" : "1.8.0",
+"bootstrap" : "2.3.1"
+</code></pre>
+
+<p>  }
+  ...
+}
+```</p>
+
+<p>Récupérer les dépendances
+<code>
+bower install
+</code></p>
+
+<p>Ajouter dans le fichier index.html... Oui Bower ne le fait pas pour vous !
+```</p>
+
+<pre><code>&lt;script src="components/jquery/jquery.js"&gt;&lt;/script&gt;
+&lt;script src="components/bootstrap/docs/assets/js/bootstrap.js"&gt;&lt;/script&gt;
+</code></pre>
+
+<p>```</p>
+
+<h3>Etape 2 : Installer le générateur Angular et Karma</h3>
+
+<p><code>
+npm install generator-angular generator-karma
+</code>
+Les générateurs sont installés dans le répertoire node_modules.</p>
+
+<h3>Etape 3 : Générer un projet Angular</h3>
+
+<p><code>
+yo angular
+</code>
+Répondre Oui à toutes les questions.</p>
+
+<h3>Etape 4 : Installer les dépendances</h3>
+
+<p><code>
+npm install &amp;&amp; bower install
+</code></p>
+
+<h3>Etape 5 : Lancer l'application générée</h3>
+
+<p><code>
+grunt server
+</code></p>
+
+<p><img class="center" src="http://blog.roddet.com/images/devoxxfr13/yeomanangular/webapp_1.png"></p>
+
+<h3>Etape 6 : Modifier app/scripts/app.js</h3>
+
+<p>``` javascript
+'use strict';</p>
+
+<p>angular.module('clientApp', ['ngResource'])
+  .factory('Frameworks', function($resource) {</p>
+
+<pre><code>return $resource('http://localhost\\:1234/frameworks', {
+  id: '@_id'
+})
+</code></pre>
+
+<p>  })
+  .config(function ($routeProvider) {</p>
+
+<pre><code>$routeProvider
+  .when('/', {
+    templateUrl: 'views/main.html',
+    controller: 'MainCtrl'
+  })
+  .otherwise({
+    redirectTo: '/'
+  });
+</code></pre>
+
+<p>  });
+```</p>
+
+<h3>Etape 7 : app/scripts/controller/main.js</h3>
+
+<p>``` javascript
+'use strict';</p>
+
+<p>angular.module('clientApp')
+  .controller('MainCtrl', function ($scope, Frameworks) {</p>
+
+<pre><code>var modal = $('.modal');
+
+$scope.hello = 'Hello Devoxx !';
+
+$scope.frameworks = Frameworks.query();
+
+$scope.edit = function(framework) {
+  $scope.framework = framework;
+  modal.modal('show');
+}
+
+$scope.save = function() {
+  if($scope.framework.$save) {
+    $scope.framework.$save();
+  } else {
+    $scope.frameworks.push(Frameworks.save($scope.framework));
+  }
+  modal.modal('hide');
+}
+
+$scope.delete = function(framework, $event, $index) {
+  framework.$delete();
+  $event.stopPropagation();
+  $scope.frameworks.splice($index, 1);
+}
+</code></pre>
+
+<p>  });
+```</p>
+
+<h3>Etape 8 : app/views/main.html</h3>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;div class="hero-unit">
+</span><span class='line'>  &lt;h1>{{hello}}&lt;/h1>
+</span><span class='line'>&lt;/div>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>&lt;table class="table table-striped table-bordered">
+</span><span class='line'>    &lt;tr>&lt;th>Name&lt;/th>&lt;th>URL&lt;/th>&lt;/tr>
+</span><span class='line'>    &lt;tr ng-repeat="framework in frameworks" ng-click="edit(framework)">
+</span><span class='line'>        &lt;td>{{framework.name}}&lt;/td>
+</span><span class='line'>        &lt;td>{{framework.url}}&lt;/td>
+</span><span class='line'>        &lt;td>&lt;button class="btn btn-danger" ng-click="delete(framework, $event, $index)">Delete&lt;/button> &lt;/td>
+</span><span class='line'>    &lt;/tr>
+</span><span class='line'>&lt;/table>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>&lt;p>&lt;button class="btn" ng-click="edit({})">Add&lt;/button>&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;div class="modal hide fade">
+</span><span class='line'>    &lt;div class="modal-header">&lt;h2>Edit&lt;/h2>&lt;/div>
+</span><span class='line'>    &lt;div class="modal-body">
+</span><span class='line'>        &lt;label>Name&lt;/label>
+</span><span class='line'>        &lt;input type="text" ng-model="framework.name">
+</span><span class='line'>        &lt;label>URL&lt;/label>
+</span><span class='line'>        &lt;input type="text" ng-model="framework.url">
+</span><span class='line'>    &lt;/div>
+</span><span class='line'>    &lt;div class="modal-footer">
+</span><span class='line'>        &lt;button class="btn" ng-click="save()">Save&lt;/button>
+</span><span class='line'>    &lt;/div>
+</span><span class='line'>&lt;/div>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>&lt;p>```</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2>L'application développée</h2>
+
+<p><img class="center" src="http://blog.roddet.com/images/devoxxfr13/yeomanangular/webapp_2.png"></p>
+
+<p>Le présentateur a durant la session appliqué des styles que vous pouvez retrouver <a href="https://github.com/Swiip/yeoman-angular/tree/master/repets/client-v8/app/styles">ici</a></p>
+
+<h2>Les slides</h2>
+
+<p>Vous pouvez les télécharger <a href="https://github.com/Swiip/yeoman-angular/raw/master/slides/Devoxx%202013%20FR%20Yeoman%20%26%20AngularJS.ppt">ici</a>.</p>
+
+<h2>Le code sur Github</h2>
+
+<p><a href="https://github.com/Swiip/yeoman-angular">https://github.com/Swiip/yeoman-angular</a></p>
+
+<h2>Bilan</h2>
+
+<p>En somme, je retiens qu'AngularJS permet de faire plus de HTML et moins de javascript. C'est un framework complet qui intègre de nombreux services et peut se mettre aisément en oeuvre avec Yeoman.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Devoxx France 2013 # Tools in Action # Trucs et astuces avec Java et MongoDB sur Raspberry Pi]]></title>
+    <link href="http://roddet.github.com/2013/04/devoxxfr13-tools-in-action-trucs-astuces-java-mongodb-raspberry-pi/"/>
+    <updated>2013-04-05T13:54:00-04:00</updated>
+    <id>http://roddet.github.com/2013/04/devoxxfr13-tools-in-action-trucs-astuces-java-mongodb-raspberry-pi</id>
+    <content type="html"><![CDATA[<p>Vous pouvez retrouvez la description de la session <a href="http://www.devoxx.com/display/FR13/Trucs+et+astuces+avec+Java+et+MongoDB+sur+Raspberry+PI">sur le site de devoxx</a>.</p>
+
+<h2>Pourquoi j'ai choisi cette session ?</h2>
+
+<p>Une occasion de découvrir l'univers Raspberry Pi.</p>
+
+<h2>L'animateur</h2>
+
+<p><strong>Guillaume Scheibel</strong> <a href="https://twitter.com/g_scheibel">@g_scheibel</a> <a href="http://www.gscheibel.net">www.gsheibel.net</a></p>
+
+<p><img class="center" src="http://blog.roddet.com/images/devoxxfr13/raspberrymongo/speaker.jpg"></p>
+
+<h2>Raspberry Pi c'est quoi ?</h2>
+
+<p><blockquote><p>Le Raspberry Pi est un ordinateur monocarte à processeur ARM conçu par le créateur de jeux vidéo David Braben, dans le cadre de sa fondation Raspberry Pi2.<br/>L'ordinateur a la taille d'une carte de crédit, il permet l'exécution de plusieurs variantes du système d'exploitation libre GNU/Linux et des logiciels compatibles. Il est fourni nu (carte mère seule, sans boîtier, alimentation, clavier, souris ni écran) dans l'objectif de diminuer les coûts et de permettre l'utilisation de matériel de récupération.</p><footer><strong>Wikipedia</strong> <cite><a href='http://fr.wikipedia.org/wiki/Raspberry_Pi'>fr.wikipedia.org/wiki/&hellip;</a></cite></footer></blockquote></p>
+
+<h2>Raspberry Pi pour faire quoi ?</h2>
+
+<ul>
+<li>Du linux</li>
+<li>Un serveur Git</li>
+<li>Un serveur <a href="http://xbmc.org/">XBMC</a></li>
+<li>Du code</li>
+</ul>
+
+
+<p>En fait, à nous d'inventer les usages :)</p>
+
+<h2>Les modèles de Raspberry Pi</h2>
+
+<h3>Modèle A (~ 25 euros)</h3>
+
+<ul>
+<li>Processeur 700 MHz</li>
+<li>1 port HDMI</li>
+<li>1 slot SDCARD</li>
+<li>1 port USB</li>
+<li>256MB de RAM</li>
+</ul>
+
+
+<h3>Modèle B (~ 35 euros)</h3>
+
+<p>En mieux par rapport au modèle A :</p>
+
+<ul>
+<li>2 ports USB</li>
+<li>512 MB de RAM</li>
+<li>1 port Ethernet</li>
+</ul>
+
+
+<h2>Attention il faut des accessoires !</h2>
+
+<p>Le Raspberry Pi est vendu dans le plus simple appareil.</p>
+
+<p>Pour votre première commande, il vous faudra en plus :</p>
+
+<ul>
+<li>un carte SD</li>
+<li>un cable d'alimentation (micro USB)</li>
+<li>un boitier</li>
+<li>des connectiques : HDMI, Ethernet, Clavier</li>
+</ul>
+
+
+<h2>Vous cherchez des informations sur le Raspberry Pi ?</h2>
+
+<p>Le site <a href="http://elinux.org/RPi_Hub">http://elinux.org/RPi_Hub</a> est là pour vous aider.</p>
+
+<h2>Les distributions Linux</h2>
+
+<p>Il y a plus de 20 distributions Linux compatibles.</p>
+
+<p>La distribution officielle est <a href="http://www.raspbian.org/">Raspbian</a>.</p>
+
+<h2>Java</h2>
+
+<p>On a le choix entre OpenJDK vs Oracle. Le présentateur a choisi Oracle.
+La version compatible est 1.8 et il y a la preview de JavaFX.</p>
+
+<h2>Java &amp; GPIO</h2>
+
+<p>Des API Java permettent d'intéragir avec les pins GPIO.</p>
+
+<p>Il y a par exemple <a href="http://pi4j.com/">Pi4J</a>.</p>
+
+<h2>MongoDB</h2>
+
+<p>Raspberry Pi n'est pas compatible avec les versions de Mongo officielles.</p>
+
+<p>Un projet fait le portage de MongoDB sur Raspberry Pi : <a href="https://github.com/skrabban/mongo-nonx86">https://github.com/skrabban/mongo-nonx86</a>.</p>
+
+<p>Un article permet de guider pas à pas à l'installation de MongoDB sur Raspberry Pi : <a href="http://elsmorian.com/post/24395639198/building-mongodb-on-raspberry-pi">http://elsmorian.com/post/24395639198/building-mongodb-on-raspberry-pi</a></p>
+
+<p>Attention il faut compter 7 à 8 heures pour un build complet.</p>
+
+<h2>Démonstration</h2>
+
+<p>Elle a consisté à présenter et exécuter un programme Java qui va lire dans une base mongodb des données (événements Devoxx France précedemment récupérés) et affiche le résultat.</p>
+
+<h2>Les slides sur Parleys</h2>
+
+<p><a href="http://www.parleys.com/#play/515ac911e4b0ffdd7e058b9e">http://www.parleys.com/#play/515ac911e4b0ffdd7e058b9e</a></p>
+
+<object width="600" height="395"><param name="movie" value="http://www.parleys.com/dist/share/parleysshare.swf"></param><param name="allowFullScreen" value="true"></param><param name="wmode" value="direct"></param><param name="bgcolor" value="#222222"></param><param name="flashVars" value="sv=true&pageId=515ac911e4b0ffdd7e058b9e" ></param><embed src="http://www.parleys.com/dist/share/parleysshare.swf" type="application/x-shockwave-flash" flashVars="sv=true&pageId=515ac911e4b0ffdd7e058b9e" allowfullscreen="true" bgcolor="#222222" width="395" height="395"></embed></object>
+
+
+<h2>Bilan</h2>
+
+<p>Une bonne introduction à Raspberry Pi avec une démonstration concrète de son utilisation.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Devoxx France 2013 # Tools In Action # Gradle en 30 minutes pour tout changer]]></title>
+    <link href="http://roddet.github.com/2013/04/devoxxfr13-tools-in-action-gradle-en-30-min/"/>
+    <updated>2013-04-04T13:52:00-04:00</updated>
+    <id>http://roddet.github.com/2013/04/devoxxfr13-tools-in-action-gradle-en-30-min</id>
+    <content type="html"><![CDATA[<p>Vous pouvez retrouvez la description de la session <a href="http://www.devoxx.com/display/FR13/Gradle%2C+30+minutes+pour+tout+changer">sur le site de Devoxx France</a>.</p>
+
+<h2>Pourquoi j'ai choisi cette session ?</h2>
+
+<p>Gradle est une alternative choisie par des grands acteurs comme les équipes d'Hibernate, de Grails etc...
+Je souhaitais à travers cette session découvrir Gradle et surtout voir jusqu'à quel niveau de maturité était ce produit.</p>
+
+<h2>Le présentateur</h2>
+
+<p>Sébastien Cogneau <a href="https://twitter.com/SCogneau">@SCogneau</a> (<a href="http://www.devoxx.com/display/FR13/Sebastien+Cogneau">Bio</a>) contribue le week end au projet Gradle et a fait migrer la plupart des projets d'un DSI à Gradle.</p>
+
+<h2>Gradle en quelques mots</h2>
+
+<p><img class="left" src="http://blog.roddet.com/images/devoxxfr13/gradle/gradle_logo.gif"></p>
+
+<ul>
+<li>Un DSL en groovy</li>
+<li>Extensible</li>
+<li>Possibilité de réutiliser des tâches ANT</li>
+<li>Réutilise les conventions Maven</li>
+<li>Compatible avec Ivy et Maven</li>
+</ul>
+
+
+<p>Le projet est composé de 60% de code java et 40% de code groovy</p>
+
+<h2>Live Coding</h2>
+
+<p>La session consistait à passer de Maven à Gradle avec un projet exemple : <a href="http://dddsample.sourceforge.net/">DDDSample</a>.</p>
+
+<h3>Etape 1 : Récupérer les sources du projet</h3>
+
+<p>Les sources sont disponibles <a href="http://dddsample.sourceforge.net/download.html">ici</a> ou directement <a href="http://sourceforge.net/projects/dddsample/files/latest/download?source=files">là</a> puis décompresser l'archive récupéré (dddsample-1.1.0-src.zip).</p>
+
+<p>Test Maven
+<code>
+mvn install
+</code></p>
+
+<p><code>
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+</code>
+Magnifique ce Maven :)</p>
+
+<h3>Etape 2 : Création du fichier build.gradle</h3>
+
+<p>Il s'agit du fichier par défaut de Gradle, l'équivalent du pom.xml de Maven. Il est possible d'utiliser un fichier nommé autrement.</p>
+
+<p>Voici une première configuration qui permet de compiler le projet avec ses dépendances et de générer un JAR.</p>
+
+<p>``` groovy
+apply plugin : 'java'</p>
+
+<p>repositories {
+   mavenCentral()
+}</p>
+
+<p>dependencies {</p>
+
+<pre><code>compile 'org.springframework:spring-webmvc:2.5.6'
+compile 'org.springframework:spring-web:2.5.6'
+compile 'org.springframework:spring-jms:2.5.6'
+compile 'org.springframework:spring-jdbc:2.5.6'
+compile 'org.springframework:spring-orm:2.5.6'
+compile 'org.springframework:spring-aop:2.5.6'
+compile 'org.hibernate:hibernate-core:3.3.1.GA'
+compile 'org.slf4j:slf4j-api:1.5.6'
+compile 'org.slf4j:slf4j-log4j12:1.5.6'
+compile 'org.slf4j:jcl-over-slf4j:1.5.6'
+compile 'javassist:javassist:3.8.0.GA'
+compile 'org.hibernate:hibernate-annotations:3.4.0.GA'
+compile 'commons-lang:commons-lang:2.3'
+compile 'commons-io:commons-io:1.3.1'
+compile 'commons-dbcp:commons-dbcp:1.2.2'
+compile 'hsqldb:hsqldb:1.8.0.7'
+compile 'javax.servlet:servlet-api:2.5'
+compile 'taglibs:standard:1.1.2'
+compile 'javax.servlet:jstl:1.1.2'
+compile('org.apache.activemq:activemq-core:5.2.0') {
+    exclude module: "commons-logging"
+}
+compile 'org.apache.xbean:xbean-spring:3.4.3'
+compile 'org.apache.cxf:cxf-rt-frontend-jaxws:2.1.3'
+compile 'org.apache.cxf:cxf-rt-transports-http:2.1.3'
+
+runtime 'opensymphony:sitemesh:2.3'
+
+testCompile 'org.easymock:easymock:2.3'
+testCompile 'org.springframework:spring-test:2.5.6'
+testCompile 'junit:junit:4.4'
+</code></pre>
+
+<p>}
+```</p>
+
+<h3>Etape 3 : lancement du build</h3>
+
+<p><code>
+gradle clean build
+</code><br/>
+Le clean n'est à appliquer que à la première compile, le reste du temps "gradle build" suffit.
+Gradle offre une bonne gestion de la compilation incrémental.</p>
+
+<h3>Etape 4 : Voir la liste des tâches disponibles</h3>
+
+<p><code>
+gradle tasks
+</code></p>
+
+<p>Voici le résultat</p>
+
+<p>```
+:tasks</p>
+
+<hr />
+
+<h2>All tasks runnable from root project</h2>
+
+<h2>Build tasks</h2>
+
+<p>assemble - Assembles the outputs of this project.
+build - Assembles and tests this project.
+buildDependents - Assembles and tests this project and all projects that depend on it.
+buildNeeded - Assembles and tests this project and all projects it depends on.
+clean - Deletes the build directory.
+jar - Assembles a jar archive containing the main classes.</p>
+
+<h2>Documentation tasks</h2>
+
+<p>javadoc - Generates Javadoc API documentation for the main source code.</p>
+
+<h2>Help tasks</h2>
+
+<p>dependencies - Displays all dependencies declared in root project 'dddsample-1.1.0'.
+dependencyInsight - Displays the insight into a specific dependency in root project 'dddsample-1.1.0'.
+help - Displays a help message
+projects - Displays the sub-projects of root project 'dddsample-1.1.0'.
+properties - Displays the properties of root project 'dddsample-1.1.0'.
+tasks - Displays the tasks runnable from root project 'dddsample-1.1.0' (some of the displayed tasks may belong to subprojects).</p>
+
+<h2>Verification tasks</h2>
+
+<p>check - Runs all checks.
+test - Runs the unit tests.</p>
+
+<h2>Rules</h2>
+
+<p>Pattern: build<ConfigurationName>: Assembles the artifacts of a configuration.
+Pattern: upload<ConfigurationName>: Assembles and uploads the artifacts belonging to a configuration.
+Pattern: clean<TaskName>: Cleans the output files of a task.</p>
+
+<p>To see all tasks and more detail, run with --all.
+```</p>
+
+<h3>Etape 5 : Packaging WAR</h3>
+
+<p>Modifier le fichier "build.gradle" en remplaçant "apply plugin :'java'" par :</p>
+
+<p><code>
+apply plugin : 'war'
+</code></p>
+
+<p>Ce changement suffit à générer un WAR lors d'un "gradle build".</p>
+
+<h3>Etape 6 : Intégrer Jetty</h3>
+
+<p>Modifier le fichier "build.gradle"</p>
+
+<p><code>
+apply plugin:'jetty'
+</code></p>
+
+<p>Lancer le serveur Jetty</p>
+
+<p><code>
+gradle jettyRunWar
+</code></p>
+
+<p>L'application est accessible via l'URL : http://localhost:8080/dddsample-1.1.0/</p>
+
+<p><img class="center" src="http://blog.roddet.com/images/devoxxfr13/gradle/dddsample.png" width="500"></p>
+
+<h3>Etape 7 : Configurer sonar</h3>
+
+<p>Ajouter</p>
+
+<p>``` groovy
+...
+apply plugin:'sonar-runner'
+...
+configurations{</p>
+
+<pre><code>codeCoverage
+</code></pre>
+
+<p>}
+...
+sonarRunner{</p>
+
+<pre><code>sonarProperties{
+    property "sonar.jacoco.reportPath", "${buildDir}/codeCoverage.exec"
+}
+</code></pre>
+
+<p>}
+...
+dependencies {</p>
+
+<pre><code>...
+codeCoverage group: 'org.jacoco', name: 'org.jacoco.agent', version: '0.6.2.201302030002', classifier: 'runtime'
+</code></pre>
+
+<p>}</p>
+
+<p>test{</p>
+
+<pre><code>jvmArgs "-javaagent:${configurations.codeCoverage.asPath}=destfile=${buildDir}/codeCoverage.exec,includes=se.citerus.*"
+</code></pre>
+
+<p>}</p>
+
+<p>task wrapper(type:Wrapper){</p>
+
+<pre><code>gradleVersion="1.5-rc1"
+</code></pre>
+
+<p>}
+```</p>
+
+<p>Générer le wrapper</p>
+
+<p><code>
+gradle wrapper
+</code></p>
+
+<p>Cette commande génère les exécutables (gradle,gradlew,gradlew.bat) pour s'interfacer avec jenkins. L'exécutable généré permet de dérouler un build sans explicitement installer Gradle sur une machine.</p>
+
+<h3>Etape 8 : Intégrer à Jenkins</h3>
+
+<p>Le plugin <a href="https://wiki.jenkins-ci.org/display/JENKINS/Gradle+Plugin">Gradle pour Jenkins</a> a été utilisé.</p>
+
+<p>Deux façons de le mettre en oeuvre :</p>
+
+<ul>
+<li>soit avec une installation sur la même machine que Jenkins et une configuration Système</li>
+<li>soit avec l'utilisation du wrapper et là aucun besoin d'installer Gradle</li>
+</ul>
+
+
+<p>Le build est paramétré avec :</p>
+
+<p><code>
+clean build sonarRunner
+</code></p>
+
+<p>Malheureusement à cette étape...FAILED...impossible de charger une classe de Gradle. Le présentateur avait fait une mise à jour le matin même, surprise surprise... Mais nous avons compris le principe et l'effet démo est là :)</p>
+
+<h3>Etape 9 : Créer une tâche</h3>
+
+<p>Il est facile de créer une tâche avec Gradle.</p>
+
+<p>Exemple :</p>
+
+<p>``` groovy
+task hello(type:Exec){</p>
+
+<pre><code>description "tache pour devoxx 2013"
+group "devoxx"
+dependsOn wrapper
+executable "echo"
+args "Avez-vous des questions ?"
+</code></pre>
+
+<p>}
+```</p>
+
+<p>Grâce à l'attribut "dependsOn", on peut gérer l'ordonnancement des tâches. Ici "wrapper" va être exécuté avant "hello".</p>
+
+<p>Lancer la nouvelle tâche :</p>
+
+<p><code>
+gradle hello
+</code></p>
+
+<p>On obtient :</p>
+
+<p>```
+:wrapper UP-TO-DATE
+:hello
+Avez-vous des questions ?</p>
+
+<p>BUILD SUCCESSFUL</p>
+
+<p>Total time: 5.781 secs
+```</p>
+
+<h2>Questions/réponses</h2>
+
+<h3>Quel niveau d'intégration avec les IDE ?</h3>
+
+<ul>
+<li><a href="http://www.springsource.org/sts">Spring Tools Suite</a> Ok</li>
+<li><a href="https://netbeans.org/">Netbeans</a> Ok dans les version récentes</li>
+<li><a href="http://www.jetbrains.com/idea/">IntelliJ IDEA</a> offre la meilleur intégration</li>
+</ul>
+
+
+<h3>Y a t-il un équivalent du plugin "release" de Maven ?</h3>
+
+<p>Non, pas d'équivalent de release plugin.</p>
+
+<h3>Peut-on gérer des sous-modules ?</h3>
+
+<p>Oui</p>
+
+<h2>Le code complet sur Github</h2>
+
+<p><a href="https://github.com/scogneau/devoxxfr2013">https://github.com/scogneau/devoxxfr2013</a></p>
+
+<h2>Bilan</h2>
+
+<p>Excellente session pour découvrir Gradle en 30 min chrono. Ca donne envie d'en savoir un peu plus.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Devoxx France 2013 # University # Frontend Live Coding]]></title>
+    <link href="http://roddet.github.com/2013/04/devoxxfr13-university-frontend-live-coding/"/>
+    <updated>2013-04-04T13:35:00-04:00</updated>
+    <id>http://roddet.github.com/2013/04/devoxxfr13-university-frontend-live-coding</id>
+    <content type="html"><![CDATA[<p>Vous pouvez retrouvez la description de la session <a href="http://www.devoxx.com/display/FR13/Frontend+Live+Coding+++Tour+d%27horizon+de+l%27outillage+et+des+technos+web+d%27aujourd%27hui">sur le site de Devoxx France</a>.</p>
+
+<p><img class="center" src="http://blog.roddet.com/images/devoxxfr13/frontend/affiche.jpg"></p>
+
+<h2>L'animateur</h2>
+
+<p>Frédéric Camblor <a href="https://twitter.com/fcamblor">@fcamblor</a>  (<a href="http://www.devoxx.com/display/FR13/Frederic+Camblor">Bio</a>)</p>
+
+<h2>Pourquoi j'ai choisi cette session ?</h2>
+
+<p>Avec le boost que lui a apporté HTML 5, les technologies "pures web" ont gagnées en popularité. Côté Java EE (serveur), nous sommes bien outillés (ide, build, qualité etc...), j'étais curieux de découvrir le panorama d'outils qui allait être présenté côté frontend.</p>
+
+<p>C'est dans une salle d'environ 200 personnes qu'à eu lieu cette séance dense (riche en contenu).
+Cette session s'est déroulée en 2 parties, l'animateur va commencer par faire un tour de l'outillage web d'aujourd'hui puis va présenter quelques briques de developpement d'une application web.</p>
+
+<h2>Yeoman</h2>
+
+<p><img class="left" src="http://blog.roddet.com/images/devoxxfr13/frontend/yeoman-logo.jpg">
+<a href="http://yeoman.io/">Yeoman</a> va être le premier à être présenté. Il se définit comme étant un ensemble d'outils et leurs bonnes pratiques associées.</p>
+
+<p>Il est composé de 3 outils :</p>
+
+<p><img class="center" src="http://blog.roddet.com/images/devoxxfr13/frontend/yeoman-tools.jpg"></p>
+
+<ul>
+<li><a href="https://github.com/yeoman/yo">Yo</a> : outil permettant de générer le squelette d'un projet concentrant les bonnes pratiques à appliquer à une application web.</li>
+<li><a href="http://gruntjs.com/">Grunt</a> : outil permettant de lancer les tâches (minification des fichiers javascript, packaging, etc...)</li>
+<li><a href="https://github.com/twitter/bower">Bower</a> : gestionnaire de package pour le web. Il va s'occuper de gérer les dépendances de l'application web. Il permet aussi de récupérer les dépendances transitives.</li>
+</ul>
+
+
+<h3>Installer Yeoman</h3>
+
+<p>En pré-requis, il faut installer <a href="http://nodejs.org/">Nodejs</a>.
+Pour installer Yeoman, il faut lancer l'installation des 3 outils cités précedemment via la commande :
+<code>
+npm install -g yo grunt-cli bower
+</code>
+<a href="https://npmjs.org/">NPM</a> est le gestionnaire de packages de Nodejs. La commande "npm install" permet de lancer l'installation d'un package. L'option "-g" signifie que l'installation sera globale, c'est à dire non spécifique au projet.</p>
+
+<h3>Générer le squelette d'un projet</h3>
+
+<p>Pour générer une application web prête à l'emploi, il suffit de lancer la commande :
+<code>
+yo webapp
+</code>
+Et on obtient le résultat suivant en répondant "Y" à toutes les questions :
+```</p>
+
+<pre><code>     _-----_
+    |       |
+    |--(o)--|   .--------------------------.
+   `---------´  |    Welcome to Yeoman,    |
+    ( _´U`_ )   |   ladies and gentlemen!  |
+    /___A___\   '__________________________'
+     |  ~  |
+   __'.___.'__
+ ´   `  |° ´ Y `
+
+Out of the box I include HTML5 Boilerplate, jQuery and Modernizr.
+Would you like to include Twitter Bootstrap for Sass? (Y/n) Y
+Would you like to include RequireJS (for AMD support)? (Y/n) Y
+   create Gruntfile.js
+   create package.json
+   create .gitignore
+   create .gitattributes
+   create .bowerrc
+   create component.json
+   create .jshintrc
+   create .editorconfig
+   create app/favicon.ico
+   create app/404.html
+   create app/robots.txt
+   create app/.htaccess
+   create app/scripts/vendor/bootstrap.js
+   create app/styles/main.scss
+   create app/scripts/app.js
+   create app/index.html
+   create app/scripts/main.js
+   create app/scripts/hello.coffee
+   invoke   mocha:app
+   create     test/index.html
+   create     test/lib/chai.js
+   create     test/lib/expect.js
+   create     test/lib/mocha/mocha.css
+   create     test/lib/mocha/mocha.js
+   create     test/spec/test.js
+
+I'm all done. Just run npm install &amp;&amp; bower install to install the required dependencies.
+</code></pre>
+
+<p>```</p>
+
+<p>Un squelette de projet est ainsi généré.</p>
+
+<h3>Récupérer tous les packages (dépendances)</h3>
+
+<p><code>
+npm install &amp;&amp; bower install
+</code>
+On obtient le téléchargement d'une partie d'internet.</p>
+
+<p>```
+.....
+npm http GET https://registry.npmjs.org/timespan
+npm http GET https://registry.npmjs.org/graceful-fs
+npm http GET https://registry.npmjs.org/inherits
+npm http GET https://registry.npmjs.org/winston
+npm http GET https://registry.npmjs.org/cli/0.4.3
+npm http GET https://registry.npmjs.org/minimatch
+npm http GET https://registry.npmjs.org/qs/0.5.1
+npm http GET https://registry.npmjs.org/formidable/1.0.11
+npm http GET https://registry.npmjs.org/crc/0.2.0
+npm http GET https://registry.npmjs.org/cookie/0.0.4
+....</p>
+
+<p>```
+En tant que développeur Java EE, on est habitué :)</p>
+
+<h3>Anatomie d'une application web</h3>
+
+<p>A ce stade on se retrouve avec 3 répertoires à la racine :</p>
+
+<ul>
+<li>/app : l'application web(root de l'application)</li>
+<li>/test : les tests</li>
+<li>/node_modules : les packages téléchargés par NPM principalement pour exécuter les tâches Grunt.</li>
+</ul>
+
+
+<p>Et quelques fichiers de configurations :</p>
+
+<ul>
+<li><p>.bowerrc : fichier de configuration de bower. Il contient :
+<code>javascript
+{
+  "directory": "app/components"
+}
+</code>
+Le paramètre "directory" indique l'emplacement des packages téléchargés par bower.</p></li>
+<li><p>Gruntfile.js : fichier de configuration de Grunt. Il contient le paramétrage des différentes tâches.</p></li>
+<li><p>.jshintrc : paramétrage de <a href="http://www.jshint.com/">JSHint</a>, outil de vérification de la qualité du code.</p></li>
+<li><p>component.json : configuration bower du projet.
+<code>javascript
+{
+"name": "test",
+"version": "0.0.0",
+"dependencies": {
+  "sass-bootstrap": "~2.3.0",
+  "requirejs": "~2.1.4",
+  "modernizr": "~2.6.2",
+  "jquery": "~1.9.1"
+},
+"devDependencies": {}
+}
+</code>
+Ce fichier comporte les dépendances du projet. Attention Bower se charge de récupérer les packages mais ne pas modifier l'application pour utiliser la librairie.</p></li>
+<li><p>package.json : identité du projet et dépendances de build.
+<code>
+{
+"name": "test",
+"version": "0.0.0",
+"dependencies": {},
+"devDependencies": {
+  "grunt": "~0.4.0",
+  "grunt-contrib-copy": "~0.4.0",
+  "grunt-contrib-concat": "~0.1.2",
+  "grunt-contrib-coffee": "~0.4.0",
+  "grunt-contrib-uglify": "~0.1.1",
+  "grunt-contrib-compass": "~0.1.2",
+  "grunt-contrib-jshint": "~0.1.1",
+  "grunt-contrib-cssmin": "~0.4.1",
+  "grunt-contrib-connect": "0.1.2",
+  "grunt-contrib-clean": "0.4.0",
+  "grunt-contrib-htmlmin": "0.1.1",
+  "grunt-contrib-imagemin": "0.1.2",
+  "grunt-contrib-livereload": "0.1.1",
+  "grunt-bower-hooks": "~0.2.0",
+  "grunt-usemin": "~0.1.9",
+  "grunt-regarde": "~0.1.1",
+  "grunt-requirejs": "~0.3.2",
+  "grunt-mocha": "~0.2.2",
+  "grunt-open": "~0.2.0",
+  "matchdep": "~0.1.1"
+},
+"engines": {
+  "node": "&gt;=0.8.0"
+}
+}
+</code></p></li>
+</ul>
+
+
+<p>C'est un peu dommage de n'avoir pas fusionné le fichier package.json et component.json (même structure, contenu similaire). Surtout qu'il est possible de configurer bower pour qu'il utilise un autre fichier que "component.json" donc éventuellement "package.json". Nous allons peut-être l'avoir dans une futur version de Yeoman ou bien il y a une raison pour cette distinction :)</p>
+
+<p>Le nommage des numéros de version obéit à des règles du <a href="http://semver.org/">semantic versionning</a>.
+On peut remarquer l'utilisation du caractère "~" dans certains numéros de version.
+La version ~0.4.0 permet de récupérer la version 0.4.0 d'une librairie ou la version mineure la plus à jour (0.4.1 par exemple).</p>
+
+<p>Ce qu'il faut également savoir avec NPM et Bower est qu'ils génèrent un dépôt par projet par défaut, contrairement par exemple à Maven.</p>
+
+<h2>Saas</h2>
+
+<p><img class="left" src="http://blog.roddet.com/images/devoxxfr13/frontend/sass.jpg">
+CSS permet d'appliquer des mises en forme à un document HTML. Malgré l'importance de ce language, CSS a d'énormes lacunes évidentes : impossible d'utiliser des variables, impossible d'effectuer des traitements, etc...</p>
+
+<p><a href="http://sass-lang.com/">Sass</a> est une extension de CSS3 ayant l'objectif de combler les lacunes de CSS.
+La syntaxe CSS est entièrement compatible avec Sass.
+Le code Sass est compilé pour obtenir le CSS cible qui sera interprété par un navigateur.</p>
+
+<p>Un fichier Sass est un fichier ayant l'extension .scss (nouveau) ou .sass (ancien).</p>
+
+<p>La page d'accueil du site <a href="http://sass-lang.com/">http://sass-lang.com/</a> présente un comparatif de code équivalent entre CSS et Sass qui permet de voir rapidement l'intérêt.</p>
+
+<p><img class="center" src="http://blog.roddet.com/images/devoxxfr13/frontend/sass_1.jpg"></p>
+
+<p><img class="center" src="http://blog.roddet.com/images/devoxxfr13/frontend/sass_2.jpg"></p>
+
+<p>Le projet généré par Yo précédemment possède une tâche Grunt qui compile "en live" nos modifications, ce qui rend complètement transparente cette phase de compilation.</p>
+
+<h2>Démonstration bower</h2>
+
+<p>Bower vient avec des outils permettant de rechercher un package, d'obtenir des informations sur celui-ci, de récupérer une dépendance etc...
+Voici une démonstration :</p>
+
+<h3>Rechercher une librairie dans le dépôt central</h3>
+
+<p><code>
+bower search jquery
+</code>
+On obtient :
+```
+Search results:</p>
+
+<ul>
+<li>jquery git://github.com/components/jquery.git</li>
+<li>jquery-ui git://github.com/components/jqueryui</li>
+<li>jquery.cookie git://github.com/carhartl/jquery-cookie.git</li>
+<li>jquery-placeholder git://github.com/mathiasbynens/jquery-placeholder.git</li>
+<li>jquery-waypoints git://github.com/imakewebthings/jquery-waypoints.git</li>
+<li>jquery-pjax git://github.com/defunkt/jquery-pjax.git</li>
+<li>jquery-file-upload git://github.com/blueimp/jQuery-File-Upload.git</li>
+<li>jasmine-jquery git://github.com/velesin/jasmine-jquery
+...
+```
+On remarque immédiatement que les librairies accessibles via Bower sont en fait des dépôts Git. A noter que ces dépôts sont différents de ceux hébergeant les sources des différents projets.</li>
+</ul>
+
+
+<h3>Lister les différentes versions d'un package</h3>
+
+<p><code>
+bower info jquery-ui
+</code>
+La liste des tags au sens Git disponibles s'affichent.
+```
+jquery-ui</p>
+
+<p>  Versions:</p>
+
+<pre><code>- 1.10.2
+- 1.10.1
+- 1.10.0
+- 1.9.2
+- 1.9.1
+- 1.9.0
+- 1.8.23
+</code></pre>
+
+<p>```</p>
+
+<h3>Installer une bibliothèque</h3>
+
+<p><code>
+bower install --save backbone underscore
+</code>
+Bower clone le dépôt qui contient le livrable.</p>
+
+<h3>Ajouter une librairie à Bower</h3>
+
+<p><code>
+bower register foo git://...
+</code>
+Cette commande permet de déclarer sa librairie dans Bower.
+Aucune règle particulière pour ajouter une librairie. Dès que celle-ci est ajoutée, elle accessible de tous. Il est cependant plus délicat de supprimer une librairie (il faut rentrer en contact avec les administrateurs).</p>
+
+<h2>RequireJS</h2>
+
+<p><img class="left" src="http://blog.roddet.com/images/devoxxfr13/frontend/requirejs.png">
+<a href="http://requirejs.org/">RequireJS</a> perment de charger à la demande et de cloisonner des scripts Javascript.</p>
+
+<p>Elle est l'implémentation d'<a href="https://github.com/amdjs/amdjs-api/wiki/AMD">AMD</a> la plus répandue.</p>
+
+<p>Pour intégrer RequireJS dans un projet, il faut modifier le fichier HTML principal avec la balise script :
+```</p>
+
+<script data-main="scripts/main" src="...requirejs.js"></script>
+
+
+<p>```
+L'attribut "data-main" permet de désigner le script principal qui sera exécuté en premier.</p>
+
+<p>RequireJS introduit la notion de module.</p>
+
+<p>La fonction "define" permet de créer un module.</p>
+
+<p>La fonction "require" permet de déclarer des dépendances.</p>
+
+<p>Plus de détails <a href="http://requirejs.org/docs/api.html">ici</a>.</p>
+
+<h2>Handlebars</h2>
+
+<p><img class="left" src="http://blog.roddet.com/images/devoxxfr13/frontend/handlebars_logo.jpg">
+<a href="http://handlebarsjs.com/">Handlebars</a> est un moteur de templating côté client.</p>
+
+<p>Il permet de créer des fichiers HTML réutilisable.</p>
+
+<p>Exemple de template :
+<img src="http://blog.roddet.com/images/devoxxfr13/frontend/handlebars_template.jpg"></p>
+
+<h2>Backbone.js</h2>
+
+<p><img class="left" src="http://blog.roddet.com/images/devoxxfr13/frontend/backbone.jpg">
+<a href="http://backbonejs.org/">Backbone.js</a> est une librairie qui permet de structurer une application avec une architecture MVC.</p>
+
+<p>Exemple de contrôleur :
+``` javascript
+var MainRouterClass = Backbone.Router.extend({</p>
+
+<pre><code>    routes: {
+        "!/hello": "sayHello",
+        "!/listTechnos": "listTechnos"
+    },
+
+    initialize: function () {
+        MainRouterClass.__super__.initialize.apply(this, arguments);
+        // Starting urls handlings
+        // See http://backbonejs.org/#Router
+        Backbone.history.start();
+    },
+
+    sayHello: function(){
+        console.log("hello has been called !");
+        require(["views/HelloView"], function(HelloView){
+            window.view = new HelloView({ el: $(".hero-unit") }).render();
+        });
+    },
+
+    listTechnos: function(){
+        require(["views/TechnoListingView"], function(TechnoListingView){
+            window.view = new TechnoListingView({ el: $(".hero-unit") }).render();
+        });
+    }
+});
+</code></pre>
+
+<p><code>
+Exemple de modèle (il existe 2 catégories : les modèles et les collections.) :
+</code> javascript
+var TechnoClass = Backbone.Model.extend({</p>
+
+<pre><code>    defaults: {
+        type: 1
+    },
+
+    initialize: function(attributes, options){
+        TechnoClass.__super__.initialize.call(this,attributes, options);
+    }
+
+    // Aliases
+});
+</code></pre>
+
+<p><code>
+Exemple de vue :
+</code> javascript
+ var HelloViewClass = Backbone.View.extend({</p>
+
+<pre><code>    events: {
+        "click #sayHelloBtn": "sayHello"
+    },
+
+    initialize: function(){
+        HelloViewClass.__super__.initialize.apply(this, arguments);
+    },
+
+    render: function(){
+        this.$el.html(viewTemplate({ who: "devoxxFr" }));
+
+        return this;
+    },
+
+    sayHello: function(){
+        console.log("Hello world ! "+new Date());
+    }
+
+});
+</code></pre>
+
+<p>```</p>
+
+<h2>Rivetsjs</h2>
+
+<p><img class="center" src="http://blog.roddet.com/images/devoxxfr13/frontend/rivets.jpg">
+<a href="http://rivetsjs.com/">Rivetsjs</a> est indépendant de Backbone.js.</p>
+
+<p>Il permet de créer un binding unidirectionnel ou bi-directionnel entre un modèle (Backbone par exemple) et un élément du DOM, de formatter les données etc...</p>
+
+<h2>Astuces Google Chrome</h2>
+
+<h4>Arrêter automatiquement l'exécution lors d'une exception</h4>
+
+<p><img class="center" src="http://blog.roddet.com/images/devoxxfr13/frontend/chrome1.png"></p>
+
+<h4>Afficher un élément du DOM par id ("main" par exemple)</h4>
+
+<p><img class="center" src="http://blog.roddet.com/images/devoxxfr13/frontend/chrome2.png"></p>
+
+<h4>Rechercher un élément du DOM par id ("content" par exemple)</h4>
+
+<p><img class="center" src="http://blog.roddet.com/images/devoxxfr13/frontend/chrome3.png">
+<img class="center" src="http://blog.roddet.com/images/devoxxfr13/frontend/chrome4.png"></p>
+
+<h2>Le code sur Github</h2>
+
+<p><a href="https://github.com/fcamblor/technostore/tree/devoxxfr13">https://github.com/fcamblor/technostore/tree/devoxxfr13</a></p>
+
+<h2>Quelques anglicismes de l'animateur</h2>
+
+<p>Nous le savons, nous sommes envahis de mots anglais dans notre métier. Nous passons notre temps à lire des ressources en anglais et cela s'est particulièrement senti auprès de l'animateur.
+Voici un top 5 des expressions qui m'ont marqué (soit pour leurs fréquences, soit pour leurs originalités) :)</p>
+
+<ol>
+<li>"out of the box"</li>
+<li>"baby step"</li>
+<li>"bootstraper"</li>
+<li>"draw back"</li>
+<li>"overhead"</li>
+</ol>
+
+
+<h2>Bilan</h2>
+
+<p>La session a été très intéressante. Beaucoup de concepts/outils ont été abordés et cela nous a donné un panorama de ce qui se fait actuellement côté frontend.</p>
+
+<p>Bravo à Frédéric qui a tout de même tenu 3h de livecoding !</p>
+]]></content>
+  </entry>
+  
+</feed>

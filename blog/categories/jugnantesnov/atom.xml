@@ -1,0 +1,676 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: jugnantesnov | Rossi Oddet]]></title>
+  <link href="http://roddet.github.com/blog/categories/jugnantesnov/atom.xml" rel="self"/>
+  <link href="http://roddet.github.com/"/>
+  <updated>2014-05-21T01:43:46-04:00</updated>
+  <id>http://roddet.github.com/</id>
+  <author>
+    <name><![CDATA[Rossi Oddet]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Soirée JUG Nantes : Du SQL au NoSQL en moins d'une heure (Partie 2)]]></title>
+    <link href="http://roddet.github.com/2013/11/nantesjug-novembre-part2/"/>
+    <updated>2013-11-21T09:30:00-05:00</updated>
+    <id>http://roddet.github.com/2013/11/nantesjug-novembre-part2</id>
+    <content type="html"><![CDATA[<p>Vous pouvez retrouvez la première partie de cet article <a href="http://blog.roddet.com/2013/11/nantesjug-novembre-part1/">ici</a>.</p>
+
+<p>Le 04 novembre dernier, <a href="https://twitter.com/tgrall">Tugdual Grall</a> et <a href="https://twitter.com/dadoonet">David Pilato</a> ont offert au public nantais une preview d'une session qu'ils allaient donner quelques jours plus tard à <a href="http://www.devoxx.be/dv13-david-pilato.html?presId=3281">Devoxx Belgique</a>. Ils vont montrer, sur la base d'une application exemple, une migration du SQL au monde du NoSQL.</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-david-pilato-tugdual-grall.jpg"></p>
+
+<h2>Pourquoi passer du SQL au NoSQL ?</h2>
+
+<p><a href="https://twitter.com/tgrall">Tugdual</a> et <a href="https://twitter.com/dadoonet">David</a> vont commencer la session par présenter <em>LA</em> raison qui pourrait vous convaincre de migrer d'une base SQL à une base NoSQL : la scalabilité horizontale.</p>
+
+<p>Scalabilité horizontale sont les mots à la mode pour désigner la caractéristique d'un système capable de supporter une grande charge. Pour augmenter la puissance d'un système, sa stratégie consiste à multiplier le nombre de machines de petites puissances. Elle se positionne en opposition à la scalabilité verticale qui prône l'augmentation des capacités d'une machine pour répondre à des besoins de charge croissants.</p>
+
+<p>La scalabilité horizontale s'impose de plus en plus comme <em>LA</em> solution pour relever le défi des systèmes performants à fort trafic.</p>
+
+<p>Peut-on effectuer la scalabilité horizontale avec une base de données relationnelle ?</p>
+
+<p>La réponse est oui. Ca s'appelle mettre en place un <em>cluster de base de données</em>. Tug et David vont demander aux participants combien avaient déjà configuré un <em>cluster</em> de bases de données relationnelles ? Je n'ai vu qu'une seule main levée de là où j'étais assis. Cette opération requiert des compétences assez pointues pour obtenir un système fonctionnel.</p>
+
+<p>Et le NoSQL dans tout ça ?</p>
+
+<p>Tug et David vont promettre que cette opération qui nécessitait la présence d'un administrateur de bases de données très expérimenté va être accessible aux développeurs. Cette promesse sera accompagnée d'une démonstration :</p>
+
+<ul>
+<li>du passage d'un modèle dit <em>legacy</em> à un modèle moderne <em>REST</em></li>
+<li>du passage d'un modèle SQL à un modèle NoSQL</li>
+<li>de distribution de données sur plusieurs <em>noeuds</em></li>
+<li>de la mise en place d'une recherche <em>full text</em> sur des données distribuées</li>
+<li>de visualisation des données distribuées suivant des axes configurables</li>
+</ul>
+
+
+<p>L'intégralité des sources de la démonstration est accessible dans le dépôt Github <a href="https://github.com/dadoonet/sql2nosql/">sql2nosql</a>. La version des sources correspondante à une étape est accessible via les branches du dépôt.</p>
+
+<p>A partir de ce dépôt, je vais effectuer toutes les étapes sur ma machine.</p>
+
+<p>Allons y !</p>
+
+<h2>Récupération des sources</h2>
+
+<p>Je vais commencer par récupérer le contenu de la branche <em>01-legacy/start</em>.</p>
+
+<p>Pour ceux qui voudraient faire autant et qui ne sont pas familier de Github, voici quelques alternatives :</p>
+
+<ul>
+<li><p>Télécharger le Zip des sources de la branche <a href="https://github.com/dadoonet/sql2nosql/archive/01-legacy/start.zip">ici</a>.</p></li>
+<li><p>Installer <a href="http://git-scm.com/">Git</a> et exécuter les commandes</p></li>
+</ul>
+
+
+<p><code>sh
+git clone https://github.com/dadoonet/sql2nosql.git
+git checkout 01-legacy/start
+</code></p>
+
+<ul>
+<li><p>Installer le client officiel correspondant à votre OS : <a href="http://windows.github.com/">Windows</a>, <a href="http://mac.github.com/">Mac</a>. Pour linux ? Vous connaissez la chanson, si vous êtes sous linux c'est que vous ne jurez que par le <em>terminal</em>, faites comme d'habitude utiliser la ligne de commande ;) Il existe des clients graphiques non officiels mais je n'ai rien à vous recommander, j'ai pris l'habitude de la ligne de commande pour Git même si j'utilise un client graphique quand il s'agit de SVN. Il n'y a pas de raison particulière, question d'habitude.</p></li>
+<li><p>Installer <a href="http://subversion.apache.org/">Subversion</a> et exécuter la commande suivante pour récupérer l'intégralité des sources. Vous pouvez aussi passer par des clients graphiques comme <a href="http://tortoisesvn.net/">TortoiseSVN</a>. Les sources se trouveront dans le répertoire <em>sql2nosql/branches/01-legacy</em>.</p></li>
+</ul>
+
+
+<p><code>sh
+svn co https://github.com/dadoonet/sql2nosql
+</code></p>
+
+<ul>
+<li>Utiliser votre IDE préféré <a href="http://eclipse.org/">Eclipse</a>, <a href="https://netbeans.org/">Netbeans</a>, <a href="http://www.jetbrains.com/idea/">Intellij</a>...</li>
+</ul>
+
+
+<h2>Exécution de l'application</h2>
+
+<p>L'architecture de l'application repose sur <a href="http://maven.apache.org/">Maven</a>. J'ai utilisé la version 3.1.1 pour écrire cet article.</p>
+
+<p>Pour exécuter l'application :</p>
+
+<ul>
+<li><p>Si vous êtes sous linux ou Mac, lancer le script <code>run.sh</code></p></li>
+<li><p>Si vous êtes sous Windows, lancer les commandes :</p></li>
+</ul>
+
+
+<p><code>sh
+mvn clean install
+cd demo-webapp
+mvn jetty:run
+</code></p>
+
+<p>Si l'application ne parvient pas à récupérer le plugin Maven pour Jetty.
+Créer/compléter la configuration du fichier <code>~/.m2/settings.xml</code> dans la section <code>pluginGroups</code> comme ceci :</p>
+
+<p>``` xml
+<settings>
+  <pluginGroups></p>
+
+<pre><code>&lt;pluginGroup&gt;org.eclipse.jetty&lt;/pluginGroup&gt;
+</code></pre>
+
+<p>  </pluginGroups>
+</settings>
+```</p>
+
+<p>Une fois l'application démarrée, vous pouvez accéder à la page d'accueil via l'adresse : <code>http://localhost:8080</code>. Elle affiche une liste de personnes.</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-1.png"></p>
+
+<p>En cliquant sur une personne, vous avez accès aux détails de la personne sélectionnée.</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-2.png"></p>
+
+<h2>L'application <em>legacy</em></h2>
+
+<p>Cette application se veut <em>legacy</em>. Elle est pilotée par 2 Servlet:</p>
+
+<ul>
+<li><a href="https://github.com/dadoonet/sql2nosql/blob/01-legacy/start/demo-webapp/src/main/java/fr/pilato/demo/sql2nosql/webapp/HomeServlet.java">HomeServlet</a>, gestionnaire de la page d'accueil.</li>
+<li><a href="https://github.com/dadoonet/sql2nosql/blob/01-legacy/start/demo-webapp/src/main/java/fr/pilato/demo/sql2nosql/webapp/PersonServlet.java">PersonServlet</a>, pilote de la page de détail d'une personne.</li>
+</ul>
+
+
+<p>Le mapping URL/servlet configurés dans le fichier <a href="https://github.com/dadoonet/sql2nosql/blob/01-legacy/start/demo-webapp/src/main/webapp/WEB-INF/web.xml">web.xml</a>.</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-3.png"></p>
+
+<p>Cette application génère l'intégralité de ses pages côté serveur. Les nouvelles générations d'applications Web encouragent :</p>
+
+<ul>
+<li><p>un Web avec de plus en plus d'intelligence côté navigateur.</p></li>
+<li><p>un Web qui pense "application web" avec la même phylosophie qu'une application mobile. Une application qui s'installe dans le navigateur.</p></li>
+<li><p>un Web qui sépare les univers <em>frontend</em> et <em>backend</em>. Il n'est plus question de devoir faire un seul choix technologique pour couvrir l'intégralité de votre besoin. Vous choisissez le meilleur outil pour réaliser votre <em>frontend</em> et vous faites autant pour votre <em>backend</em>. Les deux univers communiquent via HTTP, un protocole particulièrement utile pour faire du web ;)</p></li>
+</ul>
+
+
+<p>En phase avec ces principes, la prochaine étape va consister transformer l'existant en application <em>backend</em> exposant des services HTTP/REST.</p>
+
+<h2><em>RESTification</em> de l'application <em>legacy</em></h2>
+
+<p>Pour passer à une architecture REST, commençons par quelque chose de facile : se débarrasser des <em>Servlet</em> de l'application. Supprimer :</p>
+
+<ul>
+<li>Les classes <em>PersonServlet</em> et <em>HomeServlet</em>.</li>
+<li>Les fichiers suivants qui ne servent plus à rien <code>demo-webapp/src/main/java/fr/pilato/demo/sql2nosql/webapp/ApplicationInitializer.java</code> et <code>demo-webapp/src/main/java/fr/pilato/demo/sql2nosql/webapp/PersonService.java</code>.</li>
+</ul>
+
+
+<p>L'objectif à présent avec être de réaliser des services REST. Voici les services à réaliser :</p>
+
+<p>```
+GET         /api/1/person/  => Récupérer toutes les personnes</p>
+
+<p>GET         /api/1/person/{id}  => Récupérer une personne avec l'identifiant {id}.</p>
+
+<p>PUT         /api/1/person/  => Créer une nouvelle personne</p>
+
+<p>PUT         /api/1/person/{id}  => Mettre à jour la personne ayant l'identifiant {id}</p>
+
+<p>DELETE  /api/1/person/{id}  => Supprimer la personne ayant l'identifiant {id}</p>
+
+<p>POST        /api/1/person/_search => Récupérer des personnes suivant un critière</p>
+
+<p>POST        /api/1/person/_init => Initialiser la base de données avec des données exemples
+```</p>
+
+<p>Les puristes du REST pourront ne pas être d'accord avec cette API (l'utilisation de POST pour effectuer une recherche par critères ou encore l'utilisation de PUT au lieu de POST pour créer une nouvelle personne) mais ce n'est pas le sujet, nous allons nous concentrer sur le NoSQL.</p>
+
+<p>L'application aura l'architecture suivante :</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-4.png"></p>
+
+<p>La <em>RESTification</em> sera réalisée avec <a href="http://docs.spring.io/spring/docs/4.0.x/spring-framework-reference/html/mvc.html">Spring MVC</a>.</p>
+
+<p>J'ai mis à jour les fichiers :</p>
+
+<ul>
+<li><p><code>pom.xml</code> à la racine du projet comme <a href="https://raw.github.com/dadoonet/sql2nosql/02-restify/begin/pom.xml">ceci</a></p></li>
+<li><p><code>demo-webapp/pom.xml</code> comme <a href="https://raw.github.com/dadoonet/sql2nosql/02-restify/begin/demo-webapp/pom.xml">ceci</a></p></li>
+<li><p><code>demo-webapp/src/main/webapp/WEB-INF/web.xml</code> pour qu'il ressemble à celui là : <a href="https://raw.github.com/dadoonet/sql2nosql/02-restify/end/demo-webapp/src/main/webapp/WEB-INF/web.xml">web.xml</a>.</p></li>
+</ul>
+
+
+<p>J'ai créé le fichier <code>demo-webapp/src/main/java/fr/pilato/demo/sql2nosql/webapp/PersonService.java</code> avec le contenu suivant <a href="https://github.com/dadoonet/sql2nosql/blob/02-restify/end/demo-webapp/src/main/java/fr/pilato/demo/sql2nosql/webapp/PersonService.java">PersonService.java</a>.</p>
+
+<p>Redémarrage de l'application comme précédemment.</p>
+
+<p>Test du service de récupération de toutes les personnes en accédant à la page suivante via un navigateur moderne : <code>http://localhost:8080/api/1/person/</code>. J'obtiens :</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-4a.png"></p>
+
+<p>Le résultat <code>[]</code> représente un tableau vide.</p>
+
+<p>Pour initialiser la base de données, il faut utiliser le service</p>
+
+<p><code>
+POST        /api/1/person/_init
+</code></p>
+
+<p>Pour effectuer, une requête avec le verbe HTTP POST, vous avez plusieurs possibilités. Le plus simple en environnement Unix est d'utiliser la commande <code>curl</code> comme ceci :</p>
+
+<p><code>
+curl -XPOST http://localhost:8080/api/1/person/_init
+</code></p>
+
+<p>Sinon vous pouvez installer des extensions pour vos navigateurs comme par exemple <a href="https://chrome.google.com/webstore/detail/simple-rest-client/fhjcajmcbmldlhcimfajhfbgofnpcjmb">Simple REST Client</a> pour Chrome ou encore <a href="https://addons.mozilla.org/en-US/firefox/addon/restclient/">RESTClient</a> pour Firefox.</p>
+
+<p>Une fois les données initialisées, la requête <code>http://localhost:8080/api/1/person/</code> donne le résultat suivant :</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-4b.png"></p>
+
+<p>Il s'agit un flux JSON représentant 100 personnes.</p>
+
+<p>Il est possible de tester les autres services développés avec ce même principe avec <code>curl</code> ou encore le super outil que vous avez installé.</p>
+
+<h2>Couchbase en action</h2>
+
+<p>Maintenant que la partie Web du <em>backend</em> fonctionne, nous allons commencer à quitter le monde SQL en faisant en sorte d'utiliser une base NoSQL. L'heureux élu sera <a href="http://www.couchbase.com/">Couchbase</a>.</p>
+
+<p><a href="http://www.couchbase.com/">Couchbase</a> est une base NoSQL orienté document. Il stocke les données sous la forme "clé-valeur". La clé est une chaine de caractères et la valeur est un document JSON sans aucun schéma pré-défini.</p>
+
+<p>L'architecture de l'application va être modifiée comme ceci :</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-5.png"></p>
+
+<p>J'ai téléchargé la dernière version (2.2.0) <a href="http://www.couchbase.com/download">Couchbase Community Edition</a>.
+Je décompresse l'archive, l'installe puis lance <a href="http://www.couchbase.com/">Couchbase</a>.</p>
+
+<p>J'accède à la console d'administration : <code>http://127.0.0.1:8091/index.html</code> :</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-5a.png"></p>
+
+<p>Et là, sans aucune autre documentation, je me laisse guider en cliquant sur <code>SETUP</code>.</p>
+
+<p>A la page suivante, j'ai laissé les choix par défaut m'invitant à créer un nouveau cluster. J'ai modifié le paramètre <code>Per Server RAM Quota</code> avec la valeur 512 MB au lieu des 3 GB par défaut sur ma machine.</p>
+
+<p>Je laissé les paramètres par défaut et saisis un identifiant/mot de passe administrateur.</p>
+
+<p>Et là, j'ai l'écran suivant :</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-5b.png"></p>
+
+<p>J'ai du rouge. En tant que développeur Java, je suis éduqué pour y voir des erreurs. Je me lance alors dans une tentative de décryptage des couleurs de l'interface d'administration :</p>
+
+<ul>
+<li><p>Pourquoi la phrase <em>Total Allocated (512 MB)</em> est en rouge ? L'indicateur de progression est vert, la phrase <em>Unused 512 MB</em> est en vert. Je conclue qu'il s'agit probablement d'un rouge marquant la criticité d'une ressource et non d'une erreur.</p></li>
+<li><p>Les mots <em>Usable Free Space (O B)</em> en rouge m'inquiète un peu plus. Là encore, j'essai de me rassurer en me disant que <a href="http://www.couchbase.com/">Couchbase</a> doit probablement réserver de l'espace disque progressivement et comme je n'ai encore aucune donnée, aucun espace disque n'a encore été réservé.</p></li>
+<li><p>La 3ème indication en rouge est <em>Servers Down : 1</em>. J'ai souvent de l'imagination pour trouver les bons côtés des choses mais là, je n'ai aucune inspiration qui me vient. Je dois avoir un problème !</p></li>
+</ul>
+
+
+<p>Alors je clique sur ce message <em>Servers Down : 1</em>.</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-5c.png"></p>
+
+<p>Je décide de laisser en l'état et de compléter l'application pour voir si le client Couchbase a des difficultés à se connecter avec ce <em>Server Down : 1</em> ;)</p>
+
+<p>Pour communiquer avec Couchbase depuis l'application, nous allons utiliser la bibliothèque <a href="http://files.couchbase.com/maven2/couchbase/couchbase-client/">couchbase-client</a> accessible via le repository Maven de Couchbase <a href="http://files.couchbase.com/maven2/">http://files.couchbase.com/maven2/</a>. Il faudrait donc modifier le fichier <code>demo-webapp/pom.xml</code> comme <a href="https://raw.github.com/dadoonet/sql2nosql/03-couchbase-persistence/begin/demo-webapp/pom.xml">ceci</a> pour  ajouter la dépendance vers la librairie <a href="http://files.couchbase.com/maven2/couchbase/couchbase-client/">couchbase-client</a>.</p>
+
+<p>Ce client est simple d'utilisation, voici un exemple d'utilisation :</p>
+
+<p>``` java
+// Création de la liste des différents noeuds Couchbase
+List<URI> nodes = new ArrayList<URI>();
+nodes.add(URI.create("http://127.0.0.1:8091/pools"));</p>
+
+<p>// Création du client
+CouchbaseClient client = new CouchbaseClient(nodes, "default", "");</p>
+
+<p>// Récupération d'une donnée dont la clé est "MA_CLE"
+String person = (String)client.get("MA_CLE");
+```</p>
+
+<p>Créer le fichier <code>demo-webapp/src/main/java/fr/pilato/demo/sql2nosql/webapp/util/ConnectionManager.java</code> avec <a href="https://raw.github.com/dadoonet/sql2nosql/03-couchbase-persistence/end/demo-webapp/src/main/java/fr/pilato/demo/sql2nosql/webapp/util/ConnectionManager.java">ce contenu</a>.</p>
+
+<p>Créer le fichier <code>demo-webapp/src/main/java/fr/pilato/demo/sql2nosql/webapp/util/KeyUtil.java</code> avec <a href="https://raw.github.com/dadoonet/sql2nosql/03-couchbase-persistence/end/demo-webapp/src/main/java/fr/pilato/demo/sql2nosql/webapp/util/KeyUtil.java">ce contenu</a></p>
+
+<p>Créer le fichier <code>demo-webapp/src/main/java/fr/pilato/demo/sql2nosql/webapp/util/ViewUtil.java</code> avec <a href="https://raw.github.com/dadoonet/sql2nosql/03-couchbase-persistence/end/demo-webapp/src/main/java/fr/pilato/demo/sql2nosql/webapp/util/ViewUtil.java">ce contenu</a></p>
+
+<p>Compléter le fichier <code>demo-webapp/src/main/java/fr/pilato/demo/sql2nosql/webapp/PersonService.java</code> <a href="https://raw.github.com/dadoonet/sql2nosql/03-couchbase-persistence/end/demo-webapp/src/main/java/fr/pilato/demo/sql2nosql/webapp/PersonService.java">ce contenu</a>.</p>
+
+<p>Redémarrer l'application.</p>
+
+<p>J'obtiens une jolie stacktrace. Ah voilà quelque chose qui me parle !</p>
+
+<p>```
+Caused by: org.springframework.beans.BeanInstantiationException: Could not instantiate bean class [fr.pilato.demo.sql2nosql.webapp.PersonService]: Constructor threw exception; nested exception is com.couchbase.client.vbucket.config.ConfigParsingException: Number of buckets must be a power of two, > 0 and &lt;= 65536</p>
+
+<pre><code>at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:163)
+at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:87)
+at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1004)
+... 54 more
+</code></pre>
+
+<p>Caused by: com.couchbase.client.vbucket.config.ConfigParsingException: Number of buckets must be a power of two, > 0 and &lt;= 65536</p>
+
+<pre><code>at com.couchbase.client.vbucket.config.DefaultConfigFactory.parseEpJSON(DefaultConfigFactory.java:135)
+</code></pre>
+
+<p>```</p>
+
+<p>Euh finalement, ça ne me parle pas tant que ça ;)</p>
+
+<p>Je porte mon attention sur le message d'erreur <em>Number of buckets must be a power of two, > 0 and &lt;= 65536</em>. Après plusieurs investigations dans différents forums <a href="http://www.couchbase.com/forums/thread/number-buckets-must-be-power-two-0-and-0">là</a>, <a href="http://www.couchbase.com/forums/thread/number-buckets-must-be-power-two">là</a>, ou encore <a href="http://www.couchbase.com/issues/browse/MB-8332">là</a>. Je croise même un message de <a href="tugdual_grall">Tugdual</a> dans ces fils de discussion ;)</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-5d.png"></p>
+
+<p>Après avoir cliqué sur tous les menus et tous les boutons de l'interface d'administration, je ne parviens toujours pas à avancer. J'ai réussi au passage à me débarrasser du message d'avertissement <em>Fail Over Warning : At least two servers are required to provide replication!</em> en supprimant et recréant un <em>bucket</em>. Je comprends que j'ai eu ce message d'erreur car lors de l'initialisation de Couchbase, la case à cocher <em>Replicate</em> est cochée par défaut. Par contre impossible de me débarrasser de l'erreur <em>Server Down : 1</em>.</p>
+
+<p>J'ai essayé une version plus récente du client. Je remarque au passage que le client couchbase-client est disponible en fait dans le Repo Maven Central via la dépendance :</p>
+
+<p>``` xml
+<dependency></p>
+
+<pre><code>&lt;groupId&gt;com.couchbase.client&lt;/groupId&gt;
+&lt;artifactId&gt;couchbase-client&lt;/artifactId&gt;
+&lt;version&gt;1.2.2&lt;/version&gt;
+</code></pre>
+
+<p></dependency>
+```
+Quoiqu'il en soit, cela ne résoud pas le problème !</p>
+
+<p>Je décide alors de recommencer l'installation. Je n'ai pas trouvé un moyen de revenir à l'état initial via l'interface d'administration. J'arrête le serveur, je supprime tous les fichiers générés par Couchbase puis je démarre <a href="http://www.couchbase.com/">Couchbase</a>. Cette fois-ci je choisis 1024 MB pour la RAM, je désactive la réplication et je sélectionne un échantillon de données (<em>beer</em>). Et là, c'est magique plus de <em>Server Down : 1</em> !</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-5e.png"></p>
+
+<p>Je redémarre l'application, plus d'exception !</p>
+
+<p>Rechargement des données</p>
+
+<p><code>sh
+curl -XPOST http://localhost:8080/api/1/person/_init
+</code></p>
+
+<p>Les données sont accessibles via l'url <code>http://localhost:8080/api/1/person/</code>.</p>
+
+<p>Dans l'interface d'administration, à l'onglet <em>View</em>, il y a une vue <em>by_name</em> qui permet de visualiser quelques données. Oui les données ont bien été insérées dans <a href="http://www.couchbase.com/">Couchbase</a>.</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-5f.png"></p>
+
+<h2>Les écrans avec AngularJS et Twitter Bootstrap</h2>
+
+<p>Nous avons jusqu'à présent un backend qui renvoie des données au format JSON. Cette étape va consister à recréer les vues que nous avions au départ.</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-6.png"></p>
+
+<p>Pour ne pas trop alourdir cet article, je ne vais pas faire un cours sur AngularJS qui n'est pas le sujet principal de cette session ;)</p>
+
+<p>Vous pouvez directement retrouver les sources dans la branche <code>04-angular/end</code> ou bien les télécharger directement <a href="https://github.com/dadoonet/sql2nosql/archive/04-angular/end.zip">ici</a>.</p>
+
+<p>Redémarrer l'application.</p>
+
+<p>Les écrans sont de retour.</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-6a.png"></p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-6b.png"></p>
+
+<p>Il n'est pour le moment possible que d'effectuer des recherches par nom.</p>
+
+<h2>La recherche <em>full text</em></h2>
+
+<p>La recherche <em>full text</em> va être implémentée avec <a href="http://www.elasticsearch.org/">Elasticsearch</a>. L'idée principale est d'avoir les données répliquées de <a href="http://www.couchbase.com/">Couchbase</a> à <a href="http://www.elasticsearch.org/">Elasticsearch</a> qui va les indéxer. L'application <em>front end</em>, pour rechercher les données, va directement intéroger <a href="http://www.elasticsearch.org/">Elasticsearch</a>.</p>
+
+<p>Nous aurons à la fin de cette étape, l'architecture suivante :</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-7.png"></p>
+
+<p>Je télécharge <a href="https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.90.2.zip">Elasticsearch v0.90.2</a> et décompresser l'archive dans le répertoire de votre choix.</p>
+
+<p>J'installe le plugin Couchbase pour <a href="http://www.elasticsearch.org/">Elasticsearch</a> (version 1.1.0) via l'exécutable <code>bin/plugin(.bat)</code>.</p>
+
+<p><code>
+bin/plugin -install transport-couchbase -url http://packages.couchbase.com.s3.amazonaws.com/releases/elastic-search-adapter/1.1.0/elasticsearch-transport-couchbase-1.1.0.zip
+</code></p>
+
+<p>Dans le fichier <code>config/elasticsearch.yml</code>, je renseigne les paramètres :</p>
+
+<p><code>
+couchbase.username: Administrator
+couchbase.password: Administrator
+couchbase.maxConcurrentRequests: 256
+</code></p>
+
+<p>Je démarre <a href="http://www.elasticsearch.org/">Elasticsearch</a>.</p>
+
+<p><code>
+bin/elasticsearch -f
+</code></p>
+
+<p>Je crée un template <a href="http://www.elasticsearch.org/">Elasticsearch</a>.</p>
+
+<p>```
+curl -XPUT http://localhost:9200/_template/couchbase -d '
+{</p>
+
+<pre><code>"template" : "*",
+"order" : 10,
+"mappings" : {
+    "couchbaseCheckpoint" : {
+        "_source" : {
+            "includes" : ["doc.*"]
+        },
+        "dynamic_templates": [
+            {
+                "store_no_index": {
+                    "match": "*",
+                    "mapping": {
+                        "store" : "no",
+                        "index" : "no",
+                        "include_in_all" : false
+                    }
+                }
+            }
+        ]
+    },
+    "_default_" : {
+        "properties" : {
+            "meta" : {
+                "type" : "object",
+                "enabled" : false
+            }
+        }
+    }
+}
+</code></pre>
+
+<p>}
+'
+```</p>
+
+<p>Je crée un index pour person.</p>
+
+<p><code>
+curl -XPUT http://localhost:9200/person
+</code></p>
+
+<p>Je reviens à l'interface d'administration Couchbase : <code>http://127.0.0.1:8091/index.html</code>.</p>
+
+<p>Je clique sur l'onglet XDCR.</p>
+
+<p>Je crée un cluster de référence avec le bouton <code>Create Cluster Reference</code>.</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-7a.png"></p>
+
+<p>Je crée une réplication avec le bouton <code>Create Replication</code>.</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-7b.png"></p>
+
+<p>Et là dans mon cas, ça n'a pas fonctionné.</p>
+
+<p>Après quelques recherches, je suis tombé sur <a href="https://github.com/couchbaselabs/elasticsearch-transport-couchbase/issues/3">cette fil de discussion</a> qui conseille l'utilisation de la version 1.2.0 du plugin pour ma version de <a href="http://www.couchbase.com/">Couchbase</a>.</p>
+
+<p>Je désinstalle de l'ancienne version du plugin.
+<code>
+bin/plugin -remove transport-couchbase
+</code>
+J'installe la version 1.2.0 du plugin.
+<code>
+bin/plugin -install transport-couchbase -url http://packages.couchbase.com.s3.amazonaws.com/releases/elastic-search-adapter/1.2.0/elasticsearch-transport-couchbase-1.2.0.zip
+</code></p>
+
+<p>Je réessaie de créer la réplication et j'ai toujours la même erreur. Côté <a href="http://www.elasticsearch.org/">Elasticsearch</a>, je peux lire l'exception suivante dans les logs :</p>
+
+<p>```
+013-11-23 02:30:02,779][WARN ][org.eclipse.jetty.servlet.ServletHandler] Error for /pools/default/buckets
+java.lang.NoSuchMethodError: org.elasticsearch.cluster.metadata.MetaData.getIndices()Ljava/util/Map;</p>
+
+<pre><code>at org.elasticsearch.transport.couchbase.capi.ElasticSearchCouchbaseBehavior.getBucketsInPool(ElasticSearchCouchbaseBehavior.java:82)
+</code></pre>
+
+<p>```</p>
+
+<p>Je comprends que ma version d'<a href="http://www.elasticsearch.org/">Elasticsearch</a> n'est pas compatible avec la nouvelle version du plugin.</p>
+
+<p>J'ai trouvé le tableau de compatibilité suivant qui rend clair tous mes problèmes d'incompatibilité accessible <a href="https://github.com/couchbaselabs/elasticsearch-transport-couchbase">ici</a> :</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-7c.png"></p>
+
+<p><a href="tugdual_grall">Tugdual</a> et <a href="david_pilato">David</a> ont travaillé sur la ligne Plugin=1.1.0, Couchbase=2.0, ElasticSearch=0.90.2.</p>
+
+<p>Vu que j'ai une base <a href="http://www.couchbase.com/">Couchbase</a> qui fonctionne et que comme tout développeur j'aime bien les dernières versions, je vais télécharger <a href="https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.90.5.zip">ElasticSearch 0.90.5</a> et recommencer l'installation.</p>
+
+<p>J'obtiens toujours la même erreur lors de la création de la réplication même avec les dernières versions. Par un geste de désespoir je supprime et recrée le cluster de référence. Et là, la création de la réplication se fait sans problème !</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-7d.png"></p>
+
+<p>Mais... Il y a un petit message que je n'ai pas envie de voir <em>Last 10 errors</em>. Je clique sur ce message de couleur bleu.</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-7e.png"></p>
+
+<p>Là je ne sais pas trop quoi penser ;) La réplication ne se passe visiblement pas bien.</p>
+
+<p>Je décide de faire une courte pause, de télécharger la version 2.0.0 de Couchbase et de revenir à la version 0.90.2 d'<a href="http://www.elasticsearch.org/">Elasticsearch</a>.</p>
+
+<p>Je démarre la version 2.0.0 de <a href="http://www.couchbase.com/">Couchbase</a>, elle rentre en conflit avec ma version 2.2.0 installée précédemment car elles partagent le même répertoire de travail. Je déplace ce répertoire de travail et là plus de problème.</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-7f.png"></p>
+
+<p>Je réinjecte les données :</p>
+
+<p>```
+curl -XPOST http://localhost:8080/api/1/person/_init</p>
+
+<p>```</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-7g.png"></p>
+
+<p>Les données sont bien répliquées, on est passé de 1001 à 2001 comme prévu.</p>
+
+<p>Le client AngularJS sera modifié pour interroger directement <a href="http://www.elasticsearch.org/">Elasticsearch</a> pour la fonctionnalité de recherche. <a href="http://www.elasticsearch.org/">Elasticsearch</a> expose une API REST pour rechercher des données. Pour rechercher les personnes ayant 'Alix' dans leur nom ou prénom, il suffit d'accéder à l'adresse : <code>http://127.0.0.1:9200/person/_search?q=alix</code>.</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-7h.png"></p>
+
+<h2>Vos tableaux de bord les doigts dans le nez avec Kibana</h2>
+
+<p><a href="http://www.elasticsearch.org/overview/kibana/">Kibana</a> est une application web qui permet de visualiser les données indexées dans <a href="http://www.elasticsearch.org/">Elasticsearch</a> suivant des critères.</p>
+
+<p>A l'issue de cette étape, l'architecture de l'application va ressembler à ceci :</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-8.png"></p>
+
+<p>J'installe le plugin Kibana pour <a href="http://www.elasticsearch.org/">Elasticsearch</a>.</p>
+
+<p><code>
+bin/plugin -install elasticsearch/kibana
+</code></p>
+
+<p>En lançant <a href="http://www.elasticsearch.org/overview/kibana/">Kibana</a>, <code>http://localhost:9200/_plugin/kibana/</code>, j'obtiens ceci :</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-8a.png"></p>
+
+<p>Je choisis de ne pas tenter l'aventure de la mise à jour. Je clique sur le lien <code>src</code> et j'accède à une page d'introduction.</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-8b.png"></p>
+
+<p>Je clique sur <code>Sample Dashboard</code>.</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-8c.png"></p>
+
+<p>Il est possible de filtrer, visualiser les données suivant plusieurs axes d'analyse. Si vous souhaitez jouer avec <a href="http://www.elasticsearch.org/overview/kibana/">Kibana</a>, il y a une démo en ligne accessible à l'adresse <a href="http://demo.kibana.org/#/dashboard">http://demo.kibana.org/#/dashboard</a> :</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-8d.png"></p>
+
+<h2>Les slides de Devoxx Belgique 2013</h2>
+
+<script async class="speakerdeck-embed" data-id="95cfa1f02edb0131128806fa6ec08ea7" data-ratio="1.72972972972973" src="http://roddet.github.com//speakerdeck.com/assets/embed.js"></script>
+
+
+<h2>Et pour conclure ?</h2>
+
+<p>Comme vous l'avez surement constaté, cette soirée du JUG Nantes a été riche en contenu.</p>
+
+<p>Dans le monde des bases de données NoSQL orientées document, <a href="http://www.couchbase.com/">Couchbase</a> a un concurrent direct <a href="http://www.mongodb.org/">MongoDB</a>. Un participant va poser la question de savoir quelles étaient les différences de fond entre ces deux bases de données. <a href="https://twitter.com/tgrall">Tugdual</a>, évangéliste <a href="http://www.couchbase.com/">Couchbase</a>, va donner les éléments de réponse suivants :</p>
+
+<ul>
+<li><p><a href="http://www.couchbase.com/">Couchbase</a> est conçu pour faciliter la distribution des données, la création de nombreux clusters de données via une interface d'administration. Il est donc plus indiqué pour des systèmes nécessitant de traitement de grand volumes de données distribuées sur plusieurs machine. Créer un cluster avec <a href="http://www.mongodb.org/">MongoDB</a> ne serait pas une tâche aussi simple que dans <a href="http://www.couchbase.com/">Couchbase</a>.</p></li>
+<li><p><a href="http://www.mongodb.org/">MongoDB</a> est plus riche et plus facile à requêter que <a href="http://www.couchbase.com/">Couchbase</a>. Il dispose d'une API très puissante pour extraire des données. C'est pour cette raison qu'il est conseillé de coupler <a href="http://www.couchbase.com/">Couchbase</a> à <a href="http://www.elasticsearch.org/">Elasticsearch</a> pour disposer d'une plus grande puissance d'extraction/analyse de données.</p></li>
+</ul>
+
+
+<p>Au regard de la complémentarité des deux technologies (<a href="http://www.couchbase.com/">Couchbase</a> &amp; <a href="http://www.elasticsearch.org/">Elasticsearch</a>), on peut se demander <em>A quand le rachat de l'un par l'autre ?</em>. <a href="https://twitter.com/dadoonet">David</a> va affirmer, hors séance, que ce n'était pas à sa connaissance à l'ordre du jour. Il y voit en <a href="http://www.elasticsearch.org/">Elasticsearch</a> un produit complet au point que certains clients n'hésiteraient pas à l'utiliser directement en tant que base de données.</p>
+
+<p>Bien évidemment, si vous souhaitez mettre en oeuvre ces outils, prenez des versions compatibles entre elles et n'hésitez pas à recommencer quand vous êtes dans une impasse ;)</p>
+
+<p>Je ne sais pas pour vous mais je suis impatient d'être à la prochaine soirée du JUG Nantes : <a href="http://nantesjug.org/#/events/2013_12_04">Grails dans les tranchés + Java 8</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Soirée JUG Nantes : Du SQL au NoSQL en moins d'une heure (Partie 1)]]></title>
+    <link href="http://roddet.github.com/2013/11/nantesjug-novembre-part1/"/>
+    <updated>2013-11-10T09:30:00-05:00</updated>
+    <id>http://roddet.github.com/2013/11/nantesjug-novembre-part1</id>
+    <content type="html"><![CDATA[<p>Le 4 novembre dernier, j'ai eu l'opportunité de participer à une soirée organisée par le <a href="http://nantesjug.org/">JUG Nantes</a> sous le thème "Du SQL au NoSQL en moins d'une heure".</p>
+
+<h2>Une salle pleine !</h2>
+
+<p>La plus grande salle de l'<a href="http://www.epsi.fr/Campus/Campus-de-Nantes#">EPSI Nantes</a> était un peu petite face à l'engouement suscité par l'événement.</p>
+
+<p>C'est le premier événement JUG Nantes auquel j'assiste depuis la rentrée. Oui c'est avec beaucoup de regrêts que je n'ai pas pu être présent à la première soirée de cette saison 2013-2014 :) Je remarque aussi que le public a changé, il y a beaucoup plus d'étudiants comparé à la saison précédente. Ceci est probablement lié au fait que l'<a href="http://www.epsi.fr/Campus/Campus-de-Nantes#">EPSI Nantes</a> accueille l'événement.</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-salle-pleine.jpg"></p>
+
+<p>Le JUG de Nantes va nous offrir 2 sessions :</p>
+
+<ul>
+<li>1 Quickie <em>Amélioration de la qualité du code par restriction du langage</em></li>
+<li>1 talk <em>Elastifiez votre application : du SQL au NoSQL en moins d'une heure</em></li>
+</ul>
+
+
+<h2>Le quickie <em>Amélioration de la qualité du code</em></h2>
+
+<p><a href="https://twitter.com/mercury_wood/">Hugo Wood</a> va nous présenter son retour d'expérience sur l'amélioration de la qualité du code. Il a appris le langage Java principalement en autodidacte avec des livres et travaille récemment en société de service où il côtoie beaucoup de <em>legacy</em> (les connaisseurs ne seront probablement pas surpris ;)).</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-hugo-wood.jpg"></p>
+
+<h2>C'est quoi la qualité du code ?</h2>
+
+<p>Hugo a commencé par poser les bases de la qualité du code.</p>
+
+<p>Par quoi reconnaît-on un code de bonne qualité ? => Par sa maintenabilité. Et pour avoir un code maintenable, il faut qu'il soit modulaire et testable.</p>
+
+<h2>Les méthodes privées => cacher la misère ?</h2>
+
+<p>Vous l'avez surement déjà remarqué, les méthodes privées d'une classe ont tendance à se multiplier avec le passage d'un collègue qui vous dit avec fierté que le code n'était pas lisible et qu'il a fait du <em>refactoring</em>. Il avait trouvé une méthode publique trop <em>grosse</em>, vous savez ce genre de méthode qui ne se termine pas avec 2 <em>scrolls</em> de votre souris. Il a alors  extrait (merci les IDE) des parties de code de la méthode en plusieurs méthodes privées.</p>
+
+<p>La lisibilité de la méthode s'est peut-être améliorée mais a t-on vraiment progressé sur la maintenabilité après une telle opération ?</p>
+
+<p>La réponse est Non. En effet, cette opération conduit généralement à 2 catégories de méthodes privées :</p>
+
+<ul>
+<li><p>1 méthode qui n'interagit avec aucun champ de la classe. Que fait-elle alors dans cette classe ? Elle pourrait être <em>static</em> votre code fonctionnerait toujours. Il convient donc de l'extraire dans une nouvelle classe.</p></li>
+<li><p>1 méthode privée qui modifie la valeur d'un champ de la classe. Cela conduit souvent à perdre le contrôle rationnel de ce  champ. En effet, lorsque vous lirez votre méthode publique à <em>refactorer</em>, vous verrez l'appel à cette nouvelle méthode. Vous ne vous rendrez pas forcément compte qu'il modifie un champ et que la suite de votre algorithme dépend fortement de l'exécution de cette nouvelle méthode. Comme dit Hugo, un <em>parfum de variable globale</em>... La bonne option est donc d'extraire ce champ et cette méthode dans une nouvelle classe.</p></li>
+</ul>
+
+
+<p>Etes-vous prêt à arrêter de cacher la misère en vous "privant" des méthodes privées ?</p>
+
+<h2>L'héritage de classe => notre ennemi ?</h2>
+
+<p>Ceux qui travaillent au quotidien avec une grande volumétrie de code, l'admettront aisément : l'héritage de classe, quand il est mal utilisé pose quelques difficultés de maintenance :</p>
+
+<ul>
+<li>Comment tester une classe fille sans effet de bord de la classe mère ?</li>
+<li>Comment tester unitairement une classe abstraite sans ses classes concrètes ?</li>
+<li>Utiliser des champs <em>protected</em> d'une classe mère dans une classe fille, une encapsulation à plusieurs vitesses ?</li>
+</ul>
+
+
+<p>L'héritage de classe est malheureusement souvent utilisé, à tort, pour factoriser du code. Il est alors facile de se retrouver par exemple avec :</p>
+
+<ul>
+<li>Une méthode dont l'exécution conduit à naviguer à travers plusieurs niveaux de la hiérarchie des classes</li>
+<li>Une méthode vide (avec un commentaire <em>// ne rien faire</em>) dans certaines classes pour un traitement à ne pas effectuer dans des cas particuliers</li>
+</ul>
+
+
+<p>Hugo va préconiser l'utilisation des interfaces et de la composition pour traiter nos besoins courants. Il va l'illustrer en proposant un <em>refactoring</em> possible de la classe abstraite <em>AbstractCollection</em> du JDK avec une interface et la composition (illustration présente dans ses slides).</p>
+
+<p>Etes-vous prêt à ne plus utiliser l'héritage de classe ?</p>
+
+<h2>Les slides du Quickie</h2>
+
+<iframe src="http://www.slideshare.net/slideshow/embed_code/27900604" width="700" height="569" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
+
+
+<p>Vous l'aurez compris, Hugo encourage une <em>restriction</em> de l'utilisation du langage Java pour améliorer la qualité de du code. Il argumente que cela permettra aux débutants de commettre moins d'erreurs de <em>design</em> et aux expérimentés d'agir avec un meilleur discernement.</p>
+
+<h2>La suite ! La suite ! La suite !</h2>
+
+<p>Après ce quickie, <a href="https://twitter.com/tgrall">Tugdual Grall</a> et <a href="https://twitter.com/dadoonet">David Pilato</a> ont pris le relais pour le talk <em>Elastifiez votre application : du SQL au NoSQL en moins d'une heure</em>. A travers un exemple de code, ils vont nous montrer comment passer du SQL au NoSQL avec <a href="http://www.couchbase.com/">CouchBase</a> et <a href="http://www.elasticsearch.org/">Elasticsearch</a>.</p>
+
+<p>A suivre dans la 2ème partie de cet article dans les prochains jours...</p>
+]]></content>
+  </entry>
+  
+</feed>

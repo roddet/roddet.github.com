@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: jcertif | Rossi Oddet]]></title>
+  <link href="http://roddet.github.com/blog/categories/jcertif/atom.xml" rel="self"/>
+  <link href="http://roddet.github.com/"/>
+  <updated>2014-05-21T01:43:46-04:00</updated>
+  <id>http://roddet.github.com/</id>
+  <author>
+    <name><![CDATA[Rossi Oddet]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[JCertif Tunisie 2014, Done !]]></title>
+    <link href="http://roddet.github.com/2014/04/jcertif-tunisie-2014/"/>
+    <updated>2014-04-23T21:41:00-04:00</updated>
+    <id>http://roddet.github.com/2014/04/jcertif-tunisie-2014</id>
+    <content type="html"><![CDATA[<p>Le 19 et 20 avril dernier, c'était JCertif Tunisie 2014 !
+Cet événement portait une symbolique forte car c'est la première fois que JCertif avait lieu en dehors de Brazzaville (République du Congo).
+Les attentes étaient évidemment fortes, tant de la part des organisateurs que des participants et des acteurs locaux.</p>
+
+<p>L'événement a eu lieu dans la ville de <a href="http://fr.wikipedia.org/wiki/Sousse">Sousse</a> à l'<a href="http://www.eniso.rnu.tn/fr/">Ecole Nationale d'Ingénieurs de Sousse</a>.
+<a href="http://fr.wikipedia.org/wiki/Sousse">Sousse</a> se trouve à moins de 150 km de Tunis, la capitale de la Tunisie.</p>
+
+<p><img class="center" src="/images/jcTunisie2014/carte_sousse.png"></p>
+
+<p>Les deux journées de l'événement étaient structurées de la façon suivante :</p>
+
+<ul>
+<li>Matin : une série de talks sur des sujets variés.</li>
+<li>Après-midi : une dizaine de workshops + un espace d'échange entre partenaires.</li>
+</ul>
+
+
+<h2>Jour 1</h2>
+
+<p><a href="https://twitter.com/bonbhel">Max</a> lance l'événement avec une présentation de JCertif et de ses activités.</p>
+
+<p><img class="center" src="/images/jcTunisie2014/max_jour_1.png"></p>
+
+<p><a href="https://twitter.com/ChrisbelM">Chrisbel</a> prend ensuite la parole pour parler des initiatives JCertif
+Education &amp; JCertif Pro.</p>
+
+<p><img class="center" src="/images/jcTunisie2014/chrisbel_jour_1.png"></p>
+
+<p>La matinée se poursuit avec une présentation de <a href="http://www.thibaultvincent.com/">Thibault Vicent</a> sur "Les 4 modèles de revenu les plus rentables du web et du mobile".</p>
+
+<p><img class="center" src="/images/jcTunisie2014/thibault_jour_1.jpg"></p>
+
+<p>L'après-midi laissera la place aux Workshops suivants :</p>
+
+<ul>
+<li>Initiation à Java avec <a href="http://www.linkedin.com/profile/view?id=48873830&amp;locale=fr_FR&amp;trk=tyah&amp;trkInfo=tarId%3A1398674609090%2Ctas%3AOuijden%20Dhemaid%2Cidx%3A1-1-1">Ouijden Dhemaid</a></li>
+<li>Ext JS avec <a href="https://twitter.com/ChrisbelM">Roland Chrisbel</a></li>
+<li>JEE Open ORM Alternatives : UPA as a challenger avec <a href="https://www.linkedin.com/profile/view?trk=tyah&amp;trkInfo=tarId%3A1398431808806%2Ctas%3Ataha%2Cidx%3A1-2-2&amp;locale=en_US&amp;id=24099487">Taher Ben Saleh</a></li>
+<li>Ubuntu Touch avec <a href="https://www.facebook.com/neo31?fref=ts">Ahmed Segaire</a></li>
+<li>Programmation embarquée avec la carte Raspberry Pi avec <a href="http://www.linkedin.com/profile/view?id=136896701&amp;locale=fr_FR&amp;trk=tyah&amp;trkInfo=tarId%3A1398431874633%2Ctas%3Asafa%20achou%2Cidx%3A1-1-1">Safa Achour</a></li>
+<li>Android initiation avec <a href="http://www.linkedin.com/profile/view?id=211998391&amp;locale=en_US&amp;trk=tyah2&amp;trkInfo=tarId%3A1397596758936%2Ctas%3Azidi%20alae%2Cidx%3A1-1-1">Alaedinne Zidi</a></li>
+<li>Android avancé avec <a href="http://www.linkedin.com/profile/view?id=162164000&amp;locale=en_US&amp;trk=tyah&amp;trkInfo=tarId%3A1398431891305%2Ctas%3Ahich%2Cidx%3A1-1-1">Hichem Laroussi</a></li>
+<li>Android avancé avec <a href="http://www.linkedin.com/profile/view?id=105245788&amp;locale=fr_FR&amp;trk=tyah&amp;trkInfo=tarId%3A1398431913510%2Ctas%3Arami%20te%2Cidx%3A1-1-1">Rami Tekaya</a></li>
+<li>Web Design avec <a href="http://www.linkedin.com/profile/view?id=153196137&amp;locale=fr_FR&amp;trk=tyah&amp;trkInfo=tarId%3A1398431931331%2Ctas%3ARanda%20Touati%2Cidx%3A1-1-1">Randa Touati</a></li>
+<li>HTML5/CSS3 avec <a href="http://www.linkedin.com/profile/view?id=302763914&amp;locale=fr_FR&amp;trk=tyah2&amp;trkInfo=tarId%3A1398431947088%2Ctas%3AMejri%20Yassine%2Cidx%3A1-4-4">Mejri Yassine</a></li>
+</ul>
+
+
+<p><img class="center" src="/images/jcTunisie2014/workshop_jour_1.jpg"></p>
+
+<p>Une rencontre entre différents acteurs IT de Tunisie est organisée en marge des Workshops sous le thème de l'intégration des étudiants dans le milieu professionnel.
+Les entités présentes étaient de différentes natures :</p>
+
+<ul>
+<li>Entreprises IT et Industriels : <a href="https://www.linkedin.com/company/proxym-it">ProxymIT</a>, <a href="http://www.vermeg.com/">Vermeg</a>, <a href="http://www.tmi.com.tn/">TMI</a>, <a href="http://www.objis.com/">Objis</a>, etc.</li>
+<li>Ecoles et Universités (enseignants, dirigeants) : <a href="http://www.eniso.rnu.tn/fr/">ENISo</a>, <a href="http://www.esprit.ens.tn/">EsprIT</a>, <a href="http://www.msb-online.org/">MSB</a>, <a href="http://www.episousse.com/">EPI</a>, etc.</li>
+<li>Etudiants (débutants, finissants et stagiaires)</li>
+<li>Communautés : <a href="http://clibre.tn/">Association CLibre</a>, <a href="https://fr-fr.facebook.com/jcertif.tn">JCertif Tunisie</a>, JCertif International, etc.</li>
+</ul>
+
+
+<p><img class="center" src="/images/jcTunisie2014/conference_debat.jpg"></p>
+
+<p>Chaque acteur a pu exprimer ses problématiques :</p>
+
+<ul>
+<li><p>Les entreprises IT et industriels ont exprimé leurs difficultés à intégrer les jeunes diplômés, à trouver des profils qualifiés.
+Ils ont également fait émerger un manque de lisibilité dans les cursus/diplômes des écoles tunisiennes.</p></li>
+<li><p>Les écoles et universités ont mis en évidence leurs difficultés à suivre les évolutions technologiques et à proposer des projets innovants en adéquation avec le marché.</p></li>
+<li><p>Les étudiants ont du mal à trouver des entreprises pour des stages. Leurs projets de fin d'étude ne sont pas innovants et manquent d'accompagnement.</p></li>
+</ul>
+
+
+<p>JCertif a proposé une approche permettant d'allier le milieu éducatif avec le milieu professionel à travers les projets JCertif Education &amp; JCertif Pro.</p>
+
+<p>Je n'ai pas pu être présent ce premier jour de l'événement :( Je suis arrivé à Sousse tard dans la soirée du jour 1.</p>
+
+<h2>Jour 2</h2>
+
+<p>Le second jour est le moment pour moi de rentrer en jeu dans l'événement. J'ouvre le bal des conférences avec une session sur le "Web Déconnecté".</p>
+
+<p><img class="center" src="/images/jcTunisie2014/rossi_jour_2.jpg"></p>
+
+<p><a href="https://twitter.com/bonbhel">Max</a> prend ensuite la main pour présenter la Google Glass. Après un présentation et un démonstration, les participants ont eu le plaisir de l'essayer.</p>
+
+<p><img class="center" src="/images/jcTunisie2014/glass_jour_2.jpg"></p>
+
+<p><a href="https://www.facebook.com/media/set/?set=a.625151214242365.1073741837.523922604365227&amp;type=1">Nizar Kerekni</a>, président de l'<a href="http://clibre.tn/">Association CLibre</a>, va présenter "La culture des logiciels libres".</p>
+
+<p><img class="center" src="/images/jcTunisie2014/libre_jour_2.jpg"></p>
+
+<p>Et enfin, c'est au tour de <a href="http://www.thibaultvincent.com/">Thibault</a> de faire un focus sur les 5 grands succès du web.</p>
+
+<p><img class="center" src="/images/jcTunisie2014/thibault_jour_2.jpg"></p>
+
+<p>L'après-midi, les workshops commencés la veille se sont poursuivis et un espace Business 2 Business a permis d'accueillir les professionnels qui souhaitaient se rencontrer.
+J'ai profité de cette occasion pour échanger avec différents acteurs sur les opportunités de collaboration technologique avec JCertif.
+C'était surtout l'occasion de nouer des relations avec des personnes brillantes qui veulent faire progresser l'IT en Tunisie.</p>
+
+<p><img class="center" src="/images/jcTunisie2014/b2b_jour_2.jpg"></p>
+
+<h2>Jour 3</h2>
+
+<p>Fidèle à sa tradition, un événement JCertif a toujours une journée qui ne figure pas dans l'agenda officiel.
+Certains l'appellent JCertif Break, d'autres JCertif Excursion, d'autres encore "Le Lab" (un 3e ?).
+Il s'agit pour les organisateurs et les speakers de passer une journée touristique ensemble.</p>
+
+<p>Cela commence par un trajet en car où la dance a rêgné en maître au rythme du <a href="https://www.google.fr/search?q=darbuka&amp;sa=X&amp;espv=2&amp;es_sm=91&amp;tbm=isch&amp;tbo=u&amp;source=univ&amp;ei=yyNcU_WABYiz0QWFnYCIDw&amp;ved=0CCsQsAQ&amp;biw=1280&amp;bih=658">darbuka</a>, que les membres féminins de JCertif Tunisie manient à merveille.</p>
+
+<p>Nous avons pu visiter plusieurs sites touristiques de Tunisie, déjeuner, nouer des amitiés et tout simplement passer des moments ensemble.</p>
+
+<p><img class="center" src="/images/jcTunisie2014/jcertif_excursion_jour_3.JPG"></p>
+
+<p>Je ne donnerai pas trop de détails sur cette journée car il y a beaucoup trop de secrets d'Etat qui naissent ce jour-là ;)</p>
+
+<h2>Bilan</h2>
+
+<p>JCertif Tunisie 2014 est un événement réussi organisé par la communauté JCertif Tunisie.
+J'ai pu découvrir le dynamisme tunisien dans l'IT et surtout une générosité exceptionnelle de toutes les personnes que j'ai rencontrées.</p>
+
+<p>La grande originalité vis à vis de JCertif Congo était l'organisation d'échanges entre les différents acteurs de l'industrie du numérique : les associations, les écoles, les entreprises, etc.
+C'est une inspiration "tunisienne" qu'il faudrait absolument faire profiter à d'autres pays ;)
+J'ai hate de voir l'édition 2015 ! Nous avons déjà pleins de nouvelles idées !</p>
+
+<p>Vous pouvez trouver plus de photos sur la <a href="https://fr-fr.facebook.com/jcertif.tn">page Facebook de l'événement</a>.</p>
+
+<p>Les prochains événements JCertif :</p>
+
+<ul>
+<li>JCertif Côté d'Ivoire : du 10 au 12 juillet 2014</li>
+<li>JCertif Cameroun : du 19 au 20 juillet 2014</li>
+<li>JCertif Congo : du 8 au 14 septembre 2014</li>
+<li>...+ d'autres à venir ;)</li>
+</ul>
+
+
+<p>Vous souhaitez faire parti de l'aventure et être partenaire d'un
+événement JCertif ? Envoyez un mot gentil à : info@jcertif.com.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JCertif 2013, un événement, une nouvelle dimension]]></title>
+    <link href="http://roddet.github.com/2013/10/jcertif-2013-retour/"/>
+    <updated>2013-10-13T09:30:00-04:00</updated>
+    <id>http://roddet.github.com/2013/10/jcertif-2013-retour</id>
+    <content type="html"><![CDATA[<p>L'événement JCertif 2013 a été lancé ce lundi 09 septembre à Brazzaville (Congo) avec le déroulement suivant :</p>
+
+<ul>
+<li>Jour 1 - JCertif Community : journée dédiée au lancement de l'événement et à l'échange entre les communautés.</li>
+<li>Jour 2 à Jour 4 - JCertif University : des cursus de formation de 3 jours</li>
+<li>Jour 5 Google Days Developer</li>
+<li>Jour 6 Google Days Business + Remise des prix aux gagnants de AAC (Africa Android Challenge) + JCertif Conference</li>
+<li>Jour 7 - JCertif Conference</li>
+</ul>
+
+
+<h2>Jour 1 (JCertif Community) - Un challenge pour les organisateurs !</h2>
+
+<ul>
+<li>Nous avons eu cette année notre stand JCertif, il était temps ! C'est vrai que l'on s'y est pris à plusieurs pour le monter et ça n'a pas été aussi facile qu'on le pensait :) Bon, on assume !</li>
+</ul>
+
+
+<p><img src="/images/jc2013/community_4.jpg" alt="Le stand JCertif" /></p>
+
+<ul>
+<li>C'était la première fois que nous organisions l'événement dans les grands locaux de la Bibliothèque Nationale. Il n'était pas facile de s'y retrouver :)</li>
+</ul>
+
+
+<p><img src="/images/jc2013/community_3.jpg" alt="Locaux immenses de la bibliothèque Nationnale" /></p>
+
+<ul>
+<li>Nous n'étions pas "habitué" et outillé pour recevoir autant de monde ! Nous avons eu ce jour là plus de 1800 personnes soit 3 fois plus que l'édition 2012 sur cette même journée. Nous étions partagé, il est vrai entre la joie d'avoir autant de monde sur un événement aussi difficile à préparer et l'inquiétude de leur offrir une prestation de qualité.</li>
+</ul>
+
+
+<p>Comme on se le répète toujours au sein de JCertif :
+<blockquote><p>Ce n'est pas parce que c'est du gratuit que la qualité doit être sacrifiée !</p></blockquote></p>
+
+<p><img src="/images/jc2013/community_1.jpg" alt="Un monde fou qui arrive" /></p>
+
+<p>Nous avons rempli les salles, les unes après les autres, avec toujours autant de monde à l'entrée :)</p>
+
+<ul>
+<li>C'était la première fois que nous recevions un ministre d'Etat à l'événement. Il s'agit de Mr. Thierry Moungala (Ministre des Postes et Télécommunications). Un ministre qui se déplace au Congo, ça ne passe jamais inaperçu et ça peut entrainer des mouvements de foule inattendus :)</li>
+</ul>
+
+
+<p><img src="/images/jc2013/community_2.jpg" alt="Visite du ministre Thierry Moungala" /></p>
+
+<ul>
+<li>Toutes les salles étaient remplies et nous n'avions pas prévu d'animateurs pour autant de salles pour la matinée d'ouverture. Pour ceux qui ne pouvait pas suivre la Keynote, nous avons "occupé" les salles pour faire des mini-keynotes pour ceux qui n'avaient pas la possibilité d'assister à la Keynote. J'étais de ceux là !</li>
+</ul>
+
+
+<h2>Jour 1 (JCertif Community) - Un salon de discussion grandeur nature</h2>
+
+<p>L'après-midi de cette journée était consacré à des discussions sur différents sujets. Par exemple :</p>
+
+<ul>
+<li>"Les femmes et les technologies" animée par <a href="https://plus.google.com/u/0/115905049403882293809/posts">Audrey Ehouman</a>, une "Google Student Ambassador" qui nous venait de Côte d'Ivoire et <a href="https://twitter.com/akinidanielle">Danielle Akini</a> du Cameroun.</li>
+</ul>
+
+
+<p><img src="/images/jc2013/community_5.jpg" alt="Les femmes et les technologies" /></p>
+
+<ul>
+<li>"Startup Technologies" animée par <a href="http://www.linkedin.com/in/honorenzambu/en">Honoré Nzambu</a></li>
+<li>"Metiers du Web Design" avec <a href="http://www.linkedin.com/pub/christian-manthe/67/b95/b0">Christian Manthe</a></li>
+<li>"Adopt-JSR et Oracle Technology Network" par <a href="">Max Bonbhel</a></li>
+</ul>
+
+
+<p>Ces discussions ont été aussi l'opportunité de faire de la pédagogie sur le programme de l'événement. En effet, le lendemain, c'était déjà JCertif University, c'est à dire 11 salles simultanées de formation continue sur 3 jours.</p>
+
+<h2>Jour 2 à Jour 4 (JCertif University) - Une soif de formation jamais vue !</h2>
+
+<p>11+ tracks simultanées données pendant 3 jours par des guerriers de la formation de masse :</p>
+
+<ul>
+<li><a href="http://www.linkedin.com/in/honorenzambu/en">Honoré Nzambu</a> - Introduction à Java</li>
+<li><a href="http://fr.viadeo.com/fr/profile/douglas.mbiandou">Douglas M'Biandou</a> - les 5 atouts clés de Java</li>
+<li><a href="http://www.linkedin.com/pub/christian-manthe/67/b95/b0">Christian Manthe</a> - l'initiation à la création graphique avec Photoshop</li>
+<li><a href="http://kwaye-g.blogspot.ca">Gabriel Kant KWAYE</a> - Google App Engine et HTML5</li>
+<li><a href="http://www.linkedin.com/pub/davy-silou/56/405/303">Davy Silou</a> - Mise en oeuvre d'un réseau informatique en entreprise</li>
+<li><a href="http://www.linkedin.com/pub/audran-youlou-zhazha/18/2b8/44a">Audran Youlou Zhazha</a> - Spring Batch</li>
+<li><a href="https://twitter.com/Nelson_Cishugi">Nelson Cishugi</a> - Web Design</li>
+<li><a href="http://fr.viadeo.com/fr/profile/jaouher.kasraoui">Jaouher Kasraoui</a> - SQL Server 2012</li>
+<li>Sebastien Rocher (R&amp;B Tech) - Assemblez un réseau à partir de ZERO</li>
+<li><a href="http://www.linkedin.com/pub/firas-gabsi/58/343/530">Firas Gabsi</a> - Cursus Java EE sur RaspberryPi</li>
+<li><a href="http://www.linkedin.com/pub/dodo-ngoyi/72/bb3/107">Dodo Ngoyi</a> - Introduction à Photoshop</li>
+<li>Dieudonné Kayembe - Introduction à Android</li>
+<li>Etc...</li>
+</ul>
+
+
+<p>Nous n'avions pas accès à toutes les salles de la Bibliothèque Nationale, nous avons dû palier au manque de salle par ceci :</p>
+
+<p><img src="/images/jc2013/university_1.jpg" alt="JCertif University" /></p>
+
+<p>Ou encore</p>
+
+<p><img src="/images/jc2013/university_2.jpg" alt="JCertif University" /></p>
+
+<p>Ou encore sous des escaliers.</p>
+
+<p><img src="/images/jc2013/university_esc.jpg" alt="JCertif University" /></p>
+
+<p>Une volonté d'apprendre hors du commun !</p>
+
+<p>Ce qui fait la magie de cet événement, c'est que nous ne sommes pas capable de dire qui des formateurs ou des participants étaient les plus motivés. Une soif de partage des connaissances de la part des formateurs bénévoles, une faim sans précédent de connaissance pour les participants, les aléas logistiques passaient inaperçus face de tels passionnés.</p>
+
+<p>Quant à moi, j'ai gardé espoir d'animer une university mais cette année les défis organisationels étaient trop grands, c'était simplement impossible pour moi.</p>
+
+<h2>Jour 5 (GDays Developer) - Technos Google mais pas que et une surprise pour Rossi :)</h2>
+
+<p>Le Jour 4, nous apprenons qu'un présentateur ne sera pas présent pour assurer un track Web (Chrome Developer Tools + AngularJS) le jour 5. J'avais prévu assister à une partie de cette session, finalement je vais assurer l'intérim !</p>
+
+<p>Au menu me concernant :</p>
+
+<h3>Débat autour du web moderne pour l'Afrique</h3>
+
+<p>J'ai commencé par présenter les slides suivants :</p>
+
+<script async class="speakerdeck-embed" data-id="2cbaa74015bf013197c20aec338a7267" data-ratio="1.77777777777778" src="http://roddet.github.com//speakerdeck.com/assets/embed.js"></script>
+
+
+<p>Nous avons passé une bonne partie de la matinée à discuter "Web moderne pour l'Afrique".</p>
+
+<h3>Chrome Developer Tools In Action</h3>
+
+<p>Je développe depuis quelques années avec les outils pour développeur de Chrome. Au point même qu'aujourd'hui j'ai du mal à utiliser mon ancien ami "Firebug". C'était l'occasion ici de présenter différents trucs &amp; astuces et les différents usages possibles en dehors d'une activité de développement habituelle.</p>
+
+<h3>Workshop AngularJS made in Nantes by <a href="https://twitter.com/richard_antoine">Antoine Richard</a></h3>
+
+<p>J'avais, il y a quelques mois, assisté à une brillante prestation d'Antoine lors d'un Workshop AngularJS. Le retour de ce workshop <a href="http://blog.roddet.com/2013/04/stereolux-workshop-html5/">ici</a>. J'ai réutilisé le même support pour présenter AngularJS. Et oui Antoine, tes travaux ont parcouru plus de 6000 km !</p>
+
+<p><img src="/images/jc2013/university_3.jpg" alt="JCertif University" /></p>
+
+<h2>Jour 6 (GDays Business) - L'ouverture de la conférence</h2>
+
+<p><img class="left" src="/images/jc2013/conference_aac_1.jpg">
+Le samedi 14 septembre, changement de décors, c'est l'ouverture de la conférence et cette partie de l'événement a lieu à l'Institut Français de Brazzaville.</p>
+
+<p>Après une présentation de JCertif et un mot des différents partenaires de l'événement, nous avons assisté à la remise des prix du concours <a href="http://androidchallenge.org/">AAC (Africa Android Challenge)</a> organisé chaque année par JCertif.
+Le gagnant cette année est <a href="http://fr.linkedin.com/pub/tidiane-sy/1a/9b2/44a">Tidiane Sy</a> qui a fait spécialement le déplacement jusqu'à Brazzaville pour recevoir son prix. Il a remporté le concours grâce à son application <a href="https://play.google.com/store/apps/details?id=com.baamtu.android.andandor">Andandor</a>, une application Android qui permet d'accéder au CRM <a href="https://www.openerp.com/">OpenERP</a>.</p>
+
+<p>La remise de prix a été assurée par Mr. Bruno Itoua, Ministre de la recherche et de l'innovation Technologiques.</p>
+
+<p>L'événement a poursuivi son cours avec des sessions variées comme :</p>
+
+<ul>
+<li>"Comment profiter de la puissance d'Internet" avec <a href="https://twitter.com/thibaultvincent">Thibault Vincent</a>,</li>
+<li>"Google Apps for Business" avec <a href="https://plus.google.com/110897604292774924710">Noé Diakubama</a></li>
+<li>ou encore "Google Maps Engine" par <a href="https://plus.google.com/101607562378592091898/posts">Cyprien Tankeu</a>.</li>
+</ul>
+
+
+<h2>Jour 7 (Conference) - JCertif Lab à l'honneur</h2>
+
+<p>Après une ouverture de session réalisée par <a href="https://twitter.com/bonbhel">Max Bonbhel</a>, j'ai pris la parole pour présenter JCertif Lab, ses objectifs, ses projets, ...</p>
+
+<p>Les slides sont disponibles <a href="http://jcertiflab.github.io/jcertiflab-slides/">ici</a>.</p>
+
+<p><img src="/images/jc2013/conference_jcertiflab_2.jpg" alt="JCertif Lab" /></p>
+
+<p>J'ai donné ensuite la parole à <a href="http://tn.linkedin.com/pub/firas-gabsi/58/343/530">Firas Gabsi</a>, le lead du projet JCertif Smart House qui a pour objectif d'offrir une solution open source de commande d'équipement à distance.</p>
+
+<p><img src="/images/jc2013/conference_jcertiflab_3.jpg" alt="JCertif Lab" /></p>
+
+<p>Voici une petite vidéo de la démonstration du projet relayée sur la chaine youtube officiel de java. Firas qui demande à un participant de venir tester l'application Android en live pour commander une lampe.</p>
+
+<p>Lien direct : <a href="http://www.youtube.com/watch?v=zO0DJS6yQR0">ici</a></p>
+
+<iframe width="640" height="360" src="http://roddet.github.com//www.youtube.com/embed/zO0DJS6yQR0?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
+
+
+<p>Un panel de discussion ouvert été organisé avec 3 représentants des opérateurs téléphoniques du Congo (<a href="http://www.africa.airtel.com/wps/wcm/connect/africaairtel/congob/">Airtel</a>, <a href="http://www.mtncongo.net/">MTN</a> et <a href="http://www.waridtel.cg/">Warid</a>). On s'attendait au pire, étant donné la compétition féroce qu'il y a entre ces opérateurs, le débat fut cordiale et respectueux.</p>
+
+<p>J'ai ensuite assisté aux sessions suivantes :</p>
+
+<ul>
+<li><p>La "Data", l'or noir du numérique par <a href="http://fr.linkedin.com/pub/thierry-bomandouki/4/386/2b6">Thierry Bomandouki</a>. Une session très intéressante qui faisait prendre conscience de l'importance des données et de l'usage de nos données par les grandes entreprises comme Facebook, Google ... J'ai bien aimé le style de présentation de Thierry, un excellent Speaker qui a su nous captiver et nous faire rêver avec plus de paroles que de slides !</p></li>
+<li><p>"Community powered innovation using Red Hat technologies" par <a href="http://uk.linkedin.com/in/nabeelsaad">Nabeel Saad</a>, Architecte chez Redhat. Il a fait un très bon résumé des produits Redhat allant du développement au déploiement d'applications. A chaque étape, il a distingué les produits open source et leurs équivalents version "Entreprise". Hors événement, ce fut une formidable rencontre pour moi qui évolue dans l'écosystème Java EE. C'était très intéressant d'échanger avec lui sur des produits comme <a href="https://www.openshift.com/">OpenShift</a>, <a href="http://www.jboss.org/drools/">Drools</a>, etc...</p></li>
+<li><p>Responsive Web Design et Ergonomie par <a href="https://twitter.com/Nelson_Cishugi">Cishugi Nelson</a>. Un raffraichissement sur les notions d'ergonomie, de design adaptatif par un professionnel du Design Web. Nelson est l'un des rares africains (peut-être le premier ?) à être certifié Adobe.</p></li>
+</ul>
+
+
+<h2>Jour 8 - Oui il y a eu un jour 8 qui n'était pas dans l'agenda !</h2>
+
+<p>Difficile de trouver un nom officiel à cette journée. Certains diront qu'il s'agit de "JCertif Excursion 2013", d'autres de "JCertif Bonus 2013", d'autres de "JCertif Lab Bis"... Les organisateurs n'ont pas encore tranchés :)</p>
+
+<p>Mais ce jour qui n'est pas dans l'agenda est devenu une tradition à JCertif. Après l'événement, les organisateurs et les présentateurs sont invités à une aventure à des endroits touristiques du Congo.</p>
+
+<p>Ca commence par un voyage en car dans une ambiance folle.</p>
+
+<p><img src="/images/jc2013/excursion_1.jpg" alt="JCertif Lab" /></p>
+
+<p>Un trajet pour rejoindre une île dans des conditions uniques en son genre :)</p>
+
+<p><img src="/images/jc2013/excursion_2.jpg" alt="JCertif Lab" /></p>
+
+<p>Bon je vous raconte tout cela mais je n'y étais pas en fait :)</p>
+
+<p>Oui, pendant ce temps, j'étais dans les locaux de notre partenaire <a href="http://www.waridtel.cg/">Warid Congo</a> pour la planification et la mise en place de l'architecture d'un projet dans le cadre du partenariat Warid Lab &amp; JCertif Lab. Nous avons l'ambition de faire monter en compétence 4 jeunes congolais pour qu'ils puissent créer une startup avec le lancement d'un produit innovant. A suivre...</p>
+
+<h2>JCertif 2013 en quelques chiffres</h2>
+
+<p>JCertif 2013, c'est :</p>
+
+<ul>
+<li>7 jours(+1?) en continue, un véritable Marathon !</li>
+<li>1800+ participants</li>
+<li>105 femmes</li>
+<li>120 sessions</li>
+<li>30 présentateurs (en incluant les représentants des partenaires)</li>
+<li>10 communautés africaines (GDG Douala, GDG Yaounde, GDG Brazza, GDG Kinshasa, Burkina Faso JUG, Togo JUG, RDC-JUG, Kin-JUG, Douala JUG, CongoJUG, Google Student Ambassador)</li>
+<li>2 ministres de la République du Congo qui font le déplacement</li>
+<li>20 exposants (partenaires)</li>
+</ul>
+
+
+<h2>Plus de photos ?</h2>
+
+<ul>
+<li>JCertif Conference : <a href="https://plus.google.com/photos/101033732619256173933/albums/5925894537709454225">https://plus.google.com/photos/101033732619256173933/albums/5925894537709454225</a></li>
+<li>JCertif University : <a href="https://plus.google.com/photos/101033732619256173933/albums/5925907860998340961">https://plus.google.com/photos/101033732619256173933/albums/5925907860998340961</a></li>
+<li>JCertif Excursion : <a href="https://plus.google.com/photos/101033732619256173933/albums/592590922027848177">https://plus.google.com/photos/101033732619256173933/albums/5925909220278481777</a></li>
+</ul>
+
+
+<h2>Nos ambitions</h2>
+
+<p>Organiser plusieurs événements JCertif en Afrique en 2014 :</p>
+
+<ul>
+<li>JCertif DR Congo Lubumbashi en Mars</li>
+<li>JCertif DR Congo Kinshasa en Avril</li>
+<li>JCertif Côte d'ivoire Abidjan en Juin</li>
+<li>JCertif Cameroon en Juillet</li>
+<li>JCertif Brazzaville en Septembre</li>
+<li>JCertif TChad en Septembre</li>
+</ul>
+
+
+<p>Projet fou ? Oui c'est le cas ! Rendez-vous en 2014 pour savoir si nous avons survécu à nos ambitions !</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JCertif Express 2013 # Lancement Java EE 7]]></title>
+    <link href="http://roddet.github.com/2013/07/jcertif-express-javaee7/"/>
+    <updated>2013-07-06T18:00:00-04:00</updated>
+    <id>http://roddet.github.com/2013/07/jcertif-express-javaee7</id>
+    <content type="html"><![CDATA[<p>Oracle organise une tournée de lancement officiel de Java EE 7 en Afrique et ça commence aujourd'hui en côte d'ivoire !</p>
+
+<p>Les pays suivants sont concernés : Egypte, Sénégal, Maroc, Burkina Faso, Afrique du Sud, Kenya, Congo-Kinshasa, Congo-Brazzaville, Algérie, Ghana, Uganda, Côte d'ivoire, Cameroun.</p>
+
+<p>Oracle choisit, encore une fois, JCertif pour communiquer avec l'Afrique. Dans 4 pays, vont être organisés des événements appelé JCertif Express qui vont promovoir Java EE 7 :</p>
+
+<ul>
+<li><a href="https://plus.google.com/u/0/events/c51lkb8jikfu1t6bpea6939903k">6 juillet : Côte d'ivoire</a></li>
+<li>11 juillet : Congo-Kinshasa</li>
+<li><a href="https://plus.google.com/u/0/events/cjtqn9jt9m73sl4891qmtkp3m6o">16 juillet : Cameroun - Yaoundé</a></li>
+<li><a href="https://plus.google.com/events/cijb923vkpms1ae6rko3fvd5s9s">14 juillet : Cameroun - Douala</a></li>
+<li><a href="https://www.facebook.com/media/set/?set=a.480869275338752.1073741825.309434862482195&amp;type=3">18 juillet : Congo-Brazzaville</a></li>
+</ul>
+
+
+<p><img class="center" src="/images/jcertif_express/jcertif_express.jpg"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JCertif 2012 - Mes sessions]]></title>
+    <link href="http://roddet.github.com/2012/11/jcertif-2012-mes-sessions/"/>
+    <updated>2012-11-22T22:54:00-05:00</updated>
+    <id>http://roddet.github.com/2012/11/jcertif-2012-mes-sessions</id>
+    <content type="html"><![CDATA[<p>Voici les slides des différentes sessions que j'ai animées durant JCertif 2012 :</p>
+
+<h2>Présentation JCertif Lab</h2>
+
+<iframe allowfullscreen="allowfullscreen" frameborder="0" height="325" marginheight="0" marginwidth="0" scrolling="no" src="http://www.slideshare.net/slideshow/embed_code/14996084?rel=0" style="border-width: 1px 1px 0; border: 1px solid #CCC; margin-bottom: 5px;" width="512"> </iframe>
+
+
+<h2>Maven par la pratique</h2>
+
+<iframe allowfullscreen="allowfullscreen" frameborder="0" height="325" marginheight="0" marginwidth="0" scrolling="no" src="http://www.slideshare.net/slideshow/embed_code/14995676" style="border-width: 1px 1px 0; border: 1px solid #CCC; margin-bottom: 5px;" width="512"> </iframe>
+
+
+<h2>Scrum avec IceScrum</h2>
+
+<iframe allowfullscreen="allowfullscreen" frameborder="0" height="325" marginheight="0" marginwidth="0" scrolling="no" src="http://www.slideshare.net/slideshow/embed_code/14995968" style="border-width: 1px 1px 0; border: 1px solid #CCC; margin-bottom: 5px;" width="512"> </iframe>
+
+
+<h2>Git par la pratique</h2>
+
+<iframe allowfullscreen="allowfullscreen" frameborder="0" height="325" marginheight="0" marginwidth="0" scrolling="no" src="http://www.slideshare.net/slideshow/embed_code/14996186" style="border-width: 1px 1px 0; border: 1px solid #CCC; margin-bottom: 5px;" width="512"> </iframe>
+
+
+<h2>Intégration continue avec Jenkins</h2>
+
+<iframe allowfullscreen="allowfullscreen" frameborder="0" height="325" marginheight="0" marginwidth="0" scrolling="no" src="http://www.slideshare.net/slideshow/embed_code/14996270" style="border-width: 1px 1px 0; border: 1px solid #CCC; margin-bottom: 5px;" width="512"> </iframe>
+
+
+<h2>Démonstration de Gatling</h2>
+
+<iframe allowfullscreen="allowfullscreen" frameborder="0" height="325" marginheight="0" marginwidth="0" scrolling="no" src="http://www.slideshare.net/slideshow/embed_code/14996328" style="border-width: 1px 1px 0; border: 1px solid #CCC; margin-bottom: 5px;" width="512"> </iframe>
+
+
+<h2>Atelier Play! Framework</h2>
+
+<p>Pas de slides, pas de théorie, session 100% pratique dédiée au développement d'un moteur de blog.</p>
+
+<p>Vous pouvez retrouver les autres sessions de JCertif 2012 sur le compte Github dédié: <a href="https://github.com/JCERTIFLab/JCertif-2012">https://github.com/JCERTIFLab/JCertif-2012</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JCertif 2012, une aventure humaine]]></title>
+    <link href="http://roddet.github.com/2012/10/jcertif-2012-une-aventure-humaine/"/>
+    <updated>2012-10-20T22:53:00-04:00</updated>
+    <id>http://roddet.github.com/2012/10/jcertif-2012-une-aventure-humaine</id>
+    <content type="html"><![CDATA[<p>Ca y est cela fait déjà 1 mois que l'événement JCertif 2012 a eu lieu. Il s'agissait de la 3ème édition.</p>
+
+<iframe width="640" height="360" src="http://www.youtube.com/embed/R7pDMz0zkAo?feature=player_embedded" frameborder="0" allowfullscreen></iframe>
+
+
+<h2>La community Day</h2>
+
+<p>JCertif 2012 commence par un cérémonie d'ouverture à l’amphithéâtre de l'école IHEM qui accueille la partie University de l'événement. Le public est au rendez-vous. L'amphithéâtre ne pourra pas contenir tout le monde, nous serons obligé d'utiliser les autres salles pour installer les participants.</p>
+
+<p><img src="/images/jc2012/jc2012_seance_ouverture.jpg" alt="/images/jc2012/jc2012_seance_ouverture.jpg" /></p>
+
+<p>Vont alors s'enchainer :</p>
+
+<ul>
+<li>le mot de bienvenue du directeur de l'établissement accueillant la partie University de l'événement</li>
+<li>la présentation de JCertif, de sa vision, ses objectifs</li>
+<li>la présentation des travaux de JCertif Lab : plateforme dédiée à la formation et l'expérimentation des concepts via la réalisation de projets concrets. Etant le responsable de cette partie, c'est moi qui prend le micro :)</li>
+</ul>
+
+
+<p><img src="/images/jc2012/jc2012_seance_ouverture_1.jpg" alt="/images/jc2012/jc2012_seance_ouverture_1.jpg" /></p>
+
+<br/>
+
+
+<p><img src="/images/jc2012/jc2012_seance_ouverture_2.jpg" alt="/images/jc2012/jc2012_seance_ouverture_2.jpg" /></p>
+
+<p>La suite de la journée est dédiée aux communautés. Elles vont choisir un ensemble de sujets à aborder.
+Durant la pause, chaque sujet est imprimé et affiché sur la porte d'une salle dédiée à celui-ci.
+Au retour de la pause, chaque participant rentre dans la salle dont le sujet l'intéresse.
+Au menu :
+- C'est quoi le métier de développeur ? (séance à laquelle j'ai assisté)
+- Développeur africain, partir ou rester ?
+- Qu'est-ce que le développement mobile ?
+- etc...
+Dans chaque salle sont désignés :
+- un animateur
+- un rapporteur
+Les échanges sont très conviviaux, on prend plaisir à échanger et partager nos différentes expériences.
+A la fin des sessions, nous nous retrouvons tous dans la grande salle et chaque rapporteur présente une synthèse des idées énoncées.
+La community Day se termine en musique dans la grande cours de l'école où l'on a pu observer le talent de danseur de certains formateurs :)</p>
+
+<h2>JCertif University</h2>
+
+<p>Pendant 4 jours, des formations gratuites sur près de 10 salles en simultané sont effectuées.
+Les cursus présentés :
+- Initiation au développement Java
+- Développement Web avec Java
+- Développer des applications mobiles pour Android
+- Design Web avec Photoshop
+- Java en entreprise
+Lors de l'édition 2011, j'étais sur le créneau Initiation Java, cette année j'ai adressé la problématique de Java en entreprise en présentant les sujets tels que Maven, Git, Intégration continue avec Jenkins, Scrum avec IceScrum et un Atelier Play Framework. J'ai eu ainsi moins d'audience que les autres cursus, le besoin le plus exprimé était celui de l'initiation.Il n'était cependant pas concevable pour nous cette année de ne pas adresser les problématiques d'industrialisation du développement avec Java.</p>
+
+<p>Une visite de la ville pour les formateurs a été organisée lors de la pause de midi d'une des journées. Nous embarquions alors dans un car muni du dispositif CARTV.</p>
+
+<p><img src="/images/jc2012/jc2012_visite_cartv_0.jpg" alt="/images/jc2012/jc2012_visite_cartv_0.jpg" /></p>
+
+<p>L'initiative CARTV consiste à diffuser de la publicité géolocalisée dans des bus à l'aide d'un IPAD. Ainsi lorsque nous passions à proximité de lieux historiques ou des partenaires de CARTV nous avions un contenu lié affiché à l'écran.
+Pendant environ 1h30, le bus a parcouru les principaux lieux historiques de Brazzaville.
+Pour des besoins d'optimisation du temps, nous avons déjeuné dans le bus durant la visite.</p>
+
+<p><img src="/images/jc2012/jc2012_visite_cartv_1.jpg" alt="/images/jc2012/jc2012_visite_cartv_1.jpg" /></p>
+
+<p>Sur la photo ci-dessus, Mathias Seguy, expert Android installé à Toulouse, fondateur de la société Android2ee, rédacteur sur développez.com (http://mathias-seguy.developpez.com/homepage/index.php) et présentateur à Devoxx France 2012.</p>
+
+<h2>JCertif Conference</h2>
+
+<p>La conférence JCertif 2012 est organisé sur 2 jours au centre culturelle français de Brazzaville.
+Les participants sont également au rendez-vous.</p>
+
+<p><img src="/images/jc2012/jc2012_conf_0.jpg" alt="/images/jc2012/jc2012_conf_0.jpg" /></p>
+
+<p>Plusieurs présentations autour du cloud, la sécurité, le mobile, les enjeux de la venue de la fibre optique dans la sous région, etc...</p>
+
+<p>Voici un aperçu des présentations :</p>
+
+<p>Eric Joel TOGUEM FONKOUA avec "Plateformes de développement mobile : les options"</p>
+
+<p><img src="/images/jc2012/Eric_01.jpg" alt="/images/jc2012/Eric_01.jpg" /></p>
+
+<p>Une démonstration de la google Q par Patrick Bashizi et Max Bonbhel</p>
+
+<p><img src="/images/jc2012/max_google_Q.jpg" alt="/images/jc2012/max_google_Q.jpg" /></p>
+
+<p>Une présentation de la solution "KIMIASOLUTION" (KIMIA veut dire paix en français) par Dieudonné Kayembe (Développeur RD Congo).
+Il propose une plateforme complète permettant de prévenir et de surveiller les personnes souffrant d'hypertension.</p>
+
+<p><img src="/images/jc2012/kimiasolution.jpg" alt="/images/jc2012/kimiasolution.jpg" /></p>
+
+<p>Mathias Séguy après avoir fait l'historique des impacts  des inventions que l'humanité ait connues, nous parle de notre futur avec Android.</p>
+
+<p><img src="/images/jc2012/mathias_conf.jpg" alt="/images/jc2012/mathias_conf.jpg" /></p>
+
+<p>Une seule chose pour conclure... VIVEMENT JCERTIF 2013 !</p>
+]]></content>
+  </entry>
+  
+</feed>

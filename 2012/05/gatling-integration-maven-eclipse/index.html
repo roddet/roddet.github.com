@@ -1,0 +1,626 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Gatling : Intégration Maven & Eclipse - Rossi Oddet</title>
+  <meta name="author" content="Rossi Oddet">
+
+  
+  <meta name="description" content="Gatling permet d&#8217;effectuer des tests de charges de vos applications à base de scripts écrits en Scala.
+Le nom Gatling fait référence à une &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://roddet.github.com/2012/05/gatling-integration-maven-eclipse">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Rossi Oddet" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-32190657-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>	
+  <h1><a href="/">Rossi Oddet</a></h1>
+  
+    <h2>Blog d'un artisan développeur</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:roddet.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/events">Evénements</a></li>
+  <li><a href="/viededev">Vie de Développeur</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Gatling : Intégration Maven & Eclipse</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-21T22:15:00-04:00" pubdate data-updated="true">May 21<span>st</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><img src="/images/gatling/logo.png" alt="/images/gatling/logo.png" /></p>
+
+<p><a href="http://gatling-tool.org/">Gatling</a> permet d&#8217;effectuer des tests de charges de vos applications à base de scripts écrits en Scala.
+Le nom Gatling fait référence à une mitrailleuse créée en 1861, plus de détail sur <a href="http://fr.wikipedia.org/wiki/Gatling">Wikipedia</a>. Vous l&#8217;avez compris l&#8217;objectif ici est de tirer à plein feux sur votre application.</p>
+
+<p>L&#8217;approche utilisée peut se résumer en deux concepts : asynchrone à l&#8217;extrême et un DSL pour écrire les scripts.</p>
+
+<h2>Asynchrone à l&#8217;extrême</h2>
+
+<p>La plupart des autres solutions sont construites sur le modèle 1 utilisateur = 1 thread. Lors d&#8217;une requête HTTP, le thread est mis en attente en attendant la réponse. Avec un grand nombre de threads (donc d&#8217;utilisateurs), le processeur passe beaucoup de temps à changer de contexte pour trouver le thread qui n&#8217;est pas en attente.</p>
+
+<p>Le projet s&#8217;est construit autour du <a href="http://en.wikipedia.org/wiki/Actor_model">modèle Actor</a> qui revient à la mode depuis que les fréquences des processeurs ont cessé d&#8217;augmenter et que l&#8217;on s&#8217;oriente plutôt vers la multiplication des coeurs.
+Il permet de profiter pleinement la puissance du processeur.</p>
+
+<p>L&#8217;unité de base du concept est un acteur et les acteurs communiquent entre eux par le biais de messages. Il faut donc voir un acteur comme une unité de traitement avec deux types d&#8217;interactions : une réception de message et un envoi de message. Gatling ne limite plus l&#8217;utilisation d&#8217;1 thread à un utilisateur. Après l&#8217;envoi d&#8217;une requête HTTP,  un message est posté et le thread est immédiatement disponible pour envoyer une autre. Un autre thread pourra traiter la réponse dans la pile des messages reçus. <a href="http://akka.io/">Akka</a> est le framework open source utilisé pour implémenter ce pattern. Ce choix est de plus en plus adopté par des projets émergeants (<a href="http://www.playframework.com/">Play framework</a>, <a href="https://code.google.com/p/kandash/">Kandash</a>, &#8230;).</p>
+
+<p>Gatling effectue des appels HTTP non bloquant à l&#8217;aide du framework <a href="https://github.com/AsyncHttpClient/async-http-client">Async Http Client</a> basé sur le client <a href="http://netty.io/">Netty</a>. Là encore on peut remarquer la similitude avec Play framework qui utilise également Netty, cette fois-ci côté serveur.
+En combinant le modèle des acteurs et les appels Http non bloquants, Gatling met toutes les chances de son côté pour avoir de très bonnes performances et ça se voit !</p>
+
+<h2>Un DSL pour écrire les scripts</h2>
+
+<p>L&#8217;objectif de Gatling est de sortir du modèle d&#8217;outil de réalisation de script à partir d&#8217;une interface graphique pour s&#8217;opposer à des outils comme <a href="http://jmeter.apache.org/">Apache JMeter</a> et aller dans le sens des frameworks comme <a href="http://grinder.sourceforge.net/">The Grinder</a>. Le langage choisi pour l&#8217;écriture des scripts est Scala. Pas de panique, pas besoin de connaître ou de maîtriser ce langage, l&#8217;api fournie est &#8220;humainement&#8221; compréhensible, simple, concis.</p>
+
+<p>En voici un exemple, je vous laisse juger par vous même :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="n">scenario</span><span class="o">(</span><span class="s">&quot;Mon scénario à moi tout seul&quot;</span><span class="o">)</span>
+</span><span class='line'>     <span class="o">.</span><span class="n">exec</span><span class="o">(</span>
+</span><span class='line'>      <span class="n">http</span><span class="o">(</span><span class="s">&quot;requette_mapage1&quot;</span><span class="o">)</span>
+</span><span class='line'>      <span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="s">&quot;/faces/mapage1.html&quot;</span><span class="o">)</span>
+</span><span class='line'>     <span class="o">)</span>
+</span><span class='line'>     <span class="o">.</span><span class="n">exec</span><span class="o">(</span>
+</span><span class='line'>      <span class="n">http</span><span class="o">(</span><span class="s">&quot;requette_mapage2&quot;</span><span class="o">)</span>
+</span><span class='line'>      <span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="s">&quot;/faces/mapage2.html&quot;</span><span class="o">)</span>
+</span><span class='line'>      <span class="o">.</span><span class="n">queryParam</span><span class="o">(</span><span class="s">&quot;nom&quot;</span><span class="o">,</span> <span class="s">&quot;&quot;&quot;rossi&quot;&quot;&quot;</span><span class="o">)</span>
+</span><span class='line'>      <span class="o">.</span><span class="n">check</span><span class="o">(</span><span class="n">status</span><span class="o">.</span><span class="n">is</span><span class="o">(</span><span class="mi">304</span><span class="o">)</span>
+</span><span class='line'>     <span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Le fait d&#8217;utiliser un langage fortement typé comme Scala permet de détecter les erreurs de syntaxes à la compilation et d&#8217;utiliser toute la puissance de votre IDE pour organiser le code, mutualiser des bouts de script, etc&#8230;
+Pour les développeurs Java, l&#8217;avantage de Scala est de pouvoir directement accéder aux API du JDK et aux différentes bibliothèques java une fois ajoutée au classpath.</p>
+
+<h2>Installer Gatling</h2>
+
+<p>Pour une installation/utilisation classique, vous pouvez suivre les instructions de la page : <a href="https://github.com/excilys/gatling/wiki/Getting-Started">https://github.com/excilys/gatling/wiki/Getting-Started</a>. Il suffit de télécharger puis décompresser le livrable. Vous pourrez ainsi écrire et exécuter vos scripts en vous basant sur les exemples fournies.</p>
+
+<p>Le lien suivant explique comment enregistrer un scénario et l&#8217;exécuter : <a href="https://github.com/excilys/gatling/wiki/First-Steps-with-Gatling">https://github.com/excilys/gatling/wiki/First-Steps-with-Gatling</a>.
+Dans cet article, nous allons plutôt voir comment il s&#8217;intègre dans votre IDE (Eclipse) et dans le cycle de vie de vos projets (Maven). Il serait dommage de ne pas profiter de la puissance de votre IDE pour accélérer l&#8217;écriture et la maintenance de vos scripts.</p>
+
+<h2>Installer vos outils de développement</h2>
+
+<p>Voici ce dont vous avez besoin, je mets en parenthèse les versions que j&#8217;ai utilisé :</p>
+
+<ul>
+<li>un JDK 6+ (1.6.0_31)</li>
+<li><a href="http://www.eclipse.org/downloads/">Eclipse</a> (Eclipse Classic 3.7.2)</li>
+<li><a href="http://scala-ide.org/">Scala IDE Plugin</a> (<a href="http://download.scala-ide.org/releases-29/stable/site/">http://download.scala-ide.org/releases-29/stable/site/</a>)</li>
+<li><a href="http://www.eclipse.org/m2e/">M2Eclipse</a> (Indigo Update Site > Collaboration > m2e)</li>
+<li><a href="http://alchim31.free.fr/m2e-scala/update-site">M2E-Scala</a></li>
+</ul>
+
+
+<p>J&#8217;ai dû repartir d&#8217;une version d&#8217;Eclipse &#8220;neuve&#8221; car le Scala IDE Plugin ne s&#8217;installait pas sur ma version d&#8217;Eclipse courante contenant très grand nombre de plugins installés.</p>
+
+<h2>Créer le projet Maven</h2>
+
+<h3>Ajouter le catalog gatling</h3>
+
+<p>Nous allons pour cela utiliser l&#8217;archetype &#8220;gatling-highcharts-maven-archetype&#8221;. Cet archetype n&#8217;étant pas présent dans le repository maven central, il faut ajouter un nouveau catalog à eclipse.</p>
+
+<p>Allez dans le menu :
+Window > Preferences > Maven > Archetypes > Add Remote Catalog&#8230;
+Puis saisissez l&#8217;url : <a href="http://repository.excilys.com/content/groups/public/archetype-catalog.xml">http://repository.excilys.com/content/groups/public/archetype-catalog.xml</a></p>
+
+<p><img src="/images/gatling/eclipse_maven_catalog.png" alt="/images/gatling/eclipse_maven_catalog.png" /></p>
+
+<h3>Créer un projet maven à partir de l&#8217;archetype gatling</h3>
+
+<p>File > New > Maven Project > Sélectionner l&#8217;archetype &#8220;gatling-highcharts-maven-archetype&#8221; (version 1.1.6 dans mon cas)</p>
+
+<p><img src="/images/gatling/eclipse_maven_archetype.png" alt="/images/gatling/eclipse_maven_archetype.png" /></p>
+
+<h2>Anatomie du projet généré</h2>
+
+<table>
+  <tr>
+    <td width="30%"><img src="/images/gatling/structure_mvn.png"/></td><td>&nbsp;&nbsp;</td>
+    <td width="70%">On retrouve un projet Maven classique avec un pom.xml, les sources scala dans src/main/scala, les fichiers de configuration dans src/main/resources.<br/><br/>Engine.scala est la classe principale qui lance la mitrailleuse.<br/><br/>IDEPathHelper.scala contient les différents chemins d&#8217;accès aux ressources comme les classes compilées, les simulations, les fichiers de données, etc&#8230;<br/><br/>Recorder.scala est un utilitaire qui permet d&#8217;enregistrer un scénario avec par exemple votre navigateur et de générer les scripts correspondants.<br/><br/>FooSimulation.scala une simulation qui ne fait rien. Il peut être compléter pour créer son premier scénario.<br/><br/>
+gatling.conf donne la possibilité de paramétrer gatling.</td>
+</table>
+
+
+<h2>Générer une simulation avec le &#8220;Recorder&#8221;</h2>
+
+<p>Le &#8220;Recorder&#8221; permet de capturer toutes les requêtes HTTP en se positionnant en proxy entre votre machine et votre réseau. Le cas d&#8217;utilisation le plus courant est celui d&#8217;enregistrer une simulation à partir d&#8217;un navigateur web en y paramétrant un proxy.</p>
+
+<p>Pour lancer l&#8217;outil &#8220;Recorder&#8221; :</p>
+
+<ul>
+<li>Sélectionner le fichier &#8220;Recorder.scala&#8221;</li>
+<li>Clic droit > Run As > Scala Application</li>
+</ul>
+
+
+<p><img src="/images/gatling/gatling_run_recorder.png" alt="/images/gatling/gatling_run_recorder.png" /></p>
+
+<p>L&#8217;écran suivant se lance :</p>
+
+<p><img src="/images/gatling/recorder.png" alt="/images/gatling/recorder.png" /></p>
+
+<p>La partie &#8220;Network/Listening Network&#8221; sert à renseigner les ports d&#8217;écoute qui seront à paramétrer dans l&#8217;outil utilisé pour réaliser un scénario (un navigateur web par exemple). Je ne parle pas intentionnellement directement d&#8217;un navigateur web parce que vous allez pouvoir utiliser le Recorder avec n&#8217;importe quel programme qui fait des requêtes HTTP, une compilation Maven par exemple.</p>
+
+<p>Dans le cas présent, le proxy à paramétrer sera :
+* Pour du HTTP locahost:8000
+* Pour du HTTPS localhost:8001</p>
+
+<p>La partie &#8220;Output&#8221; sert à paramétrer l&#8217;endroit où sera généré le script.</p>
+
+<p>Commencer par paramétrer l&#8217;outil qui va vous aider avec le proxy configuré. Si votre outil possède un cache, comme un navigateur web, à vous de voir si vous voulez exécuter votre simulation dans ces conditions ou vider le cache.</p>
+
+<p>Vous pouvez ensuite cliquer sur le bouton &#8220;Start&#8221;.</p>
+
+<p><strong>Attention petit bug déroutant sur Mac OSX Lion</strong> : l&#8217;affichage par défaut du Recorder ne permet pas de voir le bouton &#8220;Start&#8221;. J&#8217;ai mis un certain temps à pouvoir trouver l&#8217;astuce pour l&#8217;afficher. Il consiste à simplement agrandir la fenêtre avec le bouton &#8220;+&#8221; avec comme conséquence la disparition de quelques rubriques de la partie &#8220;Output&#8221;. Ce bug est déjà corrigé dans la version 1.2.0-SNAPSHOT en cours de développement.</p>
+
+<p>Vous êtes désormais en mode écoute sur les ports configurés pour votre machine. Si vous faites par exemple la configuration du proxy au niveau de votre connexion Wifi, vous allez pouvoir voir toutes les requêtes et réponses qui transitent entre votre outil et votre réseau.</p>
+
+<p>Exécutons un scénario simple :</p>
+
+<ol>
+<li>Taper l&#8217;adresse &#8220;www.google.fr&#8221;</li>
+<li>Lancer la recherche &#8220;JCertif 2012&#8221;</li>
+</ol>
+
+
+<p><img src="/images/gatling/capture_recorder.png" alt="/images/gatling/capture_recorder.png" /></p>
+
+<p>Le premier constat que vous allez voir est que vous n&#8217;avez pas seulement 2 requêtes mais beaucoup plus. Et oui c&#8217;est ça la vraie vie, google fait de multiple appels notamment pour la complétion lors de la saisie entre autres.
+Quand on réalise des tests de charge, on se rend rapidement compte qu&#8217;un scénario pourtant fonctionnellement simple peut rapidement se complexifier.
+Le Recorder permet d&#8217;ajouter des TAG, c&#8217;est particulièrement utile pour séparer les différentes phases de l&#8217;enregistrement. Concrètement, les TAG ajoutés vont se transformer en commentaire entre deux enchainements de requête dans le code Scala généré.</p>
+
+<p>Pour arrêter l&#8217;enregistrement cliquer sur &#8220;Stop !&#8221;.</p>
+
+<p>De retour dans Eclipse, il faut rafraichir le projet pour voir apparaitre le fichier source généré.</p>
+
+<p><img src="/images/gatling/fichier_genere.png" alt="/images/gatling/fichier_genere.png" /></p>
+
+<p>Dans mon cas, il commence par &#8220;Simulation&#8221; suivi d&#8217;une indication sur la date/heure d&#8217;enregistrement.</p>
+
+<p>Vous pouvez le parcourir vous verrez qu&#8217;il se lit aisément malgré la complexité généré. Le code généré est fidèle à tout ce qui s&#8217;est passé sans masquer les informations.</p>
+
+<p>A cette étape, on se retrouve avec du code dans un IDE, on peut faire tout ce que l&#8217;on veut : refactoring, suppression des appels à des serveurs que l&#8217;on ne souhaite pas tester, suppression des pauses, ajout de requêtes, variabilisation de chaine de caractères, &#8230;</p>
+
+<p>Dans mon cas, je vais juste renommer la classe en &#8220;SimulationGoogleJCertif&#8221; en utilisant la fonction &#8220;Refactor&#8221; d&#8217;Eclipse. Pour les développeurs venant du monde Java, vous allez remarquer que le nom du fichier va être modifié mais pas le nom de la classe. Il ne s&#8217;agit pas d&#8217;un bug (je l&#8217;ai pensé au début, honte à moi&#8230;:-)), c&#8217;est autorisé en Scala ! Mais c&#8217;est pas grave, je modifie manuellement le nom de la classe. Il faut aussi savoir que le support de Scala dans Eclipse n&#8217;a pas autant de maturité que celui de Java. Vous allez probablement comme moi rencontrer quelques bugs, mais Eclipse nous a déjà habitué aux bugs et aux plantages, donc ça ne change pas fondamentalement nos habitudes&#8230;:-)</p>
+
+<h2>Exécuter votre simulation depuis Eclipse</h2>
+
+<p>Pour exécuter votre simulation depuis Eclipse rien de plus simple, il faut lancer la classe Engine.scala de la même manière que le Recorder.</p>
+
+<p>Le moteur Gatling se lance en mode interactif :</p>
+
+<p><img src="/images/gatling/choix_simulation.png" alt="/images/gatling/choix_simulation.png" /></p>
+
+<p>Il faut à présent suivre les instructions :</p>
+
+<ul>
+<li>Choisir la simulation : 1 dans mon cas</li>
+<li>Saisir un identifiant de cette exécution si besoin, taper sur la touche Entrée sinon</li>
+<li>Saisir une description si besoin, taper sur la touche Entrée sinon</li>
+</ul>
+
+
+<p>C&#8217;est parti !</p>
+
+<h2>Visualiser les résultats</h2>
+
+<p>Le résultat de la simulation est enregistré dans /target/gatling-results.</p>
+
+<p><img src="/images/gatling/fichier_resultat.png" alt="/images/gatling/fichier_resultat.png" /></p>
+
+<p>Le fichier le plus important est simulation.log, il contient les mesures des temps d&#8217;exécution. Il est aisément parsable pour générer des rapports.</p>
+
+<p>Sinon vous avez un rapport sympa généré par gatling. Pour le visualiser, ouvrer le fichier &#8220;active_sessions.html&#8221; dans un navigateur web.</p>
+
+<p><img src="/images/gatling/graphe1.png" alt="/images/gatling/graphe1.png" /></p>
+
+<br/>
+
+
+<p><img src="/images/gatling/graphe2.png" alt="/images/gatling/graphe2.png" /></p>
+
+<h2>Gatling avec Maven en Intégration Continue</h2>
+
+<p>Nous avons pu jusqu&#8217;ici généré un projet Maven qui lors d&#8217;un mvn install compile le code Scala. Tant qu&#8217;à faire, il est plus intéressant de pouvoir les lancer automatiquement. Deux intérêts possibles :</p>
+
+<ul>
+<li>vous disposez d&#8217;un environnement pour faire vos tests de charges, vous pouvez alors simuler un grand nombre d&#8217;utilisateurs et détecter les regressions en terme de performance. C&#8217;est bien sûr le cas idéal.</li>
+<li>vous êtes dans la vrai vie, vous n&#8217;avez pas d&#8217;environnement dédié. Vous pouvez exécuter vos scripts au quotidien pour vous assurer qu&#8217;ils sont toujours valides. En effet, les modifications de votre application peuvent entrainer des changements d&#8217;url ou de paramètre, vous les détecterait en regardant les rapports.</li>
+</ul>
+
+
+<p>Pour exécuter Gatling depuis Maven, il y a plusieurs options :</p>
+
+<ul>
+<li>Utiliser gatling-maven-plugin : le guide d&#8217;utilisation est là <a href="https://github.com/excilys/gatling/wiki/Maven-plugin">https://github.com/excilys/gatling/wiki/Maven-plugin</a></li>
+<li>Utiliser <a href="http://mojo.codehaus.org/exec-maven-plugin/">exec-maven-plugin</a> pour exécuter la classe Engine juste après sa compilation. En effet, la compilation du code Scala va générer du bytecode que l&#8217;on sait exécuter simplement avec Java. Il  est surement possible d&#8217;utiliser directement le plugin <a href="https://github.com/davidB/scala-maven-plugin">scala-maven-plugin</a>, je n&#8217;ai pas testé.</li>
+</ul>
+
+
+<p>Actuellement, je penche plutôt sur l&#8217;option <a href="http://mojo.codehaus.org/exec-maven-plugin/">exec-maven-plugin</a> pour les raisons suivantes :</p>
+
+<ul>
+<li>Le modèle par défaut de gatling-maven-plugin préconise de mettre les sources dans src/main/resources/simulations. Ce qui ne me parait pas logique avec le reste de l&#8217;architecture de mon projet où je mets mes sources Scala dans src/main/scala. Il est possible de configurer le plugin pour modifier le répertoire des simulations. Cela n&#8217;a pas fonctionner du premier coup dans mon cas et je n&#8217;ai pas non plus insister (c&#8217;est peut-être une erreur de ma part, à suivre&#8230;)</li>
+<li>J&#8217;aime bien l&#8217;idée d&#8217;unifier le lancement de Gatling que ce soit via Eclipse ou via Maven. Cela permet par exemple de modifier la classe Engine pour ajouter des paramètres à Gatling, ou faire des traitements avant de lancer Gatling (récupérer des infos d&#8217;une base de données par exemple, etc&#8230;).</li>
+</ul>
+
+
+<p>Avec cette option, il y a un petit soucis en l&#8217;état. En effet, on a vu tout à l&#8217;heure que Engine lançait Gatling en mode intéractif. Hors durant notre compilation Maven nous n&#8217;aurons personne pour faire les différents choix. Heureusement nous avons accès à tout le code et nous pouvons faire de petites modifications pour modifier ce comportement, c&#8217;est aussi un peu notre métier&#8230;:-) C&#8217;est du Scala certes, ça pique aux yeux de certains, mais on s&#8217;y habitue en attendant Java 8 !</p>
+
+<p>Suivez les étapes suivantes pour la mise en oeuvre.</p>
+
+<h3>Modifier le fichier IDEPathHelper.scala</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">import</span> <span class="nn">scala.tools.nsc.io.File</span>
+</span><span class='line'><span class="k">import</span> <span class="nn">scala.tools.nsc.io.Path</span>
+</span><span class='line'><span class="k">import</span> <span class="nn">scala.collection.immutable.List</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">object</span> <span class="nc">IDEPathHelper</span> <span class="o">{</span>
+</span><span class='line'>  <span class="k">val</span> <span class="n">gatlingConfUrl</span> <span class="k">=</span> <span class="n">getClass</span><span class="o">.</span><span class="n">getClassLoader</span><span class="o">.</span><span class="n">getResource</span><span class="o">(</span><span class="s">&quot;gatling.conf&quot;</span><span class="o">).</span><span class="n">getPath</span>
+</span><span class='line'>  <span class="k">val</span> <span class="n">projectRootDir</span> <span class="k">=</span> <span class="nc">File</span><span class="o">(</span><span class="n">gatlingConfUrl</span><span class="o">).</span><span class="n">parents</span><span class="o">(</span><span class="mi">2</span><span class="o">)</span>
+</span><span class='line'>  <span class="k">val</span> <span class="n">mavenSourcesDir</span> <span class="k">=</span> <span class="n">projectRootDir</span> <span class="o">/</span> <span class="s">&quot;src&quot;</span> <span class="o">/</span> <span class="s">&quot;main&quot;</span> <span class="o">/</span> <span class="s">&quot;scala&quot;</span>
+</span><span class='line'>  <span class="k">val</span> <span class="n">mavenResourcesDir</span> <span class="k">=</span> <span class="n">projectRootDir</span> <span class="o">/</span> <span class="s">&quot;src&quot;</span> <span class="o">/</span> <span class="s">&quot;main&quot;</span> <span class="o">/</span> <span class="s">&quot;resources&quot;</span>
+</span><span class='line'>  <span class="k">val</span> <span class="n">mavenTargetDir</span> <span class="k">=</span> <span class="n">projectRootDir</span> <span class="o">/</span> <span class="s">&quot;target&quot;</span>
+</span><span class='line'>  <span class="k">val</span> <span class="n">mavenBinariesDir</span> <span class="k">=</span> <span class="n">mavenTargetDir</span> <span class="o">/</span> <span class="s">&quot;classes&quot;</span>
+</span><span class='line'>  <span class="k">val</span> <span class="n">dataFolder</span> <span class="k">=</span> <span class="n">mavenResourcesDir</span> <span class="o">/</span> <span class="s">&quot;data&quot;</span>
+</span><span class='line'>  <span class="k">val</span> <span class="n">requestBodiesFolder</span> <span class="k">=</span> <span class="n">mavenResourcesDir</span> <span class="o">/</span> <span class="s">&quot;request-bodies&quot;</span>
+</span><span class='line'>  <span class="k">val</span> <span class="n">recorderOutputFolder</span> <span class="k">=</span> <span class="n">mavenSourcesDir</span>
+</span><span class='line'>  <span class="k">val</span> <span class="n">resultsFolder</span> <span class="k">=</span> <span class="n">mavenTargetDir</span> <span class="o">/</span> <span class="s">&quot;gatling-results&quot;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">val</span> <span class="n">simulations</span><span class="k">:</span><span class="kt">List</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span> <span class="k">=</span> <span class="nc">List</span><span class="o">.</span><span class="n">fromString</span><span class="o">(</span><span class="s">&quot;com.roddet.gatling.SimulationGoogleJCertif&quot;</span><span class="o">,</span><span class="sc">&#39;,&#39;</span><span class="o">)</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Cette variable va nous permettre de paramétrer la liste des simulations que l&#8217;on souhaite lancer.</p>
+
+<h3>Modifier le fichier Engine.scala</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">import</span> <span class="nn">com.excilys.ebi.gatling.app.</span><span class="o">{</span> <span class="nc">Options</span><span class="o">,</span> <span class="nc">Gatling</span> <span class="o">}</span>
+</span><span class='line'><span class="k">import</span> <span class="nn">com.excilys.ebi.gatling.core.util.PathHelper.path2string</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">object</span> <span class="nc">Engine</span> <span class="k">extends</span> <span class="nc">App</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">new</span> <span class="nc">Gatling</span><span class="o">(</span><span class="nc">Options</span><span class="o">(</span>
+</span><span class='line'>    <span class="n">dataFolder</span> <span class="k">=</span> <span class="nc">Some</span><span class="o">(</span><span class="nc">IDEPathHelper</span><span class="o">.</span><span class="n">dataFolder</span><span class="o">),</span>
+</span><span class='line'>    <span class="n">resultsFolder</span> <span class="k">=</span> <span class="nc">Some</span><span class="o">(</span><span class="nc">IDEPathHelper</span><span class="o">.</span><span class="n">resultsFolder</span><span class="o">),</span>
+</span><span class='line'>    <span class="n">requestBodiesFolder</span> <span class="k">=</span> <span class="nc">Some</span><span class="o">(</span><span class="nc">IDEPathHelper</span><span class="o">.</span><span class="n">requestBodiesFolder</span><span class="o">),</span>
+</span><span class='line'>    <span class="n">simulationBinariesFolder</span> <span class="k">=</span> <span class="nc">Some</span><span class="o">(</span><span class="nc">IDEPathHelper</span><span class="o">.</span><span class="n">mavenBinariesDir</span><span class="o">),</span>
+</span><span class='line'>    <span class="n">simulations</span> <span class="k">=</span> <span class="nc">Some</span><span class="o">(</span><span class="nc">IDEPathHelper</span><span class="o">.</span><span class="n">simulations</span><span class="o">))).</span><span class="n">start</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Configurer le fichier pom.xml</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;build&gt;</span>
+</span><span class='line'>   ....
+</span><span class='line'>    <span class="nt">&lt;plugins&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;plugin&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;groupId&gt;</span>net.alchim31.maven<span class="nt">&lt;/groupId&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;artifactId&gt;</span>scala-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
+</span><span class='line'>   ....
+</span><span class='line'>      <span class="nt">&lt;/plugin&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;plugin&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;groupId&gt;</span>org.codehaus.mojo<span class="nt">&lt;/groupId&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;artifactId&gt;</span>exec-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;version&gt;</span>1.1<span class="nt">&lt;/version&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;configuration&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;mainClass&gt;</span>Engine<span class="nt">&lt;/mainClass&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/configuration&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;executions&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;execution&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;phase&gt;</span>integration-test<span class="nt">&lt;/phase&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;goals&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;goal&gt;</span>java<span class="nt">&lt;/goal&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;/goals&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;/execution&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/executions&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;/plugin&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/plugins&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/build&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Ca y est que vous lanciez Engine depuis l&#8217;IDE ou via Maven, vous avez les simulations définies dans IDEPathHelper.scala qui sont exécutées sans utilisation du mode intéractif.</p>
+
+<h2>Petit Bilan</h2>
+
+<p>Gatling est simple à utiliser. Il s&#8217;intègre aisément dans le cycle de vie de vos projets existants et dans vos IDE préférés. Le fait d&#8217;utiliser du code pour les scripts permet de d&#8217;éliminer à la compilation les problèmes de syntaxe, d&#8217;avoir la main sur la personnalisation des scripts et l&#8217;organisation du code.</p>
+
+<p>L&#8217;autre avantage énorme est qu&#8217;il consomme peu de ressources (CPU, RAM), on peut simuler un très grand nombre d&#8217;utilisateurs même avec un pc pas très performant.
+Voici quelques limites (il en faut bien&#8230;) :</p>
+
+<ul>
+<li>Gatling ne supporte pour le moment que le protocole HTTP/HTTPS</li>
+<li>Scala n&#8217;est pas Java surtout dans Eclipse. Le plugin Scala-Ide n&#8217;est pas aussi mature que le support de Java.</li>
+<li>On peut reprocher au projet sa jeunesse mais je pense qu&#8217;en continuant sur cette lancée il y a des chances que l&#8217;on en entende de plus en plus parlé de ce projet.</li>
+<li>Il n&#8217;y a pas de consolidation des mesures avec d&#8217;éventuelles données côtés serveurs. il faut tout faire à la main pour relier des événements serveurs aux événements clients.</li>
+<li>gatling-maven-plugin ne propose pas pour le moment beaucoup d&#8217;options (uniquement l&#8217;exécution des scripts). Il serait intéressant par exemple d&#8217;avoir un paramétrage qui fait échouer le build maven si le script par en erreur pour l&#8217;intégration continue.</li>
+</ul>
+
+
+<p>Vous l&#8217;aurez vu, rien de bien méchant.
+Vous pouvez retrouver des liens vers des blogs qui en parlent : <a href="https://github.com/excilys/gatling/wiki/Links">https://github.com/excilys/gatling/wiki/Links</a>.</p>
+
+<p>Les sources de l&#8217;exemple sont disponibles dans github : <a href="https://github.com/roddet/gatling-sample">https://github.com/roddet/gatling-sample</a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Rossi Oddet</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-21T22:15:00-04:00" pubdate data-updated="true">May 21<span>st</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/eclipse/'>eclipse</a>, <a class='category' href='/blog/categories/gatling/'>gatling</a>, <a class='category' href='/blog/categories/maven/'>maven</a>, <a class='category' href='/blog/categories/scala/'>scala</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://roddet.github.com/2012/05/gatling-integration-maven-eclipse/" data-via="rossioddet" data-counturl="http://roddet.github.com/2012/05/gatling-integration-maven-eclipse/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+      
+        <a class="basic-alignment right" href="/2012/06/manipulez-le-bytecode/" title="Next Post: Manipulez le bytecode">Manipulez le bytecode &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Rossi Oddet</h1>
+  <br/>
+  <table>
+  	<tr><td width="30%"><img src="/images/photo.jpeg" width="75"/></td>
+  		<td>&nbsp;&nbsp;</td>
+    <td width="70%"> <p>Développeur, Blogger et passionné par les communautés IT.</p></td></tr>
+</table>
+</section>
+<a class="twitter-timeline" href="https://twitter.com/rossioddet" data-widget-id="314511007521312768">Tweets by @rossioddet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Rossi Oddet -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogroddet';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://roddet.github.com/2012/05/gatling-integration-maven-eclipse/';
+        var disqus_url = 'http://roddet.github.com/2012/05/gatling-integration-maven-eclipse/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

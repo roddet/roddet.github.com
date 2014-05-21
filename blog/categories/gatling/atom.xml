@@ -1,0 +1,1250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: gatling | Rossi Oddet]]></title>
+  <link href="http://roddet.github.com/blog/categories/gatling/atom.xml" rel="self"/>
+  <link href="http://roddet.github.com/"/>
+  <updated>2014-05-21T01:43:46-04:00</updated>
+  <id>http://roddet.github.com/</id>
+  <author>
+    <name><![CDATA[Rossi Oddet]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[BreizhCamp 2013 # Gatling]]></title>
+    <link href="http://roddet.github.com/2013/06/breizhcamp-gatling/"/>
+    <updated>2013-06-13T18:00:00-04:00</updated>
+    <id>http://roddet.github.com/2013/06/breizhcamp-gatling</id>
+    <content type="html"><![CDATA[<p>J'ai eu la formidable occasion d'animer un Tools In Action : "Stressez vos applications web avec <a href="http://gatling-tool.org/">Gatling</a>" à l'événement <a href="http://www.breizhcamp.org/">BreizhCamp</a> édition 2013.</p>
+
+<h2>Un souvenir</h2>
+
+<p><img class="center" src="/images/breizhcamp13/gatling/breizhcamp_gatling.jpg"></p>
+
+<h2>Les points abordés</h2>
+
+<ul>
+<li>Présentation de Gatling</li>
+<li>Démo # mise en oeuvre d'un test de charge sur la prochaine application de l'événement JCertif 2013 incluant :
+
+<ul>
+<li>Création d'un projet Maven dans <a href="http://scala-ide.org/">Scala IDE</a> à partir de l'<a href="http://repository.excilys.com/content/groups/public/archetype-catalog.xml">archetype Gatling</a></li>
+<li>Lancement du recorder depuis <a href="http://scala-ide.org/">Scala IDE</a></li>
+<li>Un export HAR via Chrome</li>
+<li>Génération d'une simulation à partir d'un fichier HAR via le recorder</li>
+<li>Complément du scénario avec une requête POST mettant en oeuvre un <a href="https://github.com/excilys/gatling/wiki/Feeders">feeder</a> et un template de corps de message</li>
+<li>Exécution / Rapport d'exécution</li>
+</ul>
+</li>
+<li>Présentation des extensions et de la communauté</li>
+</ul>
+
+
+<p>Et le tout en 30 mn :)</p>
+
+<h2>Les slides</h2>
+
+<p><a href="http://blog.roddet.com/breizhcamp-2013-gatling">http://blog.roddet.com/breizhcamp-2013-gatling</a></p>
+
+<h2>Le code</h2>
+
+<p><a href="https://github.com/roddet/breizhcamp-2013-gatling">https://github.com/roddet/breizhcamp-2013-gatling</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Gatling 2 : La nouvelle API d'injection]]></title>
+    <link href="http://roddet.github.com/2013/06/gatling2-new-inject-api/"/>
+    <updated>2013-06-12T20:56:00-04:00</updated>
+    <id>http://roddet.github.com/2013/06/gatling2-new-inject-api</id>
+    <content type="html"><![CDATA[<p>Lorsque nous écrivons une simulation Gatling, nous avons généralement 2 parties :</p>
+
+<ul>
+<li>La définition du scénario : orchectration des différentes requêtes</li>
+<li>L'injection de charges : nombre d'utilisateurs, définition de rampe, etc...</li>
+</ul>
+
+
+<p>La seconde partie a été refondue, les mots clés du DSL : users, delay et ramp ont été supprimés et un nouveau DSL a été défini.</p>
+
+<p>Pour illustrer l'utilisation de ce nouveau DSL, nous allons utiliser un scénario qui consiste à rechercher successivement sur Twitter les mots clés : jcertif, gatling, nantes, scala.</p>
+
+<p>Définir un tel scénario consiste à écrire les lignes suivantes :</p>
+
+<p>``` scala
+val httpConf = httpConfig</p>
+
+<pre><code>.baseURL("http://search.twitter.com")
+.acceptHeader("*/*")
+.acceptCharsetHeader("ISO-8859-1,utf-8;q=0.7,*;q=0.3")
+.acceptEncodingHeader("gzip,deflate,sdch")
+.acceptLanguageHeader("en-US,en;q=0.8")
+.connection("keep-alive")
+.userAgentHeader("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.22 (KHTML, like Gecko) Ubuntu/12.10 Chromium/25.0.1364.172 Chrome/25.0.1364.172 Safari/537.22")
+</code></pre>
+
+<p>val scn = scenario("Recherches sur Twitter")</p>
+
+<pre><code>        .exec(http("Recherche JCertif").get("/search.json?q=jcertif"))
+        .exec(http("Recherche Gatling").get("/search.json?q=gatling"))
+        .exec(http("Recherche Nantes").get("/search.json?q=nantes"))
+        .exec(http("Recherche Scala").get("/search.json?q=scala"))
+</code></pre>
+
+<p>```</p>
+
+<p>La première partie définie l'URL de base "http://search.twitter.com" à utiliser et des informations que nous allons envoyer à chaque requête.</p>
+
+<p>La seconde définie le scénario que nous allons exécuter.</p>
+
+<p>Voyons à présent plusieurs cas d'injection et leurs mises en oeuvre.</p>
+
+<h2>Cas 1 : 100 utilisateurs lancés une seule fois en même temps</h2>
+
+<h3>Le code de l'injection</h3>
+
+<p>``` scala
+setUp(scn.inject(</p>
+
+<pre><code>atOnce(100 users)
+).protocolConfig(httpConf))
+</code></pre>
+
+<p>```</p>
+
+<h3>Graphe du nombre d'utilisateurs actifs pendant le test</h3>
+
+<p><img class="center" src="/images/gatling2/injectionapi/cas1_active_users.png"></p>
+
+<p>Les 100 utilisateurs sont lancés en même temps.</p>
+
+<h3>Le code complet</h3>
+
+<p><a href="https://github.com/roddet/gatling2-les-nouveautes/blob/master/src/test/scala/com/roddet/blog/gatling2/injectapi/Case1_Simulation.scala">Case1_Simulation.scala</a></p>
+
+<h2>Cas 2 : 100 utilisateurs simultanés puis 10 secondes d'attente puis 50 utilisateurs simultanés</h2>
+
+<h3>Le code de l'injection</h3>
+
+<p>``` scala
+setUp(scn.inject(</p>
+
+<pre><code>atOnce(100 users),
+nothingFor(10 minutes),
+atOnce(50 users)
+).protocolConfig(httpConf))
+</code></pre>
+
+<p>```</p>
+
+<h3>Graphe du nombre d'utilisateurs actifs pendant le test</h3>
+
+<p><img class="center" src="/images/gatling2/injectionapi/cas2_active_users.png"></p>
+
+<h3>Le code complet</h3>
+
+<p><a href="https://github.com/roddet/gatling2-les-nouveautes/blob/master/src/test/scala/com/roddet/blog/gatling2/injectapi/Case2_Simulation.scala">Case2_Simulation.scala</a></p>
+
+<h2>Cas 3 : 50 utilisateurs lancés en 5 minutes</h2>
+
+<h3>Le code de l'injection</h3>
+
+<p>``` scala
+setUp(scn.inject(</p>
+
+<pre><code>ramp(100 users) over (40 seconds)
+).protocolConfig(httpConf))
+</code></pre>
+
+<p>```</p>
+
+<h3>Graphe du nombre d'utilisateurs actifs pendant le test</h3>
+
+<p><img class="center" src="/images/gatling2/injectionapi/cas3_active_users.png"></p>
+
+<p>La répartition des utilisateurs dans le temps est faite de façon linéaire : 1 nouvel utilisateur toutes les 6 secondes dans notre cas.</p>
+
+<h3>Le code complet</h3>
+
+<p><a href="https://github.com/roddet/gatling2-les-nouveautes/blob/master/src/test/scala/com/roddet/blog/gatling2/injectapi/Case3_Simulation.scala">Case3_Simulation.scala</a></p>
+
+<h2>Cas 4 : 2 requêtes/seconde pendant 2 heures</h2>
+
+<h3>Le code de l'injection</h3>
+
+<p>``` scala
+setUp(scn.inject(</p>
+
+<pre><code>constantRate(2 usersPerSec) during (2 minutes)
+).protocolConfig(httpConf))
+</code></pre>
+
+<p>```</p>
+
+<h3>Résultat</h3>
+
+<p><img class="center" src="/images/gatling2/injectionapi/cas4_active_users.png"></p>
+
+<h3>Le code complet</h3>
+
+<p><a href="https://github.com/roddet/gatling2-les-nouveautes/blob/master/src/test/scala/com/roddet/blog/gatling2/injectapi/Case4_Simulation.scala">Case4_Simulation.scala</a></p>
+
+<h2>Cas 5 : Passer de 2 utilisateurs/seconde à 10 utilisateurs/seconde en 5 minutes</h2>
+
+<h3>Le code de l'injection</h3>
+
+<p>``` scala
+setUp(scn.inject(</p>
+
+<pre><code>rampRate(2 usersPerSec) to(10 usersPerSec) during(5 minutes)
+).protocolConfig(httpConf))
+</code></pre>
+
+<p>```</p>
+
+<h3>Résultat</h3>
+
+<p><img class="center" src="/images/gatling2/injectionapi/cas5_active_users.png"></p>
+
+<h3>Le code complet</h3>
+
+<p><a href="https://github.com/roddet/gatling2-les-nouveautes/blob/master/src/test/scala/com/roddet/blog/gatling2/injectapi/Case5_Simulation.scala">Case5_Simulation.scala</a></p>
+
+<h2>Cas 6 : Pour 100 utilisateurs au total, lancer 10 utilisateurs en 20 secondes et espacer deux lancements avec une pause de 15 secondes</h2>
+
+<h3>Le code de l'injection</h3>
+
+<p>``` scala
+setUp(scn.inject(</p>
+
+<pre><code>split(100 users).into(ramp(10 users) over (20 seconds)).separatedBy(15 seconds)
+).protocolConfig(httpConf))
+</code></pre>
+
+<p>```</p>
+
+<h3>Résultat</h3>
+
+<p><img class="center" src="/images/gatling2/injectionapi/cas6_active_users.png"></p>
+
+<h3>Le code complet</h3>
+
+<p><a href="https://github.com/roddet/gatling2-les-nouveautes/blob/master/src/test/scala/com/roddet/blog/gatling2/injectapi/Case6_Simulation.scala">Case6_Simulation.scala</a></p>
+
+<h2>Cas 7 : 2 scénarios (recherche twitter et recherche facebook) lancés en simultanné</h2>
+
+<h3>Les scenarios</h3>
+
+<p>``` scala
+  val scnSearchTwitter = scenario("Recherches sur Twitter")</p>
+
+<pre><code>.exec(http("Recherche Twitter JCertif").get("http://search.twitter.com/search.json?q=jcertif"))
+.exec(http("Recherche Twitter Gatling").get("http://search.twitter.com/search.json?q=gatling"))
+.exec(http("Recherche Twitter Nantes").get("http://search.twitter.com/search.json?q=nantes"))
+.exec(http("Recherche Twitter Scala").get("http://search.twitter.com/search.json?q=scala"))
+</code></pre>
+
+<p>  val scnSearchFacebook = scenario("Recherches sur Facebook")</p>
+
+<pre><code>.exec(http("Recherche Facebook JCertif").get("https://graph.facebook.com/search?q=jcertif&amp;type=post"))
+.exec(http("Recherche Facebook Gatling").get("https://graph.facebook.com/search?q=gatling&amp;type=post"))
+.exec(http("Recherche Facebook Nantes").get("https://graph.facebook.com/search?q=nantes&amp;type=post"))
+.exec(http("Recherche Facebook Scala").get("https://graph.facebook.com/search?q=scala&amp;type=post"))
+</code></pre>
+
+<p>```</p>
+
+<h3>Le code de l'injection</h3>
+
+<p>``` scala
+ setUp(</p>
+
+<pre><code>scnSearchTwitter.inject(atOnce(40 users)).protocolConfig(httpConf),
+scnSearchFacebook.inject(atOnce(40 users)) protocolConfig (httpConf))
+</code></pre>
+
+<p>```</p>
+
+<h3>Résultat</h3>
+
+<p><img class="center" src="/images/gatling2/injectionapi/cas7_active_users.png"></p>
+
+<h3>Le code complet</h3>
+
+<p><a href="https://github.com/roddet/gatling2-les-nouveautes/blob/master/src/test/scala/com/roddet/blog/gatling2/injectapi/Case7_Simulation.scala">Case7_Simulation.scala</a></p>
+
+<h2>Mon avis</h2>
+
+<p>Vous l'avez peut-être constater, dès fois le DSL est plus facile à lire que ma retranscription en français :)</p>
+
+<h2>Note</h2>
+
+<p>J'ai écris les scénarios en utilisant l'API Twitter version 1 qui doit être bientôt désactivé (si ce n'est pas déjà fait :)).</p>
+
+<h2>Liens utiles</h2>
+
+<ul>
+<li><a href="http://gatling-tool.org/">Télécharger Gatling 2</a></li>
+<li><a href="https://github.com/excilys/gatling/wiki/Gatling-2">Toutes les nouveautés Gatling 2</a></li>
+<li><a href="https://github.com/roddet/gatling2-les-nouveautes">Le code de toutes les simulations</a></li>
+<li><a href="https://github.com/roddet/gatling2-les-nouveautes/tree/master/results/injectapi">Les résultats complets des différents cas de tests</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Gatling 2 : Support du format HAR]]></title>
+    <link href="http://roddet.github.com/2013/06/gatling2-har-support/"/>
+    <updated>2013-06-10T22:05:00-04:00</updated>
+    <id>http://roddet.github.com/2013/06/gatling2-har-support</id>
+    <content type="html"><![CDATA[<p>Gatling 2 introduit le support du format HAR ! Super...:\</p>
+
+<h2>Oui mais en fait c'est quoi ce format HAR ?</h2>
+
+<p><blockquote><p>Le Format HTTP Archive (HAR) est un format ouvert destiné à l'export et l'échange de données collectées par des outils de monitoring HTTP.<br/>...<br/>Le Format HTTP Archive permet de sauvegarder et d"échanger le "détail de la chronologie de chargement d'une page WEB".</p><footer><strong>Wikipédia</strong> <cite><a href='http://fr.wikipedia.org/wiki/Format_HTTP_Archive'>fr.wikipedia.org/wiki/&hellip;</a></cite></footer></blockquote></p>
+
+<p>En résumé, il s'agit d'un fichier au format JSON (ou XML) qui contient les différents appels effectués vers un serveur web.</p>
+
+<h2>Comment peut-on créer un fichier HAR ?</h2>
+
+<h3>Avec Chrome</h3>
+
+<ul>
+<li>Lancer les outils de développement Chrome</li>
+<li>Se positionner à l'onglet Network</li>
+<li>Effectuer une navigation à travers plusieurs pages web ou recharger simplement la page courante.</li>
+<li>Effectuer un clic droit sur une des requêtes. 2 options nous intéressent :
+
+<ul>
+<li><em>Copy All as HAR</em> : faire un export dans le presse-papier que nous pourrons coller dans un fichier</li>
+<li><em>Save as HAR with Content</em> : enregistrement dans un fichier du HAR</li>
+</ul>
+</li>
+</ul>
+
+
+<p><img class="center" src="/images/gatling2/har/gatling2_har_chrome_export.png"></p>
+
+<h3>Avec Firefox</h3>
+
+<p>Vous pouvez installer les extensions suivantes :</p>
+
+<ul>
+<li><a href="https://addons.mozilla.org/en-US/firefox/addon/firebug/">Firebug</a> : outil pour développeur web</li>
+<li><a href="https://getfirebug.com/releases/netexport/">NetExport</a> : une extension de Firebug permettant d'effectuer un export de l'activité réseau au format HAR</li>
+</ul>
+
+
+<p><img class="center" src="/images/gatling2/har/gatling2_har_firefox_export.png"></p>
+
+<h3>Internet Explorer</h3>
+
+<p>Il est possible de faire un export HAR depuis IE9.</p>
+
+<p><img class="center" src="/images/gatling2/har/gatling2_har_ie_export.png"></p>
+
+<p>Petite surprise : c'est du XML et non du JSON...</p>
+
+<h2>Que contient un fichier HAR ?</h2>
+
+<p>Vous pouvez télécharger un exemple de fichier HAR <a href="/images/gatling2/har/www.ubuntu.com.har">JSON</a> ou <a href="/images/gatling2/har/www.ubuntu.com.xml">XML</a>.</p>
+
+<p>On y trouve les différentes requêtes/réponses échangées entre le navigateur et un serveur web.</p>
+
+<h2>Et Gatling 2 dans tout ça ?</h2>
+
+<p>Gatling permet de créer une simulation à partir d'un fichier HAR via le "recorder". Par contre, n'essayeZ pas d'importer le format XML généré par IE, ça ne fonctionne pas et je n'envoudrai pas le recorder pour cela...:)</p>
+
+<p>Pour importer un fichier HAR :</p>
+
+<ul>
+<li>Lancer le recorder ([GATLING_HOME]/bin/recorder)</li>
+<li>Sélectionner le mode "HAR Converter"</li>
+<li>Saisir/sélectionner le fichier HAR à importer</li>
+<li>Remplir les autres informations (nom de la simulation, package, répertoire de sortie)</li>
+<li>Cliquer sur "start"</li>
+</ul>
+
+
+<p><img class="center" src="/images/gatling2/har/gatling2_har_recorder_import.png"></p>
+
+<p>Une simulation est alors créée dans le répertoire de sortie spécifié.</p>
+
+<p>Il ne reste plus qu'à faire un peu de refactoring.</p>
+
+<h2>Les avantages</h2>
+
+<p>Cette fonctionnalité facilite l'utilisation du recorder. En effet :</p>
+
+<ul>
+<li>Il n'est plus nécessaire de configurer un proxy Http</li>
+<li>L'enregistrement du scénario se fait avec des outils que nous avons l'habitude d'utiliser (Chrome pour moi, Firebug pour d'autres)</li>
+<li>Il est possible de récupérer des scénarios d'autres outils comme sélénium en les jouant dans un navigateur qui permet un export HAR</li>
+</ul>
+
+
+<h2>Les inconvénients</h2>
+
+<p>Il y a tout de même quelques inconvénients par rapport au mode "HTTP Proxy" :</p>
+
+<ul>
+<li>On ne peut plus ajouter des "tags" qui permettent d'introduire des commentaires pour bien séparer les différentes étapes du scénario</li>
+<li>Le script généré peut comporter des erreurs de compilation (facile à résoudre). Le cas que j'ai systématiquement avec Gatling 2.0.0-M2 concerne les entêtes avec la propriété "If-None-Match" qui peut se présenter comme suit dans le fichier HAR :</li>
+</ul>
+
+
+<p>``` javascript
+{</p>
+
+<pre><code>"name": "If-None-Match",
+"value": "\"38394ec8941af055543888383adadc2f\""
+</code></pre>
+
+<p>}
+<code>
+Sa traduction en script donne :
+</code> scala
+val headers_4 = Map(</p>
+
+<pre><code>    ...
+    "If-None-Match" -&gt; ""38394ec8941af055543888383adadc2f"")
+</code></pre>
+
+<p><code>
+Pour corriger l'erreur, on peut procéder comme suit :
+</code> scala
+val headers_4 = Map(</p>
+
+<pre><code>    ...
+    "If-None-Match" -&gt; """38394ec8941af055543888383adadc2f""")
+</code></pre>
+
+<p>```</p>
+
+<h2>Mon avis</h2>
+
+<p>La possibilité d'importer des fichiers HAR est une fonctionnalité intéressante et je compte désormais la privilégier dans mon utilisation du recorder.</p>
+
+<h2>Liens utiles</h2>
+
+<ul>
+<li><a href="http://www.softwareishard.com/blog/har-adopters/">La liste des outils supportant le format HAR</a></li>
+<li><a href="http://www.softwareishard.com/blog/har-12-spec/">Les spécifications HAR v1.2</a></li>
+<li><a href="http://gatling-tool.org/">Télécharger Gatling 2</a></li>
+<li><a href="https://github.com/excilys/gatling/wiki/Gatling-2">Toutes les nouveautés Gatling 2</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Devoxx France 2013 # Lab # Gatling Crash Course]]></title>
+    <link href="http://roddet.github.com/2013/03/devoxxfr13-lab-gatling-crash-course/"/>
+    <updated>2013-03-30T20:00:00-04:00</updated>
+    <id>http://roddet.github.com/2013/03/devoxxfr13-lab-gatling-crash-course</id>
+    <content type="html"><![CDATA[<p>Vous pouvez retrouvez la description de la session <a href="http://www.devoxx.com/display/FR13/Gatling+Crash+Course">sur le site de devoxx</a>.</p>
+
+<p><img class="center" src="http://blog.roddet.com/images/devoxx_gatling/slide.jpg"></p>
+
+<h2>Les animateurs</h2>
+
+<p><img class="center" src="http://blog.roddet.com/images/devoxx_gatling/stephane_pierre.jpg"></p>
+
+<ul>
+<li>Pierre Dal-pra (à gauche) <a href="https://twitter.com/pierre_dalpra">@pierre_dalpra</a> / <a href="http://www.devoxx.com/display/FR13/Pierre+Dal-pra">Bio</a></li>
+<li>Stéphane Landelle (à droite) <a href="https://twitter.com/slandelle">@slandelle</a> / <a href="http://www.devoxx.com/display/FR13/Stephane+Landelle">Bio</a></li>
+</ul>
+
+
+<h2>Pourquoi j'ai choisi cette session ?</h2>
+
+<p><a href="http://gatling-tool.org/">Gatling</a> est un outil permettant de faire des tests de charge à base de scripts écrits en scala. Je l'avais découvert l'année dernière et j'avais écrit un article à ce sujet <a href="/2012/05/gatling-integration-maven-eclipse/">ici</a>. C'est donc naturellement que j'ai choisi d'être présent au Lab "Gatling Crash Course" pour expérimenter les nouveautés de l'outil.</p>
+
+<h2>Démarrage de la session</h2>
+
+<p>10 min avant le début du lab, les organisateurs de Devoxx procède à un changement de salle car le lab Java EE 7 rencontre un franc succès.
+Nous sommes donc emmener dans une salle de 24 places qui sera comble.</p>
+
+<p>Les intervenants nous ont fournis une clé USB contenant :</p>
+
+<ul>
+<li>Une VM (Virtual Box)</li>
+<li>Les archives d'installation de Virtual Box pour Linux, Mac et Windows</li>
+<li>La version 1.4.6 de Gatling sortie la veille</li>
+<li>Une archive de PlayFramework 2.1.0</li>
+<li>Une archive gatling-cheat-sheet (une documentation technique de l'API Gatling)</li>
+</ul>
+
+
+<p>Certains participants ont eu des difficultés d'installation de Virtual Box ou de configuration de la VM... Ils étaient majoritairement sous Windows, on conviendra qu'il s'agit d'une coincidence :)</p>
+
+<h2>C'est quoi Gatling ?</h2>
+
+<p>La session a commencé par une présentation de Gatling par Stéphane Landelle.
+Il définit "Gatling" comme un injecteur de charge.</p>
+
+<h2>Les différentes familles d'injecteur ?</h2>
+
+<p>Il y a évidemment des solutions concurrentes dans ce créneau parmi lesquelles :</p>
+
+<ul>
+<li><a href="http://jmeter.apache.org/">JMeter</a></li>
+<li><a href="http://grinder.sourceforge.net/">The Grinder</a></li>
+<li><a href="http://grinder.sourceforge.net/">Tsung</a></li>
+<li><a href="http://www.loadui.org/">LoadUI</a></li>
+<li><a href="http://www8.hp.com/us/en/software-solutions/software.html?compURI=1175451#.UVcAhasjo08">LoadRunner</a></li>
+<li><a href="http://www.neotys.fr/product/overview-neoload.html">NeoLoad</a></li>
+</ul>
+
+
+<p>On peut distinguer 2 familles dans ces outils :</p>
+
+<ul>
+<li>ceux basés sur des interfaces graphiques : JMeter, LoadUI...</li>
+<li>ceux basés sur l'écriture des scripts : Tsung, The Grinder...</li>
+</ul>
+
+
+<p>Gatling se positionne quand à lui dans la famille des injecteurs de charge basés sur l'écriture des scripts.</p>
+
+<p>Les animateurs vont citer <a href="http://tsung.erlang-projects.org/">Tsung</a> comme outil proche de Gatling dans sa philosophie. L'inconvénient de Tsung est l'utilisation du langage Erlang qui n'est pas très intuitif pour les développeurs venant du monde Java.</p>
+
+<h2>Le problème de performance des certains concurrents</h2>
+
+<p>La plupart des solutions concurrentes nécessitent beaucoup de ressources pour exécuter des tests de charge. Il est arrivé à Stéphane par exemple d'avoir à monter un cluster d'injecteurs de taille comparable à celle de l'application en production.</p>
+
+<p>Le manque de performance de certains de ces outils est dû au modèle :
+1 user = 1 thread (ce choix permet de gérer plus facilement la concurrence avec par exemple à l'utilisation des ThreadLocal).
+Seulement 1 thread c'est couteux et l'orchestratreur doit jongler entre les threads pour accorder du CPU.</p>
+
+<p>Certaines solutions s'appuient sur des I/0 bloquants. Cela implique que
+lorsqu'une requête est envoyée à un serveur, le thread attend la réponse sans faire autre chose. L'utilisation des ressources n'est ainsi pas optimisée.</p>
+
+<h2>Scripts vs Interface graphique</h2>
+
+<p>Les animateurs définissent le travail de testeur de charge comme étant un "job de développeur". Et surtout, pour avoir une pertinence suffisante, ce développeur doit avoir participé au développement de l'application à tester.</p>
+
+<p>Avec une interface graphique, le développeur est vite limité dans l'utilisation de l'outil.</p>
+
+<p>Avoir la main sur le script permet d'avoir une meilleure maintenabilité des tests. En effet, les injecteurs à interface graphique propose généralement des exports de configuration (plusieurs MB en XML à stocker sur le disque) plus difficile à maintenir et à utiliser à plusieurs.</p>
+
+<h2>Pourquoi Gatling est performant ?</h2>
+
+<p>Gatling doit sa performance à 2 volets :</p>
+
+<ul>
+<li>des requêtes non bloquantes grâce à <a href="https://github.com/AsyncHttpClient/async-http-client">Async HTTP Client</a> utilisant le moteur <a href="http://netty.io/">Netty</a></li>
+<li>des traitements parallèles en se basant sur le modèle des acteurs et <a href="http://akka.io/">Akka</a>.</li>
+</ul>
+
+
+<h2>Le DSL Gatling</h2>
+
+<p>Gatling expose un DSL riche et facile à prendre en main.</p>
+
+<p>Vous pouvez consulter les éléments du DSL dans le <a href="http://gatling-tool.org/cheat-sheet/">Gatling's Cheat Sheet</a>.</p>
+
+<h2>Le lab</h2>
+
+<p>La session a consister à effectuer un test de charge sur une des applications exemple contenu dans l'archive PlayFramework 2.1.0 : computer-database.</p>
+
+<p><img class="center" src="http://blog.roddet.com/images/devoxx_gatling/play2app.jpg"></p>
+
+<h3>Etape 1 : Démarrer l'application à tester</h3>
+
+<p>Se placer dans le répertoire "play-2.1.0/samples/scala/computer-database" et lancer la commande :
+<code>
+play
+</code>
+Puis démarrer l'application.</p>
+
+<p><code>
+start -DapplyEvolutions.default=true
+</code></p>
+
+<p>"-DapplyEvolutions.default=true" permet d'appliquer les modifications de base de données au démarrage de l'application.</p>
+
+<p>A ce stade pour certains participants, play demandait à télécharger des packages. Il me semblait pourtant que l'archive play étant autoportante. Je n'ai pas eu le problème.</p>
+
+<h3>Etape 2 : Enregistrement d'un scénario grâce au "recorder"</h3>
+
+<p>Pour éviter de partir de 0 lors de l'écriture d'un script, Gatling vient avec un recorder (enregistreur de scénario). Il est accessible via le lancement de l'exécutable "GATLING_HOME/bin/recorder.sh" (remplacer .sh par .bat pour Windows).</p>
+
+<p><img class="center" src="http://blog.roddet.com/images/devoxx_gatling/recorder.jpg"></p>
+
+<p>Nous avons configuré le recorder pour écarter les ressources statiques (.css, .js, .ico) pour ne tester que la partie dynamique de l'application.</p>
+
+<p>Il faut configurer le proxy de votre navigateur avec les informations saisies dans la partie Network du recorder.</p>
+
+<p>Le scénario enregistré :</p>
+
+<ul>
+<li>Recherche d'un ordinateur</li>
+<li>Consultation d'un ordinateur</li>
+<li>Navigation à travers les différentes pages de résultats</li>
+<li>Création d'un ordinateur</li>
+</ul>
+
+
+<p>A savoir sur le recorder : il n'est pas possible de poursuivre un scénario enregistré précedemment. Chaque enregistrement génère un fichier complet.</p>
+
+<p>Durant l'enregistrement, il est possible d'ajouter des "tags" qui vont se traduire en commentaire dans le script généré.</p>
+
+<h3>Etape 3 : Configuration du WarmUp</h3>
+
+<p>Au démarrage de l'exécution d'un scénario, Gatling envoie une première requete (warmup) pour charger les classes, le moteur TCP etc...
+On peut désactiver cette requête ou changer l'url. Dans le cadre de ce lab, nous avons changer l'URL en http://localhost:9000.</p>
+
+<p>``` scala
+  val httpConf = httpConfig</p>
+
+<pre><code>.baseURL("http://localhost:9000")
+.acceptHeader("text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
+.acceptCharsetHeader("ISO-8859-1,utf-8;q=0.7,*;q=0.3")
+.acceptEncodingHeader("gzip,deflate,sdch")
+.acceptLanguageHeader("en-US,en;q=0.8")
+.warmUp("http://localhost:9000")
+</code></pre>
+
+<p>```</p>
+
+<p>Attention à ne pas supprimer les headers. Cela peut avoir une influence le réseau (taille des requêtes inférieure à la réalité) et le comportement de l'application peut être différent.</p>
+
+<p>Gatling vérifie automatiquement pour chaque requête que le code de la réponse est compris entre  200 à 210.</p>
+
+<h3>Etape 4 : Configuration d'une source de données</h3>
+
+<p>Il est important de faire varier ses données pour avoir des tests fiables. Gatling permet de configurer une source de données grâce à la notion de feeder.</p>
+
+<p>Les fichiers de données sont des fichiers CSV à placer dans le répertoire "GATLING_HOME/user-files/data".</p>
+
+<p>Exemple de fichier CSV
+<code>
+searchCriterion,searchComputerName
+Macbook,MacBook Pro
+eee, ASUS Eee PC 1005PE
+</code>
+La première ligne représente l'entête du fichier.</p>
+
+<p>Créer un feeder :</p>
+
+<p><code>scala
+  val feeder = csv("search.csv")
+</code></p>
+
+<p>Par défaut le feeder est une queue, le scénario consomme les données (lignes) les unes après les autres. Et si toute la pile est consommée et que le scénario souhaite une donnée supplémentaire, une erreur est lancée.</p>
+
+<p>Il est possible de configurer le feeder pour la consommation des données soient :</p>
+
+<ul>
+<li><p>aléatoire
+<code>scala
+val feeder = csv("search.csv").random
+</code></p></li>
+<li><p>circulaire (après la consommation de la dernière ligne, on reprend la première)
+<code>scala
+val feeder = csv("search.csv").circular
+</code></p></li>
+</ul>
+
+
+<p>Pour attacher un feeder à une exécution :
+``` scala
+exec(http("Home")</p>
+
+<pre><code>.get("/"))
+.pause(1)
+.feed(feeder)
+</code></pre>
+
+<p>```
+Il est possible d'appliquer une transformation au feeder pour formater les données.</p>
+
+<p>Voici un exemple d'utilisation des valeurs contenues dans le feeder</p>
+
+<p>``` scala</p>
+
+<p>exec(http("Home")
+  .get("/"))
+  .pause(1)
+  .feed(feeder)
+  .exec(http("Search")</p>
+
+<pre><code>.get("/computers")
+.queryParam("""f""", """${searchCriterion}""")
+.check(regex("""&lt;a href="([^"]+)"&gt;${searchComputerName}&lt;/a&gt;""").saveAs("url"))
+</code></pre>
+
+<p>  .pause(1)
+  .exec(http("Select")</p>
+
+<pre><code>.get("${url}").check(Status.is(200)))
+</code></pre>
+
+<p>  .pause(1)</p>
+
+<p>```
+${searchCriterion} représente la première colonne du fichier CSV.</p>
+
+<p>${searchComputerName} représente la seconde colonne</p>
+
+<p>La méthode .saveAs permet de sauvegarder dans une variable un résultat.</p>
+
+<p>Le fichier CSV est chargée intégralement en mémoire au démarrage de l'exécution des tests.</p>
+
+<h3>Etape 5 : Factorisation</h3>
+
+<p>Un script Gatling n'est pas autre chose qu'un programme Scala. On peut donc aisément créer des méthodes et factoriser les opérations que l'on fait plusieurs fois.</p>
+
+<p>Exemple de factorisation :
+```
+ def gotoPage(page: String) = exec(http("Page " + page)</p>
+
+<pre><code>.get("/computers")
+.queryParam("""p""", page))
+.pause(1)
+</code></pre>
+
+<p>  val browse = exec(gotoPage("0"),gotoPage("1"),gotoPage("2"),gotoPage("3"))
+```</p>
+
+<p>Il est aussi possible d'utiliser des fonctions avancées comme "repeat" pour répéter des traitements.
+``` scala
+val browse = repeat(5, "i") {</p>
+
+<pre><code>gotoPage("${i}")
+</code></pre>
+
+<p>  }
+```</p>
+
+<h3>Etape 6 : Activation de graphite</h3>
+
+<p>Pour activer le suivi de l'exécution avec Graphite, il faut modifier le fichier de configuration "GATLING_HOME/conf/gatling.conf"</p>
+
+<p>gatling.conf</p>
+
+<p>``` scala GATLING_HOME/conf/gatling.conf
+gatling {
+  data {</p>
+
+<pre><code>writers = [console, file, graphite]
+#reader = file
+</code></pre>
+
+<p>  }
+  graphite {</p>
+
+<pre><code>host = "localhost"
+port = 2003
+rootPathPrefix = "gatling"
+bucketWidth = 100
+</code></pre>
+
+<p>  }
+```</p>
+
+<h3>Etape 7 : Le script complet</h3>
+
+<p>``` scala ComputersDatabase.scala
+package devoxx.labs
+import com.excilys.ebi.gatling.core.Predef.<em>
+import com.excilys.ebi.gatling.http.Predef.</em>
+import com.excilys.ebi.gatling.jdbc.Predef.<em>
+import com.excilys.ebi.gatling.http.Headers.Names.</em>
+import akka.util.duration.<em>
+import bootstrap.</em>
+import assertions._</p>
+
+<p>object Search {</p>
+
+<p>  val feeder = csv("search.csv").circular</p>
+
+<p>  val search = exec(http("Home")</p>
+
+<pre><code>.get("/"))
+.pause(1)
+.feed(feeder)
+.exec(http("Search")
+  .get("/computers")
+  .queryParam("""f""", """${searchCriterion}""")
+  .check(regex("""&lt;a href="([^"]+)"&gt;${searchComputerName}&lt;/a&gt;""").saveAs("url")))
+.pause(1)
+.exec(http("Select")
+  .get("${url}").check(status.is(200)))
+.pause(1)
+</code></pre>
+
+<p>}</p>
+
+<p>object Browse {</p>
+
+<p>  def gotoPage(page: String) = exec(http("Page " + page)</p>
+
+<pre><code>.get("/computers")
+.queryParam("""p""", page))
+.pause(1)
+</code></pre>
+
+<p>  val browse = repeat(5, "i") {</p>
+
+<pre><code>gotoPage("${i}")
+</code></pre>
+
+<p>  }</p>
+
+<p>}</p>
+
+<p>object Edit {</p>
+
+<p>  val head = Map(</p>
+
+<pre><code>"Cache-Control" -&gt; """max-age=0""",
+"Content-Type" -&gt; """application/x-www-form-urlencoded""",
+"Origin" -&gt; """http://localhost:9000""")
+</code></pre>
+
+<p>  val random = new java.util.Random</p>
+
+<pre><code>// Je reessai 2 fois en cas d'erreur
+</code></pre>
+
+<p>  val edit = tryMax(2){</p>
+
+<pre><code>exec(http("New Computer") .get("/computers/new"))
+.pause(11)
+.exec(http("Post New Computer")
+  .post("/computers")
+  .headers(head)
+  .param("""name""", """JCertif Mac"""+ random.nextInt(2))
+  .param("""introduced""", """2013-03-26""")
+  .param("""discontinued""", """""")
+  .param("""company""", """13"""));
+</code></pre>
+
+<p>  }.exitHereIfFailed // l'utilisateur quitte le workflow du scenario</p>
+
+<p>}</p>
+
+<p>class ComputersDatabase extends Simulation {</p>
+
+<p>  val httpConf = httpConfig</p>
+
+<pre><code>.baseURL("http://localhost:9000")
+.acceptHeader("text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
+.acceptCharsetHeader("ISO-8859-1,utf-8;q=0.7,*;q=0.3")
+.acceptEncodingHeader("gzip,deflate,sdch")
+.acceptLanguageHeader("en-US,en;q=0.8")
+.warmUp("http://localhost:9000")
+.userAgentHeader("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31")
+</code></pre>
+
+<p>  val admins = scenario("Admins").exec(Search.search, Browse.browse, Edit.edit)
+  val users = scenario("Users").exec(Search.search, Browse.browse)</p>
+
+<p>  setUp(users.users(1000).ramp(20).protocolConfig(httpConf), admins.users(10).ramp(20).protocolConfig(httpConf))
+}
+```</p>
+
+<h3>Etape 8 : Lancement du script</h3>
+
+<p>Il faut lancer l'exécutable "GATLING_HOME/bin/gatling.sh" (ou .bat) puis choisir le scénario à exécuter.</p>
+
+<p>```</p>
+
+<blockquote><p>./gatling.sh
+GATLING_HOME is set to .../gatling-charts-highcharts-1.4.6
+Choose a simulation number:</p>
+
+<pre><code> [0] advanced.AdvancedExampleSimulation
+ [1] basic.BasicExampleSimulation
+ [2] devoxx.labs.ComputersDatabase
+</code></pre>
+
+<p>```
+Faire le choix 2.</p></blockquote>
+
+<p>Le rapport est généré dans le répertoire "GATLING_HOME/results".</p>
+
+<p><img class="center" src="http://blog.roddet.com/images/devoxx_gatling/report.jpg"></p>
+
+<p>Exemple de rapport généré par Gatling : <a href="http://gatling-tool.org/sample/index.html">ici</a></p>
+
+<h2>Intégration de Gatling avec d'autres outils</h2>
+
+<p>Gatling s'intègre avec les outils :</p>
+
+<ul>
+<li>Maven (possibilité d'utiliser un archetype ou de gérer le script dans un projet scala)</li>
+<li><a href="https://wiki.jenkins-ci.org/display/JENKINS/Gatling+Plugin">Un plugin pour Jenkins</a></li>
+<li><a href="http://graphite.wikidot.com/">Graphite</a> pour un suivi en temps réel de l'exécution des tests.</li>
+</ul>
+
+
+<h2>Trucs &amp; Astuces pour des tests de performances avec Gatling</h2>
+
+<ul>
+<li>Si l'application est accessible en HTTPS, il faut désenregistrer le certificat dans le navigateur pour éviter que celui-ci ne pense que Gatling est en train de hacker le site.</li>
+<li>Il faut rendre dynamique de la données pour éviter les caches, les optimisations de la JVM...</li>
+<li>Donner le recorder aux utilisateurs finaux pour enregistrer plus finement les temps de pause. Il est important de ne pas supprimer les temps de pause car vos utilisateurs ne sont pas des robots et font des pauses entre les actions.</li>
+</ul>
+
+
+<h2>La roadmap à court terme</h2>
+
+<p>Dans 1 mois, nous devrions avoir la 1ère milestone de la version 2 de Gatling.</p>
+
+<p>Au menu :</p>
+
+<ul>
+<li>Support des Websockets</li>
+<li>Support de JDBC</li>
+<li>Possibilité de faire du clustering (surtout pour palier à l'éventuelle saturation de la carte réseau)</li>
+<li>Possibilité de générer des ramps en escalier</li>
+<li>Possibilité de choisir entre TCP &amp; UDP pour envoyer les informations à Graphite</li>
+</ul>
+
+
+<h2>Bilan</h2>
+
+<p>Ce lab était très instructif. On peut regretter que nous ne soyons pas aller au bout du lab avec la visualisation du déroulement des tests avec Graphite.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Gatling : Intégration Maven & Eclipse]]></title>
+    <link href="http://roddet.github.com/2012/05/gatling-integration-maven-eclipse/"/>
+    <updated>2012-05-21T22:15:00-04:00</updated>
+    <id>http://roddet.github.com/2012/05/gatling-integration-maven-eclipse</id>
+    <content type="html"><![CDATA[<p><img src="/images/gatling/logo.png" alt="/images/gatling/logo.png" /></p>
+
+<p><a href="http://gatling-tool.org/">Gatling</a> permet d'effectuer des tests de charges de vos applications à base de scripts écrits en Scala.
+Le nom Gatling fait référence à une mitrailleuse créée en 1861, plus de détail sur <a href="http://fr.wikipedia.org/wiki/Gatling">Wikipedia</a>. Vous l'avez compris l'objectif ici est de tirer à plein feux sur votre application.</p>
+
+<p>L'approche utilisée peut se résumer en deux concepts : asynchrone à l'extrême et un DSL pour écrire les scripts.</p>
+
+<h2>Asynchrone à l'extrême</h2>
+
+<p>La plupart des autres solutions sont construites sur le modèle 1 utilisateur = 1 thread. Lors d'une requête HTTP, le thread est mis en attente en attendant la réponse. Avec un grand nombre de threads (donc d'utilisateurs), le processeur passe beaucoup de temps à changer de contexte pour trouver le thread qui n'est pas en attente.</p>
+
+<p>Le projet s'est construit autour du <a href="http://en.wikipedia.org/wiki/Actor_model">modèle Actor</a> qui revient à la mode depuis que les fréquences des processeurs ont cessé d'augmenter et que l'on s'oriente plutôt vers la multiplication des coeurs.
+Il permet de profiter pleinement la puissance du processeur.</p>
+
+<p>L'unité de base du concept est un acteur et les acteurs communiquent entre eux par le biais de messages. Il faut donc voir un acteur comme une unité de traitement avec deux types d'interactions : une réception de message et un envoi de message. Gatling ne limite plus l'utilisation d'1 thread à un utilisateur. Après l'envoi d'une requête HTTP,  un message est posté et le thread est immédiatement disponible pour envoyer une autre. Un autre thread pourra traiter la réponse dans la pile des messages reçus. <a href="http://akka.io/">Akka</a> est le framework open source utilisé pour implémenter ce pattern. Ce choix est de plus en plus adopté par des projets émergeants (<a href="http://www.playframework.com/">Play framework</a>, <a href="https://code.google.com/p/kandash/">Kandash</a>, ...).</p>
+
+<p>Gatling effectue des appels HTTP non bloquant à l'aide du framework <a href="https://github.com/AsyncHttpClient/async-http-client">Async Http Client</a> basé sur le client <a href="http://netty.io/">Netty</a>. Là encore on peut remarquer la similitude avec Play framework qui utilise également Netty, cette fois-ci côté serveur.
+En combinant le modèle des acteurs et les appels Http non bloquants, Gatling met toutes les chances de son côté pour avoir de très bonnes performances et ça se voit !</p>
+
+<h2>Un DSL pour écrire les scripts</h2>
+
+<p>L'objectif de Gatling est de sortir du modèle d'outil de réalisation de script à partir d'une interface graphique pour s'opposer à des outils comme <a href="http://jmeter.apache.org/">Apache JMeter</a> et aller dans le sens des frameworks comme <a href="http://grinder.sourceforge.net/">The Grinder</a>. Le langage choisi pour l'écriture des scripts est Scala. Pas de panique, pas besoin de connaître ou de maîtriser ce langage, l'api fournie est "humainement" compréhensible, simple, concis.</p>
+
+<p>En voici un exemple, je vous laisse juger par vous même :</p>
+
+<p>``` scala<br/>
+scenario("Mon scénario à moi tout seul")</p>
+
+<pre><code> .exec(  
+  http("requette_mapage1")  
+  .get("/faces/mapage1.html")  
+ )  
+ .exec(  
+  http("requette_mapage2")  
+  .get("/faces/mapage2.html")  
+  .queryParam("nom", """rossi""")  
+  .check(status.is(304)  
+ )  
+</code></pre>
+
+<p>```
+Le fait d'utiliser un langage fortement typé comme Scala permet de détecter les erreurs de syntaxes à la compilation et d'utiliser toute la puissance de votre IDE pour organiser le code, mutualiser des bouts de script, etc...
+Pour les développeurs Java, l'avantage de Scala est de pouvoir directement accéder aux API du JDK et aux différentes bibliothèques java une fois ajoutée au classpath.</p>
+
+<h2>Installer Gatling</h2>
+
+<p>Pour une installation/utilisation classique, vous pouvez suivre les instructions de la page : <a href="https://github.com/excilys/gatling/wiki/Getting-Started">https://github.com/excilys/gatling/wiki/Getting-Started</a>. Il suffit de télécharger puis décompresser le livrable. Vous pourrez ainsi écrire et exécuter vos scripts en vous basant sur les exemples fournies.</p>
+
+<p>Le lien suivant explique comment enregistrer un scénario et l'exécuter : <a href="https://github.com/excilys/gatling/wiki/First-Steps-with-Gatling">https://github.com/excilys/gatling/wiki/First-Steps-with-Gatling</a>.
+Dans cet article, nous allons plutôt voir comment il s'intègre dans votre IDE (Eclipse) et dans le cycle de vie de vos projets (Maven). Il serait dommage de ne pas profiter de la puissance de votre IDE pour accélérer l'écriture et la maintenance de vos scripts.</p>
+
+<h2>Installer vos outils de développement</h2>
+
+<p>Voici ce dont vous avez besoin, je mets en parenthèse les versions que j'ai utilisé :</p>
+
+<ul>
+<li>un JDK 6+ (1.6.0_31)</li>
+<li><a href="http://www.eclipse.org/downloads/">Eclipse</a> (Eclipse Classic 3.7.2)</li>
+<li><a href="http://scala-ide.org/">Scala IDE Plugin</a> (<a href="http://download.scala-ide.org/releases-29/stable/site/">http://download.scala-ide.org/releases-29/stable/site/</a>)</li>
+<li><a href="http://www.eclipse.org/m2e/">M2Eclipse</a> (Indigo Update Site > Collaboration > m2e)</li>
+<li><a href="http://alchim31.free.fr/m2e-scala/update-site">M2E-Scala</a></li>
+</ul>
+
+
+<p>J'ai dû repartir d'une version d'Eclipse "neuve" car le Scala IDE Plugin ne s'installait pas sur ma version d'Eclipse courante contenant très grand nombre de plugins installés.</p>
+
+<h2>Créer le projet Maven</h2>
+
+<h3>Ajouter le catalog gatling</h3>
+
+<p>Nous allons pour cela utiliser l'archetype "gatling-highcharts-maven-archetype". Cet archetype n'étant pas présent dans le repository maven central, il faut ajouter un nouveau catalog à eclipse.</p>
+
+<p>Allez dans le menu :
+Window > Preferences > Maven > Archetypes > Add Remote Catalog...
+Puis saisissez l'url : <a href="http://repository.excilys.com/content/groups/public/archetype-catalog.xml">http://repository.excilys.com/content/groups/public/archetype-catalog.xml</a></p>
+
+<p><img src="/images/gatling/eclipse_maven_catalog.png" alt="/images/gatling/eclipse_maven_catalog.png" /></p>
+
+<h3>Créer un projet maven à partir de l'archetype gatling</h3>
+
+<p>File > New > Maven Project > Sélectionner l'archetype "gatling-highcharts-maven-archetype" (version 1.1.6 dans mon cas)</p>
+
+<p><img src="/images/gatling/eclipse_maven_archetype.png" alt="/images/gatling/eclipse_maven_archetype.png" /></p>
+
+<h2>Anatomie du projet généré</h2>
+
+<table>
+  <tr>
+    <td width="30%"><img src="/images/gatling/structure_mvn.png"/></td><td>&nbsp;&nbsp;</td>
+    <td width="70%">On retrouve un projet Maven classique avec un pom.xml, les sources scala dans src/main/scala, les fichiers de configuration dans src/main/resources.<br/><br/>Engine.scala est la classe principale qui lance la mitrailleuse.<br/><br/>IDEPathHelper.scala contient les différents chemins d'accès aux ressources comme les classes compilées, les simulations, les fichiers de données, etc...<br/><br/>Recorder.scala est un utilitaire qui permet d'enregistrer un scénario avec par exemple votre navigateur et de générer les scripts correspondants.<br/><br/>FooSimulation.scala une simulation qui ne fait rien. Il peut être compléter pour créer son premier scénario.<br/><br/>
+gatling.conf donne la possibilité de paramétrer gatling.</td>
+</table>
+
+
+<h2>Générer une simulation avec le "Recorder"</h2>
+
+<p>Le "Recorder" permet de capturer toutes les requêtes HTTP en se positionnant en proxy entre votre machine et votre réseau. Le cas d'utilisation le plus courant est celui d'enregistrer une simulation à partir d'un navigateur web en y paramétrant un proxy.</p>
+
+<p>Pour lancer l'outil "Recorder" :</p>
+
+<ul>
+<li>Sélectionner le fichier "Recorder.scala"</li>
+<li>Clic droit > Run As > Scala Application</li>
+</ul>
+
+
+<p><img src="/images/gatling/gatling_run_recorder.png" alt="/images/gatling/gatling_run_recorder.png" /></p>
+
+<p>L'écran suivant se lance :</p>
+
+<p><img src="/images/gatling/recorder.png" alt="/images/gatling/recorder.png" /></p>
+
+<p>La partie "Network/Listening Network" sert à renseigner les ports d'écoute qui seront à paramétrer dans l'outil utilisé pour réaliser un scénario (un navigateur web par exemple). Je ne parle pas intentionnellement directement d'un navigateur web parce que vous allez pouvoir utiliser le Recorder avec n'importe quel programme qui fait des requêtes HTTP, une compilation Maven par exemple.</p>
+
+<p>Dans le cas présent, le proxy à paramétrer sera :
+* Pour du HTTP locahost:8000
+* Pour du HTTPS localhost:8001</p>
+
+<p>La partie "Output" sert à paramétrer l'endroit où sera généré le script.</p>
+
+<p>Commencer par paramétrer l'outil qui va vous aider avec le proxy configuré. Si votre outil possède un cache, comme un navigateur web, à vous de voir si vous voulez exécuter votre simulation dans ces conditions ou vider le cache.</p>
+
+<p>Vous pouvez ensuite cliquer sur le bouton "Start".</p>
+
+<p><strong>Attention petit bug déroutant sur Mac OSX Lion</strong> : l'affichage par défaut du Recorder ne permet pas de voir le bouton "Start". J'ai mis un certain temps à pouvoir trouver l'astuce pour l'afficher. Il consiste à simplement agrandir la fenêtre avec le bouton "+" avec comme conséquence la disparition de quelques rubriques de la partie "Output". Ce bug est déjà corrigé dans la version 1.2.0-SNAPSHOT en cours de développement.</p>
+
+<p>Vous êtes désormais en mode écoute sur les ports configurés pour votre machine. Si vous faites par exemple la configuration du proxy au niveau de votre connexion Wifi, vous allez pouvoir voir toutes les requêtes et réponses qui transitent entre votre outil et votre réseau.</p>
+
+<p>Exécutons un scénario simple :</p>
+
+<ol>
+<li>Taper l'adresse "www.google.fr"</li>
+<li>Lancer la recherche "JCertif 2012"</li>
+</ol>
+
+
+<p><img src="/images/gatling/capture_recorder.png" alt="/images/gatling/capture_recorder.png" /></p>
+
+<p>Le premier constat que vous allez voir est que vous n'avez pas seulement 2 requêtes mais beaucoup plus. Et oui c'est ça la vraie vie, google fait de multiple appels notamment pour la complétion lors de la saisie entre autres.
+Quand on réalise des tests de charge, on se rend rapidement compte qu'un scénario pourtant fonctionnellement simple peut rapidement se complexifier.
+Le Recorder permet d'ajouter des TAG, c'est particulièrement utile pour séparer les différentes phases de l'enregistrement. Concrètement, les TAG ajoutés vont se transformer en commentaire entre deux enchainements de requête dans le code Scala généré.</p>
+
+<p>Pour arrêter l'enregistrement cliquer sur "Stop !".</p>
+
+<p>De retour dans Eclipse, il faut rafraichir le projet pour voir apparaitre le fichier source généré.</p>
+
+<p><img src="/images/gatling/fichier_genere.png" alt="/images/gatling/fichier_genere.png" /></p>
+
+<p>Dans mon cas, il commence par "Simulation" suivi d'une indication sur la date/heure d'enregistrement.</p>
+
+<p>Vous pouvez le parcourir vous verrez qu'il se lit aisément malgré la complexité généré. Le code généré est fidèle à tout ce qui s'est passé sans masquer les informations.</p>
+
+<p>A cette étape, on se retrouve avec du code dans un IDE, on peut faire tout ce que l'on veut : refactoring, suppression des appels à des serveurs que l'on ne souhaite pas tester, suppression des pauses, ajout de requêtes, variabilisation de chaine de caractères, ...</p>
+
+<p>Dans mon cas, je vais juste renommer la classe en "SimulationGoogleJCertif" en utilisant la fonction "Refactor" d'Eclipse. Pour les développeurs venant du monde Java, vous allez remarquer que le nom du fichier va être modifié mais pas le nom de la classe. Il ne s'agit pas d'un bug (je l'ai pensé au début, honte à moi...:-)), c'est autorisé en Scala ! Mais c'est pas grave, je modifie manuellement le nom de la classe. Il faut aussi savoir que le support de Scala dans Eclipse n'a pas autant de maturité que celui de Java. Vous allez probablement comme moi rencontrer quelques bugs, mais Eclipse nous a déjà habitué aux bugs et aux plantages, donc ça ne change pas fondamentalement nos habitudes...:-)</p>
+
+<h2>Exécuter votre simulation depuis Eclipse</h2>
+
+<p>Pour exécuter votre simulation depuis Eclipse rien de plus simple, il faut lancer la classe Engine.scala de la même manière que le Recorder.</p>
+
+<p>Le moteur Gatling se lance en mode interactif :</p>
+
+<p><img src="/images/gatling/choix_simulation.png" alt="/images/gatling/choix_simulation.png" /></p>
+
+<p>Il faut à présent suivre les instructions :</p>
+
+<ul>
+<li>Choisir la simulation : 1 dans mon cas</li>
+<li>Saisir un identifiant de cette exécution si besoin, taper sur la touche Entrée sinon</li>
+<li>Saisir une description si besoin, taper sur la touche Entrée sinon</li>
+</ul>
+
+
+<p>C'est parti !</p>
+
+<h2>Visualiser les résultats</h2>
+
+<p>Le résultat de la simulation est enregistré dans /target/gatling-results.</p>
+
+<p><img src="/images/gatling/fichier_resultat.png" alt="/images/gatling/fichier_resultat.png" /></p>
+
+<p>Le fichier le plus important est simulation.log, il contient les mesures des temps d'exécution. Il est aisément parsable pour générer des rapports.</p>
+
+<p>Sinon vous avez un rapport sympa généré par gatling. Pour le visualiser, ouvrer le fichier "active_sessions.html" dans un navigateur web.</p>
+
+<p><img src="/images/gatling/graphe1.png" alt="/images/gatling/graphe1.png" /></p>
+
+<br/>
+
+
+<p><img src="/images/gatling/graphe2.png" alt="/images/gatling/graphe2.png" /></p>
+
+<h2>Gatling avec Maven en Intégration Continue</h2>
+
+<p>Nous avons pu jusqu'ici généré un projet Maven qui lors d'un mvn install compile le code Scala. Tant qu'à faire, il est plus intéressant de pouvoir les lancer automatiquement. Deux intérêts possibles :</p>
+
+<ul>
+<li>vous disposez d'un environnement pour faire vos tests de charges, vous pouvez alors simuler un grand nombre d'utilisateurs et détecter les regressions en terme de performance. C'est bien sûr le cas idéal.</li>
+<li>vous êtes dans la vrai vie, vous n'avez pas d'environnement dédié. Vous pouvez exécuter vos scripts au quotidien pour vous assurer qu'ils sont toujours valides. En effet, les modifications de votre application peuvent entrainer des changements d'url ou de paramètre, vous les détecterait en regardant les rapports.</li>
+</ul>
+
+
+<p>Pour exécuter Gatling depuis Maven, il y a plusieurs options :</p>
+
+<ul>
+<li>Utiliser gatling-maven-plugin : le guide d'utilisation est là <a href="https://github.com/excilys/gatling/wiki/Maven-plugin">https://github.com/excilys/gatling/wiki/Maven-plugin</a></li>
+<li>Utiliser <a href="http://mojo.codehaus.org/exec-maven-plugin/">exec-maven-plugin</a> pour exécuter la classe Engine juste après sa compilation. En effet, la compilation du code Scala va générer du bytecode que l'on sait exécuter simplement avec Java. Il  est surement possible d'utiliser directement le plugin <a href="https://github.com/davidB/scala-maven-plugin">scala-maven-plugin</a>, je n'ai pas testé.</li>
+</ul>
+
+
+<p>Actuellement, je penche plutôt sur l'option <a href="http://mojo.codehaus.org/exec-maven-plugin/">exec-maven-plugin</a> pour les raisons suivantes :</p>
+
+<ul>
+<li>Le modèle par défaut de gatling-maven-plugin préconise de mettre les sources dans src/main/resources/simulations. Ce qui ne me parait pas logique avec le reste de l'architecture de mon projet où je mets mes sources Scala dans src/main/scala. Il est possible de configurer le plugin pour modifier le répertoire des simulations. Cela n'a pas fonctionner du premier coup dans mon cas et je n'ai pas non plus insister (c'est peut-être une erreur de ma part, à suivre...)</li>
+<li>J'aime bien l'idée d'unifier le lancement de Gatling que ce soit via Eclipse ou via Maven. Cela permet par exemple de modifier la classe Engine pour ajouter des paramètres à Gatling, ou faire des traitements avant de lancer Gatling (récupérer des infos d'une base de données par exemple, etc...).</li>
+</ul>
+
+
+<p>Avec cette option, il y a un petit soucis en l'état. En effet, on a vu tout à l'heure que Engine lançait Gatling en mode intéractif. Hors durant notre compilation Maven nous n'aurons personne pour faire les différents choix. Heureusement nous avons accès à tout le code et nous pouvons faire de petites modifications pour modifier ce comportement, c'est aussi un peu notre métier...:-) C'est du Scala certes, ça pique aux yeux de certains, mais on s'y habitue en attendant Java 8 !</p>
+
+<p>Suivez les étapes suivantes pour la mise en oeuvre.</p>
+
+<h3>Modifier le fichier IDEPathHelper.scala</h3>
+
+<p>``` scala
+import scala.tools.nsc.io.File
+import scala.tools.nsc.io.Path
+import scala.collection.immutable.List</p>
+
+<p>object IDEPathHelper {
+  val gatlingConfUrl = getClass.getClassLoader.getResource("gatling.conf").getPath
+  val projectRootDir = File(gatlingConfUrl).parents(2)
+  val mavenSourcesDir = projectRootDir / "src" / "main" / "scala"
+  val mavenResourcesDir = projectRootDir / "src" / "main" / "resources"
+  val mavenTargetDir = projectRootDir / "target"
+  val mavenBinariesDir = mavenTargetDir / "classes"
+  val dataFolder = mavenResourcesDir / "data"
+  val requestBodiesFolder = mavenResourcesDir / "request-bodies"
+  val recorderOutputFolder = mavenSourcesDir
+  val resultsFolder = mavenTargetDir / "gatling-results"</p>
+
+<p>  val simulations:List[String] = List.fromString("com.roddet.gatling.SimulationGoogleJCertif",',')
+}
+```
+Cette variable va nous permettre de paramétrer la liste des simulations que l'on souhaite lancer.</p>
+
+<h3>Modifier le fichier Engine.scala</h3>
+
+<p>```scala
+import com.excilys.ebi.gatling.app.{ Options, Gatling }
+import com.excilys.ebi.gatling.core.util.PathHelper.path2string</p>
+
+<p>object Engine extends App {</p>
+
+<p>  new Gatling(Options(</p>
+
+<pre><code>dataFolder = Some(IDEPathHelper.dataFolder),
+resultsFolder = Some(IDEPathHelper.resultsFolder),
+requestBodiesFolder = Some(IDEPathHelper.requestBodiesFolder),
+simulationBinariesFolder = Some(IDEPathHelper.mavenBinariesDir),
+simulations = Some(IDEPathHelper.simulations))).start
+</code></pre>
+
+<p>}
+```</p>
+
+<h3>Configurer le fichier pom.xml</h3>
+
+<p>``` xml
+<build>
+   ....</p>
+
+<pre><code>&lt;plugins&gt;
+  &lt;plugin&gt;
+    &lt;groupId&gt;net.alchim31.maven&lt;/groupId&gt;
+    &lt;artifactId&gt;scala-maven-plugin&lt;/artifactId&gt;
+</code></pre>
+
+<p>   ....</p>
+
+<pre><code>  &lt;/plugin&gt;
+  &lt;plugin&gt;
+    &lt;groupId&gt;org.codehaus.mojo&lt;/groupId&gt;
+    &lt;artifactId&gt;exec-maven-plugin&lt;/artifactId&gt;
+    &lt;version&gt;1.1&lt;/version&gt;
+    &lt;configuration&gt;
+      &lt;mainClass&gt;Engine&lt;/mainClass&gt;
+    &lt;/configuration&gt;
+    &lt;executions&gt;
+      &lt;execution&gt;
+        &lt;phase&gt;integration-test&lt;/phase&gt;
+        &lt;goals&gt;
+          &lt;goal&gt;java&lt;/goal&gt;
+        &lt;/goals&gt;
+      &lt;/execution&gt;
+    &lt;/executions&gt;
+  &lt;/plugin&gt;
+&lt;/plugins&gt;
+</code></pre>
+
+<p>  </build>
+```
+Ca y est que vous lanciez Engine depuis l'IDE ou via Maven, vous avez les simulations définies dans IDEPathHelper.scala qui sont exécutées sans utilisation du mode intéractif.</p>
+
+<h2>Petit Bilan</h2>
+
+<p>Gatling est simple à utiliser. Il s'intègre aisément dans le cycle de vie de vos projets existants et dans vos IDE préférés. Le fait d'utiliser du code pour les scripts permet de d'éliminer à la compilation les problèmes de syntaxe, d'avoir la main sur la personnalisation des scripts et l'organisation du code.</p>
+
+<p>L'autre avantage énorme est qu'il consomme peu de ressources (CPU, RAM), on peut simuler un très grand nombre d'utilisateurs même avec un pc pas très performant.
+Voici quelques limites (il en faut bien...) :</p>
+
+<ul>
+<li>Gatling ne supporte pour le moment que le protocole HTTP/HTTPS</li>
+<li>Scala n'est pas Java surtout dans Eclipse. Le plugin Scala-Ide n'est pas aussi mature que le support de Java.</li>
+<li>On peut reprocher au projet sa jeunesse mais je pense qu'en continuant sur cette lancée il y a des chances que l'on en entende de plus en plus parlé de ce projet.</li>
+<li>Il n'y a pas de consolidation des mesures avec d'éventuelles données côtés serveurs. il faut tout faire à la main pour relier des événements serveurs aux événements clients.</li>
+<li>gatling-maven-plugin ne propose pas pour le moment beaucoup d'options (uniquement l'exécution des scripts). Il serait intéressant par exemple d'avoir un paramétrage qui fait échouer le build maven si le script par en erreur pour l'intégration continue.</li>
+</ul>
+
+
+<p>Vous l'aurez vu, rien de bien méchant.
+Vous pouvez retrouver des liens vers des blogs qui en parlent : <a href="https://github.com/excilys/gatling/wiki/Links">https://github.com/excilys/gatling/wiki/Links</a>.</p>
+
+<p>Les sources de l'exemple sont disponibles dans github : <a href="https://github.com/roddet/gatling-sample">https://github.com/roddet/gatling-sample</a></p>
+]]></content>
+  </entry>
+  
+</feed>

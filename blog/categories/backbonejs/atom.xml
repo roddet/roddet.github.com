@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: backbonejs | Rossi Oddet]]></title>
+  <link href="http://roddet.github.com/blog/categories/backbonejs/atom.xml" rel="self"/>
+  <link href="http://roddet.github.com/"/>
+  <updated>2014-05-21T01:43:46-04:00</updated>
+  <id>http://roddet.github.com/</id>
+  <author>
+    <name><![CDATA[Rossi Oddet]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Devoxx France 2013 # University # Frontend Live Coding]]></title>
+    <link href="http://roddet.github.com/2013/04/devoxxfr13-university-frontend-live-coding/"/>
+    <updated>2013-04-04T13:35:00-04:00</updated>
+    <id>http://roddet.github.com/2013/04/devoxxfr13-university-frontend-live-coding</id>
+    <content type="html"><![CDATA[<p>Vous pouvez retrouvez la description de la session <a href="http://www.devoxx.com/display/FR13/Frontend+Live+Coding+++Tour+d%27horizon+de+l%27outillage+et+des+technos+web+d%27aujourd%27hui">sur le site de Devoxx France</a>.</p>
+
+<p><img class="center" src="http://blog.roddet.com/images/devoxxfr13/frontend/affiche.jpg"></p>
+
+<h2>L'animateur</h2>
+
+<p>Frédéric Camblor <a href="https://twitter.com/fcamblor">@fcamblor</a>  (<a href="http://www.devoxx.com/display/FR13/Frederic+Camblor">Bio</a>)</p>
+
+<h2>Pourquoi j'ai choisi cette session ?</h2>
+
+<p>Avec le boost que lui a apporté HTML 5, les technologies "pures web" ont gagnées en popularité. Côté Java EE (serveur), nous sommes bien outillés (ide, build, qualité etc...), j'étais curieux de découvrir le panorama d'outils qui allait être présenté côté frontend.</p>
+
+<p>C'est dans une salle d'environ 200 personnes qu'à eu lieu cette séance dense (riche en contenu).
+Cette session s'est déroulée en 2 parties, l'animateur va commencer par faire un tour de l'outillage web d'aujourd'hui puis va présenter quelques briques de developpement d'une application web.</p>
+
+<h2>Yeoman</h2>
+
+<p><img class="left" src="http://blog.roddet.com/images/devoxxfr13/frontend/yeoman-logo.jpg">
+<a href="http://yeoman.io/">Yeoman</a> va être le premier à être présenté. Il se définit comme étant un ensemble d'outils et leurs bonnes pratiques associées.</p>
+
+<p>Il est composé de 3 outils :</p>
+
+<p><img class="center" src="http://blog.roddet.com/images/devoxxfr13/frontend/yeoman-tools.jpg"></p>
+
+<ul>
+<li><a href="https://github.com/yeoman/yo">Yo</a> : outil permettant de générer le squelette d'un projet concentrant les bonnes pratiques à appliquer à une application web.</li>
+<li><a href="http://gruntjs.com/">Grunt</a> : outil permettant de lancer les tâches (minification des fichiers javascript, packaging, etc...)</li>
+<li><a href="https://github.com/twitter/bower">Bower</a> : gestionnaire de package pour le web. Il va s'occuper de gérer les dépendances de l'application web. Il permet aussi de récupérer les dépendances transitives.</li>
+</ul>
+
+
+<h3>Installer Yeoman</h3>
+
+<p>En pré-requis, il faut installer <a href="http://nodejs.org/">Nodejs</a>.
+Pour installer Yeoman, il faut lancer l'installation des 3 outils cités précedemment via la commande :
+<code>
+npm install -g yo grunt-cli bower
+</code>
+<a href="https://npmjs.org/">NPM</a> est le gestionnaire de packages de Nodejs. La commande "npm install" permet de lancer l'installation d'un package. L'option "-g" signifie que l'installation sera globale, c'est à dire non spécifique au projet.</p>
+
+<h3>Générer le squelette d'un projet</h3>
+
+<p>Pour générer une application web prête à l'emploi, il suffit de lancer la commande :
+<code>
+yo webapp
+</code>
+Et on obtient le résultat suivant en répondant "Y" à toutes les questions :
+```</p>
+
+<pre><code>     _-----_
+    |       |
+    |--(o)--|   .--------------------------.
+   `---------´  |    Welcome to Yeoman,    |
+    ( _´U`_ )   |   ladies and gentlemen!  |
+    /___A___\   '__________________________'
+     |  ~  |
+   __'.___.'__
+ ´   `  |° ´ Y `
+
+Out of the box I include HTML5 Boilerplate, jQuery and Modernizr.
+Would you like to include Twitter Bootstrap for Sass? (Y/n) Y
+Would you like to include RequireJS (for AMD support)? (Y/n) Y
+   create Gruntfile.js
+   create package.json
+   create .gitignore
+   create .gitattributes
+   create .bowerrc
+   create component.json
+   create .jshintrc
+   create .editorconfig
+   create app/favicon.ico
+   create app/404.html
+   create app/robots.txt
+   create app/.htaccess
+   create app/scripts/vendor/bootstrap.js
+   create app/styles/main.scss
+   create app/scripts/app.js
+   create app/index.html
+   create app/scripts/main.js
+   create app/scripts/hello.coffee
+   invoke   mocha:app
+   create     test/index.html
+   create     test/lib/chai.js
+   create     test/lib/expect.js
+   create     test/lib/mocha/mocha.css
+   create     test/lib/mocha/mocha.js
+   create     test/spec/test.js
+
+I'm all done. Just run npm install &amp;&amp; bower install to install the required dependencies.
+</code></pre>
+
+<p>```</p>
+
+<p>Un squelette de projet est ainsi généré.</p>
+
+<h3>Récupérer tous les packages (dépendances)</h3>
+
+<p><code>
+npm install &amp;&amp; bower install
+</code>
+On obtient le téléchargement d'une partie d'internet.</p>
+
+<p>```
+.....
+npm http GET https://registry.npmjs.org/timespan
+npm http GET https://registry.npmjs.org/graceful-fs
+npm http GET https://registry.npmjs.org/inherits
+npm http GET https://registry.npmjs.org/winston
+npm http GET https://registry.npmjs.org/cli/0.4.3
+npm http GET https://registry.npmjs.org/minimatch
+npm http GET https://registry.npmjs.org/qs/0.5.1
+npm http GET https://registry.npmjs.org/formidable/1.0.11
+npm http GET https://registry.npmjs.org/crc/0.2.0
+npm http GET https://registry.npmjs.org/cookie/0.0.4
+....</p>
+
+<p>```
+En tant que développeur Java EE, on est habitué :)</p>
+
+<h3>Anatomie d'une application web</h3>
+
+<p>A ce stade on se retrouve avec 3 répertoires à la racine :</p>
+
+<ul>
+<li>/app : l'application web(root de l'application)</li>
+<li>/test : les tests</li>
+<li>/node_modules : les packages téléchargés par NPM principalement pour exécuter les tâches Grunt.</li>
+</ul>
+
+
+<p>Et quelques fichiers de configurations :</p>
+
+<ul>
+<li><p>.bowerrc : fichier de configuration de bower. Il contient :
+<code>javascript
+{
+  "directory": "app/components"
+}
+</code>
+Le paramètre "directory" indique l'emplacement des packages téléchargés par bower.</p></li>
+<li><p>Gruntfile.js : fichier de configuration de Grunt. Il contient le paramétrage des différentes tâches.</p></li>
+<li><p>.jshintrc : paramétrage de <a href="http://www.jshint.com/">JSHint</a>, outil de vérification de la qualité du code.</p></li>
+<li><p>component.json : configuration bower du projet.
+<code>javascript
+{
+"name": "test",
+"version": "0.0.0",
+"dependencies": {
+  "sass-bootstrap": "~2.3.0",
+  "requirejs": "~2.1.4",
+  "modernizr": "~2.6.2",
+  "jquery": "~1.9.1"
+},
+"devDependencies": {}
+}
+</code>
+Ce fichier comporte les dépendances du projet. Attention Bower se charge de récupérer les packages mais ne pas modifier l'application pour utiliser la librairie.</p></li>
+<li><p>package.json : identité du projet et dépendances de build.
+<code>
+{
+"name": "test",
+"version": "0.0.0",
+"dependencies": {},
+"devDependencies": {
+  "grunt": "~0.4.0",
+  "grunt-contrib-copy": "~0.4.0",
+  "grunt-contrib-concat": "~0.1.2",
+  "grunt-contrib-coffee": "~0.4.0",
+  "grunt-contrib-uglify": "~0.1.1",
+  "grunt-contrib-compass": "~0.1.2",
+  "grunt-contrib-jshint": "~0.1.1",
+  "grunt-contrib-cssmin": "~0.4.1",
+  "grunt-contrib-connect": "0.1.2",
+  "grunt-contrib-clean": "0.4.0",
+  "grunt-contrib-htmlmin": "0.1.1",
+  "grunt-contrib-imagemin": "0.1.2",
+  "grunt-contrib-livereload": "0.1.1",
+  "grunt-bower-hooks": "~0.2.0",
+  "grunt-usemin": "~0.1.9",
+  "grunt-regarde": "~0.1.1",
+  "grunt-requirejs": "~0.3.2",
+  "grunt-mocha": "~0.2.2",
+  "grunt-open": "~0.2.0",
+  "matchdep": "~0.1.1"
+},
+"engines": {
+  "node": "&gt;=0.8.0"
+}
+}
+</code></p></li>
+</ul>
+
+
+<p>C'est un peu dommage de n'avoir pas fusionné le fichier package.json et component.json (même structure, contenu similaire). Surtout qu'il est possible de configurer bower pour qu'il utilise un autre fichier que "component.json" donc éventuellement "package.json". Nous allons peut-être l'avoir dans une futur version de Yeoman ou bien il y a une raison pour cette distinction :)</p>
+
+<p>Le nommage des numéros de version obéit à des règles du <a href="http://semver.org/">semantic versionning</a>.
+On peut remarquer l'utilisation du caractère "~" dans certains numéros de version.
+La version ~0.4.0 permet de récupérer la version 0.4.0 d'une librairie ou la version mineure la plus à jour (0.4.1 par exemple).</p>
+
+<p>Ce qu'il faut également savoir avec NPM et Bower est qu'ils génèrent un dépôt par projet par défaut, contrairement par exemple à Maven.</p>
+
+<h2>Saas</h2>
+
+<p><img class="left" src="http://blog.roddet.com/images/devoxxfr13/frontend/sass.jpg">
+CSS permet d'appliquer des mises en forme à un document HTML. Malgré l'importance de ce language, CSS a d'énormes lacunes évidentes : impossible d'utiliser des variables, impossible d'effectuer des traitements, etc...</p>
+
+<p><a href="http://sass-lang.com/">Sass</a> est une extension de CSS3 ayant l'objectif de combler les lacunes de CSS.
+La syntaxe CSS est entièrement compatible avec Sass.
+Le code Sass est compilé pour obtenir le CSS cible qui sera interprété par un navigateur.</p>
+
+<p>Un fichier Sass est un fichier ayant l'extension .scss (nouveau) ou .sass (ancien).</p>
+
+<p>La page d'accueil du site <a href="http://sass-lang.com/">http://sass-lang.com/</a> présente un comparatif de code équivalent entre CSS et Sass qui permet de voir rapidement l'intérêt.</p>
+
+<p><img class="center" src="http://blog.roddet.com/images/devoxxfr13/frontend/sass_1.jpg"></p>
+
+<p><img class="center" src="http://blog.roddet.com/images/devoxxfr13/frontend/sass_2.jpg"></p>
+
+<p>Le projet généré par Yo précédemment possède une tâche Grunt qui compile "en live" nos modifications, ce qui rend complètement transparente cette phase de compilation.</p>
+
+<h2>Démonstration bower</h2>
+
+<p>Bower vient avec des outils permettant de rechercher un package, d'obtenir des informations sur celui-ci, de récupérer une dépendance etc...
+Voici une démonstration :</p>
+
+<h3>Rechercher une librairie dans le dépôt central</h3>
+
+<p><code>
+bower search jquery
+</code>
+On obtient :
+```
+Search results:</p>
+
+<ul>
+<li>jquery git://github.com/components/jquery.git</li>
+<li>jquery-ui git://github.com/components/jqueryui</li>
+<li>jquery.cookie git://github.com/carhartl/jquery-cookie.git</li>
+<li>jquery-placeholder git://github.com/mathiasbynens/jquery-placeholder.git</li>
+<li>jquery-waypoints git://github.com/imakewebthings/jquery-waypoints.git</li>
+<li>jquery-pjax git://github.com/defunkt/jquery-pjax.git</li>
+<li>jquery-file-upload git://github.com/blueimp/jQuery-File-Upload.git</li>
+<li>jasmine-jquery git://github.com/velesin/jasmine-jquery
+...
+```
+On remarque immédiatement que les librairies accessibles via Bower sont en fait des dépôts Git. A noter que ces dépôts sont différents de ceux hébergeant les sources des différents projets.</li>
+</ul>
+
+
+<h3>Lister les différentes versions d'un package</h3>
+
+<p><code>
+bower info jquery-ui
+</code>
+La liste des tags au sens Git disponibles s'affichent.
+```
+jquery-ui</p>
+
+<p>  Versions:</p>
+
+<pre><code>- 1.10.2
+- 1.10.1
+- 1.10.0
+- 1.9.2
+- 1.9.1
+- 1.9.0
+- 1.8.23
+</code></pre>
+
+<p>```</p>
+
+<h3>Installer une bibliothèque</h3>
+
+<p><code>
+bower install --save backbone underscore
+</code>
+Bower clone le dépôt qui contient le livrable.</p>
+
+<h3>Ajouter une librairie à Bower</h3>
+
+<p><code>
+bower register foo git://...
+</code>
+Cette commande permet de déclarer sa librairie dans Bower.
+Aucune règle particulière pour ajouter une librairie. Dès que celle-ci est ajoutée, elle accessible de tous. Il est cependant plus délicat de supprimer une librairie (il faut rentrer en contact avec les administrateurs).</p>
+
+<h2>RequireJS</h2>
+
+<p><img class="left" src="http://blog.roddet.com/images/devoxxfr13/frontend/requirejs.png">
+<a href="http://requirejs.org/">RequireJS</a> perment de charger à la demande et de cloisonner des scripts Javascript.</p>
+
+<p>Elle est l'implémentation d'<a href="https://github.com/amdjs/amdjs-api/wiki/AMD">AMD</a> la plus répandue.</p>
+
+<p>Pour intégrer RequireJS dans un projet, il faut modifier le fichier HTML principal avec la balise script :
+```</p>
+
+<script data-main="scripts/main" src="...requirejs.js"></script>
+
+
+<p>```
+L'attribut "data-main" permet de désigner le script principal qui sera exécuté en premier.</p>
+
+<p>RequireJS introduit la notion de module.</p>
+
+<p>La fonction "define" permet de créer un module.</p>
+
+<p>La fonction "require" permet de déclarer des dépendances.</p>
+
+<p>Plus de détails <a href="http://requirejs.org/docs/api.html">ici</a>.</p>
+
+<h2>Handlebars</h2>
+
+<p><img class="left" src="http://blog.roddet.com/images/devoxxfr13/frontend/handlebars_logo.jpg">
+<a href="http://handlebarsjs.com/">Handlebars</a> est un moteur de templating côté client.</p>
+
+<p>Il permet de créer des fichiers HTML réutilisable.</p>
+
+<p>Exemple de template :
+<img src="http://blog.roddet.com/images/devoxxfr13/frontend/handlebars_template.jpg"></p>
+
+<h2>Backbone.js</h2>
+
+<p><img class="left" src="http://blog.roddet.com/images/devoxxfr13/frontend/backbone.jpg">
+<a href="http://backbonejs.org/">Backbone.js</a> est une librairie qui permet de structurer une application avec une architecture MVC.</p>
+
+<p>Exemple de contrôleur :
+``` javascript
+var MainRouterClass = Backbone.Router.extend({</p>
+
+<pre><code>    routes: {
+        "!/hello": "sayHello",
+        "!/listTechnos": "listTechnos"
+    },
+
+    initialize: function () {
+        MainRouterClass.__super__.initialize.apply(this, arguments);
+        // Starting urls handlings
+        // See http://backbonejs.org/#Router
+        Backbone.history.start();
+    },
+
+    sayHello: function(){
+        console.log("hello has been called !");
+        require(["views/HelloView"], function(HelloView){
+            window.view = new HelloView({ el: $(".hero-unit") }).render();
+        });
+    },
+
+    listTechnos: function(){
+        require(["views/TechnoListingView"], function(TechnoListingView){
+            window.view = new TechnoListingView({ el: $(".hero-unit") }).render();
+        });
+    }
+});
+</code></pre>
+
+<p><code>
+Exemple de modèle (il existe 2 catégories : les modèles et les collections.) :
+</code> javascript
+var TechnoClass = Backbone.Model.extend({</p>
+
+<pre><code>    defaults: {
+        type: 1
+    },
+
+    initialize: function(attributes, options){
+        TechnoClass.__super__.initialize.call(this,attributes, options);
+    }
+
+    // Aliases
+});
+</code></pre>
+
+<p><code>
+Exemple de vue :
+</code> javascript
+ var HelloViewClass = Backbone.View.extend({</p>
+
+<pre><code>    events: {
+        "click #sayHelloBtn": "sayHello"
+    },
+
+    initialize: function(){
+        HelloViewClass.__super__.initialize.apply(this, arguments);
+    },
+
+    render: function(){
+        this.$el.html(viewTemplate({ who: "devoxxFr" }));
+
+        return this;
+    },
+
+    sayHello: function(){
+        console.log("Hello world ! "+new Date());
+    }
+
+});
+</code></pre>
+
+<p>```</p>
+
+<h2>Rivetsjs</h2>
+
+<p><img class="center" src="http://blog.roddet.com/images/devoxxfr13/frontend/rivets.jpg">
+<a href="http://rivetsjs.com/">Rivetsjs</a> est indépendant de Backbone.js.</p>
+
+<p>Il permet de créer un binding unidirectionnel ou bi-directionnel entre un modèle (Backbone par exemple) et un élément du DOM, de formatter les données etc...</p>
+
+<h2>Astuces Google Chrome</h2>
+
+<h4>Arrêter automatiquement l'exécution lors d'une exception</h4>
+
+<p><img class="center" src="http://blog.roddet.com/images/devoxxfr13/frontend/chrome1.png"></p>
+
+<h4>Afficher un élément du DOM par id ("main" par exemple)</h4>
+
+<p><img class="center" src="http://blog.roddet.com/images/devoxxfr13/frontend/chrome2.png"></p>
+
+<h4>Rechercher un élément du DOM par id ("content" par exemple)</h4>
+
+<p><img class="center" src="http://blog.roddet.com/images/devoxxfr13/frontend/chrome3.png">
+<img class="center" src="http://blog.roddet.com/images/devoxxfr13/frontend/chrome4.png"></p>
+
+<h2>Le code sur Github</h2>
+
+<p><a href="https://github.com/fcamblor/technostore/tree/devoxxfr13">https://github.com/fcamblor/technostore/tree/devoxxfr13</a></p>
+
+<h2>Quelques anglicismes de l'animateur</h2>
+
+<p>Nous le savons, nous sommes envahis de mots anglais dans notre métier. Nous passons notre temps à lire des ressources en anglais et cela s'est particulièrement senti auprès de l'animateur.
+Voici un top 5 des expressions qui m'ont marqué (soit pour leurs fréquences, soit pour leurs originalités) :)</p>
+
+<ol>
+<li>"out of the box"</li>
+<li>"baby step"</li>
+<li>"bootstraper"</li>
+<li>"draw back"</li>
+<li>"overhead"</li>
+</ol>
+
+
+<h2>Bilan</h2>
+
+<p>La session a été très intéressante. Beaucoup de concepts/outils ont été abordés et cela nous a donné un panorama de ce qui se fait actuellement côté frontend.</p>
+
+<p>Bravo à Frédéric qui a tout de même tenu 3h de livecoding !</p>
+]]></content>
+  </entry>
+  
+</feed>

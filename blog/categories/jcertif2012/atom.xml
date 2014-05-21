@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: jcertif2012 | Rossi Oddet]]></title>
+  <link href="http://roddet.github.com/blog/categories/jcertif2012/atom.xml" rel="self"/>
+  <link href="http://roddet.github.com/"/>
+  <updated>2014-05-21T01:43:46-04:00</updated>
+  <id>http://roddet.github.com/</id>
+  <author>
+    <name><![CDATA[Rossi Oddet]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[JCertif 2012 - Mes sessions]]></title>
+    <link href="http://roddet.github.com/2012/11/jcertif-2012-mes-sessions/"/>
+    <updated>2012-11-22T22:54:00-05:00</updated>
+    <id>http://roddet.github.com/2012/11/jcertif-2012-mes-sessions</id>
+    <content type="html"><![CDATA[<p>Voici les slides des différentes sessions que j'ai animées durant JCertif 2012 :</p>
+
+<h2>Présentation JCertif Lab</h2>
+
+<iframe allowfullscreen="allowfullscreen" frameborder="0" height="325" marginheight="0" marginwidth="0" scrolling="no" src="http://www.slideshare.net/slideshow/embed_code/14996084?rel=0" style="border-width: 1px 1px 0; border: 1px solid #CCC; margin-bottom: 5px;" width="512"> </iframe>
+
+
+<h2>Maven par la pratique</h2>
+
+<iframe allowfullscreen="allowfullscreen" frameborder="0" height="325" marginheight="0" marginwidth="0" scrolling="no" src="http://www.slideshare.net/slideshow/embed_code/14995676" style="border-width: 1px 1px 0; border: 1px solid #CCC; margin-bottom: 5px;" width="512"> </iframe>
+
+
+<h2>Scrum avec IceScrum</h2>
+
+<iframe allowfullscreen="allowfullscreen" frameborder="0" height="325" marginheight="0" marginwidth="0" scrolling="no" src="http://www.slideshare.net/slideshow/embed_code/14995968" style="border-width: 1px 1px 0; border: 1px solid #CCC; margin-bottom: 5px;" width="512"> </iframe>
+
+
+<h2>Git par la pratique</h2>
+
+<iframe allowfullscreen="allowfullscreen" frameborder="0" height="325" marginheight="0" marginwidth="0" scrolling="no" src="http://www.slideshare.net/slideshow/embed_code/14996186" style="border-width: 1px 1px 0; border: 1px solid #CCC; margin-bottom: 5px;" width="512"> </iframe>
+
+
+<h2>Intégration continue avec Jenkins</h2>
+
+<iframe allowfullscreen="allowfullscreen" frameborder="0" height="325" marginheight="0" marginwidth="0" scrolling="no" src="http://www.slideshare.net/slideshow/embed_code/14996270" style="border-width: 1px 1px 0; border: 1px solid #CCC; margin-bottom: 5px;" width="512"> </iframe>
+
+
+<h2>Démonstration de Gatling</h2>
+
+<iframe allowfullscreen="allowfullscreen" frameborder="0" height="325" marginheight="0" marginwidth="0" scrolling="no" src="http://www.slideshare.net/slideshow/embed_code/14996328" style="border-width: 1px 1px 0; border: 1px solid #CCC; margin-bottom: 5px;" width="512"> </iframe>
+
+
+<h2>Atelier Play! Framework</h2>
+
+<p>Pas de slides, pas de théorie, session 100% pratique dédiée au développement d'un moteur de blog.</p>
+
+<p>Vous pouvez retrouver les autres sessions de JCertif 2012 sur le compte Github dédié: <a href="https://github.com/JCERTIFLab/JCertif-2012">https://github.com/JCERTIFLab/JCertif-2012</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JCertif 2012, une aventure humaine]]></title>
+    <link href="http://roddet.github.com/2012/10/jcertif-2012-une-aventure-humaine/"/>
+    <updated>2012-10-20T22:53:00-04:00</updated>
+    <id>http://roddet.github.com/2012/10/jcertif-2012-une-aventure-humaine</id>
+    <content type="html"><![CDATA[<p>Ca y est cela fait déjà 1 mois que l'événement JCertif 2012 a eu lieu. Il s'agissait de la 3ème édition.</p>
+
+<iframe width="640" height="360" src="http://www.youtube.com/embed/R7pDMz0zkAo?feature=player_embedded" frameborder="0" allowfullscreen></iframe>
+
+
+<h2>La community Day</h2>
+
+<p>JCertif 2012 commence par un cérémonie d'ouverture à l’amphithéâtre de l'école IHEM qui accueille la partie University de l'événement. Le public est au rendez-vous. L'amphithéâtre ne pourra pas contenir tout le monde, nous serons obligé d'utiliser les autres salles pour installer les participants.</p>
+
+<p><img src="/images/jc2012/jc2012_seance_ouverture.jpg" alt="/images/jc2012/jc2012_seance_ouverture.jpg" /></p>
+
+<p>Vont alors s'enchainer :</p>
+
+<ul>
+<li>le mot de bienvenue du directeur de l'établissement accueillant la partie University de l'événement</li>
+<li>la présentation de JCertif, de sa vision, ses objectifs</li>
+<li>la présentation des travaux de JCertif Lab : plateforme dédiée à la formation et l'expérimentation des concepts via la réalisation de projets concrets. Etant le responsable de cette partie, c'est moi qui prend le micro :)</li>
+</ul>
+
+
+<p><img src="/images/jc2012/jc2012_seance_ouverture_1.jpg" alt="/images/jc2012/jc2012_seance_ouverture_1.jpg" /></p>
+
+<br/>
+
+
+<p><img src="/images/jc2012/jc2012_seance_ouverture_2.jpg" alt="/images/jc2012/jc2012_seance_ouverture_2.jpg" /></p>
+
+<p>La suite de la journée est dédiée aux communautés. Elles vont choisir un ensemble de sujets à aborder.
+Durant la pause, chaque sujet est imprimé et affiché sur la porte d'une salle dédiée à celui-ci.
+Au retour de la pause, chaque participant rentre dans la salle dont le sujet l'intéresse.
+Au menu :
+- C'est quoi le métier de développeur ? (séance à laquelle j'ai assisté)
+- Développeur africain, partir ou rester ?
+- Qu'est-ce que le développement mobile ?
+- etc...
+Dans chaque salle sont désignés :
+- un animateur
+- un rapporteur
+Les échanges sont très conviviaux, on prend plaisir à échanger et partager nos différentes expériences.
+A la fin des sessions, nous nous retrouvons tous dans la grande salle et chaque rapporteur présente une synthèse des idées énoncées.
+La community Day se termine en musique dans la grande cours de l'école où l'on a pu observer le talent de danseur de certains formateurs :)</p>
+
+<h2>JCertif University</h2>
+
+<p>Pendant 4 jours, des formations gratuites sur près de 10 salles en simultané sont effectuées.
+Les cursus présentés :
+- Initiation au développement Java
+- Développement Web avec Java
+- Développer des applications mobiles pour Android
+- Design Web avec Photoshop
+- Java en entreprise
+Lors de l'édition 2011, j'étais sur le créneau Initiation Java, cette année j'ai adressé la problématique de Java en entreprise en présentant les sujets tels que Maven, Git, Intégration continue avec Jenkins, Scrum avec IceScrum et un Atelier Play Framework. J'ai eu ainsi moins d'audience que les autres cursus, le besoin le plus exprimé était celui de l'initiation.Il n'était cependant pas concevable pour nous cette année de ne pas adresser les problématiques d'industrialisation du développement avec Java.</p>
+
+<p>Une visite de la ville pour les formateurs a été organisée lors de la pause de midi d'une des journées. Nous embarquions alors dans un car muni du dispositif CARTV.</p>
+
+<p><img src="/images/jc2012/jc2012_visite_cartv_0.jpg" alt="/images/jc2012/jc2012_visite_cartv_0.jpg" /></p>
+
+<p>L'initiative CARTV consiste à diffuser de la publicité géolocalisée dans des bus à l'aide d'un IPAD. Ainsi lorsque nous passions à proximité de lieux historiques ou des partenaires de CARTV nous avions un contenu lié affiché à l'écran.
+Pendant environ 1h30, le bus a parcouru les principaux lieux historiques de Brazzaville.
+Pour des besoins d'optimisation du temps, nous avons déjeuné dans le bus durant la visite.</p>
+
+<p><img src="/images/jc2012/jc2012_visite_cartv_1.jpg" alt="/images/jc2012/jc2012_visite_cartv_1.jpg" /></p>
+
+<p>Sur la photo ci-dessus, Mathias Seguy, expert Android installé à Toulouse, fondateur de la société Android2ee, rédacteur sur développez.com (http://mathias-seguy.developpez.com/homepage/index.php) et présentateur à Devoxx France 2012.</p>
+
+<h2>JCertif Conference</h2>
+
+<p>La conférence JCertif 2012 est organisé sur 2 jours au centre culturelle français de Brazzaville.
+Les participants sont également au rendez-vous.</p>
+
+<p><img src="/images/jc2012/jc2012_conf_0.jpg" alt="/images/jc2012/jc2012_conf_0.jpg" /></p>
+
+<p>Plusieurs présentations autour du cloud, la sécurité, le mobile, les enjeux de la venue de la fibre optique dans la sous région, etc...</p>
+
+<p>Voici un aperçu des présentations :</p>
+
+<p>Eric Joel TOGUEM FONKOUA avec "Plateformes de développement mobile : les options"</p>
+
+<p><img src="/images/jc2012/Eric_01.jpg" alt="/images/jc2012/Eric_01.jpg" /></p>
+
+<p>Une démonstration de la google Q par Patrick Bashizi et Max Bonbhel</p>
+
+<p><img src="/images/jc2012/max_google_Q.jpg" alt="/images/jc2012/max_google_Q.jpg" /></p>
+
+<p>Une présentation de la solution "KIMIASOLUTION" (KIMIA veut dire paix en français) par Dieudonné Kayembe (Développeur RD Congo).
+Il propose une plateforme complète permettant de prévenir et de surveiller les personnes souffrant d'hypertension.</p>
+
+<p><img src="/images/jc2012/kimiasolution.jpg" alt="/images/jc2012/kimiasolution.jpg" /></p>
+
+<p>Mathias Séguy après avoir fait l'historique des impacts  des inventions que l'humanité ait connues, nous parle de notre futur avec Android.</p>
+
+<p><img src="/images/jc2012/mathias_conf.jpg" alt="/images/jc2012/mathias_conf.jpg" /></p>
+
+<p>Une seule chose pour conclure... VIVEMENT JCERTIF 2013 !</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JCertif 2012 en vidéos]]></title>
+    <link href="http://roddet.github.com/2012/10/jcertif-2012-en-videos/"/>
+    <updated>2012-10-10T22:50:00-04:00</updated>
+    <id>http://roddet.github.com/2012/10/jcertif-2012-en-videos</id>
+    <content type="html"><![CDATA[<iframe width="640" height="360" src="http://www.youtube.com/embed/mPs8kctX6BQ?feature=player_embedded" frameborder="0" allowfullscreen></iframe>
+
+
+
+
+<br/>
+
+
+<br/>
+
+
+
+
+<iframe width="640" height="360" src="http://www.youtube.com/embed/SoRKsNrrEpk?feature=player_embedded" frameborder="0" allowfullscreen></iframe>
+
+
+
+
+<br/>
+
+
+<br/>
+
+
+
+
+<iframe width="640" height="360" src="http://www.youtube.com/embed/qf-9VaJFw7E?feature=player_embedded" frameborder="0" allowfullscreen></iframe>
+
+
+
+
+<br/>
+
+
+<br/>
+
+
+
+
+<iframe width="640" height="360" src="http://www.youtube.com/embed/m6ttJDh8xEk?feature=player_embedded" frameborder="0" allowfullscreen></iframe>
+
+]]></content>
+  </entry>
+  
+</feed>

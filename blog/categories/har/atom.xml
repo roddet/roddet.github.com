@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: har | Rossi Oddet]]></title>
+  <link href="http://roddet.github.com/blog/categories/har/atom.xml" rel="self"/>
+  <link href="http://roddet.github.com/"/>
+  <updated>2014-05-21T01:43:46-04:00</updated>
+  <id>http://roddet.github.com/</id>
+  <author>
+    <name><![CDATA[Rossi Oddet]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Gatling 2 : Support du format HAR]]></title>
+    <link href="http://roddet.github.com/2013/06/gatling2-har-support/"/>
+    <updated>2013-06-10T22:05:00-04:00</updated>
+    <id>http://roddet.github.com/2013/06/gatling2-har-support</id>
+    <content type="html"><![CDATA[<p>Gatling 2 introduit le support du format HAR ! Super...:\</p>
+
+<h2>Oui mais en fait c'est quoi ce format HAR ?</h2>
+
+<p><blockquote><p>Le Format HTTP Archive (HAR) est un format ouvert destiné à l'export et l'échange de données collectées par des outils de monitoring HTTP.<br/>...<br/>Le Format HTTP Archive permet de sauvegarder et d"échanger le "détail de la chronologie de chargement d'une page WEB".</p><footer><strong>Wikipédia</strong> <cite><a href='http://fr.wikipedia.org/wiki/Format_HTTP_Archive'>fr.wikipedia.org/wiki/&hellip;</a></cite></footer></blockquote></p>
+
+<p>En résumé, il s'agit d'un fichier au format JSON (ou XML) qui contient les différents appels effectués vers un serveur web.</p>
+
+<h2>Comment peut-on créer un fichier HAR ?</h2>
+
+<h3>Avec Chrome</h3>
+
+<ul>
+<li>Lancer les outils de développement Chrome</li>
+<li>Se positionner à l'onglet Network</li>
+<li>Effectuer une navigation à travers plusieurs pages web ou recharger simplement la page courante.</li>
+<li>Effectuer un clic droit sur une des requêtes. 2 options nous intéressent :
+
+<ul>
+<li><em>Copy All as HAR</em> : faire un export dans le presse-papier que nous pourrons coller dans un fichier</li>
+<li><em>Save as HAR with Content</em> : enregistrement dans un fichier du HAR</li>
+</ul>
+</li>
+</ul>
+
+
+<p><img class="center" src="/images/gatling2/har/gatling2_har_chrome_export.png"></p>
+
+<h3>Avec Firefox</h3>
+
+<p>Vous pouvez installer les extensions suivantes :</p>
+
+<ul>
+<li><a href="https://addons.mozilla.org/en-US/firefox/addon/firebug/">Firebug</a> : outil pour développeur web</li>
+<li><a href="https://getfirebug.com/releases/netexport/">NetExport</a> : une extension de Firebug permettant d'effectuer un export de l'activité réseau au format HAR</li>
+</ul>
+
+
+<p><img class="center" src="/images/gatling2/har/gatling2_har_firefox_export.png"></p>
+
+<h3>Internet Explorer</h3>
+
+<p>Il est possible de faire un export HAR depuis IE9.</p>
+
+<p><img class="center" src="/images/gatling2/har/gatling2_har_ie_export.png"></p>
+
+<p>Petite surprise : c'est du XML et non du JSON...</p>
+
+<h2>Que contient un fichier HAR ?</h2>
+
+<p>Vous pouvez télécharger un exemple de fichier HAR <a href="/images/gatling2/har/www.ubuntu.com.har">JSON</a> ou <a href="/images/gatling2/har/www.ubuntu.com.xml">XML</a>.</p>
+
+<p>On y trouve les différentes requêtes/réponses échangées entre le navigateur et un serveur web.</p>
+
+<h2>Et Gatling 2 dans tout ça ?</h2>
+
+<p>Gatling permet de créer une simulation à partir d'un fichier HAR via le "recorder". Par contre, n'essayeZ pas d'importer le format XML généré par IE, ça ne fonctionne pas et je n'envoudrai pas le recorder pour cela...:)</p>
+
+<p>Pour importer un fichier HAR :</p>
+
+<ul>
+<li>Lancer le recorder ([GATLING_HOME]/bin/recorder)</li>
+<li>Sélectionner le mode "HAR Converter"</li>
+<li>Saisir/sélectionner le fichier HAR à importer</li>
+<li>Remplir les autres informations (nom de la simulation, package, répertoire de sortie)</li>
+<li>Cliquer sur "start"</li>
+</ul>
+
+
+<p><img class="center" src="/images/gatling2/har/gatling2_har_recorder_import.png"></p>
+
+<p>Une simulation est alors créée dans le répertoire de sortie spécifié.</p>
+
+<p>Il ne reste plus qu'à faire un peu de refactoring.</p>
+
+<h2>Les avantages</h2>
+
+<p>Cette fonctionnalité facilite l'utilisation du recorder. En effet :</p>
+
+<ul>
+<li>Il n'est plus nécessaire de configurer un proxy Http</li>
+<li>L'enregistrement du scénario se fait avec des outils que nous avons l'habitude d'utiliser (Chrome pour moi, Firebug pour d'autres)</li>
+<li>Il est possible de récupérer des scénarios d'autres outils comme sélénium en les jouant dans un navigateur qui permet un export HAR</li>
+</ul>
+
+
+<h2>Les inconvénients</h2>
+
+<p>Il y a tout de même quelques inconvénients par rapport au mode "HTTP Proxy" :</p>
+
+<ul>
+<li>On ne peut plus ajouter des "tags" qui permettent d'introduire des commentaires pour bien séparer les différentes étapes du scénario</li>
+<li>Le script généré peut comporter des erreurs de compilation (facile à résoudre). Le cas que j'ai systématiquement avec Gatling 2.0.0-M2 concerne les entêtes avec la propriété "If-None-Match" qui peut se présenter comme suit dans le fichier HAR :</li>
+</ul>
+
+
+<p>``` javascript
+{</p>
+
+<pre><code>"name": "If-None-Match",
+"value": "\"38394ec8941af055543888383adadc2f\""
+</code></pre>
+
+<p>}
+<code>
+Sa traduction en script donne :
+</code> scala
+val headers_4 = Map(</p>
+
+<pre><code>    ...
+    "If-None-Match" -&gt; ""38394ec8941af055543888383adadc2f"")
+</code></pre>
+
+<p><code>
+Pour corriger l'erreur, on peut procéder comme suit :
+</code> scala
+val headers_4 = Map(</p>
+
+<pre><code>    ...
+    "If-None-Match" -&gt; """38394ec8941af055543888383adadc2f""")
+</code></pre>
+
+<p>```</p>
+
+<h2>Mon avis</h2>
+
+<p>La possibilité d'importer des fichiers HAR est une fonctionnalité intéressante et je compte désormais la privilégier dans mon utilisation du recorder.</p>
+
+<h2>Liens utiles</h2>
+
+<ul>
+<li><a href="http://www.softwareishard.com/blog/har-adopters/">La liste des outils supportant le format HAR</a></li>
+<li><a href="http://www.softwareishard.com/blog/har-12-spec/">Les spécifications HAR v1.2</a></li>
+<li><a href="http://gatling-tool.org/">Télécharger Gatling 2</a></li>
+<li><a href="https://github.com/excilys/gatling/wiki/Gatling-2">Toutes les nouveautés Gatling 2</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

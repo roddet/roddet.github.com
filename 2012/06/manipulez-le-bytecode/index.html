@@ -1,0 +1,1032 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Manipulez le bytecode - Rossi Oddet</title>
+  <meta name="author" content="Rossi Oddet">
+
+  
+  <meta name="description" content="Java et la philosophie du paquet cadeau Nous le savons, avec Java, nous travaillons avec un langage compilé. Notre code écrit en Java est transformé &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://roddet.github.com/2012/06/manipulez-le-bytecode">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Rossi Oddet" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-32190657-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>	
+  <h1><a href="/">Rossi Oddet</a></h1>
+  
+    <h2>Blog d'un artisan développeur</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:roddet.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/events">Evénements</a></li>
+  <li><a href="/viededev">Vie de Développeur</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Manipulez Le Bytecode</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-21T22:45:00-04:00" pubdate data-updated="true">Jun 21<span>st</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>Java et la philosophie du paquet cadeau</h2>
+
+<p>Nous le savons, avec Java, nous travaillons avec un langage compilé. Notre code écrit en Java est transformé en bytecode (stocké dans des fichiers .class) pour ensuite être exécuté par la JVM. En plus de cette notion de compilation, Java ajoute une philosophie de &#8220;packaging&#8221;. Nous nous plaisons bien dans cette philosophie de packaging parce que nous développons avec de nombreuses ressources et le fait d&#8217;avoir un paquet cadeau qui représente le fruit de notre travail nous facile la tâche lorsque l&#8217;on veut l&#8217;offrir à un environnement d&#8217;exécution.</p>
+
+<table><tr>
+  <td width="30%"><img src="/images/manipbytecode/cadeau.png"/></td>
+  <td width="70%">Cette philosophie du paquet cadeau a néanmoins un gros inconvénient, il n&#8217;est pas simple de le modifier même pour des ajustements minimes. Par exemple, votre équipe de test a qualifié votre livrable mais vous aurez bien voulu tracer l&#8217;exécution d&#8217;une méthode critique. Pour le faire, vous êtes traditionnellement obligé de recompiler, refaire le paquet cadeau et là vous hésitez ! Vous n&#8217;êtes jamais sûr à 100% que vous n&#8217;avez pas introduit de régression et vous savez qu&#8217;en cas de problème retirer votre code va vous obliger à refaire votre paquet cadeau pour la production.
+<br/>Un autre exemple, vous avez un bug que vous ne reproduisez qu&#8217;en environnement de production, vous auriez aimé tracer l&#8217;exécution d&#8217;une méthode pour investiguer. Là aussi vous partez sur la constitution d&#8217;un nouveau cadeau avec le risque d&#8217;introduire encore plus de regression et le retour arrière ne sera pas aisé à mettre en oeuvre.</td>
+</tr></table>
+
+
+<br/>
+
+
+<h2>Notre façon de coder influencée par le packaging</h2>
+
+<p>Le fait de savoir qu&#8217;en production une modification du code est extremement difficile à faire passer, nous allons mettre un peu de tout et n&#8217;importe quoi dans notre application.
+Nous allons notamment ajouter du code de debug comme :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="k">if</span><span class="o">(</span><span class="n">logger</span><span class="o">.</span><span class="na">isDebugEnabled</span><span class="o">()){</span>
+</span><span class='line'>   <span class="n">logger</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&quot;Au cas où j&#39;aurai un bug...&quot;</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Ou encore pour mesurer des temps d&#8217;exécution, on va ajouter du code en début et fin de méthode.
+Ces parties de code qui n&#8217;ont rien avoir avec notre application, nous dépensons de l&#8217;énergie pour les écrire et surtout nous ne savons pas souvent s&#8217;ils sont pertinents. Nous essayons d&#8217;être le plus générique possible et à chaque fois nous nous faisons avoir&#8230; La trace n&#8217;est pas adapté à notre cas et nous devons modifier le code, refaire le paquet cadeau. Et pire, combien de NullPointerException nous avons dû corriger sur ces morceaux de code qui n&#8217;ont rien avoir avec le fonctionnement de notre application ?</p>
+
+<h2>Java 5 et ses agents &#8220;secrets&#8221; pour nous aider</h2>
+
+<p>Depuis le JDK 1.5, nous avons la possibilité d&#8217;instrumenter un programme. J&#8217;entends ici, par instrumenter, la possibilité d&#8217;ajouter des instructions à nos classes déjà compilées (le bytecode) au runtime. Cette instrumentation peut être effectuée par le biais d&#8217;un agent que l&#8217;on fournit au lancement d&#8217;une application. Un agent se présente sous la forme d&#8217;un JAR et est fourni grâce au paramètre -javaagent:.
+Nous progressons dans notre problématique, avec le mécanisme des agents nous pouvons séparer le code de l&#8217;application du code nous permettant de faire nos analyses. Nous ne sommes plus obligés de modifier le paquet cadeau généré, validé par nos équipes de test. C&#8217;est une avancée intéressante, car si notre code périphérique introduit des regressions, il suffit de redémarrer l&#8217;application sans l&#8217;agent pour supprimer la regression.</p>
+
+<h2>Notre premier agent</h2>
+
+<p>Pour qu&#8217;un JAR puisse être utilisé comme un agent, il faut qu&#8217;il reste certaines conditions :
+Avoir dans son fichier MANIFEST au moins l&#8217;attribut Premain-Class
+L&#8217;attribut Premain-Class doit avoir comme valeur une classe existante qui contient au moins la méthode</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">premain</span><span class="o">(</span><span class="n">String</span> <span class="n">agentArgs</span><span class="o">,</span> <span class="n">Instrumentation</span> <span class="n">instr</span><span class="o">){</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Pour créer un projet Java générant un JAR, je ne sais plus comment on fait sans Maven :-) L&#8217;exemple qui suit reste évidemment valable à condition de l&#8217;adapter à votre outil de génération de JAR (Eclipse, Netbeans, JDK, Ant, vos mains,&#8230;).</p>
+
+<ul>
+<li>Création du projet agent-simple</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">mvn</span> <span class="nl">archetype:</span><span class="n">generate</span> <span class="o">-</span><span class="n">DgroupId</span><span class="o">=</span><span class="n">com</span><span class="o">.</span><span class="na">roddet</span> <span class="o">-</span><span class="n">DartifactId</span><span class="o">=</span><span class="n">agent</span><span class="o">-</span><span class="n">simple</span> <span class="o">-</span><span class="n">Dversion</span><span class="o">=</span><span class="mf">1.0</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Créer une classe qui sera le point d&#8217;entrée de notre agent</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">roddet</span><span class="o">.</span><span class="na">agent</span><span class="o">.</span><span class="na">simple</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.lang.instrument.Instrumentation</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MySimpleAgent</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">premain</span><span class="o">(</span><span class="n">String</span> <span class="n">agentArgs</span><span class="o">,</span> <span class="n">Instrumentation</span> <span class="n">instr</span><span class="o">){</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Pour mettre à jour le fichier MANIFEST avec Maven on peut ajouter la configuration du plugin maven-jar-plugin comme suit :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;build&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;pluginmanagement&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;plugins&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;plugin&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;groupid&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupid&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;artifactid&gt;</span>maven-jar-plugin<span class="nt">&lt;/artifactid&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;version&gt;</span>2.4<span class="nt">&lt;/version&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;configuration&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;archive&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;manifestentries&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;premain-class&gt;</span>com.roddet.agent.simple.MySimpleAgent<span class="nt">&lt;/premain-class&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;/manifestentries&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;/archive&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/configuration&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;/plugin&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/plugins&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/pluginmanagement&gt;</span>
+</span><span class='line'><span class="nt">&lt;/build&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Il ne reste plus qu&#8217;à écrire du code dans la méthode premain de la classe MySimpleAgent et lancer une application avec le paramètre -javaagent.</p>
+
+<h2>Un exemple concret de l&#8217;utilisation d&#8217;un agent</h2>
+
+<p>Pour illustrer la modification du bytecode, nous allons considérer une application basique faite avec Swing qui affiche un champ de saisie et un bouton.</p>
+
+<p><img src="/images/manipbytecode/swing-app.png" alt="/images/manipbytecode/swing-app.png" /></p>
+
+<p>La classe principale de cette application est la suivante :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">roddet</span><span class="o">.</span><span class="na">swing</span><span class="o">.</span><span class="na">app</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.awt.event.ActionEvent</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.awt.event.ActionListener</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SwingFrame</span> <span class="kd">extends</span> <span class="n">JFrame</span> <span class="kd">implements</span> <span class="n">ActionListener</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">JTextField</span> <span class="n">swingText</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JTextField</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">JButton</span> <span class="n">swingBtn</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JButton</span><span class="o">(</span><span class="s">&quot;Click!&quot;</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="nf">SwingFrame</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">init</span><span class="o">();</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">this</span><span class="o">.</span><span class="na">setDefaultCloseOperation</span><span class="o">(</span><span class="n">JFrame</span><span class="o">.</span><span class="na">DISPOSE_ON_CLOSE</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">swingBtn</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+</span><span class='line'>        <span class="k">this</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="n">GridLayout</span><span class="o">());</span>
+</span><span class='line'>        <span class="k">this</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">swingText</span><span class="o">);</span>
+</span><span class='line'>        <span class="k">this</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">swingBtn</span><span class="o">);</span>
+</span><span class='line'>        <span class="k">this</span><span class="o">.</span><span class="na">pack</span><span class="o">();</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Override</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="n">ActionEvent</span> <span class="n">actionEvent</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">JFrame</span> <span class="n">app</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SwingFrame</span><span class="o">();</span>
+</span><span class='line'>        <span class="n">app</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+Lors du clic sur le bouton &#8220;Click!&#8221;, la méthode actionPerformed est exécuté. Pour le moment, ce clic ne produit aucun résultat.
+Nous créons un paquet &#8220;cadeau&#8221; de cette application qui s&#8217;appelle swing-app-1.0.jar.</p>
+
+<p>Notre objectif avec cet exemple est de modifier le comportement du clic sur le bouton pour qu&#8217;il affiche du texte dans la zone de saisie sans modifier notre paquet.</p>
+
+<p>Pour lancer l&#8217;application, il suffit d&#8217;exécuter la commande :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">java</span> <span class="o">-</span><span class="n">jar</span> <span class="n">swing</span><span class="o">-</span><span class="n">app</span><span class="o">-</span><span class="mf">1.0</span><span class="o">.</span><span class="na">jar</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Pour exécuter l&#8217;application avec notre agent :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">java</span> <span class="o">-</span><span class="nl">javaagent:</span><span class="n">agent</span><span class="o">-</span><span class="n">simple</span><span class="o">-</span><span class="mf">1.0</span><span class="o">.</span><span class="na">jar</span> <span class="o">-</span><span class="n">jar</span> <span class="n">swing</span><span class="o">-</span><span class="n">app</span><span class="o">-</span><span class="mf">1.0</span><span class="o">.</span><span class="na">jar</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Pour le moment, il ne se passe rien (pas de comportement spécifique défini dans l&#8217;agent).
+Pour nous assurer que le code de notre agent est bien exécuté, nous ajoutons le traditionnel System.out.println dans notre agent comme ceci :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MySimpleAgent</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">premain</span><span class="o">(</span><span class="n">String</span> <span class="n">agentArgs</span><span class="o">,</span> <span class="n">Instrumentation</span> <span class="n">instr</span><span class="o">){</span>
+</span><span class='line'>      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;I&#39;m your secret agent&quot;</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>A l&#8217;exécution, la chaine de caractère s&#8217;affiche, rien de bien intéressant pour le moment.</p>
+
+<p>La modification du bytecode d&#8217;une application passe par le mécanisme de &#8220;transformer&#8221; que l&#8217;on peut ajouter à notre objet instr de type java.lang.instrument.Instrumentation. Un transformer est une classe qui implémente l&#8217;interface java.lang.instrument.ClassFileTransformer.</p>
+
+<p>Créons alors notre &#8220;transformer&#8221; MySimpleTransformer avec un affichage dans la console des classes sur lesquels on peut intervenir :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">roddet</span><span class="o">.</span><span class="na">agent</span><span class="o">.</span><span class="na">simple</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.lang.instrument.ClassFileTransformer</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.lang.instrument.IllegalClassFormatException</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.security.ProtectionDomain</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MySimpleTransformer</span> <span class="kd">implements</span> <span class="n">ClassFileTransformer</span> <span class="o">{</span>
+</span><span class='line'>    <span class="nd">@Override</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">byte</span><span class="o">[]</span> <span class="nf">transform</span><span class="o">(</span><span class="n">ClassLoader</span> <span class="n">classLoader</span><span class="o">,</span> <span class="n">String</span> <span class="n">className</span><span class="o">,</span> <span class="n">Class</span> <span class="n">aClass</span><span class="o">,</span>
+</span><span class='line'>                                 <span class="n">ProtectionDomain</span> <span class="n">protectionDomain</span><span class="o">,</span> <span class="kt">byte</span><span class="o">[]</span> <span class="n">bytes</span><span class="o">)</span>
+</span><span class='line'>                                                  <span class="kd">throws</span> <span class="n">IllegalClassFormatException</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;I can modify class : &quot;</span> <span class="o">+</span> <span class="n">className</span><span class="o">);</span>
+</span><span class='line'>      <span class="k">return</span> <span class="n">bytes</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Et appliquons notre transformer à l&#8217;objet instr</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MySimpleAgent</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">premain</span><span class="o">(</span><span class="n">String</span> <span class="n">agentArgs</span><span class="o">,</span> <span class="n">Instrumentation</span> <span class="n">instr</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;I&#39;m your secret agent&quot;</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">instr</span><span class="o">.</span><span class="na">addTransformer</span><span class="o">(</span><span class="k">new</span> <span class="n">MySimpleTransformer</span><span class="o">());</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>A l&#8217;exécution, on obtient :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'>   <span class="n">I</span><span class="err">&#39;</span><span class="n">m</span> <span class="n">your</span> <span class="n">secret</span> <span class="n">agent</span>
+</span><span class='line'>   <span class="n">I</span> <span class="n">can</span> <span class="n">modify</span> <span class="kd">class</span> <span class="err">: </span><span class="nc">com</span><span class="o">/</span><span class="n">roddet</span><span class="o">/</span><span class="n">swing</span><span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">SwingFrame</span>
+</span><span class='line'>   <span class="n">I</span> <span class="n">can</span> <span class="n">modify</span> <span class="kd">class</span> <span class="err">: </span><span class="nc">javax</span><span class="o">/</span><span class="n">swing</span><span class="o">/</span><span class="n">JFrame</span>
+</span><span class='line'>   <span class="n">I</span> <span class="n">can</span> <span class="n">modify</span> <span class="kd">class</span> <span class="err">: </span><span class="nc">javax</span><span class="o">/</span><span class="n">swing</span><span class="o">/</span><span class="n">WindowConstants</span>
+</span><span class='line'>   <span class="n">I</span> <span class="n">can</span> <span class="n">modify</span> <span class="kd">class</span> <span class="err">: </span><span class="nc">javax</span><span class="o">/</span><span class="n">accessibility</span><span class="o">/</span><span class="n">Accessible</span>
+</span><span class='line'>   <span class="n">I</span> <span class="n">can</span> <span class="n">modify</span> <span class="kd">class</span> <span class="err">: </span><span class="nc">javax</span><span class="o">/</span><span class="n">swing</span><span class="o">/</span><span class="n">RootPaneContainer</span>
+</span><span class='line'>   <span class="n">I</span> <span class="n">can</span> <span class="n">modify</span> <span class="kd">class</span> <span class="err">: </span><span class="nc">javax</span><span class="o">/</span><span class="n">swing</span><span class="o">/</span><span class="n">TransferHandler$HasGetTransferHandler</span>
+</span><span class='line'>   <span class="n">I</span> <span class="n">can</span> <span class="n">modify</span> <span class="kd">class</span> <span class="err">: </span><span class="nc">java</span><span class="o">/</span><span class="n">awt</span><span class="o">/</span><span class="n">Frame</span>
+</span><span class='line'>   <span class="o">.....</span> <span class="o">(</span><span class="n">la</span> <span class="n">liste</span> <span class="n">est</span> <span class="n">longue</span><span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>On remarque que l&#8217;on peut modifier non seulement notre classe mais aussi les classes du JDK chargées.
+Pour modifier le bytecode d&#8217;une classe, il faut modifier le tableau byte[] retourné par la méthode transform au moment où elle est exécutée pour notre classe.</p>
+
+<p>C&#8217;est là où ça se complique &#8230;:-) Qu&#8217;est-ce que l&#8217;on va mettre dans ce tableau byte[] ? Comment va t-on construire un tableau de byte conforme au spécification du bytecode Java (bon magic number, version de java, bytecode, &#8230;) ?
+Heureusement plusieurs techniques/outils nous permettent de nous simplifier la tâche ou de tricher un peu.
+On va commencer par la triche :-)
+Nous pouvons modifier le code SwingFrame en complétant la méthode actionPerformed :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="n">ActionEvent</span> <span class="n">actionEvent</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>  <span class="k">this</span><span class="o">.</span><span class="na">swingText</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="k">new</span> <span class="n">Date</span><span class="o">().</span><span class="na">toString</span><span class="o">());</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Nous pouvons récupérer le fichier SwingFrame.class correspondant et le mettre dans le répertoire de ressources (src/main/resources) du projet maven agent-simple. Ce fichier sera alors dans le classpath d&#8217;exécution de notre agent.</p>
+
+<p>Nous pouvons modifier notre transformer comme suit pour qu&#8217;il remplace le bytecode de la classe SwingFrame par celui que l&#8217;on vient de générer :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MySimpleTransformer</span> <span class="kd">implements</span> <span class="n">ClassFileTransformer</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Override</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">byte</span><span class="o">[]</span> <span class="nf">transform</span><span class="o">(</span><span class="n">ClassLoader</span> <span class="n">classLoader</span><span class="o">,</span> <span class="n">String</span> <span class="n">s</span><span class="o">,</span> <span class="n">Class</span> <span class="n">aClass</span><span class="o">,</span>
+</span><span class='line'>                            <span class="n">ProtectionDomain</span> <span class="n">protectionDomain</span><span class="o">,</span> <span class="kt">byte</span><span class="o">[]</span> <span class="n">bytes</span><span class="o">)</span>
+</span><span class='line'>                            <span class="kd">throws</span> <span class="n">IllegalClassFormatException</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">if</span> <span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">&quot;com/roddet/swing/app/SwingFrame&quot;</span><span class="o">))</span> <span class="o">{</span>
+</span><span class='line'>            <span class="k">try</span> <span class="o">{</span>
+</span><span class='line'>                <span class="n">bytes</span> <span class="o">=</span> <span class="n">getSwingFrameModifiedByteCode</span><span class="o">();</span>
+</span><span class='line'>            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>                <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+</span><span class='line'>            <span class="o">}</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">bytes</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">private</span> <span class="kt">byte</span><span class="o">[]</span> <span class="nf">getSwingFrameModifiedByteCode</span><span class="o">()</span>
+</span><span class='line'>                                   <span class="kd">throws</span> <span class="n">IOException</span><span class="o">,</span> <span class="n">URISyntaxException</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">InputStream</span> <span class="n">fileInputStream</span> <span class="o">=</span> <span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">getContextClassLoader</span><span class="o">()</span>
+</span><span class='line'>                                         <span class="o">.</span><span class="na">getResourceAsStream</span><span class="o">(</span><span class="s">&quot;SwingFrame.class&quot;</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">ByteArrayOutputStream</span> <span class="n">output</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ByteArrayOutputStream</span><span class="o">();</span>
+</span><span class='line'>        <span class="kt">byte</span><span class="o">[]</span> <span class="n">buffer</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="mi">1024</span> <span class="o">*</span> <span class="mi">4</span><span class="o">];</span>
+</span><span class='line'>        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+</span><span class='line'>        <span class="k">while</span> <span class="o">(-</span><span class="mi">1</span> <span class="o">!=</span> <span class="o">(</span><span class="n">n</span> <span class="o">=</span> <span class="n">fileInputStream</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">buffer</span><span class="o">)))</span> <span class="o">{</span>
+</span><span class='line'>            <span class="n">output</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">buffer</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">n</span><span class="o">);</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>        <span class="n">fileInputStream</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">output</span><span class="o">.</span><span class="na">toByteArray</span><span class="o">();</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>En exécutant sans agent (java -jar swing-app-1.0.jar), un clic sur le bouton &#8220;Click&#8221; ne produit rien comme résultat.</p>
+
+<p>Avec une exécution avec agent</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">java</span> <span class="o">-</span><span class="nl">javaagent:</span><span class="n">agent</span><span class="o">-</span><span class="n">simple</span><span class="o">-</span><span class="mf">1.0</span><span class="o">.</span><span class="na">jar</span> <span class="o">-</span><span class="n">jar</span> <span class="n">swing</span><span class="o">-</span><span class="n">app</span><span class="o">-</span><span class="mf">1.0</span><span class="o">.</span><span class="na">jar</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>, la date/heure courante s&#8217;affiche après un clic sur le bouton.</p>
+
+<p>![/images/manipbytecode/swing-app-with-agent.png]</p>
+
+<p>Le JDK 5 nous offre ainsi une flexibilité sur notre application en production. Nous pouvons modifier un ensemble de classes et les remplacer directement en production en redémarrant l&#8217;application avec un agent. En cas de regression, il suffit de retirer l&#8217;agent.</p>
+
+<h2>Java 6 va encore plus loin</h2>
+
+<p>Depuis Java 6, il est possible d&#8217;instrumenter l&#8217;exécution d&#8217;une application après son lancement. Le package com.sun.tools.attach a été ajouté et fournit une API permettant d&#8217;ajouter, de supprimer un agent. Pour montrer l&#8217;utilisation de cet API, nous allons créer un programme permettant de connecter un agent à un programme en cours d&#8217;exécution.</p>
+
+<p>Créons un projet Maven agent-live-installer</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">mvn</span> <span class="nl">archetype:</span><span class="n">generate</span> <span class="o">-</span><span class="n">DgroupId</span><span class="o">=</span><span class="n">com</span><span class="o">.</span><span class="na">roddet</span> <span class="o">-</span><span class="n">DartifactId</span><span class="o">=</span><span class="n">agent</span><span class="o">-</span><span class="n">live</span><span class="o">-</span><span class="n">installer</span> <span class="o">-</span><span class="n">Dversion</span><span class="o">=</span><span class="mf">1.0</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Créons une classe principale qui fait le lien entre un agent et le pid d&#8217;une application en cours d&#8217;exécution.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">roddet</span><span class="o">.</span><span class="na">agent</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">com.sun.tools.attach.VirtualMachine</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyAgentLiveInstaller</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">VirtualMachine</span> <span class="n">vm</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+</span><span class='line'>        <span class="k">try</span> <span class="o">{</span>
+</span><span class='line'>            <span class="c1">// 2 parameters for this execution</span>
+</span><span class='line'>            <span class="k">if</span><span class="o">(</span><span class="n">args</span><span class="o">.</span><span class="na">length</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>                <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span><span class="s">&quot;Two parameters is mandatory : &quot;</span>
+</span><span class='line'>                                                      <span class="o">+</span> <span class="s">&quot;pid and agent JAR path&quot;</span><span class="o">);</span>
+</span><span class='line'>            <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="n">String</span> <span class="n">pid</span> <span class="o">=</span> <span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span>
+</span><span class='line'>            <span class="n">String</span> <span class="n">agent</span> <span class="o">=</span> <span class="n">args</span><span class="o">[</span><span class="mi">1</span><span class="o">];</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Attaching agent &quot;</span> <span class="o">+</span> <span class="n">agent</span>
+</span><span class='line'>                                    <span class="o">+</span> <span class="s">&quot; to application with pid &quot;</span> <span class="o">+</span> <span class="n">pid</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="c1">// Attach VM to running application with his pid</span>
+</span><span class='line'>            <span class="n">vm</span> <span class="o">=</span> <span class="n">VirtualMachine</span><span class="o">.</span><span class="na">attach</span><span class="o">(</span><span class="n">pid</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="c1">// load agent into target VM</span>
+</span><span class='line'>            <span class="n">vm</span><span class="o">.</span><span class="na">loadAgent</span><span class="o">(</span><span class="n">agent</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Agent loaded + &quot;</span> <span class="o">+</span> <span class="n">vm</span><span class="o">.</span><span class="na">getAgentProperties</span><span class="o">());</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+</span><span class='line'>            <span class="k">if</span><span class="o">(</span><span class="n">vm</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>                <span class="n">vm</span><span class="o">.</span><span class="na">detach</span><span class="o">();</span>
+</span><span class='line'>            <span class="o">}</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Pour qu&#8217;un agent puisse être chargé dynamiquement, deux conditions :
+la classe principale de l&#8217;agent doit avoir une méthode agentmain comme ci-dessous :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MySimpleAgent</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">premain</span><span class="o">(</span><span class="n">String</span> <span class="n">agentArgs</span><span class="o">,</span> <span class="n">Instrumentation</span> <span class="n">instr</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;I&#39;m your secret agent&quot;</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">instr</span><span class="o">.</span><span class="na">addTransformer</span><span class="o">(</span><span class="k">new</span> <span class="n">MySimpleTransformer</span><span class="o">());</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">agentmain</span><span class="o">(</span><span class="n">String</span> <span class="n">agentArgs</span><span class="o">,</span> <span class="n">Instrumentation</span> <span class="n">instr</span><span class="o">)</span> <span class="kd">throws</span>
+</span><span class='line'>                                                       <span class="n">UnmodifiableClassException</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;I&#39;m your dynamic secret agent&quot;</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">instr</span><span class="o">.</span><span class="na">addTransformer</span><span class="o">(</span><span class="k">new</span> <span class="n">MySimpleTransformer</span><span class="o">(),</span> <span class="kc">true</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">instr</span><span class="o">.</span><span class="na">retransformClasses</span><span class="o">(</span><span class="n">getModifiedClasses</span><span class="o">(</span><span class="n">instr</span><span class="o">));</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">private</span> <span class="kd">static</span> <span class="n">Class</span><span class="o">[]</span> <span class="nf">getModifiedClasses</span><span class="o">(</span><span class="n">Instrumentation</span> <span class="n">instr</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">List</span><span class="o">&lt;</span><span class="n">Class</span><span class="o">&lt;?&gt;&gt;</span> <span class="n">modifiableClasses</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Class</span><span class="o">&lt;?&gt;&gt;</span> <span class="o">();</span>
+</span><span class='line'>        <span class="k">for</span><span class="o">(</span><span class="n">Class</span> <span class="n">aClass</span> <span class="o">:</span> <span class="n">instr</span><span class="o">.</span><span class="na">getAllLoadedClasses</span><span class="o">())</span> <span class="o">{</span>
+</span><span class='line'>            <span class="k">if</span><span class="o">(</span><span class="n">instr</span><span class="o">.</span><span class="na">isModifiableClass</span><span class="o">(</span><span class="n">aClass</span><span class="o">)){</span>
+</span><span class='line'>                <span class="n">modifiableClasses</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">aClass</span><span class="o">);</span>
+</span><span class='line'>            <span class="o">}</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>        <span class="n">Class</span><span class="o">[]</span> <span class="n">classesTab</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Class</span><span class="o">[</span><span class="n">modifiableClasses</span><span class="o">.</span><span class="na">size</span><span class="o">()];</span>
+</span><span class='line'>        <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+</span><span class='line'>        <span class="k">for</span> <span class="o">(</span><span class="n">Class</span> <span class="n">aClass</span> <span class="o">:</span> <span class="n">modifiableClasses</span><span class="o">){</span>
+</span><span class='line'>            <span class="n">classesTab</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">aClass</span><span class="o">;</span>
+</span><span class='line'>            <span class="n">i</span><span class="o">++;</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">classesTab</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>le fichier MANIFEST doit avoir l&#8217;attribut Agent-Class. Nous pouvons l&#8217;ajouter à la configuration Maven. Nous ajoutons également les attributs Can-Redefine-Classes et Can-Retransform-Classes pour donner les droits de modifications à l&#8217;agent.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;build&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;pluginmanagement&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;plugins&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;plugin&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;groupid&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupid&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;artifactid&gt;</span>maven-jar-plugin<span class="nt">&lt;/artifactid&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;version&gt;</span>2.4<span class="nt">&lt;/version&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;configuration&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;archive&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;manifestentries&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;premain-class&gt;</span>com.roddet.agent.simple.MySimpleAgent<span class="nt">&lt;/premain-class&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;agent-class&gt;</span>com.roddet.agent.simple.MySimpleAgent<span class="nt">&lt;/agent-class&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;can-retransform-classes&gt;</span>true<span class="nt">&lt;/can-retransform-classes&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;can-redefine-classes&gt;</span>true<span class="nt">&lt;/can-redefine-classes&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;/manifestentries&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;/archive&gt;</span>
+</span><span class='line'>       <span class="nt">&lt;/configuration&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;/plugin&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/plugins&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/pluginmanagement&gt;</span>
+</span><span class='line'><span class="nt">&lt;/build&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>On peut exécuter l&#8217;application swing seule :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>java -jar swing-app-1.0.jar
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Pour avoir la liste des processus java tournant sur une machine, on peut utiliser la commande :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>jps
+</span><span class='line'>
+</span><span class='line'>   804
+</span><span class='line'>   1913 Jps
+</span><span class='line'>   1907 swing-app-1.0.jar
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>A ce stade si nous cliquons sur le bouton &#8220;Click!&#8221;, il ne se passe rien.</p>
+
+<p>Ensuite nous pouvons utiliser le programme agent-live-installer pour &#8220;attacher&#8221; un agent à un processus en cours d&#8217;exécution.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>java -jar agent-live-installer-1.0.jar 1907 agent-simple-1.0.jar
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Et là, sans redémarrer l&#8217;application swing-app, un clic sur bouton affiche la date/heure.
+Il est également possible aussi de créer un programme qui détache un agent d&#8217;un processus.</p>
+
+<p>Avec Java 6, nous devenons tout puissant. Nous pouvons modifier du code &#8220;en live&#8221; et retirer lorsque nous le souhaitons. La modification après le lancement de l&#8217;application a néanmoins des limites, on ne peut pas par exemple modifier la structure d&#8217;une classe.</p>
+
+<h2>Quoi pour modifier le bytecode ?</h2>
+
+<p>La procédure présentée précédemment permet d&#8217;adresser plusieurs cas mais elle n&#8217;est pas très pratique notamment pour instrumenter des classes dont nous n&#8217;avons pas les sources. Heureusement plusieurs outils peuvent nous aider à modifier le bytecode. Ils sont nombreux, voici les 3 plus populaires :</p>
+
+<ul>
+<li><a href="http://asm.ow2.org/">ASM</a> : propose une API de relativement bas niveau pour modifier nos classes. Il est à la base de nombreux frameworks comme Oracle TopLink, Cobertura, Groovy, JRuby, &#8230; Une liste plus exhaustive est disponible ici.</li>
+<li><a href="http://www.eclipse.org/aspectj/doc/released/progguide/index.html">AspectJ</a> : pionnier de la programmation orientée aspect, il permet de définir des comportements transverses de manière agréable (java ou xml) à une application. Il fournit un agent auquel on adjoint une configuration.</li>
+<li><a href="http://www.jboss.org/byteman">Byteman</a>  : produit open source développé par JBoss qui permet de modifier le bytecode au démarrage d&#8217;une application ou sur une application en cours d&#8217;exécution. L&#8217;instrumentation d&#8217;une application se fait par le biais de règles très facile à lire et à mettre en oeuvre.</li>
+</ul>
+
+
+<h2>Quelques exemples avec Byteman</h2>
+
+<p>Pour installer Byteman, télécharger puis décompresser le binaire ici.
+Idéalement ajouter le répertoire [BYTEMAN_INSTALL]/bin dans le &#8220;Path&#8221; de votre système.</p>
+
+<p>Règle 1 : tracer le clic sur le bouton &#8220;Click!&#8221;
+Créer le fichier trace-click-swing-app.btm avec le contenu :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>RULE trace click
+</span><span class='line'>CLASS com.roddet.swing.app.SwingFrame
+</span><span class='line'>METHOD actionPerformed(java.awt.event.ActionEvent)
+</span><span class='line'>IF TRUE
+</span><span class='line'>DO System.out.println(&quot;Click!&quot;);
+</span><span class='line'>ENDRULE
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Lancer l&#8217;application swing-app :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>java -jar swing-app-1.0.jar
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="/images/manipbytecode/swing-app-without-agent.png" alt="/images/manipbytecode/swing-app-without-agent.png" /></p>
+
+<p>Un clic sur le bouton ne produit aucun résultat.</p>
+
+<p>Utiliser la commande jps pour récupérer le pid du processus puis installer l&#8217;agent byteman avec la script bminstall.sh :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>bminstall.sh 2276
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Puis appliquer la règle trace-click-swing-app.btm :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>bmsubmit.sh trace-click-swing-app.btm
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Et là, quand on clique sur le bouton &#8220;Click!&#8221;, la trace &#8220;Click!&#8221; apparait dans la console.</p>
+
+<p>Règle 2 : mettre à jour le champ de saisie après un clic
+Créer le fichier addText-swing-app.btm avec le contenu :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>RULE addText on click
+</span><span class='line'>CLASS com.roddet.swing.app.SwingFrame
+</span><span class='line'>METHOD actionPerformed(java.awt.event.ActionEvent)
+</span><span class='line'>IF TRUE
+</span><span class='line'>DO $0.swingText.setText(&quot;Hello, it&#39;s magic!!&quot;)
+</span><span class='line'>ENDRULE
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Le mot clé $0 est l&#8217;équivalent de &#8220;this&#8221;.</p>
+
+<p>L&#8217;exécution de bminstall.sh n&#8217;est nécessaire qu&#8217;un seule fois, on directement ajouter un deuxième agent.</p>
+
+<p>Appliquer la règle addText-swing-app.btm :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>bmsubmit.sh addText-swing-app.btm
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Lors du clic sur le bouton, le message &#8220;Hello, it&#8217;s magic!!&#8221; s&#8217;affiche.</p>
+
+<p><img src="/images/manipbytecode/byteman-swing-app.png" alt="/images/manipbytecode/byteman-swing-app.png" /></p>
+
+<p><a href="http://www.jboss.org/byteman">Byteman</a> permet d&#8217;aller loin dans l&#8217;écriture des règles notamment avec :
+l&#8217;utilisation d&#8217;expression régulière pour définir un ensemble de classe
+le choix plus précis de l&#8217;endroit à instrumenter grâce aux mots clés AT ENTRY, AT EXIT, AT LINE, AFTER READ, etc&#8230;
+de retirer &#8220;à chaud&#8221; un agent chargé
+de manipuler les paramètres d&#8217;entrées de méthode
+une intégration avec JUnit pour nous aider à simuler des erreurs inattendues (exception due à une coupure réseau, &#8230;)</p>
+
+<h2>Qu&#8217;est-ce qu&#8217;on fait maintenant ?</h2>
+
+<p>Nous avons vu qu&#8217;avec Java 5, nous étions capable de séparer le code de l&#8217;application aux problématiques transverses comme le logging. Avec Java 6, on peut effectuer des modifications de bytecode à chaud. Cette fonctionnalité est de plus en plus utilisée par des applications tierces, par exemple avec l&#8217;apparition de l&#8217;onglet &#8220;profiler&#8221; dans jvisualvm :</p>
+
+<p><img src="/images/manipbytecode/jvisualvm-profiler.png" alt="/images/manipbytecode/jvisualvm-profiler.png" /></p>
+
+<p>N&#8217;hésitons pas à :</p>
+
+<ul>
+<li>exploiter les possibilités de notre JVM
+utiliser les outils de programmation orienté aspect comme Spring, AspectJ, etc..</li>
+<li>nous servir des outils comme <a href="http://www.jboss.org/byteman">Byteman</a> pour des analyses sans devoir défaire notre paquet cadeau.</li>
+</ul>
+
+
+<p>Le code utilisé est disponible là : <a href="https://github.com/roddet/manip-bytecode">https://github.com/roddet/manip-bytecode</a>.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Rossi Oddet</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-21T22:45:00-04:00" pubdate data-updated="true">Jun 21<span>st</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/bytecode/'>bytecode</a>, <a class='category' href='/blog/categories/byteman/'>byteman</a>, <a class='category' href='/blog/categories/java/'>java</a>, <a class='category' href='/blog/categories/maven/'>maven</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://roddet.github.com/2012/06/manipulez-le-bytecode/" data-via="rossioddet" data-counturl="http://roddet.github.com/2012/06/manipulez-le-bytecode/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2012/05/gatling-integration-maven-eclipse/" title="Previous Post: Gatling : Intégration Maven & Eclipse">&laquo; Gatling : Intégration Maven & Eclipse</a>
+      
+      
+        <a class="basic-alignment right" href="/2012/10/jcertif-2012-en-videos/" title="Next Post: JCertif 2012 en vidéos">JCertif 2012 en vidéos &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Rossi Oddet</h1>
+  <br/>
+  <table>
+  	<tr><td width="30%"><img src="/images/photo.jpeg" width="75"/></td>
+  		<td>&nbsp;&nbsp;</td>
+    <td width="70%"> <p>Développeur, Blogger et passionné par les communautés IT.</p></td></tr>
+</table>
+</section>
+<a class="twitter-timeline" href="https://twitter.com/rossioddet" data-widget-id="314511007521312768">Tweets by @rossioddet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Rossi Oddet -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogroddet';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://roddet.github.com/2012/06/manipulez-le-bytecode/';
+        var disqus_url = 'http://roddet.github.com/2012/06/manipulez-le-bytecode/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

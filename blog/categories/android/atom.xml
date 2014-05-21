@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: android | Rossi Oddet]]></title>
+  <link href="http://roddet.github.com/blog/categories/android/atom.xml" rel="self"/>
+  <link href="http://roddet.github.com/"/>
+  <updated>2014-05-21T01:43:46-04:00</updated>
+  <id>http://roddet.github.com/</id>
+  <author>
+    <name><![CDATA[Rossi Oddet]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[BreizhCamp 2013 # Android BootStrap]]></title>
+    <link href="http://roddet.github.com/2013/06/breizhcamp-android-bootstrap/"/>
+    <updated>2013-06-14T15:00:00-04:00</updated>
+    <id>http://roddet.github.com/2013/06/breizhcamp-android-bootstrap</id>
+    <content type="html"><![CDATA[<p><img class="center" src="/images/breizhcamp13/android_bootstrap/android-bootstrap.jpg"></p>
+
+<h2>Animateurs</h2>
+
+<ul>
+<li><a href="https://plus.google.com/114772056028520115043">Jean-François Garreau</a> SQLI Nantes</li>
+</ul>
+
+
+<h2>Les supports</h2>
+
+<p>Les slides c'est par <a href="http://blog.binomed.fr/binomed_docs/Prezs/AndroidBootstrap/bootstrap.html">ici</a>.</p>
+
+<p>Les sources de l'application BreizhCamp c'est par <a href="https://github.com/binomed/DevFestCodeLab/tree/breizhcamp">là</a>.</p>
+
+<h2>Déroulement</h2>
+
+<p>Jean-François a commencé par nous expliquer l'importance des librairies. Nous avons en tant que développeur, dès fois, la facheuse tendance de "ré-inventer la roue" à chaque projet. Cela est particulière le cas sur la plateforme Android dont le SDK nous fournit déjà pas mal de composants prêts à l'emploi. Il faut le savoir, les librairies existent et certaines ont particulièrement été éprouvées.</p>
+
+<p>Tout n'est pas parfait dans le monde des librairies Android. Intégrer des librairies dans notre application peut nous emmener des complications en terme de gestion de version, de conflits, du poids total, de l'environnement de développement, ...</p>
+
+<p>Jean-François va ensuite nous présenter l'utilisation de plusieurs librairies (ActionBarSherlock, ACRA, Compatibility package, ViewPager, ...) à travers la réalisation d'une application pour le BreizhCamp (visualisation des sessions, des présentateurs, etc...).</p>
+
+<p>Il va terminer par nous présenter les bonnes pratiques d'intégration des librairies dans un projet Android et nous conseille de suivre de prêt <a href="http://www.androidbootstrap.com/">Android BootStrap</a> et <a href="http://androidkickstartr.com/">Android KickStartR</a></p>
+
+<h2>Ce que j'en retiens</h2>
+
+<ul>
+<li>Il existe des librairies Android pratiques à utiliser</li>
+<li>L'utilisation d'une librairie peut être problématique suivant qu'elle :
+
+<ul>
+<li>soit distribué en APK ou en JAR</li>
+<li>soit disponible dans un dépôt Maven ou non</li>
+<li>s'utilise par héritage ou par composition. L'héritage multiple étant interdit en Java, une librairie peut nous bloquer l'usage d'une autre.</li>
+</ul>
+</li>
+<li>Qu'il y a 2 projets à surveiller : <a href="http://www.androidbootstrap.com/">Android BootStrap</a> et <a href="http://androidkickstartr.com/">Android KickStartR</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

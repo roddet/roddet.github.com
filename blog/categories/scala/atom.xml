@@ -1,0 +1,666 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: scala | Rossi Oddet]]></title>
+  <link href="http://roddet.github.com/blog/categories/scala/atom.xml" rel="self"/>
+  <link href="http://roddet.github.com/"/>
+  <updated>2014-05-21T01:43:46-04:00</updated>
+  <id>http://roddet.github.com/</id>
+  <author>
+    <name><![CDATA[Rossi Oddet]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Scala IO 2013 => De Maven à SBT]]></title>
+    <link href="http://roddet.github.com/2013/10/scalaio-2013-maven-sbt/"/>
+    <updated>2013-10-28T09:30:00-04:00</updated>
+    <id>http://roddet.github.com/2013/10/scalaio-2013-maven-sbt</id>
+    <content type="html"><![CDATA[<h2>Présentateur</h2>
+
+<p><img class="left" src="/images/scalaio2013/speaker-stephane-manciot.jpg">
+Stéphane Manciot, Architecte chez ebiznext.</p>
+
+<ul>
+<li>Twitter : <a href="https://twitter.com/smanciot">@smanciot</a></li>
+<li>LinkedIn : <a href="http://www.linkedin.com/in/smanciot">http://www.linkedin.com/in/smanciot</a></li>
+<li>Sa bio sur <a href="http://scala.io/speakers/stephane-manciot.html">Scala IO</a></li>
+<li>La description de <a href="http://scala.io/events/de-maven-a-sbt.html">sa session ScalaIO</a></li>
+</ul>
+
+
+<br><br><br>
+
+
+<h2>Une photo comme si vous y étiez !</h2>
+
+<p><img class="center" src="/images/scalaio2013/stephane-manciot-maven-sbt-1.jpg"></p>
+
+<h2>Le Talk</h2>
+
+<p>Stéphane nous a défini ce qui serait pour lui un outil de build idéal, c'est à dire un outil qui <em>facilite la vie des développeurs</em>. Ce talk fait suite à une migration de Maven à SBT d'un projet entièrement écrit en Java. Oui pas de code Scala dans le projet !</p>
+
+<p>Deux idées principales dans ce <em>talk</em> :</p>
+
+<h3>Partie 1 => SBT c'est mieux que Maven</h3>
+
+<p>SBT et Maven seront comparés sur les thèmes suivants :</p>
+
+<ul>
+<li>Plugins Maven vs tâches SBT</li>
+<li>Phases Maven vs Gestion des dépendances des tâches SBT</li>
+<li>Performances</li>
+<li>Gestion multiprojets</li>
+<li>Cross compilation pour les projets Scala</li>
+<li>Gestion des dépendances</li>
+</ul>
+
+
+<h3>Partie 2 => On peut faire du SBT en Entreprise</h3>
+
+<p>Voici les préconisations de Stéphane :</p>
+
+<ul>
+<li>Configurer 2 catégories de dépôt en entreprise : Ivy et Maven.</li>
+<li>Une solution pour publier les versions <em>snapshots</em> et <em>releases</em> (voir le code SBT dans les slides)</li>
+<li>Une publication dans Sonar avec le plugin <a href="https://github.com/ebiznext/sbt-sonar">sbt-sonar</a> avec une couverture du code via le plugin <a href="https://bitbucket.org/jmhofer/jacoco4sbt">jacoco4sbt</a></li>
+</ul>
+
+
+<h2>Les slides de la présentation</h2>
+
+<iframe src="http://www.slideshare.net/slideshow/embed_code/27564746" width="600" height="500" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
+
+
+<h2>Ce que j'en ai pensé</h2>
+
+<p>Une présentation intéressante qui met en évidence les différences de philosophie entre Maven et SBT. Pour ceux qui utilisent Maven au quotidien, elle montre les défauts de Maven qui ne sont pas toujours visibles lorsqu'on ne connait pas d'autres outils de build.</p>
+
+<p>On pourra néanmoins regretter le manque d'objectivité lors de la comparaison Maven vs SBT. En effet, aucun défaut de SBT n'est cité dans les slides et à mon avis il y en a quand même :) J'ai le sentiment que la migration de Maven vers SBT de quelques projets Java chez ebiznext a surtout été motivé par la volonté d'harmoniser le système de build avec les projets scala de l'entreprise. Comme le confirmera la séance de questions/réponses, Gradle n'a par exemple pas été envisagé comme remplaçant éventuel de Maven.</p>
+
+<p>Un dépôt Git est disponible pour illustrer ce talk <a href="https://github.com/ebiznext/maven2sbt">maven2sbt</a>.</p>
+
+<p>J'ai lancé les 2 builds (Maven et SBT). Le build SBT est Ok, j'ai eu une erreur avec build Maven (Maven 3.1.1 et commande <em>mvn clean install</em>).</p>
+
+<p><img class="center" src="/images/scalaio2013/stephane-manciot-maven-sbt-2.png"></p>
+
+<p><em>Mise à jour du 29/10/2013</em></p>
+
+<p><em>Le build Maven fonctionne bien si l'on effectue "mvn clean" suivi de "mvn install"</em></p>
+
+<p>Quoi qu'il en soit, c'est une très bonne initiative surtout que ce build traite des problématiques de génération de code, de compilation de code groovy, etc...</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Scala IO 2013 => Failure : The Good Parts]]></title>
+    <link href="http://roddet.github.com/2013/10/scalaio-2013-failure-the-good-parts/"/>
+    <updated>2013-10-27T09:30:00-04:00</updated>
+    <id>http://roddet.github.com/2013/10/scalaio-2013-failure-the-good-parts</id>
+    <content type="html"><![CDATA[<h2>Présentateur</h2>
+
+<p><img class="left" src="/images/scalaio2013/speaker-viktor-klang.jpeg">
+Viktor Klang, Directeur de l'ingénierie chez <a href="http://typesafe.com/">Typesafe</a>.</p>
+
+<ul>
+<li>Twitter : <a href="https://twitter.com/viktorklang">@viktorklang</a></li>
+<li>Tumblr : <a href="http://klangism.tumblr.com/">klangism</a></li>
+<li>Sa bio sur <a href="http://scala.io/speakers/viktor-klang.html">Scala IO</a></li>
+<li>La description de <a href="http://scala.io/events/launch-conference.html">sa session</a></li>
+</ul>
+
+
+<br><br><br>
+
+
+<h2>La keynote du jour 1 de <em>Scala IO</em></h2>
+
+<p>Cette session a constituée la Keynote du premier jour de l'événement.</p>
+
+<p><img class="center" src="/images/scalaio2013/viktor_klang_failure_good_part.jpg"></p>
+
+<h2>Failure - The Bad Parts</h2>
+
+<p>Viktor a commencé par nous présenter les mauvais côté d'un plantage d'un système. Il l'a illustré avec l'exemple du projet Ariane 5 dont l'objectif principal était de créer un lanceur de satéllites géostationnaires.
+Le 4 juin 1996, ce projet qui représentait 10 ans de recherches, 7 milliards de dollars investis, s'est tristement fait remarqué lors d'un test d'un système de lancement "nouvelle génération" qui va entrainer la destruction d'une fusée quelques secondes après son décollage. On doit cet échec à une erreur de programmation qui va coûter près de 370 millions de dollars ce jour là.</p>
+
+<p>Un plantage logiciel en production peut donc avoir des conséquences desastreuses tant pour l'entreprise et peut-être même pour les développeurs de la solution :)</p>
+
+<h2>Pour quelles raisons un système plante ?</h2>
+
+<ul>
+<li>Surchage du système (trop d'utilisateurs, système sous dimensionné, ...)</li>
+<li>Plantage logiciel</li>
+<li>Plantage matériel (CPU, RAM, HDD, ...)</li>
+<li>etc...</li>
+</ul>
+
+
+<p>Les causes possibles de plantage sont nombreux et de différentes natures. Les plantages font partis de la vie d'un système autant les prévoir.</p>
+
+<h2>Validation vs Failure</h2>
+
+<p>Viktor a mis l'accent sur les différences entre les tests que nous pouvons faire pour valider un système et un plantage.</p>
+
+<p>Les différences mises en avant :</p>
+
+<ul>
+<li>La validation d'un logiciel est intentionnelle tandis qu'un plantage est involontaire</li>
+<li>On attend d'une validation des résultats alors qu'on attend d'un plantage une reprise du système</li>
+</ul>
+
+
+<h2>Que savons-nous vraiment des erreurs possibles de notre système ?</h2>
+
+<p>4 catégories :</p>
+
+<ul>
+<li><em>Known-Knows</em></li>
+<li><em>Known-Unknows</em></li>
+<li><em>Unknown-Knowns</em></li>
+<li><em>Unknown-Unknows</em></li>
+</ul>
+
+
+<h2>Tester ou vérifier son système ?</h2>
+
+<p>Les tests sont utiles pour la catégorie <em>known-knowns</em>.</p>
+
+<p>Les vérifications du système sont utiles pour les catégories : <em>Unkown-Unknowns</em>, <em>Known-Unknowns</em> et <em>Unknown-Unknowns</em>.</p>
+
+<p>Conclusion ? => Faites les 2 !</p>
+
+<h2>Attention à la <em>Defensive Programming</em> !</h2>
+
+<p>La peur d'une erreur inattendue de notre système pousse certains développeur à de la <em>defensive programming</em> qui conduit à :</p>
+
+<ul>
+<li>une confusion dans la gestion des responsabilités</li>
+<li>des blocs <em>try...catch</em> abusifs pour essayer de prévoir tous les cas d'erreurs possibles</li>
+</ul>
+
+
+<h2>Comment gérer ses risques d'erreur avec le :) ?</h2>
+
+<ul>
+<li><em>Distribution</em> => Ne pas mettre tous ses oeufs dans le même panier.</li>
+<li><em>Replication &amp; Failover</em> => Maintenez plusieurs exemplaires de votre contenu.</li>
+<li><em>CircuitBreakers</em> => Mettre en place des moyens pour éviter de maintenir la pression sur les parties du système en erreur. Par exemple, si une base de données ne répond plus, il ne sert à rien de continuer à l'intérogger continuellement tant que le problème n'est pas résolu.</li>
+<li><em>Supervisor</em> => Votre système doit vous notifier lorsqu'il y a des erreurs.</li>
+<li><em>Bulkheading</em> => Cloisonner votre système.</li>
+<li><em>Compartmentalization</em> => Compartimenter votre système pour éviter des effets en cascade sur tout votre système lorsqu'un composant est en erreur.</li>
+<li><em>Graceful degradation</em> => prévoir des modes de fonctionnement alternatifs en cas de plantage.</li>
+</ul>
+
+
+<h2>Faites des microservices !</h2>
+
+<p><img class="center" src="/images/scalaio2013/failure_good_part_2.jpg"></p>
+
+<h2>Quelques citations du talk</h2>
+
+<p>Viktor a illustré ses propos avec de nombreuses citations, voici celles que j'ai notées :</p>
+
+<p><blockquote><p>An expert is a man who has made all the mistakes which can be made, in a narrow field.</p><footer><strong>Niels Bohr</strong></footer></blockquote></p>
+
+<p><blockquote><p>Program testing can be used to show the presence of bugs, but never to show their absence !</p><footer><strong>Edsger Dijkstra</strong></footer></blockquote></p>
+
+<p><blockquote><p>A distributed system is one in which the failure of a computer you didn't even know existed can render your own computer unusable.</p><footer><strong>Leslie Lamport</strong></footer></blockquote></p>
+
+<p><blockquote><p>An escalator can never break: it can only become stairs. You should never see an Escalator Temporarily Out Of Order sign, just Escalator Temporarily Stairs. Sorry for the convenience.</p><footer><strong>Mitch Hedberg</strong></footer></blockquote></p>
+
+<h2>Résumé du talk par Viktor</h2>
+
+<p><img class="center" src="/images/scalaio2013/failure_good_part_1.jpg"></p>
+
+<h2>Ce que j'en ai pensé</h2>
+
+<p>On a eu droit à un Viktor en forme qui maitrisait le flux de sa présentation, une session très intéressante sur la gestion des erreurs d'un système.</p>
+
+<p>Ses slides ont du contenu intéressant, je n'ai pas pu trouver des traces de leur publication à ce jour. Vu que Viktor refait cette présentation en format <a href="http://typesafe.com/blog/tune-in-for-viktor-klangs-webinar"><em>Webinar</em> le 30 octobre prochain</a>, je pense qu'il les publiera après.</p>
+
+<p>Cette session a été filmée, nous aurons probablement la possibilité de la revoir en ligne dans les prochaines semaines.</p>
+
+<p>[<em>Edit 06/11/2013 Ci-dessous la vidéo du Webinar du 30 octobre</em>]</p>
+
+<iframe width="640" height="360" src="http://roddet.github.com//www.youtube.com/embed/_XMRYkuaob4?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[BreizhCamp 2013 # Papy fait du Scala]]></title>
+    <link href="http://roddet.github.com/2013/06/breizhcamp-papy-fait-du-scala/"/>
+    <updated>2013-06-14T16:00:00-04:00</updated>
+    <id>http://roddet.github.com/2013/06/breizhcamp-papy-fait-du-scala</id>
+    <content type="html"><![CDATA[<p><img class="center" src="/images/breizhcamp13/papy_scala/papy-scala.jpg"></p>
+
+<h2>Animateurs</h2>
+
+<ul>
+<li><a href="https://twitter.com/dlecan">Damien Lecan</a> Architecte Java &amp; Co SQLI Nantes</li>
+</ul>
+
+
+<h2>Les supports</h2>
+
+<p>Les slides c'est par <a href="http://blog.dlecan.com/breizhcamp2013/papy-fait-du-scala/">ici</a>.</p>
+
+<h2>Résumé</h2>
+
+<p>Damien nous a fait une synthèse du langage Scala et de son écosystème. Il nous a également fait un retour d'expérience sur l'utilisation de Scala dans le projet <a href="https://github.com/dlecan/play2-war-plugin">Play2War</a> qui permet créer un packaging WAR d'une application Play! Framework.</p>
+
+<h2>Ce que j'en retiens</h2>
+
+<ul>
+<li>Scala permet de faire aussi bien la programmation orientée objet que la programmation fonctionnelle</li>
+<li>Avec Scala, on peut utiliser toutes les librairies écrites en Java</li>
+<li>Le code Scala est compilé en Bytecode Java habituel et exécuté sur la JVM</li>
+<li>Scala est typé statiquement et permet l'inférence de type</li>
+<li>Immutabilité, notion importante avec Scala</li>
+<li>Important : "Une bibliothèque compilée avec une version particulière de Scala ne fonctionnera pas nécessairement avec une version plus récente ou plus ancienne."</li>
+<li>Apprendre un nouveau langage nous permet de nous ouvrir l'esprit et nous remettre en question. Je pense par exemple qu'apprendre un langage comme Scala peut nous aider à porter un autre regard sur Java et même nous faire progresser en Java :)</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[BreizhCamp # Dans s'cas la]]></title>
+    <link href="http://roddet.github.com/2013/06/breizhcamp-dans-scas-la/"/>
+    <updated>2013-06-13T14:00:00-04:00</updated>
+    <id>http://roddet.github.com/2013/06/breizhcamp-dans-scas-la</id>
+    <content type="html"><![CDATA[<p><img class="center" src="/images/breizhcamp13/dans_scala/dans-scala.jpg"></p>
+
+<h2>Animateurs</h2>
+
+<ul>
+<li><a href="https://twitter.com/nivdul">Ludwine Probst</a> qui fait du Scala depuis 1 an en dehors du boulot</li>
+<li><a href="https://twitter.com/ahoy_jon">Jonathan Winandy</a> qui fait du Scala depuis 2 ans</li>
+</ul>
+
+
+<h2>Les supports</h2>
+
+<p><a href="https://github.com/flatMapDuke/dans-s-cas-la-breizhcamp">https://github.com/flatMapDuke/dans-s-cas-la-breizhcamp</a></p>
+
+<h2>Déroulement</h2>
+
+<p>La session commence par une présentation de Scala. Je retiens deux choses principalement :</p>
+
+<ul>
+<li><p>Quelques "Killer Apps" (<a href="http://akka.io/">Akka</a>, <a href="http://www.playframework.com/">Play! Framework</a>, <a href="http://gatling-tool.org/">Gatling</a>,...)</p></li>
+<li><p>Scala utilisé dans le milieu professionnel (Twitter, LinkedIn, Amazon, Zenexity, Viadeo, Foursquare, voyages-sncf.com, Klout, ...)</p></li>
+</ul>
+
+
+<p>Ce hands-on a consisté, pendant 3h, à compléter des tests unitaires qui permettait de découvrir progressivement le langage Scala.</p>
+
+<p>J'étais agréablement surpris par cette façon ludique de présenter le langage Scala. J'étais bien occupé durant ces 3h.</p>
+
+<p>Pour ceux qui s'intéressent au langage Scala, je vous conseille de refaire ce hands-on chez vous. Pour cela, il faut :</p>
+
+<p>Cloner le repository :</p>
+
+<p><code>
+git clone git@github.com:flatMapDuke/dans-s-cas-la-breizhcamp.git
+</code>
+Lancer le script</p>
+
+<p><code>
+./handson go
+</code></p>
+
+<p>ou</p>
+
+<p><code>
+./handson.bat go
+</code></p>
+
+<p>Désormais le code est compilé et les tests exécutés à chaque modification de fichier. Vous n'avez plus qu'à remplacer les "__" par les résultats attendus.</p>
+
+<p>Nous avons eu aussi pendant la session une illustration "participative" de l'immutabilité d'une liste en Scala :)</p>
+
+<p><img class="center" src="/images/breizhcamp13/dans_scala/dans-scala-1.jpg"></p>
+
+<h2>Bilan</h2>
+
+<p>J'ai apprécié cette session qui m'a permis de réviser ce que j'avais appris de la formation <a href="https://www.coursera.org/course/progfun">Functional Programming Principles in Scala</a>. J'ai encore beaucoup de choses à apprendre de Scala, je vais y travailler !</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Gatling : Intégration Maven & Eclipse]]></title>
+    <link href="http://roddet.github.com/2012/05/gatling-integration-maven-eclipse/"/>
+    <updated>2012-05-21T22:15:00-04:00</updated>
+    <id>http://roddet.github.com/2012/05/gatling-integration-maven-eclipse</id>
+    <content type="html"><![CDATA[<p><img src="/images/gatling/logo.png" alt="/images/gatling/logo.png" /></p>
+
+<p><a href="http://gatling-tool.org/">Gatling</a> permet d'effectuer des tests de charges de vos applications à base de scripts écrits en Scala.
+Le nom Gatling fait référence à une mitrailleuse créée en 1861, plus de détail sur <a href="http://fr.wikipedia.org/wiki/Gatling">Wikipedia</a>. Vous l'avez compris l'objectif ici est de tirer à plein feux sur votre application.</p>
+
+<p>L'approche utilisée peut se résumer en deux concepts : asynchrone à l'extrême et un DSL pour écrire les scripts.</p>
+
+<h2>Asynchrone à l'extrême</h2>
+
+<p>La plupart des autres solutions sont construites sur le modèle 1 utilisateur = 1 thread. Lors d'une requête HTTP, le thread est mis en attente en attendant la réponse. Avec un grand nombre de threads (donc d'utilisateurs), le processeur passe beaucoup de temps à changer de contexte pour trouver le thread qui n'est pas en attente.</p>
+
+<p>Le projet s'est construit autour du <a href="http://en.wikipedia.org/wiki/Actor_model">modèle Actor</a> qui revient à la mode depuis que les fréquences des processeurs ont cessé d'augmenter et que l'on s'oriente plutôt vers la multiplication des coeurs.
+Il permet de profiter pleinement la puissance du processeur.</p>
+
+<p>L'unité de base du concept est un acteur et les acteurs communiquent entre eux par le biais de messages. Il faut donc voir un acteur comme une unité de traitement avec deux types d'interactions : une réception de message et un envoi de message. Gatling ne limite plus l'utilisation d'1 thread à un utilisateur. Après l'envoi d'une requête HTTP,  un message est posté et le thread est immédiatement disponible pour envoyer une autre. Un autre thread pourra traiter la réponse dans la pile des messages reçus. <a href="http://akka.io/">Akka</a> est le framework open source utilisé pour implémenter ce pattern. Ce choix est de plus en plus adopté par des projets émergeants (<a href="http://www.playframework.com/">Play framework</a>, <a href="https://code.google.com/p/kandash/">Kandash</a>, ...).</p>
+
+<p>Gatling effectue des appels HTTP non bloquant à l'aide du framework <a href="https://github.com/AsyncHttpClient/async-http-client">Async Http Client</a> basé sur le client <a href="http://netty.io/">Netty</a>. Là encore on peut remarquer la similitude avec Play framework qui utilise également Netty, cette fois-ci côté serveur.
+En combinant le modèle des acteurs et les appels Http non bloquants, Gatling met toutes les chances de son côté pour avoir de très bonnes performances et ça se voit !</p>
+
+<h2>Un DSL pour écrire les scripts</h2>
+
+<p>L'objectif de Gatling est de sortir du modèle d'outil de réalisation de script à partir d'une interface graphique pour s'opposer à des outils comme <a href="http://jmeter.apache.org/">Apache JMeter</a> et aller dans le sens des frameworks comme <a href="http://grinder.sourceforge.net/">The Grinder</a>. Le langage choisi pour l'écriture des scripts est Scala. Pas de panique, pas besoin de connaître ou de maîtriser ce langage, l'api fournie est "humainement" compréhensible, simple, concis.</p>
+
+<p>En voici un exemple, je vous laisse juger par vous même :</p>
+
+<p>``` scala<br/>
+scenario("Mon scénario à moi tout seul")</p>
+
+<pre><code> .exec(  
+  http("requette_mapage1")  
+  .get("/faces/mapage1.html")  
+ )  
+ .exec(  
+  http("requette_mapage2")  
+  .get("/faces/mapage2.html")  
+  .queryParam("nom", """rossi""")  
+  .check(status.is(304)  
+ )  
+</code></pre>
+
+<p>```
+Le fait d'utiliser un langage fortement typé comme Scala permet de détecter les erreurs de syntaxes à la compilation et d'utiliser toute la puissance de votre IDE pour organiser le code, mutualiser des bouts de script, etc...
+Pour les développeurs Java, l'avantage de Scala est de pouvoir directement accéder aux API du JDK et aux différentes bibliothèques java une fois ajoutée au classpath.</p>
+
+<h2>Installer Gatling</h2>
+
+<p>Pour une installation/utilisation classique, vous pouvez suivre les instructions de la page : <a href="https://github.com/excilys/gatling/wiki/Getting-Started">https://github.com/excilys/gatling/wiki/Getting-Started</a>. Il suffit de télécharger puis décompresser le livrable. Vous pourrez ainsi écrire et exécuter vos scripts en vous basant sur les exemples fournies.</p>
+
+<p>Le lien suivant explique comment enregistrer un scénario et l'exécuter : <a href="https://github.com/excilys/gatling/wiki/First-Steps-with-Gatling">https://github.com/excilys/gatling/wiki/First-Steps-with-Gatling</a>.
+Dans cet article, nous allons plutôt voir comment il s'intègre dans votre IDE (Eclipse) et dans le cycle de vie de vos projets (Maven). Il serait dommage de ne pas profiter de la puissance de votre IDE pour accélérer l'écriture et la maintenance de vos scripts.</p>
+
+<h2>Installer vos outils de développement</h2>
+
+<p>Voici ce dont vous avez besoin, je mets en parenthèse les versions que j'ai utilisé :</p>
+
+<ul>
+<li>un JDK 6+ (1.6.0_31)</li>
+<li><a href="http://www.eclipse.org/downloads/">Eclipse</a> (Eclipse Classic 3.7.2)</li>
+<li><a href="http://scala-ide.org/">Scala IDE Plugin</a> (<a href="http://download.scala-ide.org/releases-29/stable/site/">http://download.scala-ide.org/releases-29/stable/site/</a>)</li>
+<li><a href="http://www.eclipse.org/m2e/">M2Eclipse</a> (Indigo Update Site > Collaboration > m2e)</li>
+<li><a href="http://alchim31.free.fr/m2e-scala/update-site">M2E-Scala</a></li>
+</ul>
+
+
+<p>J'ai dû repartir d'une version d'Eclipse "neuve" car le Scala IDE Plugin ne s'installait pas sur ma version d'Eclipse courante contenant très grand nombre de plugins installés.</p>
+
+<h2>Créer le projet Maven</h2>
+
+<h3>Ajouter le catalog gatling</h3>
+
+<p>Nous allons pour cela utiliser l'archetype "gatling-highcharts-maven-archetype". Cet archetype n'étant pas présent dans le repository maven central, il faut ajouter un nouveau catalog à eclipse.</p>
+
+<p>Allez dans le menu :
+Window > Preferences > Maven > Archetypes > Add Remote Catalog...
+Puis saisissez l'url : <a href="http://repository.excilys.com/content/groups/public/archetype-catalog.xml">http://repository.excilys.com/content/groups/public/archetype-catalog.xml</a></p>
+
+<p><img src="/images/gatling/eclipse_maven_catalog.png" alt="/images/gatling/eclipse_maven_catalog.png" /></p>
+
+<h3>Créer un projet maven à partir de l'archetype gatling</h3>
+
+<p>File > New > Maven Project > Sélectionner l'archetype "gatling-highcharts-maven-archetype" (version 1.1.6 dans mon cas)</p>
+
+<p><img src="/images/gatling/eclipse_maven_archetype.png" alt="/images/gatling/eclipse_maven_archetype.png" /></p>
+
+<h2>Anatomie du projet généré</h2>
+
+<table>
+  <tr>
+    <td width="30%"><img src="/images/gatling/structure_mvn.png"/></td><td>&nbsp;&nbsp;</td>
+    <td width="70%">On retrouve un projet Maven classique avec un pom.xml, les sources scala dans src/main/scala, les fichiers de configuration dans src/main/resources.<br/><br/>Engine.scala est la classe principale qui lance la mitrailleuse.<br/><br/>IDEPathHelper.scala contient les différents chemins d'accès aux ressources comme les classes compilées, les simulations, les fichiers de données, etc...<br/><br/>Recorder.scala est un utilitaire qui permet d'enregistrer un scénario avec par exemple votre navigateur et de générer les scripts correspondants.<br/><br/>FooSimulation.scala une simulation qui ne fait rien. Il peut être compléter pour créer son premier scénario.<br/><br/>
+gatling.conf donne la possibilité de paramétrer gatling.</td>
+</table>
+
+
+<h2>Générer une simulation avec le "Recorder"</h2>
+
+<p>Le "Recorder" permet de capturer toutes les requêtes HTTP en se positionnant en proxy entre votre machine et votre réseau. Le cas d'utilisation le plus courant est celui d'enregistrer une simulation à partir d'un navigateur web en y paramétrant un proxy.</p>
+
+<p>Pour lancer l'outil "Recorder" :</p>
+
+<ul>
+<li>Sélectionner le fichier "Recorder.scala"</li>
+<li>Clic droit > Run As > Scala Application</li>
+</ul>
+
+
+<p><img src="/images/gatling/gatling_run_recorder.png" alt="/images/gatling/gatling_run_recorder.png" /></p>
+
+<p>L'écran suivant se lance :</p>
+
+<p><img src="/images/gatling/recorder.png" alt="/images/gatling/recorder.png" /></p>
+
+<p>La partie "Network/Listening Network" sert à renseigner les ports d'écoute qui seront à paramétrer dans l'outil utilisé pour réaliser un scénario (un navigateur web par exemple). Je ne parle pas intentionnellement directement d'un navigateur web parce que vous allez pouvoir utiliser le Recorder avec n'importe quel programme qui fait des requêtes HTTP, une compilation Maven par exemple.</p>
+
+<p>Dans le cas présent, le proxy à paramétrer sera :
+* Pour du HTTP locahost:8000
+* Pour du HTTPS localhost:8001</p>
+
+<p>La partie "Output" sert à paramétrer l'endroit où sera généré le script.</p>
+
+<p>Commencer par paramétrer l'outil qui va vous aider avec le proxy configuré. Si votre outil possède un cache, comme un navigateur web, à vous de voir si vous voulez exécuter votre simulation dans ces conditions ou vider le cache.</p>
+
+<p>Vous pouvez ensuite cliquer sur le bouton "Start".</p>
+
+<p><strong>Attention petit bug déroutant sur Mac OSX Lion</strong> : l'affichage par défaut du Recorder ne permet pas de voir le bouton "Start". J'ai mis un certain temps à pouvoir trouver l'astuce pour l'afficher. Il consiste à simplement agrandir la fenêtre avec le bouton "+" avec comme conséquence la disparition de quelques rubriques de la partie "Output". Ce bug est déjà corrigé dans la version 1.2.0-SNAPSHOT en cours de développement.</p>
+
+<p>Vous êtes désormais en mode écoute sur les ports configurés pour votre machine. Si vous faites par exemple la configuration du proxy au niveau de votre connexion Wifi, vous allez pouvoir voir toutes les requêtes et réponses qui transitent entre votre outil et votre réseau.</p>
+
+<p>Exécutons un scénario simple :</p>
+
+<ol>
+<li>Taper l'adresse "www.google.fr"</li>
+<li>Lancer la recherche "JCertif 2012"</li>
+</ol>
+
+
+<p><img src="/images/gatling/capture_recorder.png" alt="/images/gatling/capture_recorder.png" /></p>
+
+<p>Le premier constat que vous allez voir est que vous n'avez pas seulement 2 requêtes mais beaucoup plus. Et oui c'est ça la vraie vie, google fait de multiple appels notamment pour la complétion lors de la saisie entre autres.
+Quand on réalise des tests de charge, on se rend rapidement compte qu'un scénario pourtant fonctionnellement simple peut rapidement se complexifier.
+Le Recorder permet d'ajouter des TAG, c'est particulièrement utile pour séparer les différentes phases de l'enregistrement. Concrètement, les TAG ajoutés vont se transformer en commentaire entre deux enchainements de requête dans le code Scala généré.</p>
+
+<p>Pour arrêter l'enregistrement cliquer sur "Stop !".</p>
+
+<p>De retour dans Eclipse, il faut rafraichir le projet pour voir apparaitre le fichier source généré.</p>
+
+<p><img src="/images/gatling/fichier_genere.png" alt="/images/gatling/fichier_genere.png" /></p>
+
+<p>Dans mon cas, il commence par "Simulation" suivi d'une indication sur la date/heure d'enregistrement.</p>
+
+<p>Vous pouvez le parcourir vous verrez qu'il se lit aisément malgré la complexité généré. Le code généré est fidèle à tout ce qui s'est passé sans masquer les informations.</p>
+
+<p>A cette étape, on se retrouve avec du code dans un IDE, on peut faire tout ce que l'on veut : refactoring, suppression des appels à des serveurs que l'on ne souhaite pas tester, suppression des pauses, ajout de requêtes, variabilisation de chaine de caractères, ...</p>
+
+<p>Dans mon cas, je vais juste renommer la classe en "SimulationGoogleJCertif" en utilisant la fonction "Refactor" d'Eclipse. Pour les développeurs venant du monde Java, vous allez remarquer que le nom du fichier va être modifié mais pas le nom de la classe. Il ne s'agit pas d'un bug (je l'ai pensé au début, honte à moi...:-)), c'est autorisé en Scala ! Mais c'est pas grave, je modifie manuellement le nom de la classe. Il faut aussi savoir que le support de Scala dans Eclipse n'a pas autant de maturité que celui de Java. Vous allez probablement comme moi rencontrer quelques bugs, mais Eclipse nous a déjà habitué aux bugs et aux plantages, donc ça ne change pas fondamentalement nos habitudes...:-)</p>
+
+<h2>Exécuter votre simulation depuis Eclipse</h2>
+
+<p>Pour exécuter votre simulation depuis Eclipse rien de plus simple, il faut lancer la classe Engine.scala de la même manière que le Recorder.</p>
+
+<p>Le moteur Gatling se lance en mode interactif :</p>
+
+<p><img src="/images/gatling/choix_simulation.png" alt="/images/gatling/choix_simulation.png" /></p>
+
+<p>Il faut à présent suivre les instructions :</p>
+
+<ul>
+<li>Choisir la simulation : 1 dans mon cas</li>
+<li>Saisir un identifiant de cette exécution si besoin, taper sur la touche Entrée sinon</li>
+<li>Saisir une description si besoin, taper sur la touche Entrée sinon</li>
+</ul>
+
+
+<p>C'est parti !</p>
+
+<h2>Visualiser les résultats</h2>
+
+<p>Le résultat de la simulation est enregistré dans /target/gatling-results.</p>
+
+<p><img src="/images/gatling/fichier_resultat.png" alt="/images/gatling/fichier_resultat.png" /></p>
+
+<p>Le fichier le plus important est simulation.log, il contient les mesures des temps d'exécution. Il est aisément parsable pour générer des rapports.</p>
+
+<p>Sinon vous avez un rapport sympa généré par gatling. Pour le visualiser, ouvrer le fichier "active_sessions.html" dans un navigateur web.</p>
+
+<p><img src="/images/gatling/graphe1.png" alt="/images/gatling/graphe1.png" /></p>
+
+<br/>
+
+
+<p><img src="/images/gatling/graphe2.png" alt="/images/gatling/graphe2.png" /></p>
+
+<h2>Gatling avec Maven en Intégration Continue</h2>
+
+<p>Nous avons pu jusqu'ici généré un projet Maven qui lors d'un mvn install compile le code Scala. Tant qu'à faire, il est plus intéressant de pouvoir les lancer automatiquement. Deux intérêts possibles :</p>
+
+<ul>
+<li>vous disposez d'un environnement pour faire vos tests de charges, vous pouvez alors simuler un grand nombre d'utilisateurs et détecter les regressions en terme de performance. C'est bien sûr le cas idéal.</li>
+<li>vous êtes dans la vrai vie, vous n'avez pas d'environnement dédié. Vous pouvez exécuter vos scripts au quotidien pour vous assurer qu'ils sont toujours valides. En effet, les modifications de votre application peuvent entrainer des changements d'url ou de paramètre, vous les détecterait en regardant les rapports.</li>
+</ul>
+
+
+<p>Pour exécuter Gatling depuis Maven, il y a plusieurs options :</p>
+
+<ul>
+<li>Utiliser gatling-maven-plugin : le guide d'utilisation est là <a href="https://github.com/excilys/gatling/wiki/Maven-plugin">https://github.com/excilys/gatling/wiki/Maven-plugin</a></li>
+<li>Utiliser <a href="http://mojo.codehaus.org/exec-maven-plugin/">exec-maven-plugin</a> pour exécuter la classe Engine juste après sa compilation. En effet, la compilation du code Scala va générer du bytecode que l'on sait exécuter simplement avec Java. Il  est surement possible d'utiliser directement le plugin <a href="https://github.com/davidB/scala-maven-plugin">scala-maven-plugin</a>, je n'ai pas testé.</li>
+</ul>
+
+
+<p>Actuellement, je penche plutôt sur l'option <a href="http://mojo.codehaus.org/exec-maven-plugin/">exec-maven-plugin</a> pour les raisons suivantes :</p>
+
+<ul>
+<li>Le modèle par défaut de gatling-maven-plugin préconise de mettre les sources dans src/main/resources/simulations. Ce qui ne me parait pas logique avec le reste de l'architecture de mon projet où je mets mes sources Scala dans src/main/scala. Il est possible de configurer le plugin pour modifier le répertoire des simulations. Cela n'a pas fonctionner du premier coup dans mon cas et je n'ai pas non plus insister (c'est peut-être une erreur de ma part, à suivre...)</li>
+<li>J'aime bien l'idée d'unifier le lancement de Gatling que ce soit via Eclipse ou via Maven. Cela permet par exemple de modifier la classe Engine pour ajouter des paramètres à Gatling, ou faire des traitements avant de lancer Gatling (récupérer des infos d'une base de données par exemple, etc...).</li>
+</ul>
+
+
+<p>Avec cette option, il y a un petit soucis en l'état. En effet, on a vu tout à l'heure que Engine lançait Gatling en mode intéractif. Hors durant notre compilation Maven nous n'aurons personne pour faire les différents choix. Heureusement nous avons accès à tout le code et nous pouvons faire de petites modifications pour modifier ce comportement, c'est aussi un peu notre métier...:-) C'est du Scala certes, ça pique aux yeux de certains, mais on s'y habitue en attendant Java 8 !</p>
+
+<p>Suivez les étapes suivantes pour la mise en oeuvre.</p>
+
+<h3>Modifier le fichier IDEPathHelper.scala</h3>
+
+<p>``` scala
+import scala.tools.nsc.io.File
+import scala.tools.nsc.io.Path
+import scala.collection.immutable.List</p>
+
+<p>object IDEPathHelper {
+  val gatlingConfUrl = getClass.getClassLoader.getResource("gatling.conf").getPath
+  val projectRootDir = File(gatlingConfUrl).parents(2)
+  val mavenSourcesDir = projectRootDir / "src" / "main" / "scala"
+  val mavenResourcesDir = projectRootDir / "src" / "main" / "resources"
+  val mavenTargetDir = projectRootDir / "target"
+  val mavenBinariesDir = mavenTargetDir / "classes"
+  val dataFolder = mavenResourcesDir / "data"
+  val requestBodiesFolder = mavenResourcesDir / "request-bodies"
+  val recorderOutputFolder = mavenSourcesDir
+  val resultsFolder = mavenTargetDir / "gatling-results"</p>
+
+<p>  val simulations:List[String] = List.fromString("com.roddet.gatling.SimulationGoogleJCertif",',')
+}
+```
+Cette variable va nous permettre de paramétrer la liste des simulations que l'on souhaite lancer.</p>
+
+<h3>Modifier le fichier Engine.scala</h3>
+
+<p>```scala
+import com.excilys.ebi.gatling.app.{ Options, Gatling }
+import com.excilys.ebi.gatling.core.util.PathHelper.path2string</p>
+
+<p>object Engine extends App {</p>
+
+<p>  new Gatling(Options(</p>
+
+<pre><code>dataFolder = Some(IDEPathHelper.dataFolder),
+resultsFolder = Some(IDEPathHelper.resultsFolder),
+requestBodiesFolder = Some(IDEPathHelper.requestBodiesFolder),
+simulationBinariesFolder = Some(IDEPathHelper.mavenBinariesDir),
+simulations = Some(IDEPathHelper.simulations))).start
+</code></pre>
+
+<p>}
+```</p>
+
+<h3>Configurer le fichier pom.xml</h3>
+
+<p>``` xml
+<build>
+   ....</p>
+
+<pre><code>&lt;plugins&gt;
+  &lt;plugin&gt;
+    &lt;groupId&gt;net.alchim31.maven&lt;/groupId&gt;
+    &lt;artifactId&gt;scala-maven-plugin&lt;/artifactId&gt;
+</code></pre>
+
+<p>   ....</p>
+
+<pre><code>  &lt;/plugin&gt;
+  &lt;plugin&gt;
+    &lt;groupId&gt;org.codehaus.mojo&lt;/groupId&gt;
+    &lt;artifactId&gt;exec-maven-plugin&lt;/artifactId&gt;
+    &lt;version&gt;1.1&lt;/version&gt;
+    &lt;configuration&gt;
+      &lt;mainClass&gt;Engine&lt;/mainClass&gt;
+    &lt;/configuration&gt;
+    &lt;executions&gt;
+      &lt;execution&gt;
+        &lt;phase&gt;integration-test&lt;/phase&gt;
+        &lt;goals&gt;
+          &lt;goal&gt;java&lt;/goal&gt;
+        &lt;/goals&gt;
+      &lt;/execution&gt;
+    &lt;/executions&gt;
+  &lt;/plugin&gt;
+&lt;/plugins&gt;
+</code></pre>
+
+<p>  </build>
+```
+Ca y est que vous lanciez Engine depuis l'IDE ou via Maven, vous avez les simulations définies dans IDEPathHelper.scala qui sont exécutées sans utilisation du mode intéractif.</p>
+
+<h2>Petit Bilan</h2>
+
+<p>Gatling est simple à utiliser. Il s'intègre aisément dans le cycle de vie de vos projets existants et dans vos IDE préférés. Le fait d'utiliser du code pour les scripts permet de d'éliminer à la compilation les problèmes de syntaxe, d'avoir la main sur la personnalisation des scripts et l'organisation du code.</p>
+
+<p>L'autre avantage énorme est qu'il consomme peu de ressources (CPU, RAM), on peut simuler un très grand nombre d'utilisateurs même avec un pc pas très performant.
+Voici quelques limites (il en faut bien...) :</p>
+
+<ul>
+<li>Gatling ne supporte pour le moment que le protocole HTTP/HTTPS</li>
+<li>Scala n'est pas Java surtout dans Eclipse. Le plugin Scala-Ide n'est pas aussi mature que le support de Java.</li>
+<li>On peut reprocher au projet sa jeunesse mais je pense qu'en continuant sur cette lancée il y a des chances que l'on en entende de plus en plus parlé de ce projet.</li>
+<li>Il n'y a pas de consolidation des mesures avec d'éventuelles données côtés serveurs. il faut tout faire à la main pour relier des événements serveurs aux événements clients.</li>
+<li>gatling-maven-plugin ne propose pas pour le moment beaucoup d'options (uniquement l'exécution des scripts). Il serait intéressant par exemple d'avoir un paramétrage qui fait échouer le build maven si le script par en erreur pour l'intégration continue.</li>
+</ul>
+
+
+<p>Vous l'aurez vu, rien de bien méchant.
+Vous pouvez retrouver des liens vers des blogs qui en parlent : <a href="https://github.com/excilys/gatling/wiki/Links">https://github.com/excilys/gatling/wiki/Links</a>.</p>
+
+<p>Les sources de l'exemple sont disponibles dans github : <a href="https://github.com/roddet/gatling-sample">https://github.com/roddet/gatling-sample</a></p>
+]]></content>
+  </entry>
+  
+</feed>

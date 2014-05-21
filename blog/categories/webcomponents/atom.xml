@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: webcomponents | Rossi Oddet]]></title>
+  <link href="http://roddet.github.com/blog/categories/webcomponents/atom.xml" rel="self"/>
+  <link href="http://roddet.github.com/"/>
+  <updated>2014-05-21T01:43:46-04:00</updated>
+  <id>http://roddet.github.com/</id>
+  <author>
+    <name><![CDATA[Rossi Oddet]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[BreizhCamp 2013 # Web Components, l'avenir des développeurs web]]></title>
+    <link href="http://roddet.github.com/2013/06/breizhcamp-web-components/"/>
+    <updated>2013-06-14T11:00:00-04:00</updated>
+    <id>http://roddet.github.com/2013/06/breizhcamp-web-components</id>
+    <content type="html"><![CDATA[<p><img class="center" src="/images/breizhcamp13/webcomponents/webcomponents.jpg"></p>
+
+<h2>Animateur</h2>
+
+<p><a href="https://twitter.com/julienvey">Julien Vey</a></p>
+
+<h2>Les slides</h2>
+
+<script async class="speakerdeck-embed" data-id="b8111950b6ab013009c6568084fd8fdd" data-ratio="1.33333333333333" src="http://roddet.github.com//speakerdeck.com/assets/embed.js"></script>
+
+
+<h2></h2>
+]]></content>
+  </entry>
+  
+</feed>

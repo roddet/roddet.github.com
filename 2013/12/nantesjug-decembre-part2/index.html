@@ -1,0 +1,793 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Soirée JUG Nantes : Java 8 -> Lambdas, Streams et Collectors (Partie 2) - Rossi Oddet</title>
+  <meta name="author" content="Rossi Oddet">
+
+  
+  <meta name="description" content="La première partie de cet article est accessible ici. La deuxième partie de cette soirée du JUG Nantes est consacrée à une présentation de Java 8 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://roddet.github.com/2013/12/nantesjug-decembre-part2">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Rossi Oddet" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-32190657-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>	
+  <h1><a href="/">Rossi Oddet</a></h1>
+  
+    <h2>Blog d'un artisan développeur</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:roddet.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/events">Evénements</a></li>
+  <li><a href="/viededev">Vie de Développeur</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Soirée JUG Nantes : Java 8 -> Lambdas, Streams Et Collectors (Partie 2)</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-26T09:00:00-05:00" pubdate data-updated="true">Dec 26<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>La première partie de cet article est accessible <a href="http://blog.roddet.com/2013/12/nantesjug-decembre-part1/">ici</a>.</p>
+
+<p>La deuxième partie de cette soirée du <a href="http://nantesjug.org/">JUG Nantes</a> est consacrée à une présentation de Java 8 animée par <a href="https://twitter.com/JosePaumard">José Paumard</a>.</p>
+
+<p>Avant de rentrer dans le coeur de la présentation de <a href="https://twitter.com/JosePaumard">José</a>, faisons un tour de ce que réserve Java 8.</p>
+
+<h2>Java 8 -> quoi de neuf ?</h2>
+
+<p>Java 8 est une évolution majeure du langage Java.</p>
+
+<p>Les nouveautés peuvent être classées suivant plusieurs catégories pour les plus significatives :</p>
+
+<ul>
+<li><strong>Nouveaux Projets</strong> -> les nouvelles fonctionnalités assez structurantes pour être considérées comme des projets à part.</li>
+<li><strong>Machine Virtuelle</strong> -> des modifications du fonctionnement de la JVM et des travaux d&#8217;amélioration des performances.</li>
+<li><strong>Core</strong> -> nouveautés non structurantes du langage (ajout d&#8217;API, d&#8217;annotations, etc.).</li>
+</ul>
+
+
+<p>La liste complète des nouveautés : <a href="http://openjdk.java.net/projects/jdk8/features">ici</a>.</p>
+
+<p>Voici quelques nouveautés qui ont attiré mon attention.</p>
+
+<h2>Java 8 -> Nouveaux Projets</h2>
+
+<p>Deux projets :</p>
+
+<ul>
+<li>Le <a href="http://openjdk.java.net/projects/lambda/">projet Lambda</a> qui ajoute les <em>closures</em> au langage Java. Il s&#8217;agit certainement de la fonctionnalité qui a le plus d&#8217;impact sur le langage. C&#8217;est le sujet principal de cette soirée.</li>
+<li>Le <a href="http://openjdk.java.net/projects/nashorn/">projet Nashorn</a> qui offre un moteur d&#8217;exécution Javascript sur la JVM.</li>
+</ul>
+
+
+<h2>Java 8 -> Machine Virtuelle</h2>
+
+<p>L&#8217;évolution la plus remarquable est <a href="http://openjdk.java.net/jeps/122">la suppression de la <em>Permanent Generation</em></a>. Cette zone était utilisée par la JVM pour stocker les définitions des classes, méthodes, etc. Elle était bien distincte de la <em>Heap</em> qui contient les instances des objets créées.</p>
+
+<p>Par défaut, la <em>Permanent Generation</em> a la taille maximale de 64MB. Il est possible de modifier cette valeur avec le paramètre <em>-XX:MaxPermSize</em>.</p>
+
+<p>Si vous avez le plaisir de travailler sur application <em>usine</em> (nombreuses classes, nombreuses librairies), habituelle du milieu professionnel, vous avez peut-être déjà rencontré une erreur qui ressemble à cela :</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>java.lang.OutOfMemoryError: PermGen space
+</span><span class='line'>        at java.lang.ClassLoader.defineClass1(Native Method)
+</span><span class='line'>        at java.lang.ClassLoader.defineClass(ClassLoader.java:620)</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Avec Java 8, dites adieu à cette erreur et au paramétrage lié à la <em>Permanent Generation</em>.</p>
+
+<p>Cette évolution de la machine virtuelle est un des résultats de la convergence entre la machine virtuelle propriétaire d&#8217;Oracle <a href="http://www.oracle.com/technetwork/middleware/jrockit/overview/index-101826.html">JRockit</a> et celle de la communauté : HotSpot.
+En effet, <a href="http://www.oracle.com/technetwork/middleware/jrockit/overview/index-101826.html">JRockit</a> est distribué avec le serveur d&#8217;application propriétaire d&#8217;Oracle <a href="http://www.oracle.com/technetwork/middleware/weblogic/overview/index.html">WebLogic</a> et il a la particularité de ne pas avoir de <em>Permanent Generation</em>. Un bon signe pour la communauté ?</p>
+
+<h2>Java 8 -> Core</h2>
+
+<p>Quelques améliorations sont apportées au coeur du JDK.</p>
+
+<h3>Une application JavaFX devient exécutable (<a href="http://openjdk.java.net/jeps/153">JEP 153</a>)</h3>
+
+<p>Avant Java 8, pour rendre une application JavaFX exécutable depuis un JAR, il fallait faire deux choses :</p>
+
+<ul>
+<li>Créer une classe avec la méthode <em>public static void main(String[] args)</em> qui contient du code d&#8217;initialisation de l&#8217;application JavaFX.</li>
+<li>Référencer cette classe dans l&#8217;attribut <em>Main-Class</em> du <em>Manifest</em> du JAR.</li>
+</ul>
+
+
+<p>Avec Java 8, il est possible de créer un JAR exécutable JavaFX sans passer par une classe avec une méthode <em>main</em>.</p>
+
+<h3>Des annotations sur les types Java (<a href="http://openjdk.java.net/jeps/104">JEP 104</a>)</h3>
+
+<p>Java 8 permet d&#8217;écrire ce genre de chose :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">MaClasse</span> <span class="n">m</span> <span class="o">=</span> <span class="k">new</span> <span class="nd">@Interned</span> <span class="n">MaClasse</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// ou encore</span>
+</span><span class='line'><span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="o">(</span><span class="nd">@NotNull</span> <span class="n">String</span><span class="o">)</span> <span class="n">element</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// ou encore </span>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MaClasse</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="kd">implements</span> <span class="nd">@ReadOnly</span> <span class="n">List</span><span class="o">&lt;</span><span class="nd">@ReadOnly</span> <span class="n">T</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// ou encore</span>
+</span><span class='line'><span class="kd">public</span> <span class="kt">void</span> <span class="nf">monitorTemperature</span><span class="o">()</span> <span class="kd">throws</span> <span class="nd">@Critical</span> <span class="n">TemperatureException</span> <span class="o">{...}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>La documentation officielle en version béta : <a href="http://docs.oracle.com/javase/tutorial/java/annotations/index.html">ici</a>.</p>
+
+<h3>Répéter des annotations (<a href="http://openjdk.java.net/jeps/120">JEP 120</a>)</h3>
+
+<p>Avec Java 8, il est possible d&#8217;écrire :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@Alert</span><span class="o">(</span><span class="n">role</span><span class="o">=</span><span class="s">&quot;Manager&quot;</span><span class="o">)</span>
+</span><span class='line'><span class="nd">@Alert</span><span class="o">(</span><span class="n">role</span><span class="o">=</span><span class="s">&quot;Administrator&quot;</span><span class="o">)</span>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">UnauthorizedAccessException</span> <span class="kd">extends</span> <span class="n">SecurityException</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Plus de détails, <a href="http://docs.oracle.com/javase/tutorial/java/annotations/repeating.html">ici</a>.</p>
+
+<h3>Accéder au nom des paramètres au runtime (<a href="http://openjdk.java.net/jeps/118">JEP 118</a>)</h3>
+
+<p>L&#8217;idée ici est de stocker dans le <em>bytecode</em> les noms des paramètres de méthodes ainsi que leurs types. Cette fonctionnalité pourrait apporter un vrai plus aux développeurs de librairies.</p>
+
+<p>Par exemple, l&#8217;annotation <em>@PathParam</em> de JAX-RS pourrait être optionnelle avec un reconnaissance du nom du paramètre ;)</p>
+
+<h3>Une nouvelle API pour les dates et les heures (<a href="http://openjdk.java.net/jeps/150">JEP 150</a>)</h3>
+
+<p>Java 8 vient avec une nouvelle API pour les dates/heures qui se veut plus <em>clean</em>, <em>fluent</em>, <em>immutable</em> et <em>extensible</em>.</p>
+
+<p>Un aperçu d&#8217;utilisation :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">LocalDate</span> <span class="n">aujourdhui</span> <span class="o">=</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">now</span><span class="o">();</span>
+</span><span class='line'><span class="n">LocalDate</span> <span class="n">dans2ansMoins4jours</span> <span class="o">=</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">now</span><span class="o">().</span><span class="na">plusYears</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">minusDays</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Documentation officielle en version béta : <a href="http://docs.oracle.com/javase/tutorial/datetime/index.html">ici</a>.</p>
+
+<h3>Trie en parallèle des tableaux (<a href="http://openjdk.java.net/jeps/103">JEP 103</a>)</h3>
+
+<p>Des méthodes sont ajoutées à la classe <em>java.util.Arrays</em> :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">Arrays</span><span class="o">.</span><span class="na">parallelSort</span><span class="o">(...);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Revenons au JUG !</h2>
+
+<p>Les nantais ont répondu présent pour découvrir Java 8 et pour <a href="https://twitter.com/JosePaumard">José</a>, c&#8217;est la session qui clôture son tour de Bretagne&#8230; Ou plutôt de l&#8217;ouest de la France pour les plus susceptibles ;)</p>
+
+<p><a href="https://twitter.com/JosePaumard">José</a> va faire un zoom sur les expressions <em>Lambda</em> et ses impacts sur le JDK 8.</p>
+
+<p><img class="center" src="/images/nantesjug/dec13/nantesjug-jose-paumard.jpg"></p>
+
+<h2>Une introduction aux expressions Lambda</h2>
+
+<p><a href="https://twitter.com/JosePaumard">José</a> va illustrer les expressions <em>Lambda</em> à l&#8217;aide du pattern <em>Map - Filter - Reduce</em>. Il va montrer une implémentation en Java 7 et une équivalence en Java 8 avec les expressions <em>Lambda</em>.</p>
+
+<p>Illustration -> Approche impérative (avant Java 8) vs Approche fonctionnel (SQL)</p>
+
+<p><img class="center" src="/images/nantesjug/dec13/nantesjug-prog-imp-vs-fonctionnel-by-jose-paumard.gif"></p>
+
+<p>Illustration -> Passage d&#8217;un code Java 7 à un code Java 8 avec une expression <em>Lambda</em>.</p>
+
+<p><img class="center" src="/images/nantesjug/dec13/nantesjug-lambdas-by-jose-paumard.gif"></p>
+
+<h2>Syntaxes d&#8217;une expression <em>Lambda</em></h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">mapper</span> <span class="o">=</span> <span class="o">(</span><span class="n">Person</span> <span class="n">person</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">person</span><span class="o">.</span><span class="na">getAge</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">mapper</span> <span class="o">=</span> <span class="n">person</span> <span class="o">-&gt;</span> <span class="n">person</span><span class="o">.</span><span class="na">getAge</span><span class="o">();</span> <span class="c1">// sans préciser le type</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">mapper</span> <span class="o">=</span> <span class="nl">Person:</span><span class="o">:</span><span class="n">getAge</span><span class="o">;</span> <span class="c1">// méthode non statique</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">sum</span> <span class="o">=</span> <span class="nl">Integer:</span><span class="o">:</span><span class="n">max</span><span class="o">;</span> <span class="c1">// méthode statique</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">mapper</span> <span class="o">=</span> <span class="o">(</span><span class="n">Person</span> <span class="n">person</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
+</span><span class='line'>  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Mapping &quot;</span> <span class="o">+</span> <span class="n">person</span><span class="o">);</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">person</span><span class="o">.</span><span class="na">getAge</span><span class="o">();</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">reducer</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">i2</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">i1</span> <span class="o">+</span> <span class="n">i2</span><span class="o">;</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">reducer</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">i2</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">i1</span> <span class="o">+</span> <span class="n">i2</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">reducer</span> <span class="o">=</span> <span class="o">(</span><span class="n">i1</span><span class="o">,</span> <span class="n">i2</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">i1</span> <span class="o">+</span> <span class="n">i2</span><span class="o">;</span> <span class="c1">// sans préciser les types</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>La notion d&#8217;interface fonctionnelle</h2>
+
+<p>Une expression <em>Lambda</em> peut être définie comme une <em>instance</em> d&#8217;une interface dite fonctionnelle. Une interface fonctionnelle est une interface avec une seule méthode abstraite.</p>
+
+<p>L&#8217;annotation <em>@FunctionalInterface</em> peut être utilisée pour désigner une interface fonctionnelle. Elle est optionnelle et comme l&#8217;annotation <em>@Override</em>, elle ne sert qu&#8217;à apporter une sécurité supplémentaire à la compilation. Une interface annotée avec <em>@FunctionalInterface</em> ne compilera pas si elle possède plusieurs méthodes sans implémentation par défaut.</p>
+
+<p>Un exemple d&#8217;utilisation dans le JDK 8.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">package</span> <span class="n">java</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">function</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nd">@FunctionalInterface</span>
+</span><span class='line'><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">IntSupplier</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="nf">getAsInt</span><span class="o">();</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Le nouveau package <em>java.util.function</em></h2>
+
+<p>Il contient des interfaces fonctionnelles usuelles utilisées pour représenter des expressions <em>Lambda</em> en entrée et sortie de méthode.</p>
+
+<p>Les interfaces <em>Supplier</em>, <em>Consumer</em>, <em>BiConsumer</em>, <em>Function</em>, <em>BiFunction</em>, <em>Predicate</em>, <em>BiPredicate</em> seront expliquées pendant la présentation.</p>
+
+<h2>Des méthodes implémentées dans les interfaces</h2>
+
+<p>Avec Java 8, il est possible d&#8217;exprimer une implémentation par défaut à une méthode d&#8217;une interface. C&#8217;est l&#8217;option qui a été choisie pour permettre d&#8217;ajouter des méthodes à des interfaces <em>historiques</em> du JDK sans modifier toutes les classes des implémentations.</p>
+
+<p>Le mot clé <em>default</em> est utilisé pour définir une implémentation par défaut.</p>
+
+<p>Exemple avec l&#8217;interface <em>Collection<E></em> :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Collection</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="o">{</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="o">...</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">default</span> <span class="n">Stream</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="nf">stream</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="o">...;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'> <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Java 8 autorise aussi les méthodes statiques dans les interfaces.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">MonInterface</span> <span class="o">{</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Désormais, le Hello World en Java se fera avec une interface&quot;</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>L&#8217;API <em>Stream</em></h2>
+
+<p>Un <em>Stream</em> est défini comme une interface paramétrée construite à partir d&#8217;une source (une collection, un tableau, une source I/O) qui permet d&#8217;appliquer une expression <em>Lambda</em> sur ses éléments.</p>
+
+<p>Comment construire un <em>Stream</em> ?</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="c1">// A partir d&#39;une collection</span>
+</span><span class='line'><span class="n">Collection</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">collection</span> <span class="o">=</span> <span class="o">...;</span>
+</span><span class='line'><span class="n">Stream</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">stream1</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="na">stream</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// A partir d&#39;un tableau</span>
+</span><span class='line'><span class="n">Stream</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">stream2</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="k">new</span> <span class="n">String</span><span class="o">[]{</span><span class="s">&quot;un&quot;</span><span class="o">,</span> <span class="s">&quot;deux&quot;</span><span class="o">,</span> <span class="s">&quot;trois&quot;</span><span class="o">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// A partir d&#39;une factory de Stream </span>
+</span><span class='line'><span class="c1">// Stream.of, Stream.empty, Stream.generate, Stream.iterate, etc.</span>
+</span><span class='line'><span class="n">Stream</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">stream3</span> <span class="o">=</span> <span class="n">Stream</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="s">&quot;un&quot;</span><span class="o">,</span> <span class="s">&quot;deux&quot;</span><span class="o">,</span> <span class="s">&quot;trois&quot;</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// A partir de quelques méthodes de classes du JDK mises à jour</span>
+</span><span class='line'><span class="n">IntStream</span> <span class="n">stream4</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="na">ints</span><span class="o">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Un exemple d&#8217;utilisation ?</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="n">persons</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+</span><span class='line'>  <span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="n">p</span> <span class="o">-&gt;</span> <span class="n">p</span><span class="o">.</span><span class="na">getAge</span><span class="o">())</span>
+</span><span class='line'>  <span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">.</span><span class="na">reduce</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="o">(</span><span class="n">a1</span><span class="o">,</span> <span class="n">a2</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">a1</span> <span class="o">+</span> <span class="n">a2</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Deux types d&#8217;opérations sont applicables à un <em>Stream</em> : une opération dite <em>intermédiaire</em> et une dite <em>terminale</em>. Seule une opération dite <em>terminale</em> déclenche le traitement modélisé. Dans l&#8217;exemple précédent, <em>map</em> et <em>filter</em> sont des opérations intermédiaires et <em>reduce</em> une opération terminale.</p>
+
+<p>Attention, un <em>Stream</em> ne peut être traité qu&#8217;une seule fois. Une fois une opération <em>terminale</em> exécutée, il est nécessaire de créer un nouveau <em>Stream</em>.</p>
+
+<p>Illustration -> Un <em>Stream</em> est <em>lazy</em> (seule l&#8217;opération terminale déclenche le traitement) !</p>
+
+<p><img class="center" src="/images/nantesjug/dec13/nantesjug-stream-lazy-by-jose-paumard.gif"></p>
+
+<h2><em>Stream</em> parallèle</h2>
+
+<p>Il permet d&#8217;exécuter du code modélisé dans un <em>Stream</em> en parallèle.</p>
+
+<p>Comment construire un <em>Stream</em> parallèle ?</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="c1">// Appeler parallelStream() au lieu de stream()</span>
+</span><span class='line'><span class="n">Stream</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="n">strings</span><span class="o">.</span><span class="na">parallelStream</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Appeler parallel() sur un stream existant</span>
+</span><span class='line'><span class="n">Stream</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="n">strings</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">parallel</span><span class="o">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Attention, un <em>Stream</em> parallèle ne signifie pas toujours plus performant. Le parallélisme entraine des opérations supplémentaires et ses performances sont dépendantes de la nature des opérations à exécuter. Il n&#8217;y a donc pas de recette magique de performance, la règle <em>mesurer pour optimiser</em> s&#8217;applique toujours.</p>
+
+<h2>Les <em>Optionals</em></h2>
+
+<p>Certaines méthodes des classes du JDK 8 vont renvoyer des instances de la famille <em>Optional</em> : <em>Optional<T></em>, <em>OptionalInt</em>, <em>OptionalLong</em>, <em>OptionalDouble</em>.</p>
+
+<p>Cette structure est utilisée pour modéliser une possible absence de résultat d&#8217;un traitement.</p>
+
+<p>Que peut-on faire avec un <em>Optional</em> dans les mains ?</p>
+
+<p>Un exemple avec <em>OptionalInt</em> :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">OptionalInt</span> <span class="n">opt</span> <span class="o">=</span> <span class="o">...;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Tester s&#39;il contient une valeur et récupérer la valeur</span>
+</span><span class='line'><span class="k">if</span><span class="o">(</span><span class="n">opt</span><span class="o">.</span><span class="na">isPresent</span><span class="o">())</span> <span class="o">{</span>
+</span><span class='line'>  <span class="kt">int</span> <span class="n">valeur1</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="na">get</span><span class="o">();</span>
+</span><span class='line'><span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span><span class='line'>  <span class="o">...</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Lire la valeur ou lancer une exception NoSuchElementException s&#39;il n&#39;y a pas de valeur</span>
+</span><span class='line'><span class="kt">int</span> <span class="n">valeur2</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="na">getAsInt</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Lire la valeur ou lancer une exception particulière s&#39;il n&#39;y a pas de valeur</span>
+</span><span class='line'><span class="kt">int</span> <span class="n">valeur3</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="na">orElseThrow</span><span class="o">(</span><span class="n">exceptionSupplier</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Lire la valeur si elle existe sinon retourner une valeur par défaut</span>
+</span><span class='line'><span class="kt">int</span> <span class="n">valeur4</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="na">orElse</span><span class="o">(</span><span class="mi">12</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Les réductions &amp; La classe Collectors</h2>
+
+<p>L&#8217;API <em>Stream</em> donne accès à plusieurs réductions : <em>reduce()</em>, <em>count()</em>, <em>min()</em>, <em>max()</em>, <em>findFirst()</em>, etc.</p>
+
+<p>La méthode <em>collect</em> applicable à un <em>Stream</em> permet d&#8217;appliquer des réductions complexes à partir d&#8217;un <em>Collector</em>.
+Sans rentrer dans les détails de la définition d&#8217;un <em>Collector</em>, la classe <em>Collectors</em> fournit un ensemble d&#8217;instance de <em>Collector</em> qui facilitent le travail du développeur.</p>
+
+<p>Quelques exemples d&#8217;utilisation de la classe <em>Collectors</em>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="c1">// Transformer un Stream en List</span>
+</span><span class='line'><span class="n">List</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span> <span class="n">liste1</span> <span class="o">=</span> <span class="n">persons</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Transformer un Stream en Set</span>
+</span><span class='line'><span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">liste2</span> <span class="o">=</span> <span class="n">persons</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toSet</span><span class="o">());</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Transformer un Stream en TreeSet</span>
+</span><span class='line'><span class="n">TreeSet</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">liste3</span> <span class="o">=</span> <span class="n">persons</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toSet</span><span class="o">(</span><span class="nl">TreeSet:</span><span class="o">:</span><span class="k">new</span><span class="o">));</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Concaténer les noms d&#39;une liste de personnes</span>
+</span><span class='line'><span class="n">String</span> <span class="n">names1</span> <span class="o">=</span> <span class="n">persons</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">map</span><span class="o">(</span><span class="nl">Person:</span><span class="o">:</span><span class="n">getName</span><span class="o">).</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">joining</span><span class="o">());</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Concaténer les noms séparés par une virgule d&#39;une liste de personnes</span>
+</span><span class='line'><span class="n">String</span> <span class="n">names2</span> <span class="o">=</span> <span class="n">persons</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">map</span><span class="o">(</span><span class="nl">Person:</span><span class="o">:</span><span class="n">getName</span><span class="o">).</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">joining</span><span class="o">(</span><span class="s">&quot;,&quot;</span><span class="o">));</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Compter le nombre de personnes</span>
+</span><span class='line'><span class="kt">int</span> <span class="n">nbPersons</span> <span class="o">=</span> <span class="n">persons</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">counting</span><span class="o">());</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Moyenne des ages des personnes</span>
+</span><span class='line'><span class="kt">double</span> <span class="n">moyenneAge</span> <span class="o">=</span> <span class="n">persons</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">averagingDouble</span><span class="o">(</span><span class="nl">Person:</span><span class="o">:</span><span class="n">getAge</span><span class="o">));</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Regroupement des personnes par age</span>
+</span><span class='line'><span class="n">Map</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="n">persons</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">groupingBy</span><span class="o">(</span><span class="nl">Person:</span><span class="o">:</span><span class="n">getAge</span><span class="o">));</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Regroupement des personnes par age en utilisant un Set</span>
+</span><span class='line'><span class="n">Map</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="n">persons</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">groupingBy</span><span class="o">(</span><span class="nl">Person:</span><span class="o">:</span><span class="n">getAge</span><span class="o">,</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toSet</span><span class="o">()));</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Répartir les données en 2 ensembles : true -&gt; liste des personnes age &gt; 20 et false -&gt; le reste</span>
+</span><span class='line'><span class="n">Map</span><span class="o">&lt;</span><span class="n">Boolean</span><span class="o">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="n">persons</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">partitionningBy</span><span class="o">(</span><span class="n">p</span> <span class="o">-&gt;</span> <span class="n">p</span><span class="o">.</span><span class="na">getAge</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="o">));</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Nouvelle API pour construire des comparateurs</h2>
+
+<p>Avec Java 8, ça devient presqu&#8217;un plaisir de créer une instance de l&#8217;interface <em>Comparator</em> :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">Comparator</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span> <span class="n">comp</span> <span class="o">=</span> <span class="n">Comparator</span><span class="o">.</span><span class="na">comparing</span><span class="o">(</span><span class="nl">Person:</span><span class="o">:</span><span class="n">getLastName</span><span class="o">)</span>
+</span><span class='line'>                                  <span class="o">.</span><span class="na">thenComparing</span><span class="o">(</span><span class="nl">Person:</span><span class="o">:</span><span class="n">getFirstName</span><span class="o">)</span>
+</span><span class='line'>                                  <span class="o">.</span><span class="na">thenComparing</span><span class="o">(</span><span class="nl">Person:</span><span class="o">:</span><span class="n">getAge</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Pourquoi des expressions <em>Lambda</em> ?</h2>
+
+<p><a href="https://twitter.com/JosePaumard">José</a> explique que les expressions <em>Lambda</em> n&#8217;ont pas été introduites dans Java 8 parce que c&#8217;est à la mode ou parce que le code écrit est plus compact.</p>
+
+<p>Les expressions <em>Lambda</em> apporte la possibilité d&#8217;appliquer de nouveaux patterns qui permettent de paralléliser simplement et de façon plus sûr des traitements.</p>
+
+<h2>Les slides</h2>
+
+<p>Vous y trouverez des détails que je n&#8217;ai pas abordé pour rester synthétique :</p>
+
+<ul>
+<li>Des méthodes implémentées dans des interfaces entrainent la possibilité d&#8217;avoir un héritage multiple conflictuelle. Quelles sont les règles du compilateur ?</li>
+<li>Des explications sur quelques classes du package <em>java.util.function</em></li>
+<li>Les différents états d&#8217;un <em>Stream</em> et leurs conséquences</li>
+<li>La problématique des valeurs par défaut dans les réductions <em>max</em> et <em>min</em></li>
+<li>Une utilisation plus avancée de la classe <em>Collectors</em></li>
+<li>Des choses qui ne marchent pas avec le traitement parallèle</li>
+</ul>
+
+
+<p>Alors, installer vous confortablement et prenez votre temps, il y a 330 slides ;)</p>
+
+<iframe src="http://www.slideshare.net/slideshow/embed_code/29010060" width="800" height="500" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
+
+
+<h2>Qu&#8217;est-ce que j&#8217;ai pensé de tout ça ?</h2>
+
+<p>Dans l&#8217;ensemble, j&#8217;ai trouvé cette présentation claire, progressive et surtout riche en contenu. Elle présente bien les expressions <em>Lambda</em> et ses impacts sur la future version du JDK.</p>
+
+<h3><em>Lambda</em> Java 8, une révolution ?</h3>
+
+<p>La réponse est probablement oui. C&#8217;est la première fois :</p>
+
+<ul>
+<li>qu&#8217;il est possible de déclarer des paramètres sans préciser leurs types (paramètres d&#8217;entrée d&#8217;une expression <em>Lambda</em>).</li>
+<li>qu&#8217;une &#8220;méthode&#8221; (particulière certes) peut être passée en paramètre d&#8217;une autre.</li>
+<li>que le langage fait une place aussi importante aux concepts de la programmation fonctionnelle.</li>
+<li>qu&#8217;il y aura autant de changement dans le vocabulaire d&#8217;un développeur Java. Il parlera désormais avec des mots comme <em>map</em>, <em>filter</em>, <em>reduce</em>, <em>Supplier</em>, <em>Function</em>, <em>BiFunction</em>, <em>Consumer</em>, <em>BiConsumer</em>, etc. Y aura t-il une race d&#8217;intégriste qui va naitre dans la communauté Java comme les <em>Scalafistes</em> de <em>Scala</em> ? ;)</li>
+</ul>
+
+
+<h3><em>Lambda</em> Java 8 et le debug ?</h3>
+
+<p>Je trouve que le langage Java a une qualité : une maintenance <em>possible</em> sur une grosse volumétrie de code. Même sur des applications dites <em>legacy</em> qui ont été développées de la pire des manières, j&#8217;ai toujours pu lancer l&#8217;application en debug, faire du pas à pas partout même dans les classes fournies par les librairies. Le côté impératif de la programmation fait clairement apparaître chaque étape du programme.</p>
+
+<p>Avec Java 8, les applications vont de plus en plus ressembler à des enchainements de méthodes avec des expressions <em>Lambda</em> en paramètres. Ce code séduisant va probablement poser des difficultés au debuggage. Va t-il falloir mettre les expressions <em>Lambda</em> systématiquement sur plusieurs lignes pour permettre de faire du pas à pas ? Comment, pendant un debuggage, simuler l&#8217;exécution d&#8217;une opération sur un <em>Stream</em> sans avoir à en créer un nouveau ? Aurons-nous toujours cette maintenance qui peut être pénible mais toujours possible avec une application qui vieillit avec des expressions <em>Lambda</em> ? Peut-être tout simplement qu&#8217;il y aura moins de besoin d&#8217;utiliser un debugger ? A suivre ;)</p>
+
+<h3>Fini les boucles <em>for</em> pour les listes ?</h3>
+
+<p>Les boucles <em>for</em> servent souvent à itérer sur des listes d&#8217;éléments afin de les transformer (<em>map</em>), les filtrer (<em>filter</em>) et à faire des calculs (<em>reduce</em>). Les développeurs vont-ils privilégier l&#8217;utilisation des expressions <em>Lambda</em> ?</p>
+
+<h3><em>Lambda</em> Java 8 vs les langages alternatifs ?</h3>
+
+<p>Les langages alternatifs (Scala, Groovy, etc.) de la JVM n&#8217;ont pas grand chose à envier aux expressions <em>Lambda</em> de Java 8, ils vont déjà beaucoup plus loin depuis plusieurs années. Ils vont cependant probablement continuer à jalouser la base énorme d&#8217;utilisateurs qui reste fidèle à Java <em>Standard</em> ;)</p>
+
+<blockquote><p>Java is a blue collar language. It&#8217;s not PhD thesis material but a language for a job.</p><footer><strong>James Gosling</strong> <cite>1997</cite></footer></blockquote>
+
+
+<h3>La date de sortie prévue de Java 8 est le 18/03/2014. Alors, impatient d&#8217;avoir Java 8 dans vos entreprises ?</h3>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Rossi Oddet</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-26T09:00:00-05:00" pubdate data-updated="true">Dec 26<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/jugnantes/'>jugnantes</a>, <a class='category' href='/blog/categories/jugnantesdec13/'>jugnantesdec13</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://roddet.github.com/2013/12/nantesjug-decembre-part2/" data-via="rossioddet" data-counturl="http://roddet.github.com/2013/12/nantesjug-decembre-part2/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2013/12/nantesjug-decembre-part1/" title="Previous Post: Soirée JUG Nantes : Java 8 -> Lambdas, Streams et Collectors (Partie 1)">&laquo; Soirée JUG Nantes : Java 8 -> Lambdas, Streams et Collectors (Partie 1)</a>
+      
+      
+        <a class="basic-alignment right" href="/2014/04/jcertif-tunisie-2014/" title="Next Post: JCertif Tunisie 2014, Done !">JCertif Tunisie 2014, Done ! &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Rossi Oddet</h1>
+  <br/>
+  <table>
+  	<tr><td width="30%"><img src="/images/photo.jpeg" width="75"/></td>
+  		<td>&nbsp;&nbsp;</td>
+    <td width="70%"> <p>Développeur, Blogger et passionné par les communautés IT.</p></td></tr>
+</table>
+</section>
+<a class="twitter-timeline" href="https://twitter.com/rossioddet" data-widget-id="314511007521312768">Tweets by @rossioddet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Rossi Oddet -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogroddet';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://roddet.github.com/2013/12/nantesjug-decembre-part2/';
+        var disqus_url = 'http://roddet.github.com/2013/12/nantesjug-decembre-part2/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

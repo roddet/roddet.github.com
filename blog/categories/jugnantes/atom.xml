@@ -1,0 +1,1455 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: jugnantes | Rossi Oddet]]></title>
+  <link href="http://roddet.github.com/blog/categories/jugnantes/atom.xml" rel="self"/>
+  <link href="http://roddet.github.com/"/>
+  <updated>2014-05-21T01:43:46-04:00</updated>
+  <id>http://roddet.github.com/</id>
+  <author>
+    <name><![CDATA[Rossi Oddet]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Soirée Devoxx France 2014 au JUG Nantes]]></title>
+    <link href="http://roddet.github.com/2014/05/jugnantes-devoxx-france/"/>
+    <updated>2014-05-20T08:41:00-04:00</updated>
+    <id>http://roddet.github.com/2014/05/jugnantes-devoxx-france</id>
+    <content type="html"><![CDATA[<p>Ce mardi 20 mai, c'était soirée Devoxx France avec le <a href="http://nantesjug.org/#/">JUG Nantes</a>.</p>
+
+<p>Le contenu :</p>
+
+<ul>
+<li>Un tour d'horizon de <em>Devoxx France 2014</em> avec <a href="http://nantesjug.org/#/speakers/thibaud_raison">Thibaud Raison</a> et <a href="http://nantesjug.org/#/speakers/pierre_cosson">Pierre Cosson</a>.</li>
+<li>La session <em>Devoxx France 2014</em> <a href="http://cfp.devoxx.fr/devoxxfr2014/talk/UGD-950/Gradle%20ne%20fait%20pas%20que%20remplacer%20Maven"><em>Gradle ne fait pas que remplacer Maven</em></a> rejouée par <a href="https://twitter.com/CedricChampeau">Cédric Champeau</a>.</li>
+</ul>
+
+
+<h2>Tour d'horizon de Devoxx France 2014</h2>
+
+<p><a href="http://nantesjug.org/#/speakers/thibaud_raison">Thibaud</a> et <a href="http://nantesjug.org/#/speakers/pierre_cosson">Pierre</a> ont fait un résumé de leurs parcours <em>Devoxx</em>, donné leurs avis sur différentes sessions.</p>
+
+<p><img class="center" src="/images/nantesjug/mai14/retour-devoxx-france.jpg"></p>
+
+<p>Ils ont identifié 4 thèmes principaux : Java 8, Javascript, Docker et Big Data. Les <em>Keynote</em> ne les ont pas vraiment marqué.</p>
+
+<p><a href="http://nantesjug.org/#/speakers/thibaud_raison">Thibaud</a> et <a href="http://nantesjug.org/#/speakers/pierre_cosson">Pierre</a> ont noté quelques sessions.</p>
+
+<p>Est notée 4/4 :</p>
+
+<ul>
+<li><a href="http://cfp.devoxx.fr/devoxxfr2014/talk/DNY-501/Java%208%20Streams%20&amp;%20Collectors%20:%20patterns,%20performances,%20parall%C3%A9lisation">Java 8 Streams &amp; Collectors : patterns, performances, parallélisation</a></li>
+</ul>
+
+
+<p>Sont notées 3/4 :</p>
+
+<ul>
+<li><a href="http://cfp.devoxx.fr/devoxxfr2014/talk/DLD-453/JavaScript,%20the%20next%20big%20...%20bytecode">JavaScript, the next big ... bytecode</a></li>
+<li><a href="http://cfp.devoxx.fr/devoxxfr2014/talk/ZSJ-347/Promesses%20et%20Yield%20:%20les%20Future%3C%3F%3E%20de%20JavaScript">Promesses et Yield : les Future&lt;?> de JavaScript</a></li>
+<li><a href="http://cfp.devoxx.fr/devoxxfr2014/talk/CDH-803/Construire%20une%20application%20r%C3%A9elle%20de%20jeux%20en%20ligne%20avec%20NoSQL">Construire une application réelle de jeux en ligne avec NoSQL</a></li>
+<li><a href="http://cfp.devoxx.fr/devoxxfr2014/talk/MBI-023/Mise%20en%20production%20continue%20-%201%20an%20apr%C3%A8s">http://cfp.devoxx.fr/devoxxfr2014/talk/MBI-023/Mise%20en%20production%20continue%20-%201%20an%20apr%C3%A8s</a></li>
+</ul>
+
+
+<p>Sont notées 2/4 :</p>
+
+<ul>
+<li><a href="http://cfp.devoxx.fr/devoxxfr2014/talk/UGH-991/30%20minutes%20pour%20d%C3%A9velopper%20une%20appli%20Java%20EE%20%3F%20C%27est%20largement%20suffisant%20avec%20Forge%202.0!">30 minutes pour développer une appli Java EE ? C'est largement suffisant avec Forge 2.0!</a></li>
+<li><a href="http://cfp.devoxx.fr/devoxxfr2014/talk/DWS-586/50%20nouvelles%20choses%20que%20l%27on%20peut%20faire%20avec%20Java%208">50 nouvelles choses que l'on peut faire avec Java 8</a></li>
+<li><a href="http://cfp.devoxx.fr/devoxxfr2014/talk/WFL-752/Lambda%20Architecture%20-%20Choose%20your%20tools%20for%20Real-Time%20Big%20Data">Lambda Architecture - Choose your tools for Real-Time Big Data</a></li>
+<li><a href="http://cfp.devoxx.fr/devoxxfr2014/talk/TYU-863/Web%20performances,%20regardons%20les%20r%C3%A9sultats%20de%20pr%C3%A8s">Web performances, regardons les résultats de près</a></li>
+</ul>
+
+
+<p>Le bilan Devoxx ?</p>
+
+<p><blockquote><p>Après Devoxx France, on est motivé, on repart avec plein d'idées et des trucs à tester.</p><footer><strong>Thibaud Raison et Pierre Cosson au JUG Nantes</strong></footer></blockquote></p>
+
+<p>Et l'année prochaine ?</p>
+
+<p><em>Devoxx France 2015</em> ça sera du 8 au 10 avril au Palais des Congrès. 1800 personnes sont attendues.</p>
+
+<p><a href="http://nantesjug.org/#/speakers/thibaud_raison">Thibaud</a> et <a href="http://nantesjug.org/#/speakers/pierre_cosson">Pierre</a> mettront à disposition leurs slides sur <a href="http://nantesjug.org/#/events/2014_05_20">le site du JUG Nantes</a> très prochainement.</p>
+
+<h2>Un petit mot sur Maven avant d'aborder la session de Cédric</h2>
+
+<p>Jusqu'à l'année dernière, je ne prenais pas très au sérieux les alternatives à Maven.
+En effet, Maven est un des <em>super-héros</em> du développeur Java.</p>
+
+<p>Il a encouragé :</p>
+
+<ul>
+<li>La modularisation. Les projets sont devenus de plus en plus modulaires.</li>
+<li>Une normalisation (organisation des répertoires, cycle de vie d'un build, exécution des tests, etc.)</li>
+<li>Un essor de l'intégration continue</li>
+</ul>
+
+
+<p>Au regard de tous ces services rendus, beaucoup de développeurs Java sont très attachés à Maven et sont donc beaucoup moins réceptifs aux alternatives.
+J'étais un de ces développeurs.
+Ca fait presque 8 ans que j'utilise Maven et presque autant de temps à en dire du bien.
+J'ai même fait de <a href="http://www.slideshare.net/RossiOddet/maven-par-la-pratique-14995676">la promotion en Afrique lors de JCertif 2012</a>.</p>
+
+<p>Il y a 3 ans, lorsque <a href="https://twitter.com/gboissinot">Grégory Boissinot</a> présentait Gradle à ce même JUG Nantes.
+Je n'étais pas réceptif et en plus le projet manquait de stabilité (modification trop fréquente de l'API).</p>
+
+<p>Je me disais :</p>
+
+<p><blockquote><p>C'est quoi cette chose qui ne veut pas rentrer dans le standard !</p></blockquote></p>
+
+<p>Je m'imaginais dans l'armée et je voyais les personnes qui faisaient autre chose comme des déserteurs.</p>
+
+<p>J'étais allergique aux alternatives à Maven parce qu'elles :</p>
+
+<ul>
+<li>donnaient de la flexibilité au <em>standard</em> Maven. Je me disais : Flexibilité = Entorse à la Norme = Désordre = Instabilité = Déserteurs :)</li>
+<li>pouvaient utiliser des langages dynamiques. J'estimais perdre en lisibilité et du temps à apprendre un nouveau langage.</li>
+<li>avaient une communauté restreinte et donc peu de plugins, réponses StackOverflow, etc.</li>
+</ul>
+
+
+<p>Avec l'émergence des technologies frontend, des langages fonctionnels, des langages dynamiques, j'ai eu l'occasion de voir d'autres systèmes de <em>Build</em> (<a href="http://www.gradle.org/">Gradle</a>, <a href="http://gruntjs.com/">Grunt</a>, <a href="http://www.scala-sbt.org/">SBT</a>, <a href="http://gant.codehaus.org/">Gant</a>, etc.).
+Et <a href="http://maven.apache.org/">Maven</a> me parait, désormais, vieilli face à ses concurrents.</p>
+
+<p>Le projet <a href="http://www.gradle.org/">Gradle</a> a bonne presse en ce moment.
+Il a été bien aidé par des projets comme <a href="https://community.jboss.org/wiki/Gradlewhy?_sscc=t">Hibernate qui l'a adopté</a>.
+L'année dernière, <a href="http://www.infoworld.com/t/development-tools/google-positions-gradle-the-build-system-of-choice-android-218852">Google l'a choisi comme système de build pour Android Studio</a>.</p>
+
+<p>C'est donc en mode <em>réceptif</em> que j'ai participé à la session de <a href="https://twitter.com/CedricChampeau">Cédric</a>.</p>
+
+<h2><em>Gradle ne fait pas que remplacer Maven</em></h2>
+
+<p><img class="center" src="/images/nantesjug/mai14/gradle-devoxx.jpg"></p>
+
+<p>Je vous invite à parcourir les slides de <a href="https://twitter.com/CedricChampeau">Cédric</a> qui se lisent bien.</p>
+
+<script async class="speakerdeck-embed" data-id="846b09f0a93a0131565b426f673016e8" data-ratio="1.77777777777778" src="http://roddet.github.com//speakerdeck.com/assets/embed.js"></script>
+
+
+<p>Parmi tous les avantages de Gradle par rapport à Maven, deux choses m'ont interpellé :</p>
+
+<ul>
+<li><p>Le Wrapper. Pour un projet donné, vous pouvez générer un wrapper (<code>gradle init</code>) qui permettre à tous les utilisateurs de récupérer la version de Gradle à utiliser pour le projet.
+C'est particulièrement pratique pour l'intégration continue et aussi pour changer de version de gradle d'un projet.
+Cela permet aussi de faire cohabiter simplement différentes versions de l'outil de build chez un développeur.</p></li>
+<li><p>Pour réutiliser de la configuration de Build, Maven utilise l'héritage et Gradle utilise la composition.
+C'est sur des points comme celui là que <a href="http://maven.apache.org/">Maven</a> montre sa vieillesse.
+Il a été conçu à une époque où l'héritage était le roi pour mutualiser du code. Les choses ont changé depuis... mais pas Maven...</p></li>
+</ul>
+
+
+<p>Une chose est sûre, pour passer de <a href="http://maven.apache.org/">Maven</a> à <a href="http://www.gradle.org/">Gradle</a>, il faut apprendre Gradle.
+<a href="http://maven.apache.org/">Maven</a> a ses défauts qui sont connus et maitrisés.
+Il n'y a aujourd'hui aucune surprise à démarrer un projet avec <a href="http://maven.apache.org/">Maven</a>.
+Est-ce que les experts <a href="http://maven.apache.org/">Maven</a> sont prêts à prendre des risques ? Apprendre une nouvelle technologie alors que <a href="http://maven.apache.org/">Maven</a> fonctionne ?</p>
+
+<p>Noter l'existence du projet <a href="https://github.com/takari/maven-polyglot">Maven Polyglot</a> qui va permettre de faire de la configuration Maven avec plusieurs langages : clojure, ruby, scala, yaml, et même Groovy :)
+Est-ce une réponse suffisante ?</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Soirée JUG Nantes : Java 8 -> Lambdas, Streams et Collectors (Partie 2)]]></title>
+    <link href="http://roddet.github.com/2013/12/nantesjug-decembre-part2/"/>
+    <updated>2013-12-26T09:00:00-05:00</updated>
+    <id>http://roddet.github.com/2013/12/nantesjug-decembre-part2</id>
+    <content type="html"><![CDATA[<p>La première partie de cet article est accessible <a href="http://blog.roddet.com/2013/12/nantesjug-decembre-part1/">ici</a>.</p>
+
+<p>La deuxième partie de cette soirée du <a href="http://nantesjug.org/">JUG Nantes</a> est consacrée à une présentation de Java 8 animée par <a href="https://twitter.com/JosePaumard">José Paumard</a>.</p>
+
+<p>Avant de rentrer dans le coeur de la présentation de <a href="https://twitter.com/JosePaumard">José</a>, faisons un tour de ce que réserve Java 8.</p>
+
+<h2>Java 8 -> quoi de neuf ?</h2>
+
+<p>Java 8 est une évolution majeure du langage Java.</p>
+
+<p>Les nouveautés peuvent être classées suivant plusieurs catégories pour les plus significatives :</p>
+
+<ul>
+<li><strong>Nouveaux Projets</strong> -> les nouvelles fonctionnalités assez structurantes pour être considérées comme des projets à part.</li>
+<li><strong>Machine Virtuelle</strong> -> des modifications du fonctionnement de la JVM et des travaux d'amélioration des performances.</li>
+<li><strong>Core</strong> -> nouveautés non structurantes du langage (ajout d'API, d'annotations, etc.).</li>
+</ul>
+
+
+<p>La liste complète des nouveautés : <a href="http://openjdk.java.net/projects/jdk8/features">ici</a>.</p>
+
+<p>Voici quelques nouveautés qui ont attiré mon attention.</p>
+
+<h2>Java 8 -> Nouveaux Projets</h2>
+
+<p>Deux projets :</p>
+
+<ul>
+<li>Le <a href="http://openjdk.java.net/projects/lambda/">projet Lambda</a> qui ajoute les <em>closures</em> au langage Java. Il s'agit certainement de la fonctionnalité qui a le plus d'impact sur le langage. C'est le sujet principal de cette soirée.</li>
+<li>Le <a href="http://openjdk.java.net/projects/nashorn/">projet Nashorn</a> qui offre un moteur d'exécution Javascript sur la JVM.</li>
+</ul>
+
+
+<h2>Java 8 -> Machine Virtuelle</h2>
+
+<p>L'évolution la plus remarquable est <a href="http://openjdk.java.net/jeps/122">la suppression de la <em>Permanent Generation</em></a>. Cette zone était utilisée par la JVM pour stocker les définitions des classes, méthodes, etc. Elle était bien distincte de la <em>Heap</em> qui contient les instances des objets créées.</p>
+
+<p>Par défaut, la <em>Permanent Generation</em> a la taille maximale de 64MB. Il est possible de modifier cette valeur avec le paramètre <em>-XX:MaxPermSize</em>.</p>
+
+<p>Si vous avez le plaisir de travailler sur application <em>usine</em> (nombreuses classes, nombreuses librairies), habituelle du milieu professionnel, vous avez peut-être déjà rencontré une erreur qui ressemble à cela :</p>
+
+<p>```
+java.lang.OutOfMemoryError: PermGen space</p>
+
+<pre><code>    at java.lang.ClassLoader.defineClass1(Native Method)
+    at java.lang.ClassLoader.defineClass(ClassLoader.java:620)
+</code></pre>
+
+<p>```</p>
+
+<p>Avec Java 8, dites adieu à cette erreur et au paramétrage lié à la <em>Permanent Generation</em>.</p>
+
+<p>Cette évolution de la machine virtuelle est un des résultats de la convergence entre la machine virtuelle propriétaire d'Oracle <a href="http://www.oracle.com/technetwork/middleware/jrockit/overview/index-101826.html">JRockit</a> et celle de la communauté : HotSpot.
+En effet, <a href="http://www.oracle.com/technetwork/middleware/jrockit/overview/index-101826.html">JRockit</a> est distribué avec le serveur d'application propriétaire d'Oracle <a href="http://www.oracle.com/technetwork/middleware/weblogic/overview/index.html">WebLogic</a> et il a la particularité de ne pas avoir de <em>Permanent Generation</em>. Un bon signe pour la communauté ?</p>
+
+<h2>Java 8 -> Core</h2>
+
+<p>Quelques améliorations sont apportées au coeur du JDK.</p>
+
+<h3>Une application JavaFX devient exécutable (<a href="http://openjdk.java.net/jeps/153">JEP 153</a>)</h3>
+
+<p>Avant Java 8, pour rendre une application JavaFX exécutable depuis un JAR, il fallait faire deux choses :</p>
+
+<ul>
+<li>Créer une classe avec la méthode <em>public static void main(String[] args)</em> qui contient du code d'initialisation de l'application JavaFX.</li>
+<li>Référencer cette classe dans l'attribut <em>Main-Class</em> du <em>Manifest</em> du JAR.</li>
+</ul>
+
+
+<p>Avec Java 8, il est possible de créer un JAR exécutable JavaFX sans passer par une classe avec une méthode <em>main</em>.</p>
+
+<h3>Des annotations sur les types Java (<a href="http://openjdk.java.net/jeps/104">JEP 104</a>)</h3>
+
+<p>Java 8 permet d'écrire ce genre de chose :</p>
+
+<p>```java
+MaClasse m = new @Interned MaClasse();</p>
+
+<p>// ou encore
+String str = (@NotNull String) element;</p>
+
+<p>// ou encore
+public class MaClasse<T> implements @ReadOnly List&lt;@ReadOnly T></p>
+
+<p>// ou encore
+public void monitorTemperature() throws @Critical TemperatureException {...}
+```</p>
+
+<p>La documentation officielle en version béta : <a href="http://docs.oracle.com/javase/tutorial/java/annotations/index.html">ici</a>.</p>
+
+<h3>Répéter des annotations (<a href="http://openjdk.java.net/jeps/120">JEP 120</a>)</h3>
+
+<p>Avec Java 8, il est possible d'écrire :</p>
+
+<p><code>java
+@Alert(role="Manager")
+@Alert(role="Administrator")
+public class UnauthorizedAccessException extends SecurityException { ... }
+</code></p>
+
+<p>Plus de détails, <a href="http://docs.oracle.com/javase/tutorial/java/annotations/repeating.html">ici</a>.</p>
+
+<h3>Accéder au nom des paramètres au runtime (<a href="http://openjdk.java.net/jeps/118">JEP 118</a>)</h3>
+
+<p>L'idée ici est de stocker dans le <em>bytecode</em> les noms des paramètres de méthodes ainsi que leurs types. Cette fonctionnalité pourrait apporter un vrai plus aux développeurs de librairies.</p>
+
+<p>Par exemple, l'annotation <em>@PathParam</em> de JAX-RS pourrait être optionnelle avec un reconnaissance du nom du paramètre ;)</p>
+
+<h3>Une nouvelle API pour les dates et les heures (<a href="http://openjdk.java.net/jeps/150">JEP 150</a>)</h3>
+
+<p>Java 8 vient avec une nouvelle API pour les dates/heures qui se veut plus <em>clean</em>, <em>fluent</em>, <em>immutable</em> et <em>extensible</em>.</p>
+
+<p>Un aperçu d'utilisation :
+<code>java
+LocalDate aujourdhui = LocalDate.now();
+LocalDate dans2ansMoins4jours = LocalDate.now().plusYears(2).minusDays(4);
+</code></p>
+
+<p>Documentation officielle en version béta : <a href="http://docs.oracle.com/javase/tutorial/datetime/index.html">ici</a>.</p>
+
+<h3>Trie en parallèle des tableaux (<a href="http://openjdk.java.net/jeps/103">JEP 103</a>)</h3>
+
+<p>Des méthodes sont ajoutées à la classe <em>java.util.Arrays</em> :
+<code>java
+Arrays.parallelSort(...);
+</code></p>
+
+<h2>Revenons au JUG !</h2>
+
+<p>Les nantais ont répondu présent pour découvrir Java 8 et pour <a href="https://twitter.com/JosePaumard">José</a>, c'est la session qui clôture son tour de Bretagne... Ou plutôt de l'ouest de la France pour les plus susceptibles ;)</p>
+
+<p><a href="https://twitter.com/JosePaumard">José</a> va faire un zoom sur les expressions <em>Lambda</em> et ses impacts sur le JDK 8.</p>
+
+<p><img class="center" src="/images/nantesjug/dec13/nantesjug-jose-paumard.jpg"></p>
+
+<h2>Une introduction aux expressions Lambda</h2>
+
+<p><a href="https://twitter.com/JosePaumard">José</a> va illustrer les expressions <em>Lambda</em> à l'aide du pattern <em>Map - Filter - Reduce</em>. Il va montrer une implémentation en Java 7 et une équivalence en Java 8 avec les expressions <em>Lambda</em>.</p>
+
+<p>Illustration -> Approche impérative (avant Java 8) vs Approche fonctionnel (SQL)</p>
+
+<p><img class="center" src="/images/nantesjug/dec13/nantesjug-prog-imp-vs-fonctionnel-by-jose-paumard.gif"></p>
+
+<p>Illustration -> Passage d'un code Java 7 à un code Java 8 avec une expression <em>Lambda</em>.</p>
+
+<p><img class="center" src="/images/nantesjug/dec13/nantesjug-lambdas-by-jose-paumard.gif"></p>
+
+<h2>Syntaxes d'une expression <em>Lambda</em></h2>
+
+<p>```java
+mapper = (Person person) -> person.getAge();</p>
+
+<p>mapper = person -> person.getAge(); // sans préciser le type</p>
+
+<p>mapper = Person::getAge; // méthode non statique</p>
+
+<p>sum = Integer::max; // méthode statique</p>
+
+<p>mapper = (Person person) -> {</p>
+
+<pre><code>System.out.println("Mapping " + person);
+return person.getAge();
+</code></pre>
+
+<p>}</p>
+
+<p>reducer = (int i1, int i2) -> {</p>
+
+<pre><code>return i1 + i2;
+</code></pre>
+
+<p>}</p>
+
+<p>reducer = (int i1, int i2) -> i1 + i2;</p>
+
+<p>reducer = (i1, i2) -> i1 + i2; // sans préciser les types</p>
+
+<p>```</p>
+
+<h2>La notion d'interface fonctionnelle</h2>
+
+<p>Une expression <em>Lambda</em> peut être définie comme une <em>instance</em> d'une interface dite fonctionnelle. Une interface fonctionnelle est une interface avec une seule méthode abstraite.</p>
+
+<p>L'annotation <em>@FunctionalInterface</em> peut être utilisée pour désigner une interface fonctionnelle. Elle est optionnelle et comme l'annotation <em>@Override</em>, elle ne sert qu'à apporter une sécurité supplémentaire à la compilation. Une interface annotée avec <em>@FunctionalInterface</em> ne compilera pas si elle possède plusieurs méthodes sans implémentation par défaut.</p>
+
+<p>Un exemple d'utilisation dans le JDK 8.</p>
+
+<p>```java
+package java.util.function;</p>
+
+<p>@FunctionalInterface
+public interface IntSupplier {</p>
+
+<pre><code>int getAsInt();
+</code></pre>
+
+<p>}
+```</p>
+
+<h2>Le nouveau package <em>java.util.function</em></h2>
+
+<p>Il contient des interfaces fonctionnelles usuelles utilisées pour représenter des expressions <em>Lambda</em> en entrée et sortie de méthode.</p>
+
+<p>Les interfaces <em>Supplier</em>, <em>Consumer</em>, <em>BiConsumer</em>, <em>Function</em>, <em>BiFunction</em>, <em>Predicate</em>, <em>BiPredicate</em> seront expliquées pendant la présentation.</p>
+
+<h2>Des méthodes implémentées dans les interfaces</h2>
+
+<p>Avec Java 8, il est possible d'exprimer une implémentation par défaut à une méthode d'une interface. C'est l'option qui a été choisie pour permettre d'ajouter des méthodes à des interfaces <em>historiques</em> du JDK sans modifier toutes les classes des implémentations.</p>
+
+<p>Le mot clé <em>default</em> est utilisé pour définir une implémentation par défaut.</p>
+
+<p>Exemple avec l'interface <em>Collection<E></em> :</p>
+
+<p>```java
+public interface Collection<E> {</p>
+
+<pre><code>...
+
+default Stream&lt;E&gt; stream() {
+    return ...;
+}
+</code></pre>
+
+<p> }
+```</p>
+
+<p>Java 8 autorise aussi les méthodes statiques dans les interfaces.</p>
+
+<p>```java
+public interface MonInterface {</p>
+
+<pre><code>public static void main(String[] args) {
+    System.out.println("Désormais, le Hello World en Java se fera avec une interface");
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<h2>L'API <em>Stream</em></h2>
+
+<p>Un <em>Stream</em> est défini comme une interface paramétrée construite à partir d'une source (une collection, un tableau, une source I/O) qui permet d'appliquer une expression <em>Lambda</em> sur ses éléments.</p>
+
+<p>Comment construire un <em>Stream</em> ?
+```java
+// A partir d'une collection
+Collection<String> collection = ...;
+Stream<String> stream1 = collection.stream();</p>
+
+<p>// A partir d'un tableau
+Stream<String> stream2 = Arrays.stream(new String[]{"un", "deux", "trois"});</p>
+
+<p>// A partir d'une factory de Stream
+// Stream.of, Stream.empty, Stream.generate, Stream.iterate, etc.
+Stream<String> stream3 = Stream.of("un", "deux", "trois");</p>
+
+<p>// A partir de quelques méthodes de classes du JDK mises à jour
+IntStream stream4 = random.ints();
+```</p>
+
+<p>Un exemple d'utilisation ?</p>
+
+<p>```
+int sum = persons.stream()</p>
+
+<pre><code>.map(p -&gt; p.getAge())
+.filter(a -&gt; a &gt; 20)
+.reduce(0, (a1, a2) -&gt; a1 + a2);
+</code></pre>
+
+<p>```</p>
+
+<p>Deux types d'opérations sont applicables à un <em>Stream</em> : une opération dite <em>intermédiaire</em> et une dite <em>terminale</em>. Seule une opération dite <em>terminale</em> déclenche le traitement modélisé. Dans l'exemple précédent, <em>map</em> et <em>filter</em> sont des opérations intermédiaires et <em>reduce</em> une opération terminale.</p>
+
+<p>Attention, un <em>Stream</em> ne peut être traité qu'une seule fois. Une fois une opération <em>terminale</em> exécutée, il est nécessaire de créer un nouveau <em>Stream</em>.</p>
+
+<p>Illustration -> Un <em>Stream</em> est <em>lazy</em> (seule l'opération terminale déclenche le traitement) !</p>
+
+<p><img class="center" src="/images/nantesjug/dec13/nantesjug-stream-lazy-by-jose-paumard.gif"></p>
+
+<h2><em>Stream</em> parallèle</h2>
+
+<p>Il permet d'exécuter du code modélisé dans un <em>Stream</em> en parallèle.</p>
+
+<p>Comment construire un <em>Stream</em> parallèle ?</p>
+
+<p>```java
+// Appeler parallelStream() au lieu de stream()
+Stream<String> s = strings.parallelStream();</p>
+
+<p>// Appeler parallel() sur un stream existant
+Stream<String> s = strings.stream().parallel();
+```</p>
+
+<p>Attention, un <em>Stream</em> parallèle ne signifie pas toujours plus performant. Le parallélisme entraine des opérations supplémentaires et ses performances sont dépendantes de la nature des opérations à exécuter. Il n'y a donc pas de recette magique de performance, la règle <em>mesurer pour optimiser</em> s'applique toujours.</p>
+
+<h2>Les <em>Optionals</em></h2>
+
+<p>Certaines méthodes des classes du JDK 8 vont renvoyer des instances de la famille <em>Optional</em> : <em>Optional<T></em>, <em>OptionalInt</em>, <em>OptionalLong</em>, <em>OptionalDouble</em>.</p>
+
+<p>Cette structure est utilisée pour modéliser une possible absence de résultat d'un traitement.</p>
+
+<p>Que peut-on faire avec un <em>Optional</em> dans les mains ?</p>
+
+<p>Un exemple avec <em>OptionalInt</em> :
+```java
+OptionalInt opt = ...;</p>
+
+<p>// Tester s'il contient une valeur et récupérer la valeur
+if(opt.isPresent()) {</p>
+
+<pre><code>int valeur1 = opt.get();
+</code></pre>
+
+<p>} else {</p>
+
+<pre><code>...
+</code></pre>
+
+<p>}</p>
+
+<p>// Lire la valeur ou lancer une exception NoSuchElementException s'il n'y a pas de valeur
+int valeur2 = opt.getAsInt();</p>
+
+<p>// Lire la valeur ou lancer une exception particulière s'il n'y a pas de valeur
+int valeur3 = opt.orElseThrow(exceptionSupplier);</p>
+
+<p>// Lire la valeur si elle existe sinon retourner une valeur par défaut
+int valeur4 = opt.orElse(12);
+```</p>
+
+<h2>Les réductions &amp; La classe Collectors</h2>
+
+<p>L'API <em>Stream</em> donne accès à plusieurs réductions : <em>reduce()</em>, <em>count()</em>, <em>min()</em>, <em>max()</em>, <em>findFirst()</em>, etc.</p>
+
+<p>La méthode <em>collect</em> applicable à un <em>Stream</em> permet d'appliquer des réductions complexes à partir d'un <em>Collector</em>.
+Sans rentrer dans les détails de la définition d'un <em>Collector</em>, la classe <em>Collectors</em> fournit un ensemble d'instance de <em>Collector</em> qui facilitent le travail du développeur.</p>
+
+<p>Quelques exemples d'utilisation de la classe <em>Collectors</em>.</p>
+
+<p>```java
+// Transformer un Stream en List
+List<Person> liste1 = persons.stream().collect(Collectors.toList());</p>
+
+<p>// Transformer un Stream en Set
+Set<String> liste2 = persons.stream().collect(Collectors.toSet());</p>
+
+<p>// Transformer un Stream en TreeSet
+TreeSet<String> liste3 = persons.stream().collect(Collectors.toSet(TreeSet::new));</p>
+
+<p>// Concaténer les noms d'une liste de personnes
+String names1 = persons.stream().map(Person::getName).collect(Collectors.joining());</p>
+
+<p>// Concaténer les noms séparés par une virgule d'une liste de personnes
+String names2 = persons.stream().map(Person::getName).collect(Collectors.joining(","));</p>
+
+<p>// Compter le nombre de personnes
+int nbPersons = persons.stream().collect(Collectors.counting());</p>
+
+<p>// Moyenne des ages des personnes
+double moyenneAge = persons.stream().collect(Collectors.averagingDouble(Person::getAge));</p>
+
+<p>// Regroupement des personnes par age
+Map&lt;Integer, List<Person>> map = persons.stream().collect(Collectors.groupingBy(Person::getAge));</p>
+
+<p>// Regroupement des personnes par age en utilisant un Set
+Map&lt;Integer, Set<Person>> map = persons.stream().collect(Collectors.groupingBy(Person::getAge,Collectors.toSet()));</p>
+
+<p>// Répartir les données en 2 ensembles : true -> liste des personnes age > 20 et false -> le reste
+Map&lt;Boolean, List<Person>> map = persons.stream().collect(Collectors.partitionningBy(p -> p.getAge() > 20));</p>
+
+<p>```</p>
+
+<h2>Nouvelle API pour construire des comparateurs</h2>
+
+<p>Avec Java 8, ça devient presqu'un plaisir de créer une instance de l'interface <em>Comparator</em> :
+```java
+Comparator<Person> comp = Comparator.comparing(Person::getLastName)</p>
+
+<pre><code>                                .thenComparing(Person::getFirstName)
+                                .thenComparing(Person::getAge);
+</code></pre>
+
+<p>```</p>
+
+<h2>Pourquoi des expressions <em>Lambda</em> ?</h2>
+
+<p><a href="https://twitter.com/JosePaumard">José</a> explique que les expressions <em>Lambda</em> n'ont pas été introduites dans Java 8 parce que c'est à la mode ou parce que le code écrit est plus compact.</p>
+
+<p>Les expressions <em>Lambda</em> apporte la possibilité d'appliquer de nouveaux patterns qui permettent de paralléliser simplement et de façon plus sûr des traitements.</p>
+
+<h2>Les slides</h2>
+
+<p>Vous y trouverez des détails que je n'ai pas abordé pour rester synthétique :</p>
+
+<ul>
+<li>Des méthodes implémentées dans des interfaces entrainent la possibilité d'avoir un héritage multiple conflictuelle. Quelles sont les règles du compilateur ?</li>
+<li>Des explications sur quelques classes du package <em>java.util.function</em></li>
+<li>Les différents états d'un <em>Stream</em> et leurs conséquences</li>
+<li>La problématique des valeurs par défaut dans les réductions <em>max</em> et <em>min</em></li>
+<li>Une utilisation plus avancée de la classe <em>Collectors</em></li>
+<li>Des choses qui ne marchent pas avec le traitement parallèle</li>
+</ul>
+
+
+<p>Alors, installer vous confortablement et prenez votre temps, il y a 330 slides ;)</p>
+
+<iframe src="http://www.slideshare.net/slideshow/embed_code/29010060" width="800" height="500" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
+
+
+<h2>Qu'est-ce que j'ai pensé de tout ça ?</h2>
+
+<p>Dans l'ensemble, j'ai trouvé cette présentation claire, progressive et surtout riche en contenu. Elle présente bien les expressions <em>Lambda</em> et ses impacts sur la future version du JDK.</p>
+
+<h3><em>Lambda</em> Java 8, une révolution ?</h3>
+
+<p>La réponse est probablement oui. C'est la première fois :</p>
+
+<ul>
+<li>qu'il est possible de déclarer des paramètres sans préciser leurs types (paramètres d'entrée d'une expression <em>Lambda</em>).</li>
+<li>qu'une "méthode" (particulière certes) peut être passée en paramètre d'une autre.</li>
+<li>que le langage fait une place aussi importante aux concepts de la programmation fonctionnelle.</li>
+<li>qu'il y aura autant de changement dans le vocabulaire d'un développeur Java. Il parlera désormais avec des mots comme <em>map</em>, <em>filter</em>, <em>reduce</em>, <em>Supplier</em>, <em>Function</em>, <em>BiFunction</em>, <em>Consumer</em>, <em>BiConsumer</em>, etc. Y aura t-il une race d'intégriste qui va naitre dans la communauté Java comme les <em>Scalafistes</em> de <em>Scala</em> ? ;)</li>
+</ul>
+
+
+<h3><em>Lambda</em> Java 8 et le debug ?</h3>
+
+<p>Je trouve que le langage Java a une qualité : une maintenance <em>possible</em> sur une grosse volumétrie de code. Même sur des applications dites <em>legacy</em> qui ont été développées de la pire des manières, j'ai toujours pu lancer l'application en debug, faire du pas à pas partout même dans les classes fournies par les librairies. Le côté impératif de la programmation fait clairement apparaître chaque étape du programme.</p>
+
+<p>Avec Java 8, les applications vont de plus en plus ressembler à des enchainements de méthodes avec des expressions <em>Lambda</em> en paramètres. Ce code séduisant va probablement poser des difficultés au debuggage. Va t-il falloir mettre les expressions <em>Lambda</em> systématiquement sur plusieurs lignes pour permettre de faire du pas à pas ? Comment, pendant un debuggage, simuler l'exécution d'une opération sur un <em>Stream</em> sans avoir à en créer un nouveau ? Aurons-nous toujours cette maintenance qui peut être pénible mais toujours possible avec une application qui vieillit avec des expressions <em>Lambda</em> ? Peut-être tout simplement qu'il y aura moins de besoin d'utiliser un debugger ? A suivre ;)</p>
+
+<h3>Fini les boucles <em>for</em> pour les listes ?</h3>
+
+<p>Les boucles <em>for</em> servent souvent à itérer sur des listes d'éléments afin de les transformer (<em>map</em>), les filtrer (<em>filter</em>) et à faire des calculs (<em>reduce</em>). Les développeurs vont-ils privilégier l'utilisation des expressions <em>Lambda</em> ?</p>
+
+<h3><em>Lambda</em> Java 8 vs les langages alternatifs ?</h3>
+
+<p>Les langages alternatifs (Scala, Groovy, etc.) de la JVM n'ont pas grand chose à envier aux expressions <em>Lambda</em> de Java 8, ils vont déjà beaucoup plus loin depuis plusieurs années. Ils vont cependant probablement continuer à jalouser la base énorme d'utilisateurs qui reste fidèle à Java <em>Standard</em> ;)</p>
+
+<p><blockquote><p>Java is a blue collar language. It's not PhD thesis material but a language for a job.</p><footer><strong>James Gosling</strong> <cite>1997</cite></footer></blockquote></p>
+
+<h3>La date de sortie prévue de Java 8 est le 18/03/2014. Alors, impatient d'avoir Java 8 dans vos entreprises ?</h3>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Soirée JUG Nantes : Java 8 -> Lambdas, Streams et Collectors (Partie 1)]]></title>
+    <link href="http://roddet.github.com/2013/12/nantesjug-decembre-part1/"/>
+    <updated>2013-12-06T21:41:00-05:00</updated>
+    <id>http://roddet.github.com/2013/12/nantesjug-decembre-part1</id>
+    <content type="html"><![CDATA[<p>Java 8, difficile de trouver mieux comme thème pour une soirée d'un JUG.
+JUG qui, pour rappel, veut dire <em>Java User Group</em> (Groupe d'utilisateurs de Java).
+Ces derniers temps, les JUGs se sont diversifiées jusqu'à avoir des soirées qui n'ont rien (ou peu) à voir avec Java.
+Ce n'est pas la faute aux JUGs, c'est vrai que les actualités IT <em>sexy</em> viennent souvent d'ailleurs ;)</p>
+
+<p>Mais ce 4 décembre à 19h à l'<a href="http://www.epitech.eu/nantes/ecole-informatique-nantes.aspx">EPITECH Nantes</a>, c'était place à un sujet phare de l'écosystème Java :</p>
+
+<p><blockquote><p>La sortie imminente de Java 8 !</p></blockquote></p>
+
+<p>Avant de parler de Java 8, la soirée commence par un autre sujet :
+<blockquote><p>Grails dans les tranchées</p></blockquote>
+Ce <em>quickie</em> est animé par <a href="https://twitter.com/djocal">Dominique Jocal</a>, Architecte Logiciel et Responsable de 2 domaines applicatifs chez <a href="http://www.cbp-group.com/">CBP Solutions</a>.</p>
+
+<h2><em>Grails dans les tranchées</em> ? Mais avant... c'est quoi Grails ?</h2>
+
+<p><a href="http://grails.org/">Grails</a> est un framework de création d'applications web s'exécutant sur la <a href="http://en.wikipedia.org/wiki/Java_virtual_machine">JVM</a>. Le langage de développement est <a href="http://groovy.codehaus.org/">Groovy</a>, un Java <em>sucré</em>.</p>
+
+<p>Il fait partie de la famille des frameworks dits <em>productifs</em> qui ont les caractéristiques suivantes :</p>
+
+<ul>
+<li><em><strong>Full Stack</strong></em> -> Ces frameworks viennent avec toutes les briques applicatives nécessaires pour répondre aux problématiques courantes du web (communiquer avec une base de données, écrire des règles métiers, créer des pages web, gérer l'authentification, etc.).</li>
+<li><em><strong>Simple</strong></em> -> tout est fait pour faciliter le travail du développeur. Un mode opératoire simple est fourni pour mettre en place les fonctionnalités récurrentes du web.</li>
+<li><em><strong>Web Friendly</strong></em> -> Avec ces frameworks, vous arrêtez de vous battre avec le Web et en particulier le protocole HTTP. Vous saurez simplement exposer des services de type <em>REST</em>, gérer proprement les codes erreurs HTTP, etc.</li>
+</ul>
+
+
+<p>Le précurseur dans ce domaine est <a href="http://rubyonrails.org/">Ruby On Rails</a> créé en 2005 qui a fait la promotion au passage du langage Ruby.</p>
+
+<p>Depuis, plusieurs frameworks sont apparus dans les autres écosystèmes :</p>
+
+<ul>
+<li><a href="http://cakephp.org/">CakePhp</a> pour Php.</li>
+<li><a href="https://www.djangoproject.com/">Django</a> pour Python.</li>
+<li><a href="http://www.playframework.com/">Play! Framework</a> pour Java ou Scala.</li>
+<li><a href="http://sailsjs.org/">Sails</a> pour Javascript.</li>
+<li>etc.</li>
+</ul>
+
+
+<p><a href="http://grails.org/">Grails</a> complète cette liste de frameworks qui ont pour objectif principale la simplification des applications web.
+C'est un produit open source qui tourne sur la <a href="http://en.wikipedia.org/wiki/Java_virtual_machine">JVM</a>.</p>
+
+<p>Pour ceux qui évoluent dans l'écosystème Java, pas de surprise avec <a href="http://grails.org/">Grails</a>.
+Il est construit à l'aide de la boite à outils <a href="http://projects.spring.io/spring-framework/">Spring Framework</a>. Il s'agit d'ailleurs de la même compagnie derrière : <a href="http://www.gopivotal.com/">Pivotal</a>.</p>
+
+<p><a href="http://grails.org/">Grails</a> possède son propre serveur web et il est possible de générer un package WAR pour un déploiement dans un autre serveur d'application.</p>
+
+<h2>Grails chez CBP</h2>
+
+<p><a href="https://twitter.com/djocal">Dominique</a> vient avec ce <em>Quickie</em> présenter un retour d'expérience de l'utilisation de <a href="http://grails.org/">Grails</a> chez <a href="http://www.cbp-group.com/">CBP Solutions</a>.</p>
+
+<p>C'est devant une salle pleine qu'il commence à présenter le contexte <a href="http://www.cbp-group.com/">CBP Solutions</a>.</p>
+
+<p><img class="center" src="/images/nantesjug/dec13/nantesjug-dominique-jocal.jpg"></p>
+
+<p><a href="http://www.cbp-group.com/">CBP Solutions</a> c'est :</p>
+
+<ul>
+<li>Des centaines d'applications <a href="http://en.wikipedia.org/wiki/IBM_RPG">IBM RPG</a></li>
+<li>60 applications Java</li>
+<li>6 applications <a href="http://grails.org/">Grails</a></li>
+</ul>
+
+
+<p><blockquote><p>CBP ce n'est pas du "Big Data" mais du "Big Rules" !</p><footer><strong>Dominique Jocal</strong></footer></blockquote></p>
+
+<p>Les enjeux de <a href="http://www.cbp-group.com/">CBP Solutions</a> sont les mêmes que pour la grande majorité des entreprises : il y a plus de codes que de données :) Non j'exagère c'est vrai. Seulement tout le monde n'a pas les mêmes problématiques que Facebook ou Twitter en terme de scalabilité sur le traitement de données. Le grand défi de la plupart des entreprises est de créer facilement des applications et surtout pouvoir effectuer la maintenance du code grandissant avec le temps.</p>
+
+<h2>Le <em>Domain</em> plus de métiers, plus de responsabilité</h2>
+
+<p>Les applications web de gestion consistent la plupart du temps à manipuler des données. Ces données sont souvent stockées dans des bases de données relationnelles. Elles sont alors stockées dans des tables. Afin de récupérer ces données dans l'univers applicatif et pouvoir aisément les manipuler, les développeurs sont amenés à créer des classes du <em>Domain</em>. Par exemple, si l'application consiste à manipuler des données d'une personne, ces données seront stockées dans une table <em>Personne</em> et une classe <em>Personne</em> sera créée pour encapsuler les données d'une personne (nom, prénom, etc.).</p>
+
+<p>Il y a quelques années, il était <em>très tendance</em> d'avoir des classes du <em>Domain</em> sans aucune règle métier.
+Cela avait du sens, il était question de construire des applications monolithiques qui répondaient à tous les besoins des entreprises.
+Il fallait avoir des classes de <em>Domain</em> les plus neutres possibles car elles devaient s'adapter à tous les contextes des différents endroits de l'applicatif. Elles étaient utilisées dans différents cas métiers.</p>
+
+<p>De nos jours, la <em>tendance</em> est plutôt de créer de multiples applications de petites tailles.
+Cela donne les avantages suivants :</p>
+
+<ul>
+<li>Une petite application est plus facile à maintenir. Son périmètre métier est identifié, c'est plus facile de l'apprendre, de le comprendre.</li>
+<li>Il devient plus simple dans un <em>SI</em> (Système d'Information) d'identifier une brique applicative en erreur et l'origine des erreurs. En effet, les entrées/sorties d'une application de petite taille sont maitrisées et le développeur est dans des conditions idéales pour reproduire des erreurs dans son environnement de développement.</li>
+<li>Chaque application a son cycle de vie. Il n'est plus indispensable de <em>re-packager</em> l'ensemble pour une évolution qui concerne un seul module. Plus besoin de redémarrer toutes les applications pour la mise à jour d'un libellé d'une application particulière.</li>
+</ul>
+
+
+<p>En construisant des applications de périmètre fonctionnel réduit, le besoin d'avoir des classes <em>Domain</em> les plus génériques possibles ne se posent plus. Il devient alors naturel de concentrer les besoins métiers dans ces classes.</p>
+
+<p>Quel meilleur endroit pour préciser que le nom d'une personne est obligatoire que dans la classe <em>Domain</em> <em>Person</em> ?</p>
+
+<p>C'est dans cette logique que <a href="https://twitter.com/djocal">Dominique</a> explique que le classes du <em>Domain</em> doivent être moins anémiques. Elles vont porter les logiques métiers dont elles sont soumises.</p>
+
+<p><a href="http://grails.org/">Grails</a> apporte un support de validation déclaratif dans les classes de <em>Domain</em>.
+Les différentes contraintes de validation des données sont déclarées directement dans ces classes.
+<a href="http://grails.org/">Grails</a> fournit aussi un cadre de développement facilitant l'écriture des tests des classes du <em>Domain</em>.</p>
+
+<h2>La <em>Pizza Team</em></h2>
+
+<p>Le principe de la <em>Pizza Team</em> consiste à créer des équipes de petite taille (idéalement 1 pizza suffit à nourrir l'équipe) qui sont responsables de l'ensemble de l'application (du code à la base de données).</p>
+
+<p>Voici donc à quoi pourrait ressembler votre équipe :</p>
+
+<p><img class="center" src="/images/nantesjug/dec13/pizza-team.jpg"></p>
+
+<p>Chez <a href="http://www.cbp-group.com/">CBP Solutions</a>, ces principes sont appliqués, à la différence qu'il y a une équipe garante de la cohérence et l'urbanisation des données.</p>
+
+<p>Les différentes équipes projet qui travaillent sur des applications <a href="http://grails.org/">Grails</a> co-conçoivent la base de données avec les garants des données du <em>SI</em>.</p>
+
+<h2><em>Code first</em> au lieu de <em>Schema first</em></h2>
+
+<p><a href="http://grails.org/">Grails</a> donne la possibilité de générer un schéma de base de données à partir des classes de <em>Domain</em>. Les développeurs ont pu montrer aux administrateurs des bases de données qu'un schéma généré par <a href="http://grails.org/">Grails</a> est de bonne qualité.</p>
+
+<h2>Et l'IDE ? Oups, il en faut un pour développer ?</h2>
+
+<p>Les développeurs de <a href="http://www.cbp-group.com/">CBP Solutions</a> sont globalement déçus de <a href="http://grails.org/products/ggts">GGTS</a> : le <em>Groovy/Grails Tool Suite</em>. Il s'agit d'un <a href="http://eclipse.org/">Eclipse</a> <em>re-packagé</em> avec des plugins pour Groovy et <a href="http://grails.org/">Grails</a>.</p>
+
+<p>Quelques mésaventures :</p>
+
+<ul>
+<li>Il arrive des compilations de code Groovy qui prennent beaucoup de temps pour se terminer en <em>OutOfMemoryError</em>.</li>
+<li>Des besoins fréquents de redémarrage de l'IDE et de l'application <a href="http://grails.org/">Grails</a></li>
+<li>Il est nécessaire d'avoir des PCs puissants (i7, 8GB de RAM, SSD).</li>
+</ul>
+
+
+<p>Il y a des premiers retours positifs de l'IDE <a href="http://www.jetbrains.com/idea/">Intellij IDEA</a>.</p>
+
+<h2>Grails -> Un développeur opérationnel tout de suite !</h2>
+
+<p>Chez <a href="http://www.cbp-group.com/">CBP Solutions</a>, avec <a href="http://grails.org/">Grails</a>, un développeur a un environnement de développement opérationnel rapidement en 3 étapes depuis son IDE :</p>
+
+<ul>
+<li>Récupération des sources d'un dépôt <a href="http://subversion.apache.org/">Subversion</a>.</li>
+<li>Rafraichissement des dépendances (<code>grails refresh-dependencies</code>)</li>
+<li>Lancement de l'application (<code>grails run-app</code>)</li>
+</ul>
+
+
+<p><a href="http://grails.org/">Grails</a> vient avec un serveur embarqué, pas besoin d'installer un serveur particulier pour développer.</p>
+
+<p><a href="http://grails.org/">Grails</a> permet simplement de séparer les configurations de production de celles de développement. Par exemple, votre application peut fonctionner en mode développement sur une base de données en mémoire comme <a href="http://www.h2database.com/html/main.html">H2</a> et fonctionner en production avec une base de données <a href="https://mariadb.org/">MariaDB</a>.</p>
+
+<h2>Multi-Page vs Single-Page</h2>
+
+<p><a href="http://grails.org/">Grails</a> offre un cadre de développement avancé pour les applications <em>Multi-Page</em>.</p>
+
+<p>Il est possible de faire du <em>Single-Page</em>. Vous continuer à profiter des leviers de productivités côté <em>back-end</em>. Pour le <em>front-end</em>, cherchez du côté de l'univers Javascript (<em>Vanilla</em> ou frameworks type AngularJS, EmberJS, etc.).</p>
+
+<p>Chez <a href="http://www.cbp-group.com/">CBP Solutions</a>, les applications sont faites en <em>Multi-Page</em>.</p>
+
+<h2>Les tests c'est bien !</h2>
+
+<p>Les 6 applications <a href="http://grails.org/">Grails</a> chez <a href="http://www.cbp-group.com/">CBP Solutions</a> sont toutes dans le top 10 des applications ayant la meilleure couverture de code par les tests.</p>
+
+<h2>CBP, la suite...</h2>
+
+<p><a href="https://twitter.com/djocal">Dominique</a> a énoncé les projets qu'il avait en tête :</p>
+
+<ul>
+<li>Partager les astuces dans un Blog</li>
+<li><a href="http://grails.org/">Grails</a>! <a href="http://grails.org/">Grails</a>! <a href="http://grails.org/">Grails</a>! <a href="http://www.cbp-group.com/">CBP Solutions</a> continue avec <a href="http://grails.org/">Grails</a> !</li>
+<li>Explorer le parallélisme et mettre en place des tests de code Javascript</li>
+</ul>
+
+
+<h2>En définitif</h2>
+
+<p><a href="https://twitter.com/djocal">Dominique</a> a présenté son retour d'expérience au sein de <a href="http://www.cbp-group.com/">CBP Solutions</a> de l'utilisation de <a href="http://grails.org/">Grails</a>. Il est surpris qu'il n'y ait pas un <em>tsunami</em> de <a href="http://grails.org/">Grails</a> dans les entreprises qui font de l'informatique de gestion. Il est pour lui inconcevable, aujourd'hui de partir sur un assemblage <em>maison</em> de librairies (Spring + Hibernate + etc.). <a href="http://grails.org/">Grails</a> propose un ensemble cohérent, productif, <em>clés en main</em> pour construire des applications web, autant en profiter.</p>
+
+<p>Une question a été posée à <a href="https://twitter.com/djocal">Dominique</a> : est-ce que le côté <em>dynamique</em> de Groovy n'était pas un problème car moins d'erreurs sont détectées à la compilation ? (je reformule avec mes mots ;)).
+<a href="https://twitter.com/djocal">Dominique</a> va expliquer que ce risque est compensé par la grande couverture de code par les tests permise par <a href="http://grails.org/">Grails</a>.</p>
+
+<p>Les slides ne sont pas encore disponibles, je complèterai cet article dès leurs publications.</p>
+
+<h2>Et la soirée continue !</h2>
+
+<p>La seconde partie de la soirée sera animée par <a href="https://twitter.com/JosePaumard">Jose Paumard</a> avec sa session</p>
+
+<p><blockquote><p>Java 8 : Lambdas, Streams et Collectors -> le nouveau visage de l'API Collection</p></blockquote></p>
+
+<p>A suivre dans un prochain article.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Soirée JUG Nantes : Du SQL au NoSQL en moins d'une heure (Partie 2)]]></title>
+    <link href="http://roddet.github.com/2013/11/nantesjug-novembre-part2/"/>
+    <updated>2013-11-21T09:30:00-05:00</updated>
+    <id>http://roddet.github.com/2013/11/nantesjug-novembre-part2</id>
+    <content type="html"><![CDATA[<p>Vous pouvez retrouvez la première partie de cet article <a href="http://blog.roddet.com/2013/11/nantesjug-novembre-part1/">ici</a>.</p>
+
+<p>Le 04 novembre dernier, <a href="https://twitter.com/tgrall">Tugdual Grall</a> et <a href="https://twitter.com/dadoonet">David Pilato</a> ont offert au public nantais une preview d'une session qu'ils allaient donner quelques jours plus tard à <a href="http://www.devoxx.be/dv13-david-pilato.html?presId=3281">Devoxx Belgique</a>. Ils vont montrer, sur la base d'une application exemple, une migration du SQL au monde du NoSQL.</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-david-pilato-tugdual-grall.jpg"></p>
+
+<h2>Pourquoi passer du SQL au NoSQL ?</h2>
+
+<p><a href="https://twitter.com/tgrall">Tugdual</a> et <a href="https://twitter.com/dadoonet">David</a> vont commencer la session par présenter <em>LA</em> raison qui pourrait vous convaincre de migrer d'une base SQL à une base NoSQL : la scalabilité horizontale.</p>
+
+<p>Scalabilité horizontale sont les mots à la mode pour désigner la caractéristique d'un système capable de supporter une grande charge. Pour augmenter la puissance d'un système, sa stratégie consiste à multiplier le nombre de machines de petites puissances. Elle se positionne en opposition à la scalabilité verticale qui prône l'augmentation des capacités d'une machine pour répondre à des besoins de charge croissants.</p>
+
+<p>La scalabilité horizontale s'impose de plus en plus comme <em>LA</em> solution pour relever le défi des systèmes performants à fort trafic.</p>
+
+<p>Peut-on effectuer la scalabilité horizontale avec une base de données relationnelle ?</p>
+
+<p>La réponse est oui. Ca s'appelle mettre en place un <em>cluster de base de données</em>. Tug et David vont demander aux participants combien avaient déjà configuré un <em>cluster</em> de bases de données relationnelles ? Je n'ai vu qu'une seule main levée de là où j'étais assis. Cette opération requiert des compétences assez pointues pour obtenir un système fonctionnel.</p>
+
+<p>Et le NoSQL dans tout ça ?</p>
+
+<p>Tug et David vont promettre que cette opération qui nécessitait la présence d'un administrateur de bases de données très expérimenté va être accessible aux développeurs. Cette promesse sera accompagnée d'une démonstration :</p>
+
+<ul>
+<li>du passage d'un modèle dit <em>legacy</em> à un modèle moderne <em>REST</em></li>
+<li>du passage d'un modèle SQL à un modèle NoSQL</li>
+<li>de distribution de données sur plusieurs <em>noeuds</em></li>
+<li>de la mise en place d'une recherche <em>full text</em> sur des données distribuées</li>
+<li>de visualisation des données distribuées suivant des axes configurables</li>
+</ul>
+
+
+<p>L'intégralité des sources de la démonstration est accessible dans le dépôt Github <a href="https://github.com/dadoonet/sql2nosql/">sql2nosql</a>. La version des sources correspondante à une étape est accessible via les branches du dépôt.</p>
+
+<p>A partir de ce dépôt, je vais effectuer toutes les étapes sur ma machine.</p>
+
+<p>Allons y !</p>
+
+<h2>Récupération des sources</h2>
+
+<p>Je vais commencer par récupérer le contenu de la branche <em>01-legacy/start</em>.</p>
+
+<p>Pour ceux qui voudraient faire autant et qui ne sont pas familier de Github, voici quelques alternatives :</p>
+
+<ul>
+<li><p>Télécharger le Zip des sources de la branche <a href="https://github.com/dadoonet/sql2nosql/archive/01-legacy/start.zip">ici</a>.</p></li>
+<li><p>Installer <a href="http://git-scm.com/">Git</a> et exécuter les commandes</p></li>
+</ul>
+
+
+<p><code>sh
+git clone https://github.com/dadoonet/sql2nosql.git
+git checkout 01-legacy/start
+</code></p>
+
+<ul>
+<li><p>Installer le client officiel correspondant à votre OS : <a href="http://windows.github.com/">Windows</a>, <a href="http://mac.github.com/">Mac</a>. Pour linux ? Vous connaissez la chanson, si vous êtes sous linux c'est que vous ne jurez que par le <em>terminal</em>, faites comme d'habitude utiliser la ligne de commande ;) Il existe des clients graphiques non officiels mais je n'ai rien à vous recommander, j'ai pris l'habitude de la ligne de commande pour Git même si j'utilise un client graphique quand il s'agit de SVN. Il n'y a pas de raison particulière, question d'habitude.</p></li>
+<li><p>Installer <a href="http://subversion.apache.org/">Subversion</a> et exécuter la commande suivante pour récupérer l'intégralité des sources. Vous pouvez aussi passer par des clients graphiques comme <a href="http://tortoisesvn.net/">TortoiseSVN</a>. Les sources se trouveront dans le répertoire <em>sql2nosql/branches/01-legacy</em>.</p></li>
+</ul>
+
+
+<p><code>sh
+svn co https://github.com/dadoonet/sql2nosql
+</code></p>
+
+<ul>
+<li>Utiliser votre IDE préféré <a href="http://eclipse.org/">Eclipse</a>, <a href="https://netbeans.org/">Netbeans</a>, <a href="http://www.jetbrains.com/idea/">Intellij</a>...</li>
+</ul>
+
+
+<h2>Exécution de l'application</h2>
+
+<p>L'architecture de l'application repose sur <a href="http://maven.apache.org/">Maven</a>. J'ai utilisé la version 3.1.1 pour écrire cet article.</p>
+
+<p>Pour exécuter l'application :</p>
+
+<ul>
+<li><p>Si vous êtes sous linux ou Mac, lancer le script <code>run.sh</code></p></li>
+<li><p>Si vous êtes sous Windows, lancer les commandes :</p></li>
+</ul>
+
+
+<p><code>sh
+mvn clean install
+cd demo-webapp
+mvn jetty:run
+</code></p>
+
+<p>Si l'application ne parvient pas à récupérer le plugin Maven pour Jetty.
+Créer/compléter la configuration du fichier <code>~/.m2/settings.xml</code> dans la section <code>pluginGroups</code> comme ceci :</p>
+
+<p>``` xml
+<settings>
+  <pluginGroups></p>
+
+<pre><code>&lt;pluginGroup&gt;org.eclipse.jetty&lt;/pluginGroup&gt;
+</code></pre>
+
+<p>  </pluginGroups>
+</settings>
+```</p>
+
+<p>Une fois l'application démarrée, vous pouvez accéder à la page d'accueil via l'adresse : <code>http://localhost:8080</code>. Elle affiche une liste de personnes.</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-1.png"></p>
+
+<p>En cliquant sur une personne, vous avez accès aux détails de la personne sélectionnée.</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-2.png"></p>
+
+<h2>L'application <em>legacy</em></h2>
+
+<p>Cette application se veut <em>legacy</em>. Elle est pilotée par 2 Servlet:</p>
+
+<ul>
+<li><a href="https://github.com/dadoonet/sql2nosql/blob/01-legacy/start/demo-webapp/src/main/java/fr/pilato/demo/sql2nosql/webapp/HomeServlet.java">HomeServlet</a>, gestionnaire de la page d'accueil.</li>
+<li><a href="https://github.com/dadoonet/sql2nosql/blob/01-legacy/start/demo-webapp/src/main/java/fr/pilato/demo/sql2nosql/webapp/PersonServlet.java">PersonServlet</a>, pilote de la page de détail d'une personne.</li>
+</ul>
+
+
+<p>Le mapping URL/servlet configurés dans le fichier <a href="https://github.com/dadoonet/sql2nosql/blob/01-legacy/start/demo-webapp/src/main/webapp/WEB-INF/web.xml">web.xml</a>.</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-3.png"></p>
+
+<p>Cette application génère l'intégralité de ses pages côté serveur. Les nouvelles générations d'applications Web encouragent :</p>
+
+<ul>
+<li><p>un Web avec de plus en plus d'intelligence côté navigateur.</p></li>
+<li><p>un Web qui pense "application web" avec la même phylosophie qu'une application mobile. Une application qui s'installe dans le navigateur.</p></li>
+<li><p>un Web qui sépare les univers <em>frontend</em> et <em>backend</em>. Il n'est plus question de devoir faire un seul choix technologique pour couvrir l'intégralité de votre besoin. Vous choisissez le meilleur outil pour réaliser votre <em>frontend</em> et vous faites autant pour votre <em>backend</em>. Les deux univers communiquent via HTTP, un protocole particulièrement utile pour faire du web ;)</p></li>
+</ul>
+
+
+<p>En phase avec ces principes, la prochaine étape va consister transformer l'existant en application <em>backend</em> exposant des services HTTP/REST.</p>
+
+<h2><em>RESTification</em> de l'application <em>legacy</em></h2>
+
+<p>Pour passer à une architecture REST, commençons par quelque chose de facile : se débarrasser des <em>Servlet</em> de l'application. Supprimer :</p>
+
+<ul>
+<li>Les classes <em>PersonServlet</em> et <em>HomeServlet</em>.</li>
+<li>Les fichiers suivants qui ne servent plus à rien <code>demo-webapp/src/main/java/fr/pilato/demo/sql2nosql/webapp/ApplicationInitializer.java</code> et <code>demo-webapp/src/main/java/fr/pilato/demo/sql2nosql/webapp/PersonService.java</code>.</li>
+</ul>
+
+
+<p>L'objectif à présent avec être de réaliser des services REST. Voici les services à réaliser :</p>
+
+<p>```
+GET         /api/1/person/  => Récupérer toutes les personnes</p>
+
+<p>GET         /api/1/person/{id}  => Récupérer une personne avec l'identifiant {id}.</p>
+
+<p>PUT         /api/1/person/  => Créer une nouvelle personne</p>
+
+<p>PUT         /api/1/person/{id}  => Mettre à jour la personne ayant l'identifiant {id}</p>
+
+<p>DELETE  /api/1/person/{id}  => Supprimer la personne ayant l'identifiant {id}</p>
+
+<p>POST        /api/1/person/_search => Récupérer des personnes suivant un critière</p>
+
+<p>POST        /api/1/person/_init => Initialiser la base de données avec des données exemples
+```</p>
+
+<p>Les puristes du REST pourront ne pas être d'accord avec cette API (l'utilisation de POST pour effectuer une recherche par critères ou encore l'utilisation de PUT au lieu de POST pour créer une nouvelle personne) mais ce n'est pas le sujet, nous allons nous concentrer sur le NoSQL.</p>
+
+<p>L'application aura l'architecture suivante :</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-4.png"></p>
+
+<p>La <em>RESTification</em> sera réalisée avec <a href="http://docs.spring.io/spring/docs/4.0.x/spring-framework-reference/html/mvc.html">Spring MVC</a>.</p>
+
+<p>J'ai mis à jour les fichiers :</p>
+
+<ul>
+<li><p><code>pom.xml</code> à la racine du projet comme <a href="https://raw.github.com/dadoonet/sql2nosql/02-restify/begin/pom.xml">ceci</a></p></li>
+<li><p><code>demo-webapp/pom.xml</code> comme <a href="https://raw.github.com/dadoonet/sql2nosql/02-restify/begin/demo-webapp/pom.xml">ceci</a></p></li>
+<li><p><code>demo-webapp/src/main/webapp/WEB-INF/web.xml</code> pour qu'il ressemble à celui là : <a href="https://raw.github.com/dadoonet/sql2nosql/02-restify/end/demo-webapp/src/main/webapp/WEB-INF/web.xml">web.xml</a>.</p></li>
+</ul>
+
+
+<p>J'ai créé le fichier <code>demo-webapp/src/main/java/fr/pilato/demo/sql2nosql/webapp/PersonService.java</code> avec le contenu suivant <a href="https://github.com/dadoonet/sql2nosql/blob/02-restify/end/demo-webapp/src/main/java/fr/pilato/demo/sql2nosql/webapp/PersonService.java">PersonService.java</a>.</p>
+
+<p>Redémarrage de l'application comme précédemment.</p>
+
+<p>Test du service de récupération de toutes les personnes en accédant à la page suivante via un navigateur moderne : <code>http://localhost:8080/api/1/person/</code>. J'obtiens :</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-4a.png"></p>
+
+<p>Le résultat <code>[]</code> représente un tableau vide.</p>
+
+<p>Pour initialiser la base de données, il faut utiliser le service</p>
+
+<p><code>
+POST        /api/1/person/_init
+</code></p>
+
+<p>Pour effectuer, une requête avec le verbe HTTP POST, vous avez plusieurs possibilités. Le plus simple en environnement Unix est d'utiliser la commande <code>curl</code> comme ceci :</p>
+
+<p><code>
+curl -XPOST http://localhost:8080/api/1/person/_init
+</code></p>
+
+<p>Sinon vous pouvez installer des extensions pour vos navigateurs comme par exemple <a href="https://chrome.google.com/webstore/detail/simple-rest-client/fhjcajmcbmldlhcimfajhfbgofnpcjmb">Simple REST Client</a> pour Chrome ou encore <a href="https://addons.mozilla.org/en-US/firefox/addon/restclient/">RESTClient</a> pour Firefox.</p>
+
+<p>Une fois les données initialisées, la requête <code>http://localhost:8080/api/1/person/</code> donne le résultat suivant :</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-4b.png"></p>
+
+<p>Il s'agit un flux JSON représentant 100 personnes.</p>
+
+<p>Il est possible de tester les autres services développés avec ce même principe avec <code>curl</code> ou encore le super outil que vous avez installé.</p>
+
+<h2>Couchbase en action</h2>
+
+<p>Maintenant que la partie Web du <em>backend</em> fonctionne, nous allons commencer à quitter le monde SQL en faisant en sorte d'utiliser une base NoSQL. L'heureux élu sera <a href="http://www.couchbase.com/">Couchbase</a>.</p>
+
+<p><a href="http://www.couchbase.com/">Couchbase</a> est une base NoSQL orienté document. Il stocke les données sous la forme "clé-valeur". La clé est une chaine de caractères et la valeur est un document JSON sans aucun schéma pré-défini.</p>
+
+<p>L'architecture de l'application va être modifiée comme ceci :</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-5.png"></p>
+
+<p>J'ai téléchargé la dernière version (2.2.0) <a href="http://www.couchbase.com/download">Couchbase Community Edition</a>.
+Je décompresse l'archive, l'installe puis lance <a href="http://www.couchbase.com/">Couchbase</a>.</p>
+
+<p>J'accède à la console d'administration : <code>http://127.0.0.1:8091/index.html</code> :</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-5a.png"></p>
+
+<p>Et là, sans aucune autre documentation, je me laisse guider en cliquant sur <code>SETUP</code>.</p>
+
+<p>A la page suivante, j'ai laissé les choix par défaut m'invitant à créer un nouveau cluster. J'ai modifié le paramètre <code>Per Server RAM Quota</code> avec la valeur 512 MB au lieu des 3 GB par défaut sur ma machine.</p>
+
+<p>Je laissé les paramètres par défaut et saisis un identifiant/mot de passe administrateur.</p>
+
+<p>Et là, j'ai l'écran suivant :</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-5b.png"></p>
+
+<p>J'ai du rouge. En tant que développeur Java, je suis éduqué pour y voir des erreurs. Je me lance alors dans une tentative de décryptage des couleurs de l'interface d'administration :</p>
+
+<ul>
+<li><p>Pourquoi la phrase <em>Total Allocated (512 MB)</em> est en rouge ? L'indicateur de progression est vert, la phrase <em>Unused 512 MB</em> est en vert. Je conclue qu'il s'agit probablement d'un rouge marquant la criticité d'une ressource et non d'une erreur.</p></li>
+<li><p>Les mots <em>Usable Free Space (O B)</em> en rouge m'inquiète un peu plus. Là encore, j'essai de me rassurer en me disant que <a href="http://www.couchbase.com/">Couchbase</a> doit probablement réserver de l'espace disque progressivement et comme je n'ai encore aucune donnée, aucun espace disque n'a encore été réservé.</p></li>
+<li><p>La 3ème indication en rouge est <em>Servers Down : 1</em>. J'ai souvent de l'imagination pour trouver les bons côtés des choses mais là, je n'ai aucune inspiration qui me vient. Je dois avoir un problème !</p></li>
+</ul>
+
+
+<p>Alors je clique sur ce message <em>Servers Down : 1</em>.</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-5c.png"></p>
+
+<p>Je décide de laisser en l'état et de compléter l'application pour voir si le client Couchbase a des difficultés à se connecter avec ce <em>Server Down : 1</em> ;)</p>
+
+<p>Pour communiquer avec Couchbase depuis l'application, nous allons utiliser la bibliothèque <a href="http://files.couchbase.com/maven2/couchbase/couchbase-client/">couchbase-client</a> accessible via le repository Maven de Couchbase <a href="http://files.couchbase.com/maven2/">http://files.couchbase.com/maven2/</a>. Il faudrait donc modifier le fichier <code>demo-webapp/pom.xml</code> comme <a href="https://raw.github.com/dadoonet/sql2nosql/03-couchbase-persistence/begin/demo-webapp/pom.xml">ceci</a> pour  ajouter la dépendance vers la librairie <a href="http://files.couchbase.com/maven2/couchbase/couchbase-client/">couchbase-client</a>.</p>
+
+<p>Ce client est simple d'utilisation, voici un exemple d'utilisation :</p>
+
+<p>``` java
+// Création de la liste des différents noeuds Couchbase
+List<URI> nodes = new ArrayList<URI>();
+nodes.add(URI.create("http://127.0.0.1:8091/pools"));</p>
+
+<p>// Création du client
+CouchbaseClient client = new CouchbaseClient(nodes, "default", "");</p>
+
+<p>// Récupération d'une donnée dont la clé est "MA_CLE"
+String person = (String)client.get("MA_CLE");
+```</p>
+
+<p>Créer le fichier <code>demo-webapp/src/main/java/fr/pilato/demo/sql2nosql/webapp/util/ConnectionManager.java</code> avec <a href="https://raw.github.com/dadoonet/sql2nosql/03-couchbase-persistence/end/demo-webapp/src/main/java/fr/pilato/demo/sql2nosql/webapp/util/ConnectionManager.java">ce contenu</a>.</p>
+
+<p>Créer le fichier <code>demo-webapp/src/main/java/fr/pilato/demo/sql2nosql/webapp/util/KeyUtil.java</code> avec <a href="https://raw.github.com/dadoonet/sql2nosql/03-couchbase-persistence/end/demo-webapp/src/main/java/fr/pilato/demo/sql2nosql/webapp/util/KeyUtil.java">ce contenu</a></p>
+
+<p>Créer le fichier <code>demo-webapp/src/main/java/fr/pilato/demo/sql2nosql/webapp/util/ViewUtil.java</code> avec <a href="https://raw.github.com/dadoonet/sql2nosql/03-couchbase-persistence/end/demo-webapp/src/main/java/fr/pilato/demo/sql2nosql/webapp/util/ViewUtil.java">ce contenu</a></p>
+
+<p>Compléter le fichier <code>demo-webapp/src/main/java/fr/pilato/demo/sql2nosql/webapp/PersonService.java</code> <a href="https://raw.github.com/dadoonet/sql2nosql/03-couchbase-persistence/end/demo-webapp/src/main/java/fr/pilato/demo/sql2nosql/webapp/PersonService.java">ce contenu</a>.</p>
+
+<p>Redémarrer l'application.</p>
+
+<p>J'obtiens une jolie stacktrace. Ah voilà quelque chose qui me parle !</p>
+
+<p>```
+Caused by: org.springframework.beans.BeanInstantiationException: Could not instantiate bean class [fr.pilato.demo.sql2nosql.webapp.PersonService]: Constructor threw exception; nested exception is com.couchbase.client.vbucket.config.ConfigParsingException: Number of buckets must be a power of two, > 0 and &lt;= 65536</p>
+
+<pre><code>at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:163)
+at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:87)
+at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1004)
+... 54 more
+</code></pre>
+
+<p>Caused by: com.couchbase.client.vbucket.config.ConfigParsingException: Number of buckets must be a power of two, > 0 and &lt;= 65536</p>
+
+<pre><code>at com.couchbase.client.vbucket.config.DefaultConfigFactory.parseEpJSON(DefaultConfigFactory.java:135)
+</code></pre>
+
+<p>```</p>
+
+<p>Euh finalement, ça ne me parle pas tant que ça ;)</p>
+
+<p>Je porte mon attention sur le message d'erreur <em>Number of buckets must be a power of two, > 0 and &lt;= 65536</em>. Après plusieurs investigations dans différents forums <a href="http://www.couchbase.com/forums/thread/number-buckets-must-be-power-two-0-and-0">là</a>, <a href="http://www.couchbase.com/forums/thread/number-buckets-must-be-power-two">là</a>, ou encore <a href="http://www.couchbase.com/issues/browse/MB-8332">là</a>. Je croise même un message de <a href="tugdual_grall">Tugdual</a> dans ces fils de discussion ;)</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-5d.png"></p>
+
+<p>Après avoir cliqué sur tous les menus et tous les boutons de l'interface d'administration, je ne parviens toujours pas à avancer. J'ai réussi au passage à me débarrasser du message d'avertissement <em>Fail Over Warning : At least two servers are required to provide replication!</em> en supprimant et recréant un <em>bucket</em>. Je comprends que j'ai eu ce message d'erreur car lors de l'initialisation de Couchbase, la case à cocher <em>Replicate</em> est cochée par défaut. Par contre impossible de me débarrasser de l'erreur <em>Server Down : 1</em>.</p>
+
+<p>J'ai essayé une version plus récente du client. Je remarque au passage que le client couchbase-client est disponible en fait dans le Repo Maven Central via la dépendance :</p>
+
+<p>``` xml
+<dependency></p>
+
+<pre><code>&lt;groupId&gt;com.couchbase.client&lt;/groupId&gt;
+&lt;artifactId&gt;couchbase-client&lt;/artifactId&gt;
+&lt;version&gt;1.2.2&lt;/version&gt;
+</code></pre>
+
+<p></dependency>
+```
+Quoiqu'il en soit, cela ne résoud pas le problème !</p>
+
+<p>Je décide alors de recommencer l'installation. Je n'ai pas trouvé un moyen de revenir à l'état initial via l'interface d'administration. J'arrête le serveur, je supprime tous les fichiers générés par Couchbase puis je démarre <a href="http://www.couchbase.com/">Couchbase</a>. Cette fois-ci je choisis 1024 MB pour la RAM, je désactive la réplication et je sélectionne un échantillon de données (<em>beer</em>). Et là, c'est magique plus de <em>Server Down : 1</em> !</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-5e.png"></p>
+
+<p>Je redémarre l'application, plus d'exception !</p>
+
+<p>Rechargement des données</p>
+
+<p><code>sh
+curl -XPOST http://localhost:8080/api/1/person/_init
+</code></p>
+
+<p>Les données sont accessibles via l'url <code>http://localhost:8080/api/1/person/</code>.</p>
+
+<p>Dans l'interface d'administration, à l'onglet <em>View</em>, il y a une vue <em>by_name</em> qui permet de visualiser quelques données. Oui les données ont bien été insérées dans <a href="http://www.couchbase.com/">Couchbase</a>.</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-5f.png"></p>
+
+<h2>Les écrans avec AngularJS et Twitter Bootstrap</h2>
+
+<p>Nous avons jusqu'à présent un backend qui renvoie des données au format JSON. Cette étape va consister à recréer les vues que nous avions au départ.</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-6.png"></p>
+
+<p>Pour ne pas trop alourdir cet article, je ne vais pas faire un cours sur AngularJS qui n'est pas le sujet principal de cette session ;)</p>
+
+<p>Vous pouvez directement retrouver les sources dans la branche <code>04-angular/end</code> ou bien les télécharger directement <a href="https://github.com/dadoonet/sql2nosql/archive/04-angular/end.zip">ici</a>.</p>
+
+<p>Redémarrer l'application.</p>
+
+<p>Les écrans sont de retour.</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-6a.png"></p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-6b.png"></p>
+
+<p>Il n'est pour le moment possible que d'effectuer des recherches par nom.</p>
+
+<h2>La recherche <em>full text</em></h2>
+
+<p>La recherche <em>full text</em> va être implémentée avec <a href="http://www.elasticsearch.org/">Elasticsearch</a>. L'idée principale est d'avoir les données répliquées de <a href="http://www.couchbase.com/">Couchbase</a> à <a href="http://www.elasticsearch.org/">Elasticsearch</a> qui va les indéxer. L'application <em>front end</em>, pour rechercher les données, va directement intéroger <a href="http://www.elasticsearch.org/">Elasticsearch</a>.</p>
+
+<p>Nous aurons à la fin de cette étape, l'architecture suivante :</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-7.png"></p>
+
+<p>Je télécharge <a href="https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.90.2.zip">Elasticsearch v0.90.2</a> et décompresser l'archive dans le répertoire de votre choix.</p>
+
+<p>J'installe le plugin Couchbase pour <a href="http://www.elasticsearch.org/">Elasticsearch</a> (version 1.1.0) via l'exécutable <code>bin/plugin(.bat)</code>.</p>
+
+<p><code>
+bin/plugin -install transport-couchbase -url http://packages.couchbase.com.s3.amazonaws.com/releases/elastic-search-adapter/1.1.0/elasticsearch-transport-couchbase-1.1.0.zip
+</code></p>
+
+<p>Dans le fichier <code>config/elasticsearch.yml</code>, je renseigne les paramètres :</p>
+
+<p><code>
+couchbase.username: Administrator
+couchbase.password: Administrator
+couchbase.maxConcurrentRequests: 256
+</code></p>
+
+<p>Je démarre <a href="http://www.elasticsearch.org/">Elasticsearch</a>.</p>
+
+<p><code>
+bin/elasticsearch -f
+</code></p>
+
+<p>Je crée un template <a href="http://www.elasticsearch.org/">Elasticsearch</a>.</p>
+
+<p>```
+curl -XPUT http://localhost:9200/_template/couchbase -d '
+{</p>
+
+<pre><code>"template" : "*",
+"order" : 10,
+"mappings" : {
+    "couchbaseCheckpoint" : {
+        "_source" : {
+            "includes" : ["doc.*"]
+        },
+        "dynamic_templates": [
+            {
+                "store_no_index": {
+                    "match": "*",
+                    "mapping": {
+                        "store" : "no",
+                        "index" : "no",
+                        "include_in_all" : false
+                    }
+                }
+            }
+        ]
+    },
+    "_default_" : {
+        "properties" : {
+            "meta" : {
+                "type" : "object",
+                "enabled" : false
+            }
+        }
+    }
+}
+</code></pre>
+
+<p>}
+'
+```</p>
+
+<p>Je crée un index pour person.</p>
+
+<p><code>
+curl -XPUT http://localhost:9200/person
+</code></p>
+
+<p>Je reviens à l'interface d'administration Couchbase : <code>http://127.0.0.1:8091/index.html</code>.</p>
+
+<p>Je clique sur l'onglet XDCR.</p>
+
+<p>Je crée un cluster de référence avec le bouton <code>Create Cluster Reference</code>.</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-7a.png"></p>
+
+<p>Je crée une réplication avec le bouton <code>Create Replication</code>.</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-7b.png"></p>
+
+<p>Et là dans mon cas, ça n'a pas fonctionné.</p>
+
+<p>Après quelques recherches, je suis tombé sur <a href="https://github.com/couchbaselabs/elasticsearch-transport-couchbase/issues/3">cette fil de discussion</a> qui conseille l'utilisation de la version 1.2.0 du plugin pour ma version de <a href="http://www.couchbase.com/">Couchbase</a>.</p>
+
+<p>Je désinstalle de l'ancienne version du plugin.
+<code>
+bin/plugin -remove transport-couchbase
+</code>
+J'installe la version 1.2.0 du plugin.
+<code>
+bin/plugin -install transport-couchbase -url http://packages.couchbase.com.s3.amazonaws.com/releases/elastic-search-adapter/1.2.0/elasticsearch-transport-couchbase-1.2.0.zip
+</code></p>
+
+<p>Je réessaie de créer la réplication et j'ai toujours la même erreur. Côté <a href="http://www.elasticsearch.org/">Elasticsearch</a>, je peux lire l'exception suivante dans les logs :</p>
+
+<p>```
+013-11-23 02:30:02,779][WARN ][org.eclipse.jetty.servlet.ServletHandler] Error for /pools/default/buckets
+java.lang.NoSuchMethodError: org.elasticsearch.cluster.metadata.MetaData.getIndices()Ljava/util/Map;</p>
+
+<pre><code>at org.elasticsearch.transport.couchbase.capi.ElasticSearchCouchbaseBehavior.getBucketsInPool(ElasticSearchCouchbaseBehavior.java:82)
+</code></pre>
+
+<p>```</p>
+
+<p>Je comprends que ma version d'<a href="http://www.elasticsearch.org/">Elasticsearch</a> n'est pas compatible avec la nouvelle version du plugin.</p>
+
+<p>J'ai trouvé le tableau de compatibilité suivant qui rend clair tous mes problèmes d'incompatibilité accessible <a href="https://github.com/couchbaselabs/elasticsearch-transport-couchbase">ici</a> :</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-7c.png"></p>
+
+<p><a href="tugdual_grall">Tugdual</a> et <a href="david_pilato">David</a> ont travaillé sur la ligne Plugin=1.1.0, Couchbase=2.0, ElasticSearch=0.90.2.</p>
+
+<p>Vu que j'ai une base <a href="http://www.couchbase.com/">Couchbase</a> qui fonctionne et que comme tout développeur j'aime bien les dernières versions, je vais télécharger <a href="https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.90.5.zip">ElasticSearch 0.90.5</a> et recommencer l'installation.</p>
+
+<p>J'obtiens toujours la même erreur lors de la création de la réplication même avec les dernières versions. Par un geste de désespoir je supprime et recrée le cluster de référence. Et là, la création de la réplication se fait sans problème !</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-7d.png"></p>
+
+<p>Mais... Il y a un petit message que je n'ai pas envie de voir <em>Last 10 errors</em>. Je clique sur ce message de couleur bleu.</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-7e.png"></p>
+
+<p>Là je ne sais pas trop quoi penser ;) La réplication ne se passe visiblement pas bien.</p>
+
+<p>Je décide de faire une courte pause, de télécharger la version 2.0.0 de Couchbase et de revenir à la version 0.90.2 d'<a href="http://www.elasticsearch.org/">Elasticsearch</a>.</p>
+
+<p>Je démarre la version 2.0.0 de <a href="http://www.couchbase.com/">Couchbase</a>, elle rentre en conflit avec ma version 2.2.0 installée précédemment car elles partagent le même répertoire de travail. Je déplace ce répertoire de travail et là plus de problème.</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-7f.png"></p>
+
+<p>Je réinjecte les données :</p>
+
+<p>```
+curl -XPOST http://localhost:8080/api/1/person/_init</p>
+
+<p>```</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-7g.png"></p>
+
+<p>Les données sont bien répliquées, on est passé de 1001 à 2001 comme prévu.</p>
+
+<p>Le client AngularJS sera modifié pour interroger directement <a href="http://www.elasticsearch.org/">Elasticsearch</a> pour la fonctionnalité de recherche. <a href="http://www.elasticsearch.org/">Elasticsearch</a> expose une API REST pour rechercher des données. Pour rechercher les personnes ayant 'Alix' dans leur nom ou prénom, il suffit d'accéder à l'adresse : <code>http://127.0.0.1:9200/person/_search?q=alix</code>.</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-7h.png"></p>
+
+<h2>Vos tableaux de bord les doigts dans le nez avec Kibana</h2>
+
+<p><a href="http://www.elasticsearch.org/overview/kibana/">Kibana</a> est une application web qui permet de visualiser les données indexées dans <a href="http://www.elasticsearch.org/">Elasticsearch</a> suivant des critères.</p>
+
+<p>A l'issue de cette étape, l'architecture de l'application va ressembler à ceci :</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-8.png"></p>
+
+<p>J'installe le plugin Kibana pour <a href="http://www.elasticsearch.org/">Elasticsearch</a>.</p>
+
+<p><code>
+bin/plugin -install elasticsearch/kibana
+</code></p>
+
+<p>En lançant <a href="http://www.elasticsearch.org/overview/kibana/">Kibana</a>, <code>http://localhost:9200/_plugin/kibana/</code>, j'obtiens ceci :</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-8a.png"></p>
+
+<p>Je choisis de ne pas tenter l'aventure de la mise à jour. Je clique sur le lien <code>src</code> et j'accède à une page d'introduction.</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-8b.png"></p>
+
+<p>Je clique sur <code>Sample Dashboard</code>.</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-8c.png"></p>
+
+<p>Il est possible de filtrer, visualiser les données suivant plusieurs axes d'analyse. Si vous souhaitez jouer avec <a href="http://www.elasticsearch.org/overview/kibana/">Kibana</a>, il y a une démo en ligne accessible à l'adresse <a href="http://demo.kibana.org/#/dashboard">http://demo.kibana.org/#/dashboard</a> :</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-demo-8d.png"></p>
+
+<h2>Les slides de Devoxx Belgique 2013</h2>
+
+<script async class="speakerdeck-embed" data-id="95cfa1f02edb0131128806fa6ec08ea7" data-ratio="1.72972972972973" src="http://roddet.github.com//speakerdeck.com/assets/embed.js"></script>
+
+
+<h2>Et pour conclure ?</h2>
+
+<p>Comme vous l'avez surement constaté, cette soirée du JUG Nantes a été riche en contenu.</p>
+
+<p>Dans le monde des bases de données NoSQL orientées document, <a href="http://www.couchbase.com/">Couchbase</a> a un concurrent direct <a href="http://www.mongodb.org/">MongoDB</a>. Un participant va poser la question de savoir quelles étaient les différences de fond entre ces deux bases de données. <a href="https://twitter.com/tgrall">Tugdual</a>, évangéliste <a href="http://www.couchbase.com/">Couchbase</a>, va donner les éléments de réponse suivants :</p>
+
+<ul>
+<li><p><a href="http://www.couchbase.com/">Couchbase</a> est conçu pour faciliter la distribution des données, la création de nombreux clusters de données via une interface d'administration. Il est donc plus indiqué pour des systèmes nécessitant de traitement de grand volumes de données distribuées sur plusieurs machine. Créer un cluster avec <a href="http://www.mongodb.org/">MongoDB</a> ne serait pas une tâche aussi simple que dans <a href="http://www.couchbase.com/">Couchbase</a>.</p></li>
+<li><p><a href="http://www.mongodb.org/">MongoDB</a> est plus riche et plus facile à requêter que <a href="http://www.couchbase.com/">Couchbase</a>. Il dispose d'une API très puissante pour extraire des données. C'est pour cette raison qu'il est conseillé de coupler <a href="http://www.couchbase.com/">Couchbase</a> à <a href="http://www.elasticsearch.org/">Elasticsearch</a> pour disposer d'une plus grande puissance d'extraction/analyse de données.</p></li>
+</ul>
+
+
+<p>Au regard de la complémentarité des deux technologies (<a href="http://www.couchbase.com/">Couchbase</a> &amp; <a href="http://www.elasticsearch.org/">Elasticsearch</a>), on peut se demander <em>A quand le rachat de l'un par l'autre ?</em>. <a href="https://twitter.com/dadoonet">David</a> va affirmer, hors séance, que ce n'était pas à sa connaissance à l'ordre du jour. Il y voit en <a href="http://www.elasticsearch.org/">Elasticsearch</a> un produit complet au point que certains clients n'hésiteraient pas à l'utiliser directement en tant que base de données.</p>
+
+<p>Bien évidemment, si vous souhaitez mettre en oeuvre ces outils, prenez des versions compatibles entre elles et n'hésitez pas à recommencer quand vous êtes dans une impasse ;)</p>
+
+<p>Je ne sais pas pour vous mais je suis impatient d'être à la prochaine soirée du JUG Nantes : <a href="http://nantesjug.org/#/events/2013_12_04">Grails dans les tranchés + Java 8</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Soirée JUG Nantes : Du SQL au NoSQL en moins d'une heure (Partie 1)]]></title>
+    <link href="http://roddet.github.com/2013/11/nantesjug-novembre-part1/"/>
+    <updated>2013-11-10T09:30:00-05:00</updated>
+    <id>http://roddet.github.com/2013/11/nantesjug-novembre-part1</id>
+    <content type="html"><![CDATA[<p>Le 4 novembre dernier, j'ai eu l'opportunité de participer à une soirée organisée par le <a href="http://nantesjug.org/">JUG Nantes</a> sous le thème "Du SQL au NoSQL en moins d'une heure".</p>
+
+<h2>Une salle pleine !</h2>
+
+<p>La plus grande salle de l'<a href="http://www.epsi.fr/Campus/Campus-de-Nantes#">EPSI Nantes</a> était un peu petite face à l'engouement suscité par l'événement.</p>
+
+<p>C'est le premier événement JUG Nantes auquel j'assiste depuis la rentrée. Oui c'est avec beaucoup de regrêts que je n'ai pas pu être présent à la première soirée de cette saison 2013-2014 :) Je remarque aussi que le public a changé, il y a beaucoup plus d'étudiants comparé à la saison précédente. Ceci est probablement lié au fait que l'<a href="http://www.epsi.fr/Campus/Campus-de-Nantes#">EPSI Nantes</a> accueille l'événement.</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-salle-pleine.jpg"></p>
+
+<p>Le JUG de Nantes va nous offrir 2 sessions :</p>
+
+<ul>
+<li>1 Quickie <em>Amélioration de la qualité du code par restriction du langage</em></li>
+<li>1 talk <em>Elastifiez votre application : du SQL au NoSQL en moins d'une heure</em></li>
+</ul>
+
+
+<h2>Le quickie <em>Amélioration de la qualité du code</em></h2>
+
+<p><a href="https://twitter.com/mercury_wood/">Hugo Wood</a> va nous présenter son retour d'expérience sur l'amélioration de la qualité du code. Il a appris le langage Java principalement en autodidacte avec des livres et travaille récemment en société de service où il côtoie beaucoup de <em>legacy</em> (les connaisseurs ne seront probablement pas surpris ;)).</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-hugo-wood.jpg"></p>
+
+<h2>C'est quoi la qualité du code ?</h2>
+
+<p>Hugo a commencé par poser les bases de la qualité du code.</p>
+
+<p>Par quoi reconnaît-on un code de bonne qualité ? => Par sa maintenabilité. Et pour avoir un code maintenable, il faut qu'il soit modulaire et testable.</p>
+
+<h2>Les méthodes privées => cacher la misère ?</h2>
+
+<p>Vous l'avez surement déjà remarqué, les méthodes privées d'une classe ont tendance à se multiplier avec le passage d'un collègue qui vous dit avec fierté que le code n'était pas lisible et qu'il a fait du <em>refactoring</em>. Il avait trouvé une méthode publique trop <em>grosse</em>, vous savez ce genre de méthode qui ne se termine pas avec 2 <em>scrolls</em> de votre souris. Il a alors  extrait (merci les IDE) des parties de code de la méthode en plusieurs méthodes privées.</p>
+
+<p>La lisibilité de la méthode s'est peut-être améliorée mais a t-on vraiment progressé sur la maintenabilité après une telle opération ?</p>
+
+<p>La réponse est Non. En effet, cette opération conduit généralement à 2 catégories de méthodes privées :</p>
+
+<ul>
+<li><p>1 méthode qui n'interagit avec aucun champ de la classe. Que fait-elle alors dans cette classe ? Elle pourrait être <em>static</em> votre code fonctionnerait toujours. Il convient donc de l'extraire dans une nouvelle classe.</p></li>
+<li><p>1 méthode privée qui modifie la valeur d'un champ de la classe. Cela conduit souvent à perdre le contrôle rationnel de ce  champ. En effet, lorsque vous lirez votre méthode publique à <em>refactorer</em>, vous verrez l'appel à cette nouvelle méthode. Vous ne vous rendrez pas forcément compte qu'il modifie un champ et que la suite de votre algorithme dépend fortement de l'exécution de cette nouvelle méthode. Comme dit Hugo, un <em>parfum de variable globale</em>... La bonne option est donc d'extraire ce champ et cette méthode dans une nouvelle classe.</p></li>
+</ul>
+
+
+<p>Etes-vous prêt à arrêter de cacher la misère en vous "privant" des méthodes privées ?</p>
+
+<h2>L'héritage de classe => notre ennemi ?</h2>
+
+<p>Ceux qui travaillent au quotidien avec une grande volumétrie de code, l'admettront aisément : l'héritage de classe, quand il est mal utilisé pose quelques difficultés de maintenance :</p>
+
+<ul>
+<li>Comment tester une classe fille sans effet de bord de la classe mère ?</li>
+<li>Comment tester unitairement une classe abstraite sans ses classes concrètes ?</li>
+<li>Utiliser des champs <em>protected</em> d'une classe mère dans une classe fille, une encapsulation à plusieurs vitesses ?</li>
+</ul>
+
+
+<p>L'héritage de classe est malheureusement souvent utilisé, à tort, pour factoriser du code. Il est alors facile de se retrouver par exemple avec :</p>
+
+<ul>
+<li>Une méthode dont l'exécution conduit à naviguer à travers plusieurs niveaux de la hiérarchie des classes</li>
+<li>Une méthode vide (avec un commentaire <em>// ne rien faire</em>) dans certaines classes pour un traitement à ne pas effectuer dans des cas particuliers</li>
+</ul>
+
+
+<p>Hugo va préconiser l'utilisation des interfaces et de la composition pour traiter nos besoins courants. Il va l'illustrer en proposant un <em>refactoring</em> possible de la classe abstraite <em>AbstractCollection</em> du JDK avec une interface et la composition (illustration présente dans ses slides).</p>
+
+<p>Etes-vous prêt à ne plus utiliser l'héritage de classe ?</p>
+
+<h2>Les slides du Quickie</h2>
+
+<iframe src="http://www.slideshare.net/slideshow/embed_code/27900604" width="700" height="569" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
+
+
+<p>Vous l'aurez compris, Hugo encourage une <em>restriction</em> de l'utilisation du langage Java pour améliorer la qualité de du code. Il argumente que cela permettra aux débutants de commettre moins d'erreurs de <em>design</em> et aux expérimentés d'agir avec un meilleur discernement.</p>
+
+<h2>La suite ! La suite ! La suite !</h2>
+
+<p>Après ce quickie, <a href="https://twitter.com/tgrall">Tugdual Grall</a> et <a href="https://twitter.com/dadoonet">David Pilato</a> ont pris le relais pour le talk <em>Elastifiez votre application : du SQL au NoSQL en moins d'une heure</em>. A travers un exemple de code, ils vont nous montrer comment passer du SQL au NoSQL avec <a href="http://www.couchbase.com/">CouchBase</a> et <a href="http://www.elasticsearch.org/">Elasticsearch</a>.</p>
+
+<p>A suivre dans la 2ème partie de cet article dans les prochains jours...</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: gradle | Rossi Oddet]]></title>
+  <link href="http://roddet.github.com/blog/categories/gradle/atom.xml" rel="self"/>
+  <link href="http://roddet.github.com/"/>
+  <updated>2014-05-21T01:43:46-04:00</updated>
+  <id>http://roddet.github.com/</id>
+  <author>
+    <name><![CDATA[Rossi Oddet]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Devoxx France 2013 # Tools In Action # Gradle en 30 minutes pour tout changer]]></title>
+    <link href="http://roddet.github.com/2013/04/devoxxfr13-tools-in-action-gradle-en-30-min/"/>
+    <updated>2013-04-04T13:52:00-04:00</updated>
+    <id>http://roddet.github.com/2013/04/devoxxfr13-tools-in-action-gradle-en-30-min</id>
+    <content type="html"><![CDATA[<p>Vous pouvez retrouvez la description de la session <a href="http://www.devoxx.com/display/FR13/Gradle%2C+30+minutes+pour+tout+changer">sur le site de Devoxx France</a>.</p>
+
+<h2>Pourquoi j'ai choisi cette session ?</h2>
+
+<p>Gradle est une alternative choisie par des grands acteurs comme les équipes d'Hibernate, de Grails etc...
+Je souhaitais à travers cette session découvrir Gradle et surtout voir jusqu'à quel niveau de maturité était ce produit.</p>
+
+<h2>Le présentateur</h2>
+
+<p>Sébastien Cogneau <a href="https://twitter.com/SCogneau">@SCogneau</a> (<a href="http://www.devoxx.com/display/FR13/Sebastien+Cogneau">Bio</a>) contribue le week end au projet Gradle et a fait migrer la plupart des projets d'un DSI à Gradle.</p>
+
+<h2>Gradle en quelques mots</h2>
+
+<p><img class="left" src="http://blog.roddet.com/images/devoxxfr13/gradle/gradle_logo.gif"></p>
+
+<ul>
+<li>Un DSL en groovy</li>
+<li>Extensible</li>
+<li>Possibilité de réutiliser des tâches ANT</li>
+<li>Réutilise les conventions Maven</li>
+<li>Compatible avec Ivy et Maven</li>
+</ul>
+
+
+<p>Le projet est composé de 60% de code java et 40% de code groovy</p>
+
+<h2>Live Coding</h2>
+
+<p>La session consistait à passer de Maven à Gradle avec un projet exemple : <a href="http://dddsample.sourceforge.net/">DDDSample</a>.</p>
+
+<h3>Etape 1 : Récupérer les sources du projet</h3>
+
+<p>Les sources sont disponibles <a href="http://dddsample.sourceforge.net/download.html">ici</a> ou directement <a href="http://sourceforge.net/projects/dddsample/files/latest/download?source=files">là</a> puis décompresser l'archive récupéré (dddsample-1.1.0-src.zip).</p>
+
+<p>Test Maven
+<code>
+mvn install
+</code></p>
+
+<p><code>
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+</code>
+Magnifique ce Maven :)</p>
+
+<h3>Etape 2 : Création du fichier build.gradle</h3>
+
+<p>Il s'agit du fichier par défaut de Gradle, l'équivalent du pom.xml de Maven. Il est possible d'utiliser un fichier nommé autrement.</p>
+
+<p>Voici une première configuration qui permet de compiler le projet avec ses dépendances et de générer un JAR.</p>
+
+<p>``` groovy
+apply plugin : 'java'</p>
+
+<p>repositories {
+   mavenCentral()
+}</p>
+
+<p>dependencies {</p>
+
+<pre><code>compile 'org.springframework:spring-webmvc:2.5.6'
+compile 'org.springframework:spring-web:2.5.6'
+compile 'org.springframework:spring-jms:2.5.6'
+compile 'org.springframework:spring-jdbc:2.5.6'
+compile 'org.springframework:spring-orm:2.5.6'
+compile 'org.springframework:spring-aop:2.5.6'
+compile 'org.hibernate:hibernate-core:3.3.1.GA'
+compile 'org.slf4j:slf4j-api:1.5.6'
+compile 'org.slf4j:slf4j-log4j12:1.5.6'
+compile 'org.slf4j:jcl-over-slf4j:1.5.6'
+compile 'javassist:javassist:3.8.0.GA'
+compile 'org.hibernate:hibernate-annotations:3.4.0.GA'
+compile 'commons-lang:commons-lang:2.3'
+compile 'commons-io:commons-io:1.3.1'
+compile 'commons-dbcp:commons-dbcp:1.2.2'
+compile 'hsqldb:hsqldb:1.8.0.7'
+compile 'javax.servlet:servlet-api:2.5'
+compile 'taglibs:standard:1.1.2'
+compile 'javax.servlet:jstl:1.1.2'
+compile('org.apache.activemq:activemq-core:5.2.0') {
+    exclude module: "commons-logging"
+}
+compile 'org.apache.xbean:xbean-spring:3.4.3'
+compile 'org.apache.cxf:cxf-rt-frontend-jaxws:2.1.3'
+compile 'org.apache.cxf:cxf-rt-transports-http:2.1.3'
+
+runtime 'opensymphony:sitemesh:2.3'
+
+testCompile 'org.easymock:easymock:2.3'
+testCompile 'org.springframework:spring-test:2.5.6'
+testCompile 'junit:junit:4.4'
+</code></pre>
+
+<p>}
+```</p>
+
+<h3>Etape 3 : lancement du build</h3>
+
+<p><code>
+gradle clean build
+</code><br/>
+Le clean n'est à appliquer que à la première compile, le reste du temps "gradle build" suffit.
+Gradle offre une bonne gestion de la compilation incrémental.</p>
+
+<h3>Etape 4 : Voir la liste des tâches disponibles</h3>
+
+<p><code>
+gradle tasks
+</code></p>
+
+<p>Voici le résultat</p>
+
+<p>```
+:tasks</p>
+
+<hr />
+
+<h2>All tasks runnable from root project</h2>
+
+<h2>Build tasks</h2>
+
+<p>assemble - Assembles the outputs of this project.
+build - Assembles and tests this project.
+buildDependents - Assembles and tests this project and all projects that depend on it.
+buildNeeded - Assembles and tests this project and all projects it depends on.
+clean - Deletes the build directory.
+jar - Assembles a jar archive containing the main classes.</p>
+
+<h2>Documentation tasks</h2>
+
+<p>javadoc - Generates Javadoc API documentation for the main source code.</p>
+
+<h2>Help tasks</h2>
+
+<p>dependencies - Displays all dependencies declared in root project 'dddsample-1.1.0'.
+dependencyInsight - Displays the insight into a specific dependency in root project 'dddsample-1.1.0'.
+help - Displays a help message
+projects - Displays the sub-projects of root project 'dddsample-1.1.0'.
+properties - Displays the properties of root project 'dddsample-1.1.0'.
+tasks - Displays the tasks runnable from root project 'dddsample-1.1.0' (some of the displayed tasks may belong to subprojects).</p>
+
+<h2>Verification tasks</h2>
+
+<p>check - Runs all checks.
+test - Runs the unit tests.</p>
+
+<h2>Rules</h2>
+
+<p>Pattern: build<ConfigurationName>: Assembles the artifacts of a configuration.
+Pattern: upload<ConfigurationName>: Assembles and uploads the artifacts belonging to a configuration.
+Pattern: clean<TaskName>: Cleans the output files of a task.</p>
+
+<p>To see all tasks and more detail, run with --all.
+```</p>
+
+<h3>Etape 5 : Packaging WAR</h3>
+
+<p>Modifier le fichier "build.gradle" en remplaçant "apply plugin :'java'" par :</p>
+
+<p><code>
+apply plugin : 'war'
+</code></p>
+
+<p>Ce changement suffit à générer un WAR lors d'un "gradle build".</p>
+
+<h3>Etape 6 : Intégrer Jetty</h3>
+
+<p>Modifier le fichier "build.gradle"</p>
+
+<p><code>
+apply plugin:'jetty'
+</code></p>
+
+<p>Lancer le serveur Jetty</p>
+
+<p><code>
+gradle jettyRunWar
+</code></p>
+
+<p>L'application est accessible via l'URL : http://localhost:8080/dddsample-1.1.0/</p>
+
+<p><img class="center" src="http://blog.roddet.com/images/devoxxfr13/gradle/dddsample.png" width="500"></p>
+
+<h3>Etape 7 : Configurer sonar</h3>
+
+<p>Ajouter</p>
+
+<p>``` groovy
+...
+apply plugin:'sonar-runner'
+...
+configurations{</p>
+
+<pre><code>codeCoverage
+</code></pre>
+
+<p>}
+...
+sonarRunner{</p>
+
+<pre><code>sonarProperties{
+    property "sonar.jacoco.reportPath", "${buildDir}/codeCoverage.exec"
+}
+</code></pre>
+
+<p>}
+...
+dependencies {</p>
+
+<pre><code>...
+codeCoverage group: 'org.jacoco', name: 'org.jacoco.agent', version: '0.6.2.201302030002', classifier: 'runtime'
+</code></pre>
+
+<p>}</p>
+
+<p>test{</p>
+
+<pre><code>jvmArgs "-javaagent:${configurations.codeCoverage.asPath}=destfile=${buildDir}/codeCoverage.exec,includes=se.citerus.*"
+</code></pre>
+
+<p>}</p>
+
+<p>task wrapper(type:Wrapper){</p>
+
+<pre><code>gradleVersion="1.5-rc1"
+</code></pre>
+
+<p>}
+```</p>
+
+<p>Générer le wrapper</p>
+
+<p><code>
+gradle wrapper
+</code></p>
+
+<p>Cette commande génère les exécutables (gradle,gradlew,gradlew.bat) pour s'interfacer avec jenkins. L'exécutable généré permet de dérouler un build sans explicitement installer Gradle sur une machine.</p>
+
+<h3>Etape 8 : Intégrer à Jenkins</h3>
+
+<p>Le plugin <a href="https://wiki.jenkins-ci.org/display/JENKINS/Gradle+Plugin">Gradle pour Jenkins</a> a été utilisé.</p>
+
+<p>Deux façons de le mettre en oeuvre :</p>
+
+<ul>
+<li>soit avec une installation sur la même machine que Jenkins et une configuration Système</li>
+<li>soit avec l'utilisation du wrapper et là aucun besoin d'installer Gradle</li>
+</ul>
+
+
+<p>Le build est paramétré avec :</p>
+
+<p><code>
+clean build sonarRunner
+</code></p>
+
+<p>Malheureusement à cette étape...FAILED...impossible de charger une classe de Gradle. Le présentateur avait fait une mise à jour le matin même, surprise surprise... Mais nous avons compris le principe et l'effet démo est là :)</p>
+
+<h3>Etape 9 : Créer une tâche</h3>
+
+<p>Il est facile de créer une tâche avec Gradle.</p>
+
+<p>Exemple :</p>
+
+<p>``` groovy
+task hello(type:Exec){</p>
+
+<pre><code>description "tache pour devoxx 2013"
+group "devoxx"
+dependsOn wrapper
+executable "echo"
+args "Avez-vous des questions ?"
+</code></pre>
+
+<p>}
+```</p>
+
+<p>Grâce à l'attribut "dependsOn", on peut gérer l'ordonnancement des tâches. Ici "wrapper" va être exécuté avant "hello".</p>
+
+<p>Lancer la nouvelle tâche :</p>
+
+<p><code>
+gradle hello
+</code></p>
+
+<p>On obtient :</p>
+
+<p>```
+:wrapper UP-TO-DATE
+:hello
+Avez-vous des questions ?</p>
+
+<p>BUILD SUCCESSFUL</p>
+
+<p>Total time: 5.781 secs
+```</p>
+
+<h2>Questions/réponses</h2>
+
+<h3>Quel niveau d'intégration avec les IDE ?</h3>
+
+<ul>
+<li><a href="http://www.springsource.org/sts">Spring Tools Suite</a> Ok</li>
+<li><a href="https://netbeans.org/">Netbeans</a> Ok dans les version récentes</li>
+<li><a href="http://www.jetbrains.com/idea/">IntelliJ IDEA</a> offre la meilleur intégration</li>
+</ul>
+
+
+<h3>Y a t-il un équivalent du plugin "release" de Maven ?</h3>
+
+<p>Non, pas d'équivalent de release plugin.</p>
+
+<h3>Peut-on gérer des sous-modules ?</h3>
+
+<p>Oui</p>
+
+<h2>Le code complet sur Github</h2>
+
+<p><a href="https://github.com/scogneau/devoxxfr2013">https://github.com/scogneau/devoxxfr2013</a></p>
+
+<h2>Bilan</h2>
+
+<p>Excellente session pour découvrir Gradle en 30 min chrono. Ca donne envie d'en savoir un peu plus.</p>
+]]></content>
+  </entry>
+  
+</feed>

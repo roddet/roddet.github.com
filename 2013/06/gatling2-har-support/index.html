@@ -1,0 +1,388 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Gatling 2 : Support du format HAR - Rossi Oddet</title>
+  <meta name="author" content="Rossi Oddet">
+
+  
+  <meta name="description" content="Gatling 2 introduit le support du format HAR ! Super&#8230;:\ Oui mais en fait c&#8217;est quoi ce format HAR ? Le Format HTTP Archive (HAR) est un &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://roddet.github.com/2013/06/gatling2-har-support">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Rossi Oddet" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-32190657-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>	
+  <h1><a href="/">Rossi Oddet</a></h1>
+  
+    <h2>Blog d'un artisan développeur</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:roddet.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/events">Evénements</a></li>
+  <li><a href="/viededev">Vie de Développeur</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Gatling 2 : Support Du Format HAR</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-10T22:05:00-04:00" pubdate data-updated="true">Jun 10<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Gatling 2 introduit le support du format HAR ! Super&#8230;:\</p>
+
+<h2>Oui mais en fait c&#8217;est quoi ce format HAR ?</h2>
+
+<blockquote><p>Le Format HTTP Archive (HAR) est un format ouvert destiné à l&#8217;export et l&#8217;échange de données collectées par des outils de monitoring HTTP.<br/>&#8230;<br/>Le Format HTTP Archive permet de sauvegarder et d&#8221;échanger le &#8220;détail de la chronologie de chargement d&#8217;une page WEB&#8221;.</p><footer><strong>Wikipédia</strong> <cite><a href='http://fr.wikipedia.org/wiki/Format_HTTP_Archive'>fr.wikipedia.org/wiki/&hellip;</a></cite></footer></blockquote>
+
+
+<p>En résumé, il s&#8217;agit d&#8217;un fichier au format JSON (ou XML) qui contient les différents appels effectués vers un serveur web.</p>
+
+<h2>Comment peut-on créer un fichier HAR ?</h2>
+
+<h3>Avec Chrome</h3>
+
+<ul>
+<li>Lancer les outils de développement Chrome</li>
+<li>Se positionner à l&#8217;onglet Network</li>
+<li>Effectuer une navigation à travers plusieurs pages web ou recharger simplement la page courante.</li>
+<li>Effectuer un clic droit sur une des requêtes. 2 options nous intéressent :
+
+<ul>
+<li><em>Copy All as HAR</em> : faire un export dans le presse-papier que nous pourrons coller dans un fichier</li>
+<li><em>Save as HAR with Content</em> : enregistrement dans un fichier du HAR</li>
+</ul>
+</li>
+</ul>
+
+
+<p><img class="center" src="/images/gatling2/har/gatling2_har_chrome_export.png"></p>
+
+<h3>Avec Firefox</h3>
+
+<p>Vous pouvez installer les extensions suivantes :</p>
+
+<ul>
+<li><a href="https://addons.mozilla.org/en-US/firefox/addon/firebug/">Firebug</a> : outil pour développeur web</li>
+<li><a href="https://getfirebug.com/releases/netexport/">NetExport</a> : une extension de Firebug permettant d&#8217;effectuer un export de l&#8217;activité réseau au format HAR</li>
+</ul>
+
+
+<p><img class="center" src="/images/gatling2/har/gatling2_har_firefox_export.png"></p>
+
+<h3>Internet Explorer</h3>
+
+<p>Il est possible de faire un export HAR depuis IE9.</p>
+
+<p><img class="center" src="/images/gatling2/har/gatling2_har_ie_export.png"></p>
+
+<p>Petite surprise : c&#8217;est du XML et non du JSON&#8230;</p>
+
+<h2>Que contient un fichier HAR ?</h2>
+
+<p>Vous pouvez télécharger un exemple de fichier HAR <a href="/images/gatling2/har/www.ubuntu.com.har">JSON</a> ou <a href="/images/gatling2/har/www.ubuntu.com.xml">XML</a>.</p>
+
+<p>On y trouve les différentes requêtes/réponses échangées entre le navigateur et un serveur web.</p>
+
+<h2>Et Gatling 2 dans tout ça ?</h2>
+
+<p>Gatling permet de créer une simulation à partir d&#8217;un fichier HAR via le &#8220;recorder&#8221;. Par contre, n&#8217;essayeZ pas d&#8217;importer le format XML généré par IE, ça ne fonctionne pas et je n&#8217;envoudrai pas le recorder pour cela&#8230;:)</p>
+
+<p>Pour importer un fichier HAR :</p>
+
+<ul>
+<li>Lancer le recorder ([GATLING_HOME]/bin/recorder)</li>
+<li>Sélectionner le mode &#8220;HAR Converter&#8221;</li>
+<li>Saisir/sélectionner le fichier HAR à importer</li>
+<li>Remplir les autres informations (nom de la simulation, package, répertoire de sortie)</li>
+<li>Cliquer sur &#8220;start&#8221;</li>
+</ul>
+
+
+<p><img class="center" src="/images/gatling2/har/gatling2_har_recorder_import.png"></p>
+
+<p>Une simulation est alors créée dans le répertoire de sortie spécifié.</p>
+
+<p>Il ne reste plus qu&#8217;à faire un peu de refactoring.</p>
+
+<h2>Les avantages</h2>
+
+<p>Cette fonctionnalité facilite l&#8217;utilisation du recorder. En effet :</p>
+
+<ul>
+<li>Il n&#8217;est plus nécessaire de configurer un proxy Http</li>
+<li>L&#8217;enregistrement du scénario se fait avec des outils que nous avons l&#8217;habitude d&#8217;utiliser (Chrome pour moi, Firebug pour d&#8217;autres)</li>
+<li>Il est possible de récupérer des scénarios d&#8217;autres outils comme sélénium en les jouant dans un navigateur qui permet un export HAR</li>
+</ul>
+
+
+<h2>Les inconvénients</h2>
+
+<p>Il y a tout de même quelques inconvénients par rapport au mode &#8220;HTTP Proxy&#8221; :</p>
+
+<ul>
+<li>On ne peut plus ajouter des &#8220;tags&#8221; qui permettent d&#8217;introduire des commentaires pour bien séparer les différentes étapes du scénario</li>
+<li>Le script généré peut comporter des erreurs de compilation (facile à résoudre). Le cas que j&#8217;ai systématiquement avec Gatling 2.0.0-M2 concerne les entêtes avec la propriété &#8220;If-None-Match&#8221; qui peut se présenter comme suit dans le fichier HAR :</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;If-None-Match&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="s2">&quot;\&quot;38394ec8941af055543888383adadc2f\&quot;&quot;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Sa traduction en script donne :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">val</span> <span class="n">headers_4</span> <span class="k">=</span> <span class="nc">Map</span><span class="o">(</span>
+</span><span class='line'>      <span class="o">...</span>
+</span><span class='line'>      <span class="s">&quot;If-None-Match&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;&quot;</span><span class="mi">38394</span><span class="n">ec8941af055543888383adadc2f</span><span class="s">&quot;&quot;</span><span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Pour corriger l&#8217;erreur, on peut procéder comme suit :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">val</span> <span class="n">headers_4</span> <span class="k">=</span> <span class="nc">Map</span><span class="o">(</span>
+</span><span class='line'>      <span class="o">...</span>
+</span><span class='line'>      <span class="s">&quot;If-None-Match&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;&quot;&quot;38394ec8941af055543888383adadc2f&quot;&quot;&quot;</span><span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Mon avis</h2>
+
+<p>La possibilité d&#8217;importer des fichiers HAR est une fonctionnalité intéressante et je compte désormais la privilégier dans mon utilisation du recorder.</p>
+
+<h2>Liens utiles</h2>
+
+<ul>
+<li><a href="http://www.softwareishard.com/blog/har-adopters/">La liste des outils supportant le format HAR</a></li>
+<li><a href="http://www.softwareishard.com/blog/har-12-spec/">Les spécifications HAR v1.2</a></li>
+<li><a href="http://gatling-tool.org/">Télécharger Gatling 2</a></li>
+<li><a href="https://github.com/excilys/gatling/wiki/Gatling-2">Toutes les nouveautés Gatling 2</a></li>
+</ul>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Rossi Oddet</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-10T22:05:00-04:00" pubdate data-updated="true">Jun 10<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/gatling/'>gatling</a>, <a class='category' href='/blog/categories/har/'>har</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://roddet.github.com/2013/06/gatling2-har-support/" data-via="rossioddet" data-counturl="http://roddet.github.com/2013/06/gatling2-har-support/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2013/04/stereolux-workshop-html5/" title="Previous Post: GDG Nantes & Stereolux : Workshop HTML5">&laquo; GDG Nantes & Stereolux : Workshop HTML5</a>
+      
+      
+        <a class="basic-alignment right" href="/2013/06/gatling2-new-inject-api/" title="Next Post: Gatling 2 : La nouvelle API d'injection">Gatling 2 : La nouvelle API d'injection &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Rossi Oddet</h1>
+  <br/>
+  <table>
+  	<tr><td width="30%"><img src="/images/photo.jpeg" width="75"/></td>
+  		<td>&nbsp;&nbsp;</td>
+    <td width="70%"> <p>Développeur, Blogger et passionné par les communautés IT.</p></td></tr>
+</table>
+</section>
+<a class="twitter-timeline" href="https://twitter.com/rossioddet" data-widget-id="314511007521312768">Tweets by @rossioddet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Rossi Oddet -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogroddet';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://roddet.github.com/2013/06/gatling2-har-support/';
+        var disqus_url = 'http://roddet.github.com/2013/06/gatling2-har-support/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

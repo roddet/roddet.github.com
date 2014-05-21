@@ -1,0 +1,363 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Scala IO 2013 => Pimp my GC - du Scala supersonique - Rossi Oddet</title>
+  <meta name="author" content="Rossi Oddet">
+
+  
+  <meta name="description" content="Présentateur Pierre Laporte, consultant Java/Scala chez Xebia France. Twitter : @pingtimeout
+Blog : http://www.pingtimeout.fr
+Sa bio sur Scala IO
+La &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://roddet.github.com/2013/10/scalaio-2013-pimp-my-gc-scala-supersonique">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Rossi Oddet" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-32190657-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>	
+  <h1><a href="/">Rossi Oddet</a></h1>
+  
+    <h2>Blog d'un artisan développeur</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:roddet.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/events">Evénements</a></li>
+  <li><a href="/viededev">Vie de Développeur</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Scala IO 2013 => Pimp My GC - Du Scala Supersonique</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-29T09:30:00-04:00" pubdate data-updated="true">Oct 29<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>Présentateur</h2>
+
+<p><img class="left" src="/images/scalaio2013/speaker-pierre-laporte.png">
+Pierre Laporte, consultant Java/Scala chez Xebia France.</p>
+
+<ul>
+<li>Twitter : <a href="https://twitter.com/pingtimeout">@pingtimeout</a></li>
+<li>Blog : <a href="http://www.pingtimeout.fr">http://www.pingtimeout.fr</a></li>
+<li>Sa bio sur <a href="http://scala.io/speakers/pierre-laporte.html">Scala IO</a></li>
+<li>La description de <a href="http://scala.io/events/pimp-my-gc-du-scala-supersonique.html">sa session ScalaIO</a></li>
+</ul>
+
+
+<br><br><br>
+
+
+<h2>Une photo souvenir</h2>
+
+<p><img class="left" src="/images/scalaio2013/pierre-laporte-pimp-my-gc-1.jpg"></p>
+
+<h2>Il n&#8217;existe pas de tuning JVM miracle !</h2>
+
+<p>La session commence par une mise en garde => Ne copier/coller pas des recettes de tuning JVM sur internet, il n&#8217;y a pas de solution universelle. Les solutions exposées sur le web sont spécifiques aux problèmes rencontrés par les auteurs et ne sont surtout pas applicables à toutes les applications.</p>
+
+<p>Un conseil de Pierre :</p>
+
+<blockquote><p>Si vous ne comprennez pas un flag, ne l&#8217;utilisez pas !</p><footer><strong>Pierre Laporte</strong></footer></blockquote>
+
+
+<h2>L&#8217;hypothèse générationnelle, c&#8217;est vrai !</h2>
+
+<p>Il s&#8217;agit d&#8217;une théorie énonçant que la plupart des objets meurent jeunes. Pierre va le mettre en évidence en comparant deux applications : 1 écrite en Java et 1 écrite en Scala. Ces 2 applications ont des consommations mémoires très différentes, en moyenne 48GB/j pour une et de l&#8217;ordre de 3 TB/j pour l&#8217;autre.</p>
+
+<p>Laquelle des applications consomment 3 TB/j ? Java ou Scala ?</p>
+
+<p>=> La réponse est dans ce cas Java&#8230; Bien évidemment, il s&#8217;agit de 2 applications complètement différentes et il n&#8217;est pas du tout question ici de dire que les applications Java consomment plus de mémoire que les applications Scala :)</p>
+
+<p>Ce qu&#8217;il faut retenir, c&#8217;est que malgré cet écart de consommation mémoire, l&#8217;hypothèse générationnelle se vérifie pour les 2 applications, simplement à des échelles différentes.</p>
+
+<h2>Deux zones mémoires pour la <em>Garbage Collector (GC)</em> avant G1</h2>
+
+<ul>
+<li><em>Young Generation</em> pour les objets jeunes</li>
+<li><em>Old Generation</em> pour les vieux objets</li>
+</ul>
+
+
+<p><em>Comment est déterminé l&#8217;age d&#8217;un objet ?</em> => Au nombre de cycles du <em>Garbage Collector</em> auxquels a survécu un objet.</p>
+
+<h2>Le temps de <em>GC</em> est proportionnel au nombre d&#8217;objets vivants !</h2>
+
+<p>Pierre nous a présenté ses expériences qui vont mettre en évidence quelque chose de très intéressant sur nos programmes tournant sur la JVM.</p>
+
+<h2>Expérience N°1</h2>
+
+<ul>
+<li>Faire tourner un programme qui crée de nombreux objets qui meurent vites</li>
+<li>50 GB de mémoire</li>
+<li>Un paramétrage de la <em>Young Generation</em> à 49.9 GB</li>
+</ul>
+
+
+<p>Nous avons là un paramétrage idéal du GC qui permet d&#8217;absorber la majorité des objets jeunes créés dans la <em>Young Generation</em>.</p>
+
+<p><em>Le GC a mis 6 ms pour nettoyer 38GB de mémoire</em></p>
+
+<h2>Expérience N°2</h2>
+
+<ul>
+<li>Faire tourner un programme qui crée de nombreux objets qui meurent vites</li>
+<li>50 GB de mémoire</li>
+<li>Un paramétrage de la <em>Young Generation</em> à 10 MB</li>
+</ul>
+
+
+<p>Nous avons là un paramétrage défavorable du <em>GC</em> qui va faire passer nos objets très rapidement dans la <em>Old Generation</em> faute de place dans la <em>Young Generation</em>.</p>
+
+<p><em>Le GC mettra 322 ms pour nettoyer 52GB de mémoire</em></p>
+
+<h2>Expérience N°3+</h2>
+
+<p>Pierre refait les expériences précédentes avec un programme qui générent beaucoup d&#8217;objets qui vivent longtemps et là les performances du <em>GC</em> se sont révélées catastrophiques.</p>
+
+<h2>L&#8217;immutabilité et le GC</h2>
+
+<p>Avec les résultats des expériences précédentes, on craint moins les conséquences du concept d&#8217;immutabilité des langages fonctionnels comme Scala. Le <em>GC</em> nettoie aisément un grand nombre d&#8217;objets non référencés.</p>
+
+<p>On peut quand même retenir comme conséquence de l&#8217;immutabilité, l&#8217;augmentation de la fréquence de passage du <em>GC</em>. Pierre nous propose dans ses slides, un tuning pour contrôler cette fréquence si jamais elle se révèle génante pour votre application.</p>
+
+<h2>Comment tuner le <em>G1 (Garbage First) Garbage Collector</em> ?</h2>
+
+<p>G1 est le nouvel algorithme poussé par Oracle depuis le JDK 7. La particularité avec cet algorithme est qu&#8217;il se paramètre &#8220;presque&#8221; tout seul.</p>
+
+<p>Pierre nous propose d&#8217;observer les règles suivantes pour son tuning :</p>
+
+<ul>
+<li>Mettre la même valeur pour Xms et Xmx</li>
+<li>Supprimez toutes nos optimisations antérieures (-Xmn, -XX:TenuringThreshold, &#8230;)</li>
+<li>Définir des intervalles de temps pour le <em>GC</em> (-XX:MaxGCPauseMillis et -XX:GCPauseIntervalMillis)</li>
+<li>Activer les logs GC</li>
+</ul>
+
+
+<h2>Les slides de la présentation</h2>
+
+<iframe src="http://www.slideshare.net/slideshow/embed_code/27543319?rel=0" width="600" height="500" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
+
+
+<h2>Ce que j&#8217;en ai pensé</h2>
+
+<p>Nous avons eu droit à une présentation de qualité, bien rythmée. Pierre a fait preuve de pédagogie pour expliquer de façon claire le fonctionnement des différents algorithmes du <em>Garbage Collector</em> de la JVM.</p>
+
+<p>Je me suis souvent inconsciemment inquiété des nombreux objets à durée de vie courte (de l&#8217;ordre de la méthode) que nous créons à travers nos programmes. Cette présentation me donne un nouveau regard sur ces objets :)</p>
+
+<p>Présentation à revoir en vidéo pour ceux qui souhaitent avoir des éléments de compréhension du fonctionnement de la JVM d&#8217;Oracle.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Rossi Oddet</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-29T09:30:00-04:00" pubdate data-updated="true">Oct 29<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/scalaio2013/'>scalaio2013</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://roddet.github.com/2013/10/scalaio-2013-pimp-my-gc-scala-supersonique/" data-via="rossioddet" data-counturl="http://roddet.github.com/2013/10/scalaio-2013-pimp-my-gc-scala-supersonique/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2013/10/scalaio-2013-maven-sbt/" title="Previous Post: Scala IO 2013 => De Maven à SBT">&laquo; Scala IO 2013 => De Maven à SBT</a>
+      
+      
+        <a class="basic-alignment right" href="/2013/10/scalaio-2013-spray-rest-on-akka/" title="Next Post: Scala IO 2013 => Spray : REST on Akka">Scala IO 2013 => Spray : REST on Akka &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Rossi Oddet</h1>
+  <br/>
+  <table>
+  	<tr><td width="30%"><img src="/images/photo.jpeg" width="75"/></td>
+  		<td>&nbsp;&nbsp;</td>
+    <td width="70%"> <p>Développeur, Blogger et passionné par les communautés IT.</p></td></tr>
+</table>
+</section>
+<a class="twitter-timeline" href="https://twitter.com/rossioddet" data-widget-id="314511007521312768">Tweets by @rossioddet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Rossi Oddet -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogroddet';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://roddet.github.com/2013/10/scalaio-2013-pimp-my-gc-scala-supersonique/';
+        var disqus_url = 'http://roddet.github.com/2013/10/scalaio-2013-pimp-my-gc-scala-supersonique/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

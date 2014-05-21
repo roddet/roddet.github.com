@@ -1,0 +1,326 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Soirée JUG Nantes : Du SQL au NoSQL en moins d'une heure (Partie 1) - Rossi Oddet</title>
+  <meta name="author" content="Rossi Oddet">
+
+  
+  <meta name="description" content="Le 4 novembre dernier, j&#8217;ai eu l&#8217;opportunité de participer à une soirée organisée par le JUG Nantes sous le thème &#8220;Du SQL au NoSQL &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://roddet.github.com/2013/11/nantesjug-novembre-part1">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Rossi Oddet" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-32190657-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>	
+  <h1><a href="/">Rossi Oddet</a></h1>
+  
+    <h2>Blog d'un artisan développeur</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:roddet.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/events">Evénements</a></li>
+  <li><a href="/viededev">Vie de Développeur</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Soirée JUG Nantes : Du SQL Au NoSQL en Moins D'une Heure (Partie 1)</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-11-10T09:30:00-05:00" pubdate data-updated="true">Nov 10<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Le 4 novembre dernier, j&#8217;ai eu l&#8217;opportunité de participer à une soirée organisée par le <a href="http://nantesjug.org/">JUG Nantes</a> sous le thème &#8220;Du SQL au NoSQL en moins d&#8217;une heure&#8221;.</p>
+
+<h2>Une salle pleine !</h2>
+
+<p>La plus grande salle de l&#8217;<a href="http://www.epsi.fr/Campus/Campus-de-Nantes#">EPSI Nantes</a> était un peu petite face à l&#8217;engouement suscité par l&#8217;événement.</p>
+
+<p>C&#8217;est le premier événement JUG Nantes auquel j&#8217;assiste depuis la rentrée. Oui c&#8217;est avec beaucoup de regrêts que je n&#8217;ai pas pu être présent à la première soirée de cette saison 2013-2014 :) Je remarque aussi que le public a changé, il y a beaucoup plus d&#8217;étudiants comparé à la saison précédente. Ceci est probablement lié au fait que l&#8217;<a href="http://www.epsi.fr/Campus/Campus-de-Nantes#">EPSI Nantes</a> accueille l&#8217;événement.</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-salle-pleine.jpg"></p>
+
+<p>Le JUG de Nantes va nous offrir 2 sessions :</p>
+
+<ul>
+<li>1 Quickie <em>Amélioration de la qualité du code par restriction du langage</em></li>
+<li>1 talk <em>Elastifiez votre application : du SQL au NoSQL en moins d&#8217;une heure</em></li>
+</ul>
+
+
+<h2>Le quickie <em>Amélioration de la qualité du code</em></h2>
+
+<p><a href="https://twitter.com/mercury_wood/">Hugo Wood</a> va nous présenter son retour d&#8217;expérience sur l&#8217;amélioration de la qualité du code. Il a appris le langage Java principalement en autodidacte avec des livres et travaille récemment en société de service où il côtoie beaucoup de <em>legacy</em> (les connaisseurs ne seront probablement pas surpris ;)).</p>
+
+<p><img class="center" src="/images/nantesjug/nov13/nantesjug-nov13-hugo-wood.jpg"></p>
+
+<h2>C&#8217;est quoi la qualité du code ?</h2>
+
+<p>Hugo a commencé par poser les bases de la qualité du code.</p>
+
+<p>Par quoi reconnaît-on un code de bonne qualité ? => Par sa maintenabilité. Et pour avoir un code maintenable, il faut qu&#8217;il soit modulaire et testable.</p>
+
+<h2>Les méthodes privées => cacher la misère ?</h2>
+
+<p>Vous l&#8217;avez surement déjà remarqué, les méthodes privées d&#8217;une classe ont tendance à se multiplier avec le passage d&#8217;un collègue qui vous dit avec fierté que le code n&#8217;était pas lisible et qu&#8217;il a fait du <em>refactoring</em>. Il avait trouvé une méthode publique trop <em>grosse</em>, vous savez ce genre de méthode qui ne se termine pas avec 2 <em>scrolls</em> de votre souris. Il a alors  extrait (merci les IDE) des parties de code de la méthode en plusieurs méthodes privées.</p>
+
+<p>La lisibilité de la méthode s&#8217;est peut-être améliorée mais a t-on vraiment progressé sur la maintenabilité après une telle opération ?</p>
+
+<p>La réponse est Non. En effet, cette opération conduit généralement à 2 catégories de méthodes privées :</p>
+
+<ul>
+<li><p>1 méthode qui n&#8217;interagit avec aucun champ de la classe. Que fait-elle alors dans cette classe ? Elle pourrait être <em>static</em> votre code fonctionnerait toujours. Il convient donc de l&#8217;extraire dans une nouvelle classe.</p></li>
+<li><p>1 méthode privée qui modifie la valeur d&#8217;un champ de la classe. Cela conduit souvent à perdre le contrôle rationnel de ce  champ. En effet, lorsque vous lirez votre méthode publique à <em>refactorer</em>, vous verrez l&#8217;appel à cette nouvelle méthode. Vous ne vous rendrez pas forcément compte qu&#8217;il modifie un champ et que la suite de votre algorithme dépend fortement de l&#8217;exécution de cette nouvelle méthode. Comme dit Hugo, un <em>parfum de variable globale</em>&#8230; La bonne option est donc d&#8217;extraire ce champ et cette méthode dans une nouvelle classe.</p></li>
+</ul>
+
+
+<p>Etes-vous prêt à arrêter de cacher la misère en vous &#8220;privant&#8221; des méthodes privées ?</p>
+
+<h2>L&#8217;héritage de classe => notre ennemi ?</h2>
+
+<p>Ceux qui travaillent au quotidien avec une grande volumétrie de code, l&#8217;admettront aisément : l&#8217;héritage de classe, quand il est mal utilisé pose quelques difficultés de maintenance :</p>
+
+<ul>
+<li>Comment tester une classe fille sans effet de bord de la classe mère ?</li>
+<li>Comment tester unitairement une classe abstraite sans ses classes concrètes ?</li>
+<li>Utiliser des champs <em>protected</em> d&#8217;une classe mère dans une classe fille, une encapsulation à plusieurs vitesses ?</li>
+</ul>
+
+
+<p>L&#8217;héritage de classe est malheureusement souvent utilisé, à tort, pour factoriser du code. Il est alors facile de se retrouver par exemple avec :</p>
+
+<ul>
+<li>Une méthode dont l&#8217;exécution conduit à naviguer à travers plusieurs niveaux de la hiérarchie des classes</li>
+<li>Une méthode vide (avec un commentaire <em>// ne rien faire</em>) dans certaines classes pour un traitement à ne pas effectuer dans des cas particuliers</li>
+</ul>
+
+
+<p>Hugo va préconiser l&#8217;utilisation des interfaces et de la composition pour traiter nos besoins courants. Il va l&#8217;illustrer en proposant un <em>refactoring</em> possible de la classe abstraite <em>AbstractCollection</em> du JDK avec une interface et la composition (illustration présente dans ses slides).</p>
+
+<p>Etes-vous prêt à ne plus utiliser l&#8217;héritage de classe ?</p>
+
+<h2>Les slides du Quickie</h2>
+
+<iframe src="http://www.slideshare.net/slideshow/embed_code/27900604" width="700" height="569" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
+
+
+<p>Vous l&#8217;aurez compris, Hugo encourage une <em>restriction</em> de l&#8217;utilisation du langage Java pour améliorer la qualité de du code. Il argumente que cela permettra aux débutants de commettre moins d&#8217;erreurs de <em>design</em> et aux expérimentés d&#8217;agir avec un meilleur discernement.</p>
+
+<h2>La suite ! La suite ! La suite !</h2>
+
+<p>Après ce quickie, <a href="https://twitter.com/tgrall">Tugdual Grall</a> et <a href="https://twitter.com/dadoonet">David Pilato</a> ont pris le relais pour le talk <em>Elastifiez votre application : du SQL au NoSQL en moins d&#8217;une heure</em>. A travers un exemple de code, ils vont nous montrer comment passer du SQL au NoSQL avec <a href="http://www.couchbase.com/">CouchBase</a> et <a href="http://www.elasticsearch.org/">Elasticsearch</a>.</p>
+
+<p>A suivre dans la 2ème partie de cet article dans les prochains jours&#8230;</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Rossi Oddet</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-11-10T09:30:00-05:00" pubdate data-updated="true">Nov 10<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/jugnantes/'>jugnantes</a>, <a class='category' href='/blog/categories/jugnantesnov/'>jugnantesnov</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://roddet.github.com/2013/11/nantesjug-novembre-part1/" data-via="rossioddet" data-counturl="http://roddet.github.com/2013/11/nantesjug-novembre-part1/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2013/11/scalaio-2013-bigdata-scala/" title="Previous Post: Scala IO 2013 => Big Data + Scala">&laquo; Scala IO 2013 => Big Data + Scala</a>
+      
+      
+        <a class="basic-alignment right" href="/2013/11/nantesjug-novembre-part2/" title="Next Post: Soirée JUG Nantes : Du SQL au NoSQL en moins d'une heure (Partie 2)">Soirée JUG Nantes : Du SQL au NoSQL en moins d'une heure (Partie 2) &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Rossi Oddet</h1>
+  <br/>
+  <table>
+  	<tr><td width="30%"><img src="/images/photo.jpeg" width="75"/></td>
+  		<td>&nbsp;&nbsp;</td>
+    <td width="70%"> <p>Développeur, Blogger et passionné par les communautés IT.</p></td></tr>
+</table>
+</section>
+<a class="twitter-timeline" href="https://twitter.com/rossioddet" data-widget-id="314511007521312768">Tweets by @rossioddet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Rossi Oddet -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogroddet';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://roddet.github.com/2013/11/nantesjug-novembre-part1/';
+        var disqus_url = 'http://roddet.github.com/2013/11/nantesjug-novembre-part1/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

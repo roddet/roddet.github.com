@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: nantesjs | Rossi Oddet]]></title>
+  <link href="http://roddet.github.com/blog/categories/nantesjs/atom.xml" rel="self"/>
+  <link href="http://roddet.github.com/"/>
+  <updated>2014-05-21T01:43:46-04:00</updated>
+  <id>http://roddet.github.com/</id>
+  <author>
+    <name><![CDATA[Rossi Oddet]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Soirée NantesJS : Découverte de GruntJS]]></title>
+    <link href="http://roddet.github.com/2013/12/nantesjs-gruntjs/"/>
+    <updated>2013-12-04T08:00:00-05:00</updated>
+    <id>http://roddet.github.com/2013/12/nantesjs-gruntjs</id>
+    <content type="html"><![CDATA[<p><a href="http://gruntjs.com/">Grunt</a> permet de lancer des tâches afin d'automatiser des traitements récurrents.
+Il se configure via l'écriture d'un code javascript.
+Il existe de nombreux outils permettant d'automatiser le lancement des tâches : <a href="http://ant.apache.org/">ANT</a>, <a href="http://maven.apache.org/">Maven</a>, <a href="http://www.gradle.org/">Gradle</a>, <a href="http://www.scala-sbt.org/">SBT</a>.
+La particularité de <a href="http://gruntjs.com/">Grunt</a> par rapport aux autres outils est qu'il est conçu principalement pour traiter des tâches récurrentes du web : minification, optimisation des images, génération de sprites, compilation Sass/Less, etc.</p>
+
+<p>La soirée <a href="http://nantesjs.org/">NantesJS</a> du 19 novembre dernier a eu comme objectif une présentation et une prise en main de <a href="http://gruntjs.com/">Grunt</a>.</p>
+
+<p><img class="center" src="/images/nantesjs/nov13/nantesjs-speakers.jpg"></p>
+
+<p>C'est devant un public composé de professionnels que <a href="https://twitter.com/t8g">Thomas Moyse</a> (à gauche dans la photo) commence une présentation de <a href="http://gruntjs.com/">Grunt</a>. <a href="https://twitter.com/xavier_seignard">Xavier Seignard</a> (à droite) prendra de temps en temps la parole pour partager son expérience sur l'utilisation de <a href="http://gruntjs.com/">Grunt</a>.</p>
+
+<p><a href="https://twitter.com/t8g">Thomas</a> va mettre l'accent sur le nombre important de plugins de Grunt : 1688. Dans <a href="http://gruntjs.com/plugins">la page des plugins Grunt</a>, je compte 1847 plugins au moment de l'écriture de l'article. <a href="http://gruntjs.com/">Grunt</a> dispose donc d'un écosystème riche.</p>
+
+<p>Après la présentation succincte de <a href="http://gruntjs.com/">Grunt</a>, la soirée se transforme en Workshop et nous allons découvrir progressivement cet outil.</p>
+
+<h2>Installer Grunt</h2>
+
+<p><a href="http://gruntjs.com/">Grunt</a> s'installe via <a href="https://npmjs.org/">NPM</a> (Node Packaged Modules) le gestionnaire de package de <a href="http://nodejs.org/">NodeJS</a>.</p>
+
+<p><a href="http://nodejs.org/download/">Télécharger et installer NodeJS</a>. Veuillez vérifier l'accès à la commande <code>npm</code> après l'installation.</p>
+
+<p>Installer le client grunt via la commande :
+<code>
+npm install -g grunt-cli
+</code>
+A savoir : chaque projet va posséder son installation de <a href="http://gruntjs.com/">Grunt</a> et <code>grunt-cli</code> permet d'avoir accès à la commande <code>grunt</code> de façon globale quelque soit le projet.</p>
+
+<h2>Création d'un projet</h2>
+
+<p>Créer un répertoire.
+<code>
+mkdir nantesjs-grunt
+cd nantesjs-grunt
+</code></p>
+
+<p>Initialiser un projet avec <a href="https://npmjs.org/">NPM</a>.
+<code>
+npm init
+</code>
+Tapez la touche entrée à toutes les questions.
+Le fichier <code>package.json</code> est créé avec le contenu suivant :</p>
+
+<p>``` javascript
+{
+  "name": "nantesjs-grunt",
+  "version": "0.0.0",
+  "description": "ERROR: No README.md file found!",
+  "main": "index.js",
+  "scripts": {</p>
+
+<pre><code>"test": "echo \"Error: no test specified\" &amp;&amp; exit 1"
+</code></pre>
+
+<p>  },
+  "repository": "",
+  "author": "",
+  "license": "BSD"
+}
+```
+Ce fichier représente l'identité d'un projet dans l'univers <a href="http://nodejs.org/">NodeJS</a>.</p>
+
+<p>Installer <a href="http://gruntjs.com/">Grunt</a> pour le projet.
+<code>
+npm install grunt --save-dev
+</code>
+Le fichier <code>package.json</code> est mis à jour comme suit :
+``` javascript
+{
+  "name": "nantesjs-grunt",
+  "version": "0.0.0",
+  "description": "ERROR: No README.md file found!",
+  "main": "index.js",
+  "scripts": {</p>
+
+<pre><code>"test": "echo \"Error: no test specified\" &amp;&amp; exit 1"
+</code></pre>
+
+<p>  },
+  "repository": "",
+  "author": "",
+  "license": "BSD",
+  "devDependencies": {</p>
+
+<pre><code>"grunt": "~0.4.2"
+</code></pre>
+
+<p>  }
+}
+<code>``
+Un répertoire</code>node_modules<code>est créé avec un répertoire</code>grunt` qui contient une installation de <a href="http://gruntjs.com/">Grunt</a> dans sa version 0.4.2.</p>
+
+<h2>Hello World Grunt !</h2>
+
+<p><a href="http://gruntjs.com/">Grunt</a> se configure dans un fichier <code>Gruntfile.js</code> avec du code javasript.</p>
+
+<p>Créer un fichier <code>Gruntfile.js</code>.</p>
+
+<p>Modifiez ce fichier comme suit pour créer un <em>Hello World</em>.
+``` javascript
+module.exports = function(grunt) {</p>
+
+<pre><code>grunt.registerTask('hello', 'Ma tâche à moi', function(){
+    console.log('Hello World Grunt !')
+});
+</code></pre>
+
+<p>}
+<code>``
+La fonction</code>registerTask` permet la création d'une tâche avec le nom <em>hello</em>, la description <em>Ma tâche à moi</em> et une fonction qui sera exécutée lorsque cette tâche sera appelée.</p>
+
+<p><code>console.log</code> écrit du texte dans la console.</p>
+
+<p>Pour lancer la tâche <em>hello</em>, exécuter la commande :
+<code>
+grunt hello
+</code>
+Le résultat dans la console
+```</p>
+
+<blockquote><p>grunt hello</p>
+
+<h2>Running "hello" task</h2>
+
+<p>Hello World Grunt !</p></blockquote>
+
+<p>Done, without errors.
+```</p>
+
+<h2>Une tâche par défaut</h2>
+
+<p>Il possible de spécifier une tâche par défaut à <a href="http://gruntjs.com/">Grunt</a>.
+Il suffit de lui donner le nom <em>default</em> comme suit :
+``` javascript
+module.exports = function(grunt) {</p>
+
+<pre><code>grunt.registerTask('default', 'Ma tâche à moi', function(){
+    console.log('Hello World Grunt !')
+});
+</code></pre>
+
+<p>}
+<code>
+La tâche est lancée via la commande suivante sans avoir à préciser le nom d'une tâche.
+</code>
+grunt
+```</p>
+
+<h2>Connaitre la liste des tâches disponibles</h2>
+
+<p><code>
+grunt --help
+</code></p>
+
+<h2>Un alias pour composer des tâches</h2>
+
+<p>Un alias permet de composer plusieurs tâches. Par défaut, les tâches sont exécutées de façon séquentielle.</p>
+
+<p>Un alias est créé à l'aide d'une fonction <code>registerTask</code> en précisant un nom d'alias et un tableau de noms des tâches.</p>
+
+<p>``` javascript
+module.exports = function(grunt) {</p>
+
+<pre><code>grunt.registerTask('step1',function(){
+    console.log('Step 1')
+});
+
+grunt.registerTask('step2', 'ma tâche à moi', function(){
+    console.log('Step 2')
+});
+
+grunt.registerTask('all', ['step1', 'step2']);
+</code></pre>
+
+<p>}
+```</p>
+
+<p>Lancer l'alias <em>all</em>
+```</p>
+
+<blockquote><p>grunt all</p>
+
+<h2>Running "step1" task</h2>
+
+<p>Step 1</p></blockquote>
+
+<h2>Running "step2" task</h2>
+
+<p>Step 2</p>
+
+<p>Done, without errors.
+```</p>
+
+<h2>Le <em>multi task</em></h2>
+
+<p>Le <em>multi task</em> sert à créer des tâches qui peuvent s'exécuter suivant plusieurs cibles.</p>
+
+<p>Ci-dessous un exemple d'utilisation de <em>multi task</em>.</p>
+
+<p>``` javascript
+module.exports = function(grunt) {</p>
+
+<pre><code>grunt.initConfig({
+    multitask1: {
+        conf1:[1,2,3],
+        conf2: 'hello world'
+    }
+})
+
+grunt.registerMultiTask('multitask1', function(){
+    console.log('target = ' + this.target);
+    console.log("data = " + this.data);
+})
+</code></pre>
+
+<p>}
+```</p>
+
+<p>La fonction <code>initConfig</code> crée les différentes configurations possibles. Ici la tâche <em>multitask1</em> possède 2 contextes d'exécution <code>conf1</code>et <code>conf2</code>. Chaque contexte d'exécution possède son jeu de données.</p>
+
+<p>Dans la fonction d'exécution de la tâche <em>multitask1</em>, <code>this.target</code> contient le nom du contexte d'exécution et <code>this.data</code> contient les données associées.</p>
+
+<p>Lancer la tâche <em>multitask1</em> entraine son exécution pour les différents contextes d'exécution définis.</p>
+
+<p>```</p>
+
+<blockquote><p>grunt multitask1</p>
+
+<h2>Running "multitask1:conf1" (multitask1) task</h2>
+
+<p>target = conf1
+data = 1,2,3</p></blockquote>
+
+<h2>Running "multitask1:conf2" (multitask1) task</h2>
+
+<p>target = conf2
+data = hello world</p>
+
+<p>Done, without errors.
+```</p>
+
+<p>Il est possible d'exécuter une tâche de type <em>multi task</em> sur une configuration particulière comme suit :</p>
+
+<p>```</p>
+
+<blockquote><p>grunt multitask1:conf2</p>
+
+<h2>Running "multitask1:conf2" (multitask1) task</h2>
+
+<p>target = conf2
+data = hello world</p></blockquote>
+
+<p>Done, without errors.
+```</p>
+
+<h2>Partager de la configuration via l'API <em>options</em></h2>
+
+<p>L'API <em>options</em> offre la possibilité de mutualiser de la configuration <a href="http://gruntjs.com/">Grunt</a>. Cette configuration peut être surchargée par un contexte d'exécution.</p>
+
+<p>Voici un exemple d'utilisation des <em>options</em> via le partage de configuration <em>key</em> pour les différents contextes d'exécution.</p>
+
+<p>``` javascript
+module.exports = function(grunt) {</p>
+
+<pre><code>grunt.initConfig({
+    multitask1: {
+        options:{key:"v1"},
+        conf1:[1,2,3],
+        conf2:'hello world',
+        conf3:{
+            options:{key:"v2"}
+        }
+    }
+});
+
+grunt.registerMultiTask('multitask1', function(){
+    console.log('target = ' + this.target);
+    console.log("data = " + this.data);
+    console.log("version = " + this.options().key)
+});
+</code></pre>
+
+<p>}
+```
+Dans cet exemple, <em>key</em> vaut</p>
+
+<ul>
+<li><em>v1</em> pour <em>conf1</em> et <em>conf2</em></li>
+<li><em>v2</em> pour <em>conf3</em></li>
+</ul>
+
+
+<p>L'appel de la fonction <code>this.options().key</code> renvoie la valeur de la donnée <em>key</em> dans le contexte d'exécution courant.</p>
+
+<p>Le résultat de l'exécution de <em>multitask1</em> donne :</p>
+
+<p>```</p>
+
+<blockquote><p>grunt multitask1</p>
+
+<h2>Running "multitask1:conf1" (multitask1) task</h2>
+
+<p>target = conf1
+data = 1,2,3
+version = v1</p></blockquote>
+
+<h2>Running "multitask1:conf2" (multitask1) task</h2>
+
+<p>target = conf2
+data = hello world
+version = v1</p>
+
+<h2>Running "multitask1:conf3" (multitask1) task</h2>
+
+<p>target = conf3
+data = [object Object]
+version = v2</p>
+
+<p>Done, without errors.
+```</p>
+
+<h2>Les templates</h2>
+
+<p>Il est possible d'utiliser un template avec <a href="http://gruntjs.com/">Grunt</a> par exemple pour partager une valeur entre plusieurs contextes d'exécution.</p>
+
+<p>La partie variable d'un template se déclare via les symboles : <em>&lt;%= XXXX %></em>.</p>
+
+<p>Un exemple d'utilisation d'un template.</p>
+
+<p>``` javascript
+module.exports = function(grunt) {</p>
+
+<pre><code>grunt.initConfig({
+    multitask1: {
+        options:{key:'&lt;%= version %&gt;'},
+        conf1:[1,2,3]
+    },
+    version : 'v15'
+});
+
+grunt.registerMultiTask('multitask1', function(){
+    console.log("version = " + this.options().key);
+});
+</code></pre>
+
+<p>}
+```</p>
+
+<p>L'exécution de la tâche <em>multitask1</em> affiche bien le numéro de version <em>v15</em>.</p>
+
+<p>```</p>
+
+<blockquote><p>grunt multitask1</p>
+
+<h2>Running "multitask1:conf1" (multitask1) task</h2>
+
+<p>version = v15</p></blockquote>
+
+<p>Done, without errors.
+```</p>
+
+<h2>Plusieurs modes pour déclarer des fichiers</h2>
+
+<p>Les différentes tâches utilisées avec <a href="http://gruntjs.com/">Grunt</a> consistent la plupart du temps à manipuler des fichiers.</p>
+
+<p>Il existe plusieurs modes pour désigner des fichiers avec <a href="http://gruntjs.com/">Grunt</a> : mode <em>compact</em>, mode <em>object</em>, mode <em>array</em> et le mode <em>dynamic</em>.</p>
+
+<p>Afin d'illustrer ces différents modes, nous allons utiliser le plugin <code>grunt-contrib-copy</code> qui donne la possibilité de copier des fichiers dans un répertoire.</p>
+
+<p>Installer le plugin
+<code>
+npm install grunt-contrib-copy --save-dev
+</code>
+Le plugin est installé dans le répertoire <code>node_modules</code>. Le fichier <code>package.json</code> est mis à jour avec la ligne <code>"grunt-contrib-copy": "~0.4.1"</code> qui vient compléter la section <code>devDependencies</code>.</p>
+
+<p>Mettre à jour le fichier <code>Gruntfile.js</code> comme suit.</p>
+
+<p>``` javascript
+module.exports = function(grunt) {</p>
+
+<pre><code>grunt.initConfig({
+    copy: {
+        main: {
+            ??? 
+        }
+    }
+});
+
+grunt.loadNpmTasks('grunt-contrib-copy');
+</code></pre>
+
+<p>}
+```</p>
+
+<p>La fonction <code>grunt.loadNpmTasks</code> charge le plugin <code>grunt-contrib-copy</code>. Ce plugin expose la tâche <code>copy</code> sous la forme d'une <em>multi task</em> configurable dans la fonction <code>grunt.initConfig</code>.</p>
+
+<p>La tâche <code>copy</code> peut être exécutée avec la commande :</p>
+
+<p><code>
+grunt copy
+</code></p>
+
+<h2>Mode <em>Compact</em></h2>
+
+<p>``` javascript
+module.exports = function(grunt) {</p>
+
+<pre><code>grunt.initConfig({
+    copy: {
+        main: {
+            src:['*.js', '*.json'],
+            dest:'tmp/' 
+        }
+    }
+});
+
+grunt.loadNpmTasks('grunt-contrib-copy');
+</code></pre>
+
+<p>}</p>
+
+<p><code>``
+Deux paramètres</code>src<code>(fichiers à copier) et</code>dest` (répertoire de destination) sont définis.</p>
+
+<h2>Mode <em>Object</em></h2>
+
+<p>```
+module.exports = function(grunt) {</p>
+
+<pre><code>grunt.initConfig({
+    copy: {
+        main: {
+            files : {'tmp/': ['*.js', '*.json']}
+        }
+
+    }
+});
+
+grunt.loadNpmTasks('grunt-contrib-copy');
+</code></pre>
+
+<p>}
+```</p>
+
+<h2>Mode <em>Array</em></h2>
+
+<p>```
+module.exports = function(grunt) {</p>
+
+<pre><code>grunt.initConfig({
+    copy: {
+        main: {
+            files : [
+                {
+                    src:['*.js', '*.json'],
+                    dest:'tmp/' 
+                }
+            ]
+        }
+
+    }
+});
+
+grunt.loadNpmTasks('grunt-contrib-copy');
+</code></pre>
+
+<p>}
+```</p>
+
+<h2>Mode <em>Dynamic</em></h2>
+
+<p>Ce mode permet une configuration plus fine.</p>
+
+<p>```
+files: [{</p>
+
+<pre><code>expand:boolean, // true =&gt; mode dynamique sinon mode précédent
+cwd:string, // le répertoire de base
+src: [string], // les fichiers sources
+dest: string, // le répertoire de destination
+ext:string, // ajouter une extension aux fichiers 
+flatten:boolean, // ne pas garder l'arborescence et tout mettre au même endroit.
+rename:function // renommer à la volée
+</code></pre>
+
+<p>}]
+```</p>
+
+<p>Exemple d'utilisation.
+```
+module.exports = function(grunt) {</p>
+
+<pre><code>grunt.initConfig({
+    copy: {
+        main: {
+            files: [{
+                expand:true, 
+                cwd:'node_modules/', 
+                src: ['**/*.js'],
+                dest: 'temp/'
+            }]
+        }
+    }
+});
+
+grunt.loadNpmTasks('grunt-contrib-copy');
+</code></pre>
+
+<p>}
+```</p>
+
+<h2>Quelques trucs &amp; astuces</h2>
+
+<h3>Les plugins</h3>
+
+<p>Utiliser <a href="http://gruntjs.com/">Grunt</a> consiste surtout à ordonnancer des tâches de plugins existants. Il est rare d'avoir besoin de créer ses propres tâches. Il est conseillé de privilégier l'utilisation des plugins dont le nom commence par <code>grunt-contrib</code>. Il s'agit de plugins maintenus officiellement par l'équipe <a href="http://gruntjs.com/">Grunt</a>.</p>
+
+<h3>Asynchronisme</h3>
+
+<p>Regarder du côté du projet <a href="https://github.com/caolan/async">async</a> pour ajouter de l'asynchronisme dans l'exécution des tâches.</p>
+
+<h3>Fonctions utilitaires de <a href="http://gruntjs.com/">Grunt</a></h3>
+
+<p><a href="http://gruntjs.com/">Grunt</a> vient avec quelques fonctions utilitaires comme : <code>grunt.file.copy</code>, <code>grunt.file.readJSON</code>, <code>grunt.template.today("yyyy-mm-dd")</code>, etc. Ne pas hésiter à les utiliser.</p>
+
+<h3>Construire un site statique</h3>
+
+<p>Que ce soit pour un site web statique ou pour exposer de la documentation, le plugin <a href="https://github.com/TxSSC/grunt-carpenter/">grunt-carpenter</a> permet de générer un site web statique à partir de fichier markdown et HTML.</p>
+
+<h3>Lancer des commandes</h3>
+
+<p>Le plugin <a href="https://github.com/sindresorhus/grunt-shell">grunt-shell</a> donne la possibilité de lancer des commandes dans le shell. Ce qui donne un degré de liberté important pour ordonnancer l'exécution des scripts ou même d'autres systèmes de <em>build</em> ;)</p>
+
+<h2>Les slides</h2>
+
+<p>Elles sont publiées <a href="http://slid.es/t8g/gruntjs">ici</a>.</p>
+
+<iframe src="http://roddet.github.com//slid.es/t8g/gruntjs/embed" width="800" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+
+<h2>En somme</h2>
+
+<p>Par la richesse de son écosystème de plugins, <a href="http://gruntjs.com/">Grunt</a> est l'outil du moment pour effectuer du <em>build</em> côté front-end. Il est plutôt simple d'utilisation et offre de vraies opportunités de productivité dans le développement web. En donnant la possibilité d'avoir différents contextes d'exécution, il est pratique pour séparer les tâches de développement des tâches de constructions du livrable de production.</p>
+
+<p><a href="http://gruntjs.com/">Grunt</a> est très lié à l'environnement <a href="http://nodejs.org/">NodeJS</a>. Ce qui peut constituer un frein à son adoption pour les personnes évoluant dans d'autres écosystèmes.
+Cette problématique n'est pas propre à <a href="http://gruntjs.com/">Grunt</a>. Les développeurs Java qui vantent par exemple les mérites de <a href="http://maven.apache.org/">Maven</a> auront également du mal à le faire adopter à des personnes qui n'ont pas de <a href="http://en.wikipedia.org/wiki/Java_Development_Kit">JDK</a> sur leur machine. Alors soyons ouvert d'esprit et n'ayons pas peur des écosystèmes qui peuvent nous être étrangers. Vous aimez <a href="http://jekyllrb.com/">Jekyll</a> ? Installer <a href="http://jekyllrb.com/">Ruby</a>. Vous trouvez <a href="http://www.methods.co.nz/asciidoc/index.html">AsciiDoc</a> sympa ? Installer <a href="http://www.python.org/">Python</a>. Vous aimez l'emploi ? Installer <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java</a> ;)</p>
+
+<p>Je pense que la gestion des erreurs de configuration de <a href="http://gruntjs.com/">Grunt</a> ou de ses plugins est perfectible. Durant le workshop, il m'est souvent arrivé d'écrire une configuration non autorisée sans qu'il n'y ait aucune erreur remontée. Par exemple, lorsque vous utiliser les <em>multi task</em>, il faut absolument déclarer au moins un contexte d'éxécution sinon la tâche déclarée ne sera pas exécutée même si vous l'appelez explicitement. Heureusement les erreurs de syntaxes sont plutôt bien remontées.</p>
+
+<p><a href="http://gruntjs.com/">Grunt</a> en tant qu'outil de <em>build</em> se prête bien à l'intégration continue. Alors il ne faut pas hésiter !</p>
+
+<p>C'était la première fois que je participais à une soirée du <a href="http://nantesjs.org/">Nantes JS</a>. Les organisateurs et les participants ont été très accueillants, vous aviez une bière dans vos mains en guise de <em>bonsoir</em>. Je vous recommande vivement ces soirées que ce soit pour la bière ou pour votre amour de javascript (oui il y en a qui aime) ;)</p>
+
+<p>La prochaine soirée est prévue au mois de janvier, restez connecter via <a href="https://twitter.com/NantesJS">@NantesJS</a>.</p>
+
+<p><img class="center" src="/images/nantesjs/nov13/nantesjs-logo.png"></p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: raspberrypi | Rossi Oddet]]></title>
+  <link href="http://roddet.github.com/blog/categories/raspberrypi/atom.xml" rel="self"/>
+  <link href="http://roddet.github.com/"/>
+  <updated>2014-05-21T01:43:46-04:00</updated>
+  <id>http://roddet.github.com/</id>
+  <author>
+    <name><![CDATA[Rossi Oddet]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Devoxx France 2013 # Tools in Action # Trucs et astuces avec Java et MongoDB sur Raspberry Pi]]></title>
+    <link href="http://roddet.github.com/2013/04/devoxxfr13-tools-in-action-trucs-astuces-java-mongodb-raspberry-pi/"/>
+    <updated>2013-04-05T13:54:00-04:00</updated>
+    <id>http://roddet.github.com/2013/04/devoxxfr13-tools-in-action-trucs-astuces-java-mongodb-raspberry-pi</id>
+    <content type="html"><![CDATA[<p>Vous pouvez retrouvez la description de la session <a href="http://www.devoxx.com/display/FR13/Trucs+et+astuces+avec+Java+et+MongoDB+sur+Raspberry+PI">sur le site de devoxx</a>.</p>
+
+<h2>Pourquoi j'ai choisi cette session ?</h2>
+
+<p>Une occasion de découvrir l'univers Raspberry Pi.</p>
+
+<h2>L'animateur</h2>
+
+<p><strong>Guillaume Scheibel</strong> <a href="https://twitter.com/g_scheibel">@g_scheibel</a> <a href="http://www.gscheibel.net">www.gsheibel.net</a></p>
+
+<p><img class="center" src="http://blog.roddet.com/images/devoxxfr13/raspberrymongo/speaker.jpg"></p>
+
+<h2>Raspberry Pi c'est quoi ?</h2>
+
+<p><blockquote><p>Le Raspberry Pi est un ordinateur monocarte à processeur ARM conçu par le créateur de jeux vidéo David Braben, dans le cadre de sa fondation Raspberry Pi2.<br/>L'ordinateur a la taille d'une carte de crédit, il permet l'exécution de plusieurs variantes du système d'exploitation libre GNU/Linux et des logiciels compatibles. Il est fourni nu (carte mère seule, sans boîtier, alimentation, clavier, souris ni écran) dans l'objectif de diminuer les coûts et de permettre l'utilisation de matériel de récupération.</p><footer><strong>Wikipedia</strong> <cite><a href='http://fr.wikipedia.org/wiki/Raspberry_Pi'>fr.wikipedia.org/wiki/&hellip;</a></cite></footer></blockquote></p>
+
+<h2>Raspberry Pi pour faire quoi ?</h2>
+
+<ul>
+<li>Du linux</li>
+<li>Un serveur Git</li>
+<li>Un serveur <a href="http://xbmc.org/">XBMC</a></li>
+<li>Du code</li>
+</ul>
+
+
+<p>En fait, à nous d'inventer les usages :)</p>
+
+<h2>Les modèles de Raspberry Pi</h2>
+
+<h3>Modèle A (~ 25 euros)</h3>
+
+<ul>
+<li>Processeur 700 MHz</li>
+<li>1 port HDMI</li>
+<li>1 slot SDCARD</li>
+<li>1 port USB</li>
+<li>256MB de RAM</li>
+</ul>
+
+
+<h3>Modèle B (~ 35 euros)</h3>
+
+<p>En mieux par rapport au modèle A :</p>
+
+<ul>
+<li>2 ports USB</li>
+<li>512 MB de RAM</li>
+<li>1 port Ethernet</li>
+</ul>
+
+
+<h2>Attention il faut des accessoires !</h2>
+
+<p>Le Raspberry Pi est vendu dans le plus simple appareil.</p>
+
+<p>Pour votre première commande, il vous faudra en plus :</p>
+
+<ul>
+<li>un carte SD</li>
+<li>un cable d'alimentation (micro USB)</li>
+<li>un boitier</li>
+<li>des connectiques : HDMI, Ethernet, Clavier</li>
+</ul>
+
+
+<h2>Vous cherchez des informations sur le Raspberry Pi ?</h2>
+
+<p>Le site <a href="http://elinux.org/RPi_Hub">http://elinux.org/RPi_Hub</a> est là pour vous aider.</p>
+
+<h2>Les distributions Linux</h2>
+
+<p>Il y a plus de 20 distributions Linux compatibles.</p>
+
+<p>La distribution officielle est <a href="http://www.raspbian.org/">Raspbian</a>.</p>
+
+<h2>Java</h2>
+
+<p>On a le choix entre OpenJDK vs Oracle. Le présentateur a choisi Oracle.
+La version compatible est 1.8 et il y a la preview de JavaFX.</p>
+
+<h2>Java &amp; GPIO</h2>
+
+<p>Des API Java permettent d'intéragir avec les pins GPIO.</p>
+
+<p>Il y a par exemple <a href="http://pi4j.com/">Pi4J</a>.</p>
+
+<h2>MongoDB</h2>
+
+<p>Raspberry Pi n'est pas compatible avec les versions de Mongo officielles.</p>
+
+<p>Un projet fait le portage de MongoDB sur Raspberry Pi : <a href="https://github.com/skrabban/mongo-nonx86">https://github.com/skrabban/mongo-nonx86</a>.</p>
+
+<p>Un article permet de guider pas à pas à l'installation de MongoDB sur Raspberry Pi : <a href="http://elsmorian.com/post/24395639198/building-mongodb-on-raspberry-pi">http://elsmorian.com/post/24395639198/building-mongodb-on-raspberry-pi</a></p>
+
+<p>Attention il faut compter 7 à 8 heures pour un build complet.</p>
+
+<h2>Démonstration</h2>
+
+<p>Elle a consisté à présenter et exécuter un programme Java qui va lire dans une base mongodb des données (événements Devoxx France précedemment récupérés) et affiche le résultat.</p>
+
+<h2>Les slides sur Parleys</h2>
+
+<p><a href="http://www.parleys.com/#play/515ac911e4b0ffdd7e058b9e">http://www.parleys.com/#play/515ac911e4b0ffdd7e058b9e</a></p>
+
+<object width="600" height="395"><param name="movie" value="http://www.parleys.com/dist/share/parleysshare.swf"></param><param name="allowFullScreen" value="true"></param><param name="wmode" value="direct"></param><param name="bgcolor" value="#222222"></param><param name="flashVars" value="sv=true&pageId=515ac911e4b0ffdd7e058b9e" ></param><embed src="http://www.parleys.com/dist/share/parleysshare.swf" type="application/x-shockwave-flash" flashVars="sv=true&pageId=515ac911e4b0ffdd7e058b9e" allowfullscreen="true" bgcolor="#222222" width="395" height="395"></embed></object>
+
+
+<h2>Bilan</h2>
+
+<p>Une bonne introduction à Raspberry Pi avec une démonstration concrète de son utilisation.</p>
+]]></content>
+  </entry>
+  
+</feed>

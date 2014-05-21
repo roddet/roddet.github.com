@@ -1,0 +1,329 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Scala IO 2013 => Our journey from UML/MDD to Scala macros - Rossi Oddet</title>
+  <meta name="author" content="Rossi Oddet">
+
+  
+  <meta name="description" content="Présentateur Hayssam Saleh, CTO chez Ebiznext. Twitter : @hayssams
+LinkedIn : http://fr.linkedin.com/in/hayssams
+Github : hayssams
+Sa bio sur Scala &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://roddet.github.com/2013/11/scalaio-2013-uml-scala">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Rossi Oddet" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-32190657-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>	
+  <h1><a href="/">Rossi Oddet</a></h1>
+  
+    <h2>Blog d'un artisan développeur</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:roddet.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/events">Evénements</a></li>
+  <li><a href="/viededev">Vie de Développeur</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Scala IO 2013 => Our Journey From UML/MDD to Scala Macros</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-11-05T09:30:00-05:00" pubdate data-updated="true">Nov 5<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>Présentateur</h2>
+
+<p><img class="left" src="/images/scalaio2013/speaker-hayssam-saleh.png">
+Hayssam Saleh, CTO chez Ebiznext.</p>
+
+<ul>
+<li>Twitter : <a href="https://twitter.com/hayssams">@hayssams</a></li>
+<li>LinkedIn : <a href="http://fr.linkedin.com/in/hayssams">http://fr.linkedin.com/in/hayssams</a></li>
+<li>Github : <a href="https://github.com/hayssams">hayssams</a></li>
+<li>Sa bio sur <a href="http://scala.io/speakers/hayssam-saleh.html">Scala IO</a></li>
+<li>La description de <a href="http://scala.io/events/our-journey-from-umlmdd-to-scala-macros.html">sa session ScalaIO</a></li>
+</ul>
+
+
+<br><br>
+
+
+<h2>Le Talk !</h2>
+
+<p>Ce talk nous présente un retour d&#8217;expérience concernant une migration UML vers des macros scala pour modéliser une application.</p>
+
+<p><img class="center" src="/images/scalaio2013/uml-scala-1.jpg"></p>
+
+<h2>Les inconvénients d&#8217;une modélisation basée sur UML</h2>
+
+<ul>
+<li><p>Un cycle de vie peu efficace composé d&#8217;un enchainement de transformations : UML -> XMI -> Code -> ByteCode. Il fallait près de 4h pour avoir le livrable correspondant à une modification du modèle. L&#8217;étape la plus chronophage (78% du temps) était <em>XMI -> Code</em>.</p></li>
+<li><p>Pas de solution <em>exploitable dans un vrai projet</em> pour effectuer des merges de modèles UML. Ce qui entrainait la mise en place d&#8217;un <em>lock</em> (1 modification à la fois) pour éviter d&#8217;avoir à effectuer des merges.</p></li>
+<li><p>Le manque de représentation standard de certaines caractéristiques du modèle (Les génériques Java par exemple)</p></li>
+</ul>
+
+
+<h2>Un DSL comme alternative</h2>
+
+<p>Hayssam et son équipe ont proposé alors de s&#8217;orienter vers l&#8217;utilisation d&#8217;un DSL qui doit avoir les caractéristiques suivantes :</p>
+
+<ul>
+<li>Compréhensible du <em>product owner</em></li>
+<li>Compilable du développeur</li>
+</ul>
+
+
+<h2>Des macros Slick</h2>
+
+<p>Les macros Scala utilisées sont basées sur <a href="http://slick.typesafe.com/">Slick</a>, un framework de persistance. Hayssam va nous présenter un exemple de <em>modélisation</em> avec une macro Slick et comment se traduisent les définitions des :</p>
+
+<ul>
+<li>Entités => <em>case classes</em></li>
+<li>Relations 0..1 => <em>Option</em></li>
+<li>Relations 1..1 => Composition d&#8217;entités</li>
+<li>Relations n..n => <em>List</em></li>
+<li>Contraintes => via l&#8217;utilisation de mots clés du DSL</li>
+</ul>
+
+
+<h2>Un export UML</h2>
+
+<p>Les macros <a href="http://slick.typesafe.com/">Slick</a> vont permettre de générer des diagrammes UML via l&#8217;exécution d&#8217;une ligne de code.</p>
+
+<h2>La magie faite à la compilation, pas d&#8217;injection au runtime</h2>
+
+<p>Les macros <a href="http://slick.typesafe.com/">Slick</a> vont impacter le code à la compilation, le bytecode généré contient déjà toutes les transformations. Cela permet de profiter de toute la puissance du compilateur et donc du typage fort de Scala.</p>
+
+<p>Pas de magie au runtime => à l&#8217;exécution, seul le code compilé est exécuté.</p>
+
+<p><a href="http://slick.typesafe.com/">Slick</a> permet aussi de contruire des requêtes qui vont profiter d&#8217;un typage fort facilitant la détection d&#8217;erreurs à la compilation.</p>
+
+<h2>Les slides de la présentation</h2>
+
+<iframe src="http://www.slideshare.net/slideshow/embed_code/27545078" width="650" height="534" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
+
+
+<h2>Ce que j&#8217;en ai pensé</h2>
+
+<p>Je suis arrivé un peu par hasard dans cette session. C&#8217;était en fin de journée et je m&#8217;étais en fait trompé de salle :) Cela dit, je suis content d&#8217;y avoir assisté.</p>
+
+<p>Il est intéressant d&#8217;avoir des retours d&#8217;expérience d&#8217;utilisation de DSL dans le monde de l&#8217;entreprise. La modélisation qui constitue souvent naturellement la richesse documentaire des applications est ici faite sans induire la double maintenance habituelle (modèle + code). Nous échappons ici à la génération de codes que nous détestons la plupart du temps en tant que développeur.</p>
+
+<p>Ce qui m&#8217;a manqué dans cette présentation, ce sont les impacts sur le plan humain et organisationnel de cette migration. J&#8217;imagine que des personnes qui étaient <em>habituées</em> à modéliser via des <em>boites</em> ont dû, au moins au début, manifester une certaine hostilité face à ce changement :) J&#8217;aurai voulu savoir s&#8217;il y avait eu une stratégie particulière pour créer de l&#8217;adhésion autour de ce nouveau paradigme.</p>
+
+<p>Pour en savoir plus, le dépôt Github <a href="https://github.com/ebiznext/slick-macros">https://github.com/ebiznext/slick-macros</a> contient les exemples du Talk et ce <a href="https://github.com/ebiznext/slick-macros/wiki">Wiki</a> documente la solution proposée.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Rossi Oddet</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-11-05T09:30:00-05:00" pubdate data-updated="true">Nov 5<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/scalaio2013/'>scalaio2013</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://roddet.github.com/2013/11/scalaio-2013-uml-scala/" data-via="rossioddet" data-counturl="http://roddet.github.com/2013/11/scalaio-2013-uml-scala/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2013/11/scalaio-2013-phpz/" title="Previous Post: Scala IO 2013 => PHPz for the rest of us">&laquo; Scala IO 2013 => PHPz for the rest of us</a>
+      
+      
+        <a class="basic-alignment right" href="/2013/11/scalaio-2013-patterns-web-reactive/" title="Next Post: Scala IO 2013 => Patterns de développement pour une application web réactive et concurrente">Scala IO 2013 => Patterns de développement pour une application web réactive et concurrente &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Rossi Oddet</h1>
+  <br/>
+  <table>
+  	<tr><td width="30%"><img src="/images/photo.jpeg" width="75"/></td>
+  		<td>&nbsp;&nbsp;</td>
+    <td width="70%"> <p>Développeur, Blogger et passionné par les communautés IT.</p></td></tr>
+</table>
+</section>
+<a class="twitter-timeline" href="https://twitter.com/rossioddet" data-widget-id="314511007521312768">Tweets by @rossioddet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Rossi Oddet -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogroddet';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://roddet.github.com/2013/11/scalaio-2013-uml-scala/';
+        var disqus_url = 'http://roddet.github.com/2013/11/scalaio-2013-uml-scala/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

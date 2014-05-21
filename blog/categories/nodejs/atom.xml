@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: nodejs | Rossi Oddet]]></title>
+  <link href="http://roddet.github.com/blog/categories/nodejs/atom.xml" rel="self"/>
+  <link href="http://roddet.github.com/"/>
+  <updated>2014-05-21T01:43:46-04:00</updated>
+  <id>http://roddet.github.com/</id>
+  <author>
+    <name><![CDATA[Rossi Oddet]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[BreizhCamp # Javascript du sol au plafond]]></title>
+    <link href="http://roddet.github.com/2013/06/breizhcamp-javascript-sol-au-plafond/"/>
+    <updated>2013-06-13T09:30:00-04:00</updated>
+    <id>http://roddet.github.com/2013/06/breizhcamp-javascript-sol-au-plafond</id>
+    <content type="html"><![CDATA[<p><img class="center" src="/images/breizhcamp13/js_sol_plafond/js-sol-plafond.jpg"></p>
+
+<h2>Animateurs</h2>
+
+<ul>
+<li><a href="http://sebprunier.wordpress.com/">Sébastien Prunier</a></li>
+<li><a href="https://twitter.com/xavier_seignard">Xavier Seignard</a></li>
+</ul>
+
+
+<h2>Le programme</h2>
+
+<p>L'objectif de ce Hands-on (3h) était de créer une application basée sur les technologies suivantes :</p>
+
+<ul>
+<li>MongoDB</li>
+<li>Node.js</li>
+<li>Angular.js</li>
+</ul>
+
+
+<p>Et outillée par :</p>
+
+<ul>
+<li>Grunt</li>
+<li>Makefile</li>
+</ul>
+
+
+<h2>Les supports</h2>
+
+<p>Les slides : <a href="http://xseignard.github.io/breizhcamp-js/prez/">http://xseignard.github.io/breizhcamp-js/prez/</a></p>
+
+<p>Le code des différents exercices : <a href="https://github.com/xseignard/breizhcamp-js">https://github.com/xseignard/breizhcamp-js</a>
+ (1 tag par exercice).</p>
+
+<h2>Le déroulement</h2>
+
+<p>Nous avons commencé la session par une distribution de clés USB contenant : les installeurs de Node.js, MongoDB, Git, un éditeur de texte, du dépôt Git des sources, ...</p>
+
+<p>En regardant, les supports (slides et code), on voit qu'il y a eu un bon travail de préparation de cette session.</p>
+
+<p>Les animateurs nous ont ensuite présenter MongoDB puis nous nous sommes lancés dans l'exercice 1 - Jouer avec MongoDB. Cela permetait aux participants de se familiariser aux opérations (insertion, recherche, etc...) sur une base de données MongoDB.</p>
+
+<p>L'étape suivante a consisté à faire connaissance avec Node.js avec l'exercice 2 dont l'objectif était d'insérer des enregistrements en base de données depuis un fichier contenant des données au format JSON.</p>
+
+<p>Il y a eu dans la salle de nombreux problèmes d'installation d'environnement au regard de nombreux outils à installer. Ces problèmes ont ralenti tout le groupe et ceux comme moi qui avait fini assez rapidement les exercices (les solutions étaient, à peu de choses près, décrites dans les slides), c'était un peu l'ennui malheureusement.</p>
+
+<p>Pour arriver à la fin de l'exercice 2, j'ai compté environ 1h45 (sur les 3h). A ce moment, les animateurs se sont rendus compte qu'ils étaient en retard par rapport aux contenus prévus.</p>
+
+<p><a href="http://expressjs.com/">Express.js</a> qui permet de réaliser des services REST est présenté et nous nous mettons à travailler sur l'exercice 3 - implémenter les services /geek et /geek/likes/:like?. Cette fois-ci, nous faisons plus efficace et en 30 min l'exercice est terminé.</p>
+
+<p>Plus que 45 min et il reste encore beaucoup de points à voir. Le "Hands-on" en lui même s'arrête et on revient à une présentation rapide de ce qui a été prévu :</p>
+
+<ul>
+<li>L'utilisation de <a href="http://visionmedia.github.io/mocha/">Mocha</a> pour faire des tests unitaires en javascript.</li>
+<li>AngularJS est à peine présenté par manque de temps, si le sujet nous intéresse, nous sommes invités à aller dans la session "Hands On AngularJS. Cette fois, vous allez coder !" prévu dans l'après-midi.</li>
+<li>L'outillage autour de javascript est présenté (Grunt, Bower, Istanbul et Makefile). A la différence de la plupart des "javascripteurs" qui font l'éloge de Grunt en tant qu'outil de build "ultime" (j'exagère un peu), ici Xavier affirme préférer faire un Makefile plutôt qu'utiliser Grunt. Ses arguments :
+
+<ul>
+<li>Le Makefile a déjà fait ses preuves et fait bien le boulot</li>
+<li>Avec un Makefile on peut directement bénéficier des dernières versions de librairies alors qu'avec Grunt il faut attendre la mise à jour de la surcouche de la dite librairie.</li>
+</ul>
+</li>
+<li>Les animateurs déconseillent de servir les fichiers statiques (CSS, JS etc...) par Node.js et conseille d'utiliser <a href="http://wiki.nginx.org/">Nginx</a>.</li>
+</ul>
+
+
+<h2>Bilan</h2>
+
+<p>Les supports de cette session sont de qualités et nous avons tout ce qu'il nous faut pour refaire le Hands-On en dehors du BreizhCamp. C'est ce que je compte faire dès que j'aurai un peu de temps.</p>
+
+<p>Je me suis malheureusement un peu ennuyé pendant une partie de la session car je n'avais rien à installer et j'avais déjà les bases de MongoDB et Node.js.</p>
+
+<p>J'ai tout de même appris pas mal de chose :</p>
+
+<ul>
+<li>La mise en oeuvre de service REST avec <a href="http://expressjs.com/">Express.js</a>. Même si j'en avais déjà entendu parlé, je ne l'avais jamais expérimenté.</li>
+<li>L'utilisation de <a href="https://github.com/caolan/async">async</a> pour éviter les enchainements de callback lors de multiples requêtes</li>
+<li>Le fait qu'il ne fallait pas servir les fichiers statiques avec Node.js et qu'il fallait penser à autre chose comme <a href="http://wiki.nginx.org/">Nginx</a></li>
+<li>Que le monde des "javascripteurs" était désespéré au point d'utiliser un Makefile pour effectuer un build, impensable dans le monde des "javaistes" :)</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JUG Nantes : Traçabilité des architectures distribuées]]></title>
+    <link href="http://roddet.github.com/2013/03/jugnantes-mars/"/>
+    <updated>2013-03-19T20:15:00-04:00</updated>
+    <id>http://roddet.github.com/2013/03/jugnantes-mars</id>
+    <content type="html"><![CDATA[<p>Hier j'ai eu l'occasion d'être présent à la session qu'organisait le JUG Nantes sur le thème : traçabilité d'une architecture distribuée &amp; un retour sur le code story 2013.</p>
+
+<p>Les intervenants : Sébastien Prunier &amp; Jérôme Creignou</p>
+
+<p>Voici un petit résumé de ce que l'on peut retenir.</p>
+
+<h2>Code Story 2013</h2>
+
+<p>La session a commencé par le retour sur le code story 2013 qui a consisté à réaliser une même application avec différentes technologies (Sébastien => Java &amp; Jetty Embedded, Jérôme => Javascript &amp; NodeJS).
+J'en retiens surtout le panel d'outil utilisé :</p>
+
+<ul>
+<li>Pour Sébastien c'est du Jetty Embedded, JUnit &amp; Heroku. On peut quand même noter que le choix de Jetty n'est pas un hazard. Travailler avec Jetty est une approche que je vois de plus en plus qui se rapproche du modèle de programmation de NodeJS ou Play Framework où l'on souhaite avoir un contrôle accru des éléments composants le protocole HTTP (qu'est-ce qu'il y a dans la requête, qu'est-ce que je met exactement dans le réponse ? etc...). Vous pouvez trouver le détail de ses choix techniques là : <a href="http://sebprunier.wordpress.com/2013/01/10/code-story-concours-pour-devoxx-france-2013/">http://sebprunier.wordpress.com/2013/01/10/code-story-concours-pour-devoxx-france-2013/</a></li>
+<li><p>Pour Jérôme, une particularité : tout le cycle de développement entièrement sur le cloud avec Javascript &amp; NodeJS. Oui entièrement : du développement au déploiement. Voici les outils :</p>
+
+<ul>
+<li><a href="https://c9.io/">Cloud 9</a>  pour le développement. Pour du Javascript, l'IDE offre un debugger javascript et même un terminal. On peut faire du Git en ligne de commande :)</li>
+<li><a href="https://travis-ci.org/">Travis CI</a> pour l'intégration continue</li>
+<li><a href="http://www.heroku.com/">Heroku</a> pour le déploiement</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>Traçabilité d'une architecture distribuée avec NodeJS &amp; MongoDB</h2>
+
+<p>Les intervenants ont présenté une application qu'ils ont réalisé en 15 jours qui permet de traçer les requêtes à travers un SI multi-couche et hétérogène.</p>
+
+<p>Le principe :</p>
+
+<ul>
+<li>Modifier les applications pour injecter et propager un identifiant de requête généré</li>
+<li>Installer sur chaque machine un agent construit avec Node.js qui parse les logs suivant un pattern configurable. Chaque agent structure en JSON les logs collectées et les envoie à un serveur de consolidation.</li>
+<li>Un serveur de consolidation récupère les données des agents et persiste les infos dans une base MongoDB. Il met à disposition également une IHM pour visualiser les données et faire des statistiques.
+Un particularité à noter avec Node.js, la stratégie de lecture des fichiers de logs. Les fichiers ne sont pas montés en mémoire en totalité. L'API est notifié par l'OS qu'il y a eu un changement dans les fichiers et envoie le différentiel, ce qui fait que la lecture du fichier se fait efficacement.</li>
+</ul>
+
+
+<p>Panorama des technologies utilisées :</p>
+
+<ul>
+<li><a href="http://knockoutjs.com/">Knockout.js</a></li>
+<li><a href="http://expressjs.com/">Expressjs</a></li>
+<li><a href="http://d3js.org/">D3js</a></li>
+<li><a href="http://underscorejs.org/">Underscorejs</a></li>
+<li><a href="https://github.com/flatiron/winston">Winston</a></li>
+<li><a href="http://lesscss.org/">Less</a></li>
+<li><a href="https://github.com/dominictarr/JSONStream">JSONStream</a></li>
+<li><a href="https://github.com/dominictarr/event-stream">Event Stream</a></li>
+</ul>
+
+
+<p>Les axes d'améliorations qu'ils ont déjà identifiés :</p>
+
+<ul>
+<li>Passer de MongoDB à CoucheBase pour 2 raisons : l'interface d'administration plus facile à vendre que la ligne de commande &amp; pour des meilleurs performances</li>
+<li>Améliorer l'interface UI, le rendre un peu plus responsive</li>
+<li>Etudier une intégration avec <a href="http://www.logstash.net/">Log Stash</a></li>
+</ul>
+
+
+<p>Voici les slides :</p>
+
+<iframe src="http://www.slideshare.net/slideshow/embed_code/17381444" width="600" height="500" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen webkitallowfullscreen mozallowfullscreen> </iframe>
+
+
+<p></p>
+]]></content>
+  </entry>
+  
+</feed>
